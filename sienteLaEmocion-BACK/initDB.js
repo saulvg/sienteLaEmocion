@@ -83,10 +83,11 @@ async function initDB() {
         )
     `);
     await connection.query(`
-        CREATE TABLE experiences_category   (
-            id INT PRIMARY KEY AUTO_INCREMENT
-
-        )
+    CREATE TABLE experiences_category   (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        name VARCHAR(100) NOT NULL
+            
+    )
     `);
     await connection.query(`
         CREATE TABLE company   (
@@ -95,9 +96,19 @@ async function initDB() {
         )
     `);
     await connection.query(`
-        CREATE TABLE votes   (
-            id INT PRIMARY KEY AUTO_INCREMENT
-
+        
+            CREATE TABLE votes   (
+                id INT PRIMARY KEY AUTO_INCREMENT,
+                experiences_id INT NOT NULL,
+                vote TINYINT,
+                review VARCHAR(255),
+                createdAt DATETIME NOT NULL,
+                id_user INT NOT NULL,
+                FOREIGN KEY(id_user) REFERENCES users(id),
+                FOREIGN KEY (experiences_id) REFERENCES experiences(id) ON DELETE CASCADE
+    
+                  
+            )
         )
     `);
     await connection.query(`
