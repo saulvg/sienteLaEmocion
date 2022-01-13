@@ -53,7 +53,24 @@ async function initDB() {
     `);
     await connection.query(`
         CREATE TABLE experiences   (
-            id INT PRIMARY KEY AUTO_INCREMENT
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            id_user INT NOT NULL,
+            id_company INT NOT NULL,
+            id_address INT NOT NULL,
+            id_experiences_category INT NOT NULL,
+            capacity TINYINT NOT NULL,
+            price DECIMAL NOT NULL,
+            date DATETIME NOT NULL, 
+            name VARCHAR (50) NOT NULL,
+            createdAt DATETIME NOT NULL, 
+            modifiedAt DATETIME, 
+            FOREIGN KEY(id_user) REFERENCES users(id),
+            FOREIGN KEY(id_company) REFERENCES company(id),
+            FOREIGN KEY(id_address) REFERENCES address(id),
+            FOREIGN KEY(id_experiences_category) REFERENCES experiences_category (id)
+
+
+
 
 
         )
@@ -85,7 +102,7 @@ async function initDB() {
     await connection.query(`
     CREATE TABLE experiences_category   (
         id INT PRIMARY KEY AUTO_INCREMENT,
-        name VARCHAR(100) NOT NULL
+        name VARCHAR(50) NOT NULL
             
     )
     `);
@@ -96,7 +113,6 @@ async function initDB() {
         )
     `);
     await connection.query(`
-        
             CREATE TABLE votes   (
                 id INT PRIMARY KEY AUTO_INCREMENT,
                 experiences_id INT NOT NULL,
@@ -105,9 +121,7 @@ async function initDB() {
                 createdAt DATETIME NOT NULL,
                 id_user INT NOT NULL,
                 FOREIGN KEY(id_user) REFERENCES users(id),
-                FOREIGN KEY (experiences_id) REFERENCES experiences(id) ON DELETE CASCADE
-    
-                  
+                FOREIGN KEY (experiences_id) REFERENCES experiences(id) ON DELETE CASCADE 
             )
         )
     `);
@@ -132,7 +146,7 @@ initDB();
 
 /* 
     en el id auto increment hace falta not null?
-
+    EL PRECIO ES DECIMAL?
 
 
 */
