@@ -20,15 +20,15 @@ async function initDB() {
   try {
     connection = await getDB();
     await connection.query('DROP TABLE IF EXISTS votes');
-    await connection.query('DROP TABLE IF EXISTS users');
-    await connection.query('DROP TABLE IF EXISTS experiences');
-    await connection.query('DROP TABLE IF EXISTS address');
     await connection.query('DROP TABLE IF EXISTS experiences_photos');
     await connection.query('DROP TABLE IF EXISTS experiences_description_type');
     await connection.query('DROP TABLE IF EXISTS experiences_description');
     await connection.query('DROP TABLE IF EXISTS experiences_category');
-    await connection.query('DROP TABLE IF EXISTS company');
     await connection.query('DROP TABLE IF EXISTS booking');
+    await connection.query('DROP TABLE IF EXISTS experiences');
+    await connection.query('DROP TABLE IF EXISTS address');
+    await connection.query('DROP TABLE IF EXISTS company');
+    await connection.query('DROP TABLE IF EXISTS users');
 
     await connection.query(`
         CREATE TABLE users (
@@ -51,7 +51,26 @@ async function initDB() {
 
         )
     `);
-    await connection.query(`
+        await connection.query(`
+            CREATE TABLE address (
+                id INT PRIMARY KEY AUTO_INCREMENT
+
+            )
+        `);
+        await connection.query(`
+            CREATE TABLE company (
+                id INT PRIMARY KEY AUTO_INCREMENT
+                
+                )
+                `);
+        await connection.query(`
+            CREATE TABLE experiences_category (
+                id INT PRIMARY KEY AUTO_INCREMENT,
+                name VARCHAR(50) NOT NULL
+                    
+            )
+        `);
+        await connection.query(`
         CREATE TABLE experiences (
             id INT PRIMARY KEY AUTO_INCREMENT,
             id_user INT NOT NULL,
@@ -71,12 +90,6 @@ async function initDB() {
         )
     `);
     await connection.query(`
-        CREATE TABLE address (
-            id INT PRIMARY KEY AUTO_INCREMENT
-
-        )
-    `);
-    await connection.query(`
         CREATE TABLE experiences_photos (
             id INT PRIMARY KEY AUTO_INCREMENT
 
@@ -90,19 +103,6 @@ async function initDB() {
     `);
     await connection.query(`
         CREATE TABLE experiences_description (
-            id INT PRIMARY KEY AUTO_INCREMENT
-
-        )
-    `);
-    await connection.query(`
-        CREATE TABLE experiences_category (
-            id INT PRIMARY KEY AUTO_INCREMENT,
-            name VARCHAR(50) NOT NULL
-                
-        )
-    `);
-    await connection.query(`
-        CREATE TABLE company (
             id INT PRIMARY KEY AUTO_INCREMENT
 
         )
