@@ -53,13 +53,19 @@ async function initDB() {
     `);
         await connection.query(`
             CREATE TABLE address (
-                id INT PRIMARY KEY AUTO_INCREMENT
-
+                id INT PRIMARY KEY AUTO_INCREMENT,
+                city VARCHAR(50) NOT NULL,
+                street VARCHAR(50) NOT NULL,
+                number VARCHAR(50) NOT NULL,
+                postalCode MEDIUMINT NOT NULL,
+                length VARCHAR(50),
+                latitude VARCHAR(50)
             )
         `);
         await connection.query(`
             CREATE TABLE company (
-                id INT PRIMARY KEY AUTO_INCREMENT
+                id INT PRIMARY KEY AUTO_INCREMENT,
+                name VARCHAR(50) NOT NULL
                 
                 )
                 `);
@@ -97,14 +103,21 @@ async function initDB() {
     `);
     await connection.query(`
         CREATE TABLE experiences_description_type (
-            id INT PRIMARY KEY AUTO_INCREMENT
+            id INT PRIMARY KEY AUTO_INCREMENT,
+           
 
         )
     `);
     await connection.query(`
         CREATE TABLE experiences_description (
-            id INT PRIMARY KEY AUTO_INCREMENT
-
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            text VARCHAR(255) NOT  NULL,
+            id_experiences_description_type INT NOT NULL,
+            id_experiences_photos INT NOT NULL,
+            id_experiences INT NOT NULL,
+            FOREIGN KEY (id_experiences_description_type) REFERENCES experiences_description_type(id),
+            FOREIGN KEY (id_experiences_photos) REFERENCES experiences_photos(id),
+            FOREIGN KEY (id_experiences) REFERENCES experiences(id)
         )
     `);
     await connection.query(`
