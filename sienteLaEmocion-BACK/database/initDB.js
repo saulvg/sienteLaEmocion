@@ -1,6 +1,6 @@
 const getDB = require('./getDB.js');
 const bcrypt = require('bcrypt');
-//const faker = require('faker/locale/es'); //borrar
+const faker = require('faker/locale/es'); //borrar
 
 const saltRounds = 10;
 
@@ -9,10 +9,7 @@ function formatDate(date) {
   return format(date, 'yyyy-MM-dd HH:mm:ss');
 }
 
-function getRandom(min, max) {
-  //borrar
-  return Math.round(Math.random() * (max - min) + min);
-}
+
 
 async function initDB() {
   let connection;
@@ -21,6 +18,7 @@ async function initDB() {
     connection = await getDB();
     await connection.query('DROP TABLE IF EXISTS votes');
     await connection.query('DROP TABLE IF EXISTS experiences_description');
+    await connection.query('DROP TABLE IF EXISTS booking');
     await connection.query('DROP TABLE IF EXISTS experiences');
     await connection.query('DROP TABLE IF EXISTS experiences_category');
     await connection.query('DROP TABLE IF EXISTS experiences_photos');
@@ -28,7 +26,6 @@ async function initDB() {
     await connection.query('DROP TABLE IF EXISTS address');
     await connection.query('DROP TABLE IF EXISTS company');
     await connection.query('DROP TABLE IF EXISTS users');
-    await connection.query('DROP TABLE IF EXISTS booking');
 
     await connection.query(`
         CREATE TABLE users (
@@ -141,7 +138,54 @@ async function initDB() {
             FOREIGN KEY (id_user) REFERENCES users(id)
         )
     `); 
-  } catch (error) {
+
+    // Creamos la contraseña del administrador y la encriptamos.
+    const ADMIN_PASS = await bcrypt.hash('123456', saltRounds);
+
+    // Insertamos el usuario administrador.
+    await connection.query(`
+        INSERT INTO users (email, password, username, active, role, dni_nie, postalCode, phone, createdAt)
+        VALUES (
+            "saulvgproyecto@gmail.com",
+            "${ADMIN_PASS}",
+            "Admin",
+            true,
+            "admin",
+            "0000",
+            "0000",
+            "0000",
+            "${formatDate(new Date())}"
+        )
+    `);
+
+    // Constante que nos dice el nº de usuarios que vamos a crear.
+    const USERS = 10;
+
+    // Creamos un bucle que se repite tantas veces como nº de usuarios.
+    for (let i = 0; i < USERS; i++) {
+        // Datos faker.
+        const email = faker.internet.email();
+        const username = faker.name.findName();
+        const password = await bcrypt.hash('123456', saltRounds);
+
+        //insertamos un usuario en cada repeticion
+        await connection.query(`
+            INSERT INTO users (email, username, password, dni_nie, postalCode, phone, active, createdAt)
+            VALUES (
+                "${email}", 
+                "${username}",
+                "${password}",
+                "123456789",
+                "22008",
+                "444555666",
+                true, 
+                "${formatDate(new Date())}"
+            )
+        `);
+    }
+    console.log('Usuarios creados');
+
+}  catch (error) {
     console.error(error);
   } finally {
     if (connection) connection.release();
