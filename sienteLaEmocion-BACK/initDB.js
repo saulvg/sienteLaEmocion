@@ -20,15 +20,15 @@ async function initDB() {
   try {
     connection = await getDB();
     await connection.query('DROP TABLE IF EXISTS votes');
+    await connection.query('DROP TABLE IF EXISTS experiences_description');
+    await connection.query('DROP TABLE IF EXISTS experiences');
+    await connection.query('DROP TABLE IF EXISTS experiences_category');
     await connection.query('DROP TABLE IF EXISTS experiences_photos');
     await connection.query('DROP TABLE IF EXISTS experiences_description_type');
-    await connection.query('DROP TABLE IF EXISTS experiences_description');
-    await connection.query('DROP TABLE IF EXISTS experiences_category');
-    await connection.query('DROP TABLE IF EXISTS booking');
-    await connection.query('DROP TABLE IF EXISTS experiences');
     await connection.query('DROP TABLE IF EXISTS address');
     await connection.query('DROP TABLE IF EXISTS company');
     await connection.query('DROP TABLE IF EXISTS users');
+    await connection.query('DROP TABLE IF EXISTS booking');
 
     await connection.query(`
         CREATE TABLE users (
@@ -97,15 +97,14 @@ async function initDB() {
     `);
     await connection.query(`
         CREATE TABLE experiences_photos (
-            id INT PRIMARY KEY AUTO_INCREMENT
-
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            path VARCHAR(150)
         )
     `);
     await connection.query(`
         CREATE TABLE experiences_description_type (
             id INT PRIMARY KEY AUTO_INCREMENT,
-           
-
+            type VARCHAR(50) NOT NULL
         )
     `);
     await connection.query(`
@@ -123,22 +122,25 @@ async function initDB() {
     await connection.query(`
         CREATE TABLE votes (
             id INT PRIMARY KEY AUTO_INCREMENT,
-            experiences_id INT NOT NULL,
+            id_experiences INT NOT NULL,
             vote TINYINT,
             review VARCHAR(255),
             createdAt DATETIME NOT NULL,
             id_user INT NOT NULL,
             FOREIGN KEY(id_user) REFERENCES users(id),
-            FOREIGN KEY (experiences_id) REFERENCES experiences(id) ON DELETE CASCADE 
+            FOREIGN KEY (id_experiences) REFERENCES experiences(id) ON DELETE CASCADE 
             
         )
     `);
     await connection.query(`
         CREATE TABLE booking (
-            id INT PRIMARY KEY AUTO_INCREMENT
-
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            id_experiences INT NOT NULL,
+            id_user INT NOT NULL,
+            FOREIGN KEY (id_experiences) REFERENCES experiences(id) ON DELETE CASCADE,
+            FOREIGN KEY (id_user) REFERENCES users(id)
         )
-    `);
+    `); 
   } catch (error) {
     console.error(error);
   } finally {
