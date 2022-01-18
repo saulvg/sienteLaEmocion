@@ -16,7 +16,7 @@ const { PORT } = process.env;
  * #################
  */
 
-//const {} = require('./middleware')
+const {isAuth, userExists} = require('./middleware')
 
 
 
@@ -26,7 +26,7 @@ const { PORT } = process.env;
  * ###############################
  */
 
-const { newUser } = require('./controllers/users'); 
+const { newUser, getUser } = require('./controllers/users'); 
 
 
 /**
@@ -63,6 +63,9 @@ app.post('/users', newUser)
 
 //Login User
 
+//Obteenr informacion de un usuario
+app.get('/users/:idUser', isAuth, userExists, getUser)
+
 
 /**
  * ###########################
@@ -73,6 +76,12 @@ app.post('/users', newUser)
 
 
 //............................................ 
+
+/**
+ * ##################################
+ * ## Middleware Error & Not Found ##
+ * ##################################
+ */
 
 //Intentamos entrar en el middleware de error, si no fuese posible entrariamos en el de no encontrado, el orden es imoportante
 //Middleware de error.

@@ -1,8 +1,8 @@
 {
   "name": "sientelaemocion-back",
   "version": "1.0.0",
-  "description": "",
-  "main": "getDB.js",
+  "description": "Se trata de una web para que empresas de experiencias y consumidores de las mismas se encuentren",
+  "main": "index.js",
   "scripts": {
     "initDB": "node database/initDB",
     "dev": "nodemon server.js"
@@ -23,7 +23,8 @@
     "express": "^4.17.2",
     "faker": "^5.5.3",
     "mysql2": "^2.3.3",
-    "@sendgrid/mail": "^7.6.0"
+    "@sendgrid/mail": "^7.6.0",
+    "jsonwebtoken": "^8.5.1"
 
   }
 }
