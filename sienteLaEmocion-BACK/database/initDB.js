@@ -23,8 +23,8 @@ async function initDB() {
     await connection.query('DROP TABLE IF EXISTS experiences_category');
     await connection.query('DROP TABLE IF EXISTS experiences_photos');
     await connection.query('DROP TABLE IF EXISTS experiences_description_type');
-    await connection.query('DROP TABLE IF EXISTS address');
     await connection.query('DROP TABLE IF EXISTS company');
+    await connection.query('DROP TABLE IF EXISTS address');
     await connection.query('DROP TABLE IF EXISTS users');
 
     await connection.query(`
