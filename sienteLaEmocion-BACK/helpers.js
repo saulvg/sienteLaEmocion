@@ -7,7 +7,7 @@ const sgMail = require('@sendgrid/mail');
 const { SENDGRID_API_KEY, SENDGRID_FROM } = process.env;
 
 //Asignamos la API KEY de Sendgird
-sgMail.setApiKey(SENDGRID_API_KEY);
+sgMail.setApiKey('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');
 
 
 /**
@@ -28,6 +28,7 @@ function generateRandomString (length) {
 
 async function sendMail({to, subject, body}) {
     try {
+        console.log("Start sendMail");
         //preparamso el mensaje que se enviara
         const msg = {
             to, //para
@@ -45,7 +46,7 @@ async function sendMail({to, subject, body}) {
 
         //enviamos el mensaje
         await sgMail.send(msg);
-
+        console.log("End sendMail");
     } catch (error) {
         console.error(error);
         throw new Error('Hubo un problema al enviar el mensaje');

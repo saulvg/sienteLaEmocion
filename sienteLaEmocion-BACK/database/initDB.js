@@ -52,20 +52,22 @@ async function initDB() {
             CREATE TABLE address (
                 id INT PRIMARY KEY AUTO_INCREMENT,
                 city VARCHAR(50) NOT NULL,
-                street VARCHAR(50) NOT NULL,
-                number VARCHAR(50) NOT NULL,
-                postalCode MEDIUMINT NOT NULL,
-                length VARCHAR(50),
+                street VARCHAR(50),
+                number VARCHAR(50),
+                postalCode MEDIUMINT,
+                longitude VARCHAR(50),
                 latitude VARCHAR(50)
             )
         `);
         await connection.query(`
             CREATE TABLE company (
                 id INT PRIMARY KEY AUTO_INCREMENT,
-                name VARCHAR(50) NOT NULL
+                name VARCHAR(50) NOT NULL,
+                id_address INT NOT NULL,
+                FOREIGN KEY (id_address) REFERENCES address(id)
                 
-                )
-                `);
+            )
+        `);
         await connection.query(`
             CREATE TABLE experiences_category (
                 id INT PRIMARY KEY AUTO_INCREMENT,
@@ -199,8 +201,8 @@ initDB();
 //DUDAS
 
 /* 
-    en el id auto increment hace falta not null?
-    EL PRECIO ES DECIMAL?
+    
+    EL PRECIO ES DECIMAL mirar como se escribe en la documentacion mysql?
 
 
 */

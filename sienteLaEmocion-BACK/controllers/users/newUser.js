@@ -13,7 +13,7 @@ const { PUBLIC_HOST } = process.env
 
 
 //funcion controladora de el endpoin /users con el metodo POST
-const newUser = async(req, res, next) => {
+const newUser = async (req, res, next) => {
     let connection;
 
     try {
