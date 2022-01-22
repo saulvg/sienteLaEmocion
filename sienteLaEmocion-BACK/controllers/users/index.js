@@ -2,10 +2,12 @@
 
 const getUser = require('./getUser');
 const newUser = require('./newUser');
+const validateUser = require('./validateUser')
 
 
 module.exports = {
     newUser,
     getUser,
+    validateUser,
 
 };
