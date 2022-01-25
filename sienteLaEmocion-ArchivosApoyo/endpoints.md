@@ -8,39 +8,34 @@
 
 ## Endpoints del usuario
 
-- POST - [/users] - Crea un usuario pendiente de activar.
-- GET - [/users/validate/:registrationCode] - Valida un usuario recién registrado.
-- GET - [/users/:idUser] - Retorna información de un usuario concreto.
-- POST - [/users/login] - Logea a un usuario retornando un token.
+- POST - [/users] - Crea un usuario pendiente de activar. (CHECKED)
+- GET - [/users/validate/:registrationCode] - Valida un usuario recién registrado. (CHECKED)
+- GET - [/users/:idUser] - Retorna información de un usuario concreto. (CHECKED)
+- POST - [/users/login] - Logea a un usuario retornando un token. (JAVIER)
 
-(este idUser se refiere a perfil?)
-
-- PUT - [/users/:idUser] - Edita informacion del usuario.
-- PUT - [/users/:idUser/avatar] - Edita el avatar de un usuario.
-- PUT - [/users/:idUser/password] - Edita la contraseña de un usuario.
-- PUT - [/users/password/recover] - Envia un correo con el código de reseteo de contraseña a un email.
-- PUT - [/users/password/reset] - Cambia la contraseña de un usuario con un código de reseteo.
-- DELETE - [/users/:idUser] - Borra un usuario.
+- PUT - [/users/:idUser] - Edita informacion del usuario. (SAUL)
+- PUT - [/users/:idUser/avatar] - Edita el avatar de un usuario. (JOSE CARLOS)
+- PUT - [/users/:idUser/password] - Edita la contraseña de un usuario. (NATALIA)
+- PUT - [/users/password/recover] - Envia un correo con el código de reseteo de contraseña a un email. (NATALIA)
+- PUT - [/users/password/reset] - Cambia la contraseña de un usuario con un código de reseteo.(NATALIA)
+- DELETE - [/users/:idUser] - Borra un usuario. (JAVIER)
 
 ## Endpoints de actividades
 
-- GET - [/activity] - Retorna el listado de entradas.
-- GET - [/activity/:idActivity] - Retorna una entrada en concreto.
-- POST - [/activity] - Crea una entrada.
-- POST - [/activity/:idActivity/photos] - Añade una imagen a una entrada.
-- GET - [/activity/:idActivity/ratings] - Abre las valoraciones de esa actividad
-- PUT - [/activity/:idActivity] - Edita la descripción o el título de una entrada.
-- DELETE - [/activity/:idActivity] - Borra una entrada.
-- DELETE - [/activity/:idActivity/photos/:idPhoto] - Elimina una foto de una entrada.
+- GET - [/activity] - Retorna el listado de entradas. (?city=Vigo&mes=julio) (JOSE CARLOS)
+- GET - [/activity/:idActivity] - Retorna una entrada en concreto. (SAUL)
+- POST - [/activity] - Crea una entrada. (JAVIER)
+- POST - [/activity/:idActivity/photos] - Añade una imagen a una entrada. (JOSE CARLOS)
+- GET - [/activity/:idActivity/ratings] - Abre las valoraciones de esa actividad (JAVIER)
+- PUT - [/activity/:idActivity] - Edita la descripción o el título de una entrada. (SAUL)
+- DELETE - [/activity/:idActivity] - Borra una entrada. (JOSE CARLOS)
 
-- (duda) GET - [/activity] (debemos combinar todas las opciones de filtrar por o con el formulario bastaria? )
-- (duda) clicar en filtrar por es un nuevo endpoint?
-- (duda) POST - [/activity/:idActivity/reserve] - enviar reserva de una actividad
-- (duda) GET - [/activity/:idActivity/reserve] - Reservar una actividad
-- (duda) POST - [/activity/:idActivity/votes] - Vota una entrada. (deberiamos poner este endpoint dentro de user porque se hace dentro del perfil la votacion?)
+- POST - [/activity/:idActivity/reserve] - enviar reserva de una actividad (NATALIA)
+- POST - [/activity/:idActivity/votes] - Vota una entrada. (JAVIER)
 
 ## Endpoin aparte
 
-- GET - [/search] - Muestra el buscador generico de la web
-- GET - [/contact] - Muestra el modal de contactar
-- GET - [/contact/company] - Muestra el modal de enviar formulario para subir una actividad
+- GET - [/search] - Muestra el buscador generico de la web ((?city=Vigo&mes=julio)) (SAUL)
+- GET - [/contact] - Muestra el modal de contactar (JOSE CARLOS)
+
+REUNION MARTES 13:30
