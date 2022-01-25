@@ -26,7 +26,7 @@ const {isAuth, userExists} = require('./middleware')
  * ###############################
  */
 
-const { newUser, getUser } = require('./controllers/users'); 
+const { newUser, getUser, validateUser } = require('./controllers/users'); 
 
 
 /**
@@ -60,6 +60,7 @@ app.use(express.json());
 app.post('/users', newUser)
 
 //Validar un nuevo usuario
+app.get('/users/validate/:registrationCode', validateUser)
 
 //Login User
 
