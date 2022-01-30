@@ -6,9 +6,8 @@ const morgan = require('morgan');
 //creamos un servidor de express en la constante app
 const app = express();
 
-//extraemos el puerto de nuestro servidor de las variables de entorno 
+//extraemos el puerto de nuestro servidor de las variables de entorno
 const { PORT } = process.env;
-
 
 /**
  * #################
@@ -16,9 +15,7 @@ const { PORT } = process.env;
  * #################
  */
 
-const {isAuth, userExists} = require('./middleware')
-
-
+const { isAuth, userExists } = require('./middleware');
 
 /**
  * ###############################
@@ -26,8 +23,12 @@ const {isAuth, userExists} = require('./middleware')
  * ###############################
  */
 
-const { newUser, getUser, validateUser } = require('./controllers/users'); 
-
+const {
+    newUser,
+    getUser,
+    loginUser,
+    validateUser,
+} = require('./controllers/users');
 
 /**
  * ###############################
@@ -37,8 +38,6 @@ const { newUser, getUser, validateUser } = require('./controllers/users');
 
 //const {} = require('./controllers/entries')
 
-
-
 //Middeleware que nos da informacion acerca de las peticiones que entran en el servidor (esto lo muestra en la terminal, para darnos informacion extra de lo que ocurre)
 //habilitando asi la dependencia morgan
 //informativa
@@ -46,7 +45,6 @@ app.use(morgan('dev'));
 
 //Middleware que deserealiza el body en formato row (lo pasa de un formato Buffer a un formato JS) y lo pone disponible en la propiedad request.body
 app.use(express.json());
-
 
 //.................Vamos a crear todos los middlewares que tienen nuestra pagina...........................
 
@@ -56,17 +54,17 @@ app.use(express.json());
  * ###########################
  */
 
-//Crear un nuevo usuario, 
-app.post('/users', newUser)
+//Crear un nuevo usuario,
+app.post('/users', newUser);
 
 //Validar un nuevo usuario
-app.get('/users/validate/:registrationCode', validateUser)
+app.get('/users/validate/:registrationCode', validateUser);
 
-//Login User
+// Logear un usuario.
+app.post('/users/login', loginUser);
 
 //Obteenr informacion de un usuario
-app.get('/users/:idUser', isAuth, userExists, getUser)
-
+app.get('/users/:idUser', isAuth, userExists, getUser);
 
 /**
  * ###########################
@@ -74,9 +72,7 @@ app.get('/users/:idUser', isAuth, userExists, getUser)
  * ###########################
  */
 
-
-
-//............................................ 
+//............................................
 
 /**
  * ##################################
@@ -86,27 +82,25 @@ app.get('/users/:idUser', isAuth, userExists, getUser)
 
 //Intentamos entrar en el middleware de error, si no fuese posible entrariamos en el de no encontrado, el orden es imoportante
 //Middleware de error.
-            // eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars
 app.use((error, req, res, next) => {
-    console.log(error);//esto unicamente es para que en consola se nos muestre un error algo mas claro del error 
+    console.log(error); //esto unicamente es para que en consola se nos muestre un error algo mas claro del error
     res.status(error.httpStatus || 500).send({
-        status: 'error', 
-        message: error.message
+        status: 'error',
+        message: error.message,
     });
 });
-
 
 //Middeleware de no encontrado
-    //si existe un error lo imprimimos para el cliente en modo de respuesta (res)
+//si existe un error lo imprimimos para el cliente en modo de respuesta (res)
 app.use((req, res) => {
     res.status(404).send({
-        status: 'error', 
-        message: 'Not found'
+        status: 'error',
+        message: 'Not found',
     });
 });
 
-
-//Ponemos el servidor a escuchar un puerto 
+//Ponemos el servidor a escuchar un puerto
 app.listen(PORT, () => {
     console.log(`Server llistening http://localhost${PORT}`);
 });
