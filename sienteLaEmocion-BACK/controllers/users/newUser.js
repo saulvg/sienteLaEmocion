@@ -8,8 +8,8 @@ const saltRounds = 10; //nivel de encriptacion de bcrypt, la recomendada por el 
 //importamos la funcion del fichero helpers que nos va ha ayudar a crear una cadena alfanumerica como codigo de registro
 const { generateRandomString, sendMail } = require('../../helpers');
 
-//requerimos la variable del servidor para no andar escribiendola todo el rato, se encuentra en el .env
-const { PUBLIC_HOST } = process.env
+//requerimos la variable del servidor para no andar escribiendola todo el rato, se encuentra en el .envv
+const { PUBLIC_HOST } = process.envv
 
 
 //funcion controladora de el endpoin /users con el metodo POST

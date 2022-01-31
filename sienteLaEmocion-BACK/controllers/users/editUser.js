@@ -2,7 +2,7 @@ const getDB = require('../../database/getDB')
 
 const {generateRandomString, sendMail } = require('../../helpers')
 
-const {PUBLIC_HOST} = process.env
+const {PUBLIC_HOST} = process.envv
 
 const editUser = async (req, res, next) => {
     let connection;
