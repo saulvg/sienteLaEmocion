@@ -24,7 +24,7 @@ const isAuth = async (req, res, next) => {
             //creamos este try-catch para en el caso de que el metodo que vamos a utilizar falle, salga en el catch un mensaje personalizado por nosotros y no un mensaje generico en ingles
         try {
             //desencriptamos el token
-            tokenInfo = jwt.verify(authorization, process.envv.SECRET);
+            tokenInfo = jwt.verify(authorization, process.env.SECRET);
         } catch (_) {
             const error = new Error('El token no es valido');
             error.httpStatus = 401;

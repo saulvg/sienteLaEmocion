@@ -1,4 +1,4 @@
-//gracias a la dependecia dotenv y a requerirla aqui (en el fichero principal), puedo importar variables de entorno con el process.envv, sin necesidad de requerirla en todos los ficheros que hacen referencia a este
+//gracias a la dependecia dotenv y a requerirla aqui (en el fichero principal), puedo importar variables de entorno con el process.env, sin necesidad de requerirla en todos los ficheros que hacen referencia a este
 require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
@@ -7,7 +7,7 @@ const morgan = require('morgan');
 const app = express();
 
 //extraemos el puerto de nuestro servidor de las variables de entorno
-const { PORT } = process.envv;
+const  {PORT}  = process.env;
 
 /**
  * #################

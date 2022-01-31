@@ -3,7 +3,7 @@ const crypto = require('crypto'); //esta dependencia ya viene en el core modules
 const sgMail = require('@sendgrid/mail');
 
 //importamos las variables de entorno
-const { SENDGRID_API_KEY, SENDGRID_FROM } = process.envv;
+const { SENDGRID_API_KEY, SENDGRID_FROM } = process.env;
 
 //Asignamos la API KEY de Sendgird
 sgMail.setApiKey(SENDGRID_API_KEY);
