@@ -4,10 +4,12 @@ const getUser = require('./getUser');
 const newUser = require('./newUser');
 const loginUser = require('./loginUser');
 const validateUser = require('./validateUser');
+const editUser = require('./editUser');
 
 module.exports = {
     newUser,
     getUser,
     loginUser,
     validateUser,
+    editUser
 };

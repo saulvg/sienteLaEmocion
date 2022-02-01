@@ -7,7 +7,7 @@ const morgan = require('morgan');
 const app = express();
 
 //extraemos el puerto de nuestro servidor de las variables de entorno
-const { PORT } = process.env;
+const  {PORT}  = process.env;
 
 /**
  * #################
@@ -15,7 +15,7 @@ const { PORT } = process.env;
  * #################
  */
 
-const { isAuth, userExists } = require('./middleware');
+const { isAuth, userExists, canEditUser } = require('./middleware');
 
 /**
  * ###############################
@@ -28,6 +28,7 @@ const {
     getUser,
     loginUser,
     validateUser,
+    editUser,
 } = require('./controllers/users');
 
 /**
@@ -60,11 +61,14 @@ app.post('/users', newUser);
 //Validar un nuevo usuario
 app.get('/users/validate/:registrationCode', validateUser);
 
-// Logear un usuario.
+//Logear un usuario.
 app.post('/users/login', loginUser);
 
 //Obteenr informacion de un usuario
 app.get('/users/:idUser', isAuth, userExists, getUser);
+
+//Editar informacion de un usuario
+app.put('/users/:idUser', isAuth, userExists, canEditUser, editUser)
 
 /**
  * ###########################
@@ -102,5 +106,5 @@ app.use((req, res) => {
 
 //Ponemos el servidor a escuchar un puerto
 app.listen(PORT, () => {
-    console.log(`Server llistening http://localhost${PORT}`);
+    console.log(`Server listening http://localhost${PORT}`);
 });
