@@ -6,28 +6,23 @@ const saltRounds = 10;
 
 const { format } = require('date-fns');
 function formatDate(date) {
-  return format(date, 'yyyy-MM-dd HH:mm:ss');
+    return format(date, 'yyyy-MM-dd HH:mm:ss');
 }
 
-
-
 async function initDB() {
-  let connection;
+    let connection;
 
-  try {
-    connection = await getDB();
-    await connection.query('DROP TABLE IF EXISTS votes');
-    await connection.query('DROP TABLE IF EXISTS experiences_description');
-    await connection.query('DROP TABLE IF EXISTS booking');
-    await connection.query('DROP TABLE IF EXISTS experiences');
-    await connection.query('DROP TABLE IF EXISTS experiences_category');
-    await connection.query('DROP TABLE IF EXISTS experiences_photos');
-    await connection.query('DROP TABLE IF EXISTS experiences_description_type');
-    await connection.query('DROP TABLE IF EXISTS company');
-    await connection.query('DROP TABLE IF EXISTS address');
-    await connection.query('DROP TABLE IF EXISTS users');
+    try {
+        connection = await getDB();
+        await connection.query('DROP TABLE IF EXISTS votes');
+        await connection.query('DROP TABLE IF EXISTS booking');
+        await connection.query('DROP TABLE IF EXISTS experiences_category');
+        await connection.query('DROP TABLE IF EXISTS experiences_photos');
+        await connection.query('DROP TABLE IF EXISTS company');
+        await connection.query('DROP TABLE IF EXISTS users');
+        await connection.query('DROP TABLE IF EXISTS experiences'); //Añadir los campos de las tablas "experiences_description", "experiences_description_type" y "address"
 
-    await connection.query(`
+        await connection.query(`
         CREATE TABLE users (
             id INT PRIMARY KEY AUTO_INCREMENT,
             email VARCHAR(100) UNIQUE NOT NULL,
@@ -48,24 +43,11 @@ async function initDB() {
 
         )
     `);
-        await connection.query(`
-            CREATE TABLE address (
-                id INT PRIMARY KEY AUTO_INCREMENT,
-                city VARCHAR(50) NOT NULL,
-                street VARCHAR(50),
-                number VARCHAR(50),
-                postalCode MEDIUMINT,
-                longitude VARCHAR(50),
-                latitude VARCHAR(50)
-            )
-        `);
+
         await connection.query(`
             CREATE TABLE company (
                 id INT PRIMARY KEY AUTO_INCREMENT,
-                name VARCHAR(50) NOT NULL,
-                id_address INT NOT NULL,
-                FOREIGN KEY (id_address) REFERENCES address(id)
-                
+                name VARCHAR(50) NOT NULL                
             )
         `);
         await connection.query(`
@@ -86,39 +68,33 @@ async function initDB() {
             price DECIMAL NOT NULL,
             date DATETIME NOT NULL, 
             name VARCHAR (50) NOT NULL,
+            city VARCHAR(50) NOT NULL,
+            street VARCHAR(50),
+            number VARCHAR(50),
+            postalCode MEDIUMINT,
+            longitude VARCHAR(50),
+            latitude VARCHAR(50),
+            text_1 TEXT,
+            text_2 TEXT,
+            text_3 TEXT,
             createdAt DATETIME NOT NULL, 
             modifiedAt DATETIME, 
             FOREIGN KEY (id_user) REFERENCES users(id),
             FOREIGN KEY (id_company) REFERENCES company(id),
-            FOREIGN KEY (id_address) REFERENCES address(id),
             FOREIGN KEY (id_experiences_category) REFERENCES experiences_category(id)
         )
     `);
-    await connection.query(`
+        await connection.query(`
         CREATE TABLE experiences_photos (
             id INT PRIMARY KEY AUTO_INCREMENT,
-            path VARCHAR(150)
+            id_experience INT NOT NULL,
+            path VARCHAR(150),
+            description TEXT,
+            FOREIGN KEY (id_experience) REFERENCES experiences(id)
         )
     `);
-    await connection.query(`
-        CREATE TABLE experiences_description_type (
-            id INT PRIMARY KEY AUTO_INCREMENT,
-            type VARCHAR(50) NOT NULL
-        )
-    `);
-    await connection.query(`
-        CREATE TABLE experiences_description (
-            id INT PRIMARY KEY AUTO_INCREMENT,
-            text VARCHAR(255) NOT  NULL,
-            id_experiences_description_type INT NOT NULL,
-            id_experiences_photos INT NOT NULL,
-            id_experiences INT NOT NULL,
-            FOREIGN KEY (id_experiences_description_type) REFERENCES experiences_description_type(id),
-            FOREIGN KEY (id_experiences_photos) REFERENCES experiences_photos(id),
-            FOREIGN KEY (id_experiences) REFERENCES experiences(id)
-        )
-    `);
-    await connection.query(`
+
+        await connection.query(`
         CREATE TABLE votes (
             id INT PRIMARY KEY AUTO_INCREMENT,
             id_experiences INT NOT NULL,
@@ -131,21 +107,22 @@ async function initDB() {
             
         )
     `);
-    await connection.query(`
+        await connection.query(`
         CREATE TABLE booking (
             id INT PRIMARY KEY AUTO_INCREMENT,
             id_experiences INT NOT NULL,
             id_user INT NOT NULL,
+            createdAt DATETIME NOT NULL,
             FOREIGN KEY (id_experiences) REFERENCES experiences(id) ON DELETE CASCADE,
             FOREIGN KEY (id_user) REFERENCES users(id)
         )
-    `); 
+    `);
 
-    // Creamos la contraseña del administrador y la encriptamos.
-    const ADMIN_PASS = await bcrypt.hash('123456', saltRounds);
+        // Creamos la contraseña del administrador y la encriptamos.
+        const ADMIN_PASS = await bcrypt.hash('123456', saltRounds);
 
-    // Insertamos el usuario administrador.
-    await connection.query(`
+        // Insertamos el usuario administrador.
+        await connection.query(`
         INSERT INTO users (email, password, username, active, role, dni_nie, postalCode, phone, createdAt)
         VALUES (
             "saulvgproyecto@gmail.com",
@@ -160,18 +137,18 @@ async function initDB() {
         )
     `);
 
-    // Constante que nos dice el nº de usuarios que vamos a crear.
-    const USERS = 10;
+        // Constante que nos dice el nº de usuarios que vamos a crear.
+        const USERS = 10;
 
-    // Creamos un bucle que se repite tantas veces como nº de usuarios.
-    for (let i = 0; i < USERS; i++) {
-        // Datos faker.
-        const email = faker.internet.email();
-        const username = faker.name.findName();
-        const password = await bcrypt.hash('123456', saltRounds);
+        // Creamos un bucle que se repite tantas veces como nº de usuarios.
+        for (let i = 0; i < USERS; i++) {
+            // Datos faker.
+            const email = faker.internet.email();
+            const username = faker.name.findName();
+            const password = await bcrypt.hash('123456', saltRounds);
 
-        //insertamos un usuario en cada repeticion
-        await connection.query(`
+            //insertamos un usuario en cada repeticion
+            await connection.query(`
             INSERT INTO users (email, username, password, dni_nie, postalCode, phone, active, createdAt)
             VALUES (
                 "${email}", 
@@ -184,16 +161,15 @@ async function initDB() {
                 "${formatDate(new Date())}"
             )
         `);
+        }
+        console.log('Usuarios creados');
+    } catch (error) {
+        console.error(error);
+    } finally {
+        if (connection) connection.release();
+
+        process.exit();
     }
-    console.log('Usuarios creados');
-
-}  catch (error) {
-    console.error(error);
-  } finally {
-    if (connection) connection.release();
-
-    process.exit();
-  }
 }
 
 initDB();

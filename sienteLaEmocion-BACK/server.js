@@ -7,7 +7,7 @@ const morgan = require('morgan');
 const app = express();
 
 //extraemos el puerto de nuestro servidor de las variables de entorno
-const  {PORT}  = process.env;
+const { PORT } = process.env;
 
 /**
  * #################
@@ -30,6 +30,7 @@ const {
     validateUser,
     editUser,
 } = require('./controllers/users');
+const { getExperience } = require('./controllers/entries/');
 
 /**
  * ###############################
@@ -68,7 +69,7 @@ app.post('/users/login', loginUser);
 app.get('/users/:idUser', isAuth, userExists, getUser);
 
 //Editar informacion de un usuario
-app.put('/users/:idUser', isAuth, userExists, canEditUser, editUser)
+app.put('/users/:idUser', isAuth, userExists, canEditUser, editUser);
 
 /**
  * ###########################
@@ -77,6 +78,8 @@ app.put('/users/:idUser', isAuth, userExists, canEditUser, editUser)
  */
 
 //............................................
+
+app.get('/experiences/:idExperience', getExperience);
 
 /**
  * ##################################

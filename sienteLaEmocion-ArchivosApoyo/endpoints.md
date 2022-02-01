@@ -8,12 +8,12 @@
 
 ## Endpoints del usuario
 
-- POST - [/users] - Crea un usuario pendiente de activar. (CHECKED)
-- GET - [/users/validate/:registrationCode] - Valida un usuario recién registrado. (CHECKED)
-- GET - [/users/:idUser] - Retorna información de un usuario concreto. (CHECKED)
-- POST - [/users/login] - Logea a un usuario retornando un token. (JAVIER)
+- POST - [/users] - Crea un usuario pendiente de activar. ✅
+- GET - [/users/validate/:registrationCode] - Valida un usuario recién registrado. ✅
+- GET - [/users/:idUser] - Retorna información de un usuario concreto. ✅
+- POST - [/users/login] - Logea a un usuario retornando un token. ✅
 
-- PUT - [/users/:idUser] - Edita informacion del usuario. (SAUL)
+- PUT - [/users/:idUser] - Edita informacion del usuario. ✅
 - PUT - [/users/:idUser/avatar] - Edita el avatar de un usuario. (JOSE CARLOS)
 - PUT - [/users/:idUser/password] - Edita la contraseña de un usuario. (NATALIA)
 - PUT - [/users/password/recover] - Envia un correo con el código de reseteo de contraseña a un email. (NATALIA)
@@ -23,15 +23,15 @@
 ## Endpoints de actividades
 
 - GET - [/activity] - Retorna el listado de entradas. (?city=Vigo&mes=julio) (JOSE CARLOS)
-- GET - [/activity/:idActivity] - Retorna una entrada en concreto. (SAUL)
+- GET - [/activity/:idExperience] - Retorna una entrada en concreto. (SAUL)
 - POST - [/activity] - Crea una entrada. (JAVIER)
-- POST - [/activity/:idActivity/photos] - Añade una imagen a una entrada. (JOSE CARLOS)
-- GET - [/activity/:idActivity/ratings] - Abre las valoraciones de esa actividad (JAVIER)
-- PUT - [/activity/:idActivity] - Edita la descripción o el título de una entrada. (SAUL)
-- DELETE - [/activity/:idActivity] - Borra una entrada. (JOSE CARLOS)
+- POST - [/activity/:idExperience/photos] - Añade una imagen a una entrada. (JOSE CARLOS)
+- GET - [/activity/:idExperience/ratings] - Abre las valoraciones de esa actividad (JAVIER)
+- PUT - [/activity/:idExperience] - Edita la descripción o el título de una entrada. (SAUL)
+- DELETE - [/activity/:idExperience] - Borra una entrada. (JOSE CARLOS)
 
-- POST - [/activity/:idActivity/reserve] - enviar reserva de una actividad (NATALIA)
-- POST - [/activity/:idActivity/votes] - Vota una entrada. (JAVIER)
+- POST - [/activity/:idExperience/reserve] - enviar reserva de una actividad (NATALIA)
+- POST - [/activity/:idExperience/votes] - Vota una entrada. (JAVIER)
 
 ## Endpoin aparte
 
