@@ -15,7 +15,7 @@ const { PORT } = process.env;
  * #################
  */
 
-const { isAuth, userExists } = require('./middleware');
+const { isAuth, userExists, canEditUser } = require('./middleware');
 
 /**
  * ###############################
@@ -28,6 +28,7 @@ const {
     getUser,
     loginUser,
     validateUser,
+    deleteUser,
 } = require('./controllers/users');
 
 /**
@@ -65,6 +66,9 @@ app.post('/users/login', loginUser);
 
 //Obteenr informacion de un usuario
 app.get('/users/:idUser', isAuth, userExists, getUser);
+
+// Anonimizar un usuario.
+app.delete('/users/:idUser', isAuth, userExists, canEditUser, deleteUser);
 
 /**
  * ###########################
