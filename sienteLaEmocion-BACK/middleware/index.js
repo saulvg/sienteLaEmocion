@@ -1,10 +1,11 @@
-const isAuth = require("./isAuth");
-const userExists = require("./userExists");
-const canEditUser = require('./canEditUser')
+const isAuth = require('./isAuth');
+const userExists = require('./userExists');
+const canEditUser = require('./canEditUser');
+const experienceExist = require('./experienceExist');
 
-
-module.exports={
+module.exports = {
     userExists,
     isAuth,
-    canEditUser
-}
+    canEditUser,
+    experienceExist,
+};
