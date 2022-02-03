@@ -20,6 +20,7 @@ const {
     userExists,
     canEditUser,
     experienceExist,
+    isAdmin,
 } = require('./middleware');
 
 /**
@@ -35,7 +36,6 @@ const {
     validateUser,
     editUser,
 } = require('./controllers/users');
-const { getExperience } = require('./controllers/entries/');
 
 /**
  * ###############################
@@ -43,7 +43,7 @@ const { getExperience } = require('./controllers/entries/');
  * ###############################
  */
 
-//const {} = require('./controllers/entries')
+const { getExperience, editExperience } = require('./controllers/entries/');
 
 //Middeleware que nos da informacion acerca de las peticiones que entran en el servidor (esto lo muestra en la terminal, para darnos informacion extra de lo que ocurre)
 //habilitando asi la dependencia morgan
@@ -85,6 +85,8 @@ app.put('/users/:idUser', isAuth, userExists, canEditUser, editUser);
 //............................................
 
 app.get('/experiences/:idExperience', experienceExist, getExperience);
+
+app.put('/experiences/:idExperience', isAdmin, editExperience);
 
 /**
  * ##################################
