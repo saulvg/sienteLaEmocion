@@ -15,7 +15,12 @@ const { PORT } = process.env;
  * #################
  */
 
-const { isAuth, userExists, canEditUser } = require('./middleware');
+const {
+    isAuth,
+    userExists,
+    canEditUser,
+    experienceExist,
+} = require('./middleware');
 
 /**
  * ###############################
@@ -79,7 +84,7 @@ app.put('/users/:idUser', isAuth, userExists, canEditUser, editUser);
 
 //............................................
 
-app.get('/experiences/:idExperience', getExperience);
+app.get('/experiences/:idExperience', experienceExist, getExperience);
 
 /**
  * ##################################
