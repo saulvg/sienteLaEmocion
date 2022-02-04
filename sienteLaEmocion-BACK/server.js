@@ -45,6 +45,13 @@ const {
 
 const { getExperience, editExperience } = require('./controllers/entries/');
 
+/**
+ * #############################
+ * ## Controladores de search ##
+ * #############################
+ */
+const search = require('./controllers/search/search');
+
 //Middeleware que nos da informacion acerca de las peticiones que entran en el servidor (esto lo muestra en la terminal, para darnos informacion extra de lo que ocurre)
 //habilitando asi la dependencia morgan
 //informativa
@@ -84,9 +91,19 @@ app.put('/users/:idUser', isAuth, userExists, canEditUser, editUser);
 
 //............................................
 
+//Obtener una experiencia
 app.get('/experiences/:idExperience', experienceExist, getExperience);
 
+//Editar una experiencia
 app.put('/experiences/:idExperience', isAdmin, editExperience);
+
+/**
+ * ########################
+ * ## Endopoin de search ##
+ * ########################
+ */
+
+app.get('/search', search);
 
 /**
  * ##################################

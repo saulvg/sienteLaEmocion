@@ -17,9 +17,9 @@ async function initDB() {
         await connection.query('DROP TABLE IF EXISTS votes');
         await connection.query('DROP TABLE IF EXISTS booking');
         await connection.query('DROP TABLE IF EXISTS experiences_photos');
-        await connection.query('DROP TABLE IF EXISTS experiences'); //Añadir los campos de las tablas "experiences_description", "experiences_description_type" y "address"
         await connection.query('DROP TABLE IF EXISTS experiences_category');
         await connection.query('DROP TABLE IF EXISTS company');
+        await connection.query('DROP TABLE IF EXISTS experiences'); //Añadir los campos de las tablas "experiences_description", "experiences_description_type" y "address"
         await connection.query('DROP TABLE IF EXISTS users');
 
         await connection.query(`
@@ -45,29 +45,12 @@ async function initDB() {
     `);
 
         await connection.query(`
-            CREATE TABLE company (
-                id INT PRIMARY KEY AUTO_INCREMENT,
-                name VARCHAR(50) NOT NULL                
-            )
-        `);
-        await connection.query(`
-            CREATE TABLE experiences_category (
-                id INT PRIMARY KEY AUTO_INCREMENT,
-                name VARCHAR(50) NOT NULL
-                
-                    
-            )
-        `);
-        await connection.query(`
         CREATE TABLE experiences (
             id INT PRIMARY KEY AUTO_INCREMENT,
             id_user INT NOT NULL,
-            id_company INT NOT NULL,
-            id_experiences_category INT NOT NULL,
             capacity TINYINT NOT NULL,
             price DECIMAL NOT NULL,
             date DATETIME NOT NULL, 
-            name VARCHAR (50) NOT NULL,
             city VARCHAR(50) NOT NULL,
             street VARCHAR(50),
             number VARCHAR(50),
@@ -82,15 +65,29 @@ async function initDB() {
             text_6 TEXT,
             createdAt DATETIME NOT NULL, 
             modifiedAt DATETIME, 
-            FOREIGN KEY (id_user) REFERENCES users(id),
-            FOREIGN KEY (id_company) REFERENCES company(id),
-            FOREIGN KEY (id_experiences_category) REFERENCES experiences_category(id)
+            FOREIGN KEY (id_user) REFERENCES users(id)
+        )
+    `);
+        await connection.query(`
+        CREATE TABLE company (
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            id_experiences INT NOT NULL,
+            name VARCHAR(50) NOT NULL,
+            FOREIGN KEY (id_experiences) REFERENCES experiences(id)                
+        )
+    `);
+        await connection.query(`
+        CREATE TABLE experiences_category (
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            id_experiences INT NOT NULL,
+            name VARCHAR(50) NOT NULL,
+            FOREIGN KEY (id_experiences) REFERENCES experiences(id)    
         )
     `);
         await connection.query(`
         CREATE TABLE experiences_photos (
             id INT PRIMARY KEY AUTO_INCREMENT,
-            id_experience INT NOT NULL,
+            id_experiences INT NOT NULL,
             path VARCHAR(150),
             description TEXT,
             FOREIGN KEY (id_experience) REFERENCES experiences(id)
