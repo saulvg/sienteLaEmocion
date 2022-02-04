@@ -18,8 +18,8 @@ async function initDB() {
         await connection.query('DROP TABLE IF EXISTS booking');
         await connection.query('DROP TABLE IF EXISTS experiences_photos');
         await connection.query('DROP TABLE IF EXISTS experiences_category');
-        await connection.query('DROP TABLE IF EXISTS experiences'); //Añadir los campos de las tablas "experiences_description", "experiences_description_type" y "address"
         await connection.query('DROP TABLE IF EXISTS company');
+        await connection.query('DROP TABLE IF EXISTS experiences'); //Añadir los campos de las tablas "experiences_description", "experiences_description_type" y "address"
         await connection.query('DROP TABLE IF EXISTS users');
 
         await connection.query(`
@@ -87,7 +87,7 @@ async function initDB() {
         await connection.query(`
         CREATE TABLE experiences_photos (
             id INT PRIMARY KEY AUTO_INCREMENT,
-            id_experience INT NOT NULL,
+            id_experiences INT NOT NULL,
             path VARCHAR(150),
             description TEXT,
             FOREIGN KEY (id_experience) REFERENCES experiences(id)

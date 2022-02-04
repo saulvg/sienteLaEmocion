@@ -18,8 +18,6 @@ const getExperience = async (req, res, next) => {
             experiences.id,  
             experiences.createdAt, 
             experiences.id_user, 
-            experiences.id_company, 
-            experiences.id_experiences_category, 
             experiences.capacity, 
             experiences.price, 
             experiences.date, 
@@ -42,7 +40,7 @@ const getExperience = async (req, res, next) => {
         // Fotos
         const [experiences_photos] = await connection.query(
             `
-            SELECT * FROM experiences_photos WHERE id_experience = ?
+            SELECT * FROM experiences_photos WHERE id_experiences = ?
             `,
             [idExperience]
         );
@@ -50,15 +48,15 @@ const getExperience = async (req, res, next) => {
         // Company
         const [company] = await connection.query(
             `
-        SELECT name FROM company WHERE id = ?`,
-            [experiences[0].id_company]
+        SELECT name FROM company WHERE id_experiences = ?`,
+            [idExperience]
         );
 
         // Category
         const [experiences_category] = await connection.query(
             `
-        SELECT name FROM experiences_category WHERE id = ?`,
-            [experiences[0].id_experiences_category]
+        SELECT name FROM experiences_category WHERE id_experiences = ?`,
+            [idExperience]
         );
 
         //si el usuario esta logeado, podra ver el nombre de los participantes que han reservado esa actividad PENDIENTE DE REVISAR
