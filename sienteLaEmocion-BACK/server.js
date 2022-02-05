@@ -2,6 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
+const fileUpload = require('express-fileupload');
 
 //creamos un servidor de express en la constante app
 const app = express();
@@ -67,6 +68,11 @@ app.use(morgan('dev'));
 //Middleware que deserealiza el body en formato row (lo pasa de un formato Buffer a un formato JS) y lo pone disponible en la propiedad request.body
 app.use(express.json());
 
+// Middleware que deserializa un body en formato "form-data" y lo pone disponible
+// en la propiedad "request.body". Si hay algún archivo estará disponible en la
+// propiedad "request.files".
+app.use(fileUpload());
+
 //.................Vamos a crear todos los middlewares que tienen nuestra pagina...........................
 
 /**
@@ -117,10 +123,10 @@ app.put('/experiences/:idExperience', isAdmin, editExperience);
 app.get('/experiences', getExperienceList);
 
 //Subir fotos de las experiencias
-app.post('/activity/:idExperience/photos', isAdmin, addEntryPhotos);
+app.post('/experiences/:idExperience/photos', isAdmin, addEntryPhotos);
 
 //Eliminar una experiencia
-app.delete('/activity/:idExperience', isAdmin, deleteExperience);
+app.delete('/experiences/:idExperience', isAdmin, deleteExperience);
 
 /**
  * ########################

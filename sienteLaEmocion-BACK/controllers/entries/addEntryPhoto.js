@@ -36,8 +36,8 @@ const addEntryPhotos = async (req, res, next) => {
 
         // Guardamos el nombre de la foto en la base de datos.
         await connection.query(
-            `INSERT INTO experiences_photos (path, id_experiences, createdAt) VALUES (?, ?, ?)`,
-            [photoName, idExperience, new Date()]
+            `INSERT INTO experiences_photos (id_experiences, path, createdAt) VALUES (?, ?, ?)`,
+            [idExperience, photoName, new Date()]
         );
 
         res.send({

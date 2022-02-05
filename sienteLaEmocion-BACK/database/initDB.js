@@ -73,6 +73,7 @@ async function initDB() {
             id INT PRIMARY KEY AUTO_INCREMENT,
             id_experiences INT NOT NULL,
             name VARCHAR(50) NOT NULL,
+            createdAt DATETIME NOT NULL,
             FOREIGN KEY (id_experiences) REFERENCES experiences(id) ON DELETE CASCADE               
         )
     `);
@@ -90,6 +91,7 @@ async function initDB() {
             id_experiences INT NOT NULL,
             path VARCHAR(150),
             description TEXT,
+            createdAt DATETIME NOT NULL,
             FOREIGN KEY (id_experiences) REFERENCES experiences(id)
         )
     `);
