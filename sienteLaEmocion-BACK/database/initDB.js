@@ -90,7 +90,7 @@ async function initDB() {
             id_experiences INT NOT NULL,
             path VARCHAR(150),
             description TEXT,
-            FOREIGN KEY (id_experience) REFERENCES experiences(id)
+            FOREIGN KEY (id_experiences) REFERENCES experiences(id)
         )
     `);
 

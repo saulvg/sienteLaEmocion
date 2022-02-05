@@ -18,20 +18,20 @@
 - PUT - [/users/:idUser/password] - Edita la contraseña de un usuario. (NATALIA)
 - PUT - [/users/password/recover] - Envia un correo con el código de reseteo de contraseña a un email. (NATALIA)
 - PUT - [/users/password/reset] - Cambia la contraseña de un usuario con un código de reseteo.(NATALIA)
-- DELETE - [/users/:idUser] - Borra un usuario. (JAVIER)
+- DELETE - [/users/:idUser] - Borra un usuario. (JAVIER)✅
 
 ## Endpoints de actividades
 
 - GET - [/activity] - Retorna el listado de entradas. (?city=Vigo&mes=julio) (JOSE CARLOS)
 - GET - [/activity/:idExperience] - Retorna una entrada en concreto. (SAUL)
-- POST - [/activity] - Crea una entrada. (JAVIER)
+- POST - [/activity] - Crea una entrada. (JAVIER)✅
 - POST - [/activity/:idExperience/photos] - Añade una imagen a una entrada. (JOSE CARLOS)
-- GET - [/activity/:idExperience/ratings] - Abre las valoraciones de esa actividad (JAVIER)
+- GET - [/activity/:idExperience/ratings] - Abre las valoraciones de esa actividad (JAVIER)✅
 - PUT - [/activity/:idExperience] - Edita la descripción o el título de una entrada. (SAUL)
 - DELETE - [/activity/:idExperience] - Borra una entrada. (JOSE CARLOS)
 
 - POST - [/activity/:idExperience/reserve] - enviar reserva de una actividad (NATALIA)
-- POST - [/activity/:idExperience/votes] - Vota una entrada. (JAVIER)
+- POST - [/activity/:idExperience/votes] - Vota una entrada. (JAVIER)✅
 
 ## Endpoin aparte
 

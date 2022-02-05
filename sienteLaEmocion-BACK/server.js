@@ -43,7 +43,11 @@ const {
  * ###############################
  */
 
-const { getExperience, editExperience } = require('./controllers/entries/');
+const {
+    getExperience,
+    editExperience,
+    experienceVotes,
+} = require('./controllers/entries/');
 
 /**
  * #############################
@@ -97,6 +101,13 @@ app.get('/experiences/:idExperience', experienceExist, getExperience);
 //Editar una experiencia
 app.put('/experiences/:idExperience', isAdmin, editExperience);
 
+// Votar una entrada.
+app.post(
+    '/experiences/:idExperience/votes',
+    isAuth,
+    experienceExist,
+    experienceVotes
+);
 /**
  * ########################
  * ## Endopoin de search ##
