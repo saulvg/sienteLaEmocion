@@ -35,6 +35,9 @@ const {
     loginUser,
     validateUser,
     editUser,
+    editPass,
+    recoverPass,
+    resetPass,
 } = require('./controllers/users');
 
 /**
@@ -83,6 +86,14 @@ app.get('/users/:idUser', isAuth, userExists, getUser);
 //Editar informacion de un usuario
 app.put('/users/:idUser', isAuth, userExists, canEditUser, editUser);
 
+// editar la contraseña de un usuario
+app.put('/users/:idUser/password', isAuth, userExists, canEditUser, editPass);
+
+// enviar un codigo de recuperación de contraseña al email del usuario
+app.put('/users/password/recover', recoverPass);
+
+// resetear la contraseña de un usuario utilizando un codigo de recuperacion
+app.put('/users/password/reset', resetPass);
 /**
  * ###########################
  * ## Endopoins de entradas ##

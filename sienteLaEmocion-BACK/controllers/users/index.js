@@ -5,11 +5,16 @@ const newUser = require('./newUser');
 const loginUser = require('./loginUser');
 const validateUser = require('./validateUser');
 const editUser = require('./editUser');
-
+const editPass = require('./editPass');
+const recoverPass = require('./recoverPass');
+const resetPass = require('./resetPass');
 module.exports = {
     newUser,
     getUser,
     loginUser,
     validateUser,
-    editUser
+    editUser,
+    editPass,
+    recoverPass,
+    resetPass,
 };
