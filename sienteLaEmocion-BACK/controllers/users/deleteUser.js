@@ -36,7 +36,7 @@ const deleteUser = async (req, res, next) => {
         await connection.query(
             `
                 UPDATE users
-                SET password = ?, username = "[deleted]", email = "[deleted]", avatar = NULL, active = 0, deleted = 1, modifiedAt = ?
+                SET password = ?, username = "[deleted]",phone = "[deleted]", biography = "[deleted]", postalCode = "[deleted]" email = "[deleted]", avatar = NULL, active = 0, deleted = 1, modifiedAt = ?
                 WHERE id = ?
             `,
             [generateRandomString(20), new Date(), idUser]
