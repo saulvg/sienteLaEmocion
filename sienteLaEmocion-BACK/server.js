@@ -35,6 +35,7 @@ const {
     loginUser,
     validateUser,
     editUser,
+    editUserAvatar,
 } = require('./controllers/users');
 
 /**
@@ -43,7 +44,13 @@ const {
  * ###############################
  */
 
-const { getExperience, editExperience } = require('./controllers/entries/');
+const {
+    getExperience,
+    editExperience,
+    getExperienceList,
+    addEntryPhotos,
+    deleteExperience,
+} = require('./controllers/entries/');
 
 /**
  * #############################
@@ -83,10 +90,19 @@ app.get('/users/:idUser', isAuth, userExists, getUser);
 //Editar informacion de un usuario
 app.put('/users/:idUser', isAuth, userExists, canEditUser, editUser);
 
+//Editamos el avatar del usuario
+app.put(
+    '/users/:idUser/avatar',
+    isAuth,
+    userExists,
+    canEditUser,
+    editUserAvatar
+);
+
 /**
- * ###########################
- * ## Endopoins de entradas ##
- * ###########################
+ * ##############################
+ * ## Endopoins de experiencia ##
+ * ##############################
  */
 
 //............................................
@@ -96,6 +112,15 @@ app.get('/experiences/:idExperience', experienceExist, getExperience);
 
 //Editar una experiencia
 app.put('/experiences/:idExperience', isAdmin, editExperience);
+
+//Obtener el listado de todas las experiencias
+app.get('/experiences', getExperienceList);
+
+//Subir fotos de las experiencias
+app.post('/activity/:idExperience/photos', isAdmin, addEntryPhotos);
+
+//Eliminar una experiencia
+app.delete('/activity/:idExperience', isAdmin, deleteExperience);
 
 /**
  * ########################
