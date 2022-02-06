@@ -43,7 +43,11 @@ const {
  * ###############################
  */
 
-const { getExperience, editExperience } = require('./controllers/entries/');
+const {
+    getExperience,
+    editExperience,
+    newExperience,
+} = require('./controllers/entries/');
 
 /**
  * #############################
@@ -89,7 +93,8 @@ app.put('/users/:idUser', isAuth, userExists, canEditUser, editUser);
  * ###########################
  */
 
-//............................................
+// Crear una nueva entrada.
+app.post('/experiences', isAdmin, newExperience);
 
 //Obtener una experiencia
 app.get('/experiences/:idExperience', experienceExist, getExperience);
