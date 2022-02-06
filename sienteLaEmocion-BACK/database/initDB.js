@@ -74,7 +74,8 @@ async function initDB() {
             id INT PRIMARY KEY AUTO_INCREMENT,
             id_experiences INT NOT NULL,
             name VARCHAR(50) NOT NULL,
-            FOREIGN KEY (id_experiences) REFERENCES experiences(id)                
+            createdAt DATETIME NOT NULL,
+            FOREIGN KEY (id_experiences) REFERENCES experiences(id) ON DELETE CASCADE               
         )
     `);
         await connection.query(`
@@ -82,7 +83,7 @@ async function initDB() {
             id INT PRIMARY KEY AUTO_INCREMENT,
             id_experiences INT NOT NULL,
             name VARCHAR(50) NOT NULL,
-            FOREIGN KEY (id_experiences) REFERENCES experiences(id)    
+            FOREIGN KEY (id_experiences) REFERENCES experiences(id) ON DELETE CASCADE    
         )
     `);
         await connection.query(`
@@ -91,6 +92,7 @@ async function initDB() {
             id_experiences INT NOT NULL,
             path VARCHAR(150),
             description TEXT,
+            createdAt DATETIME NOT NULL,
             FOREIGN KEY (id_experiences) REFERENCES experiences(id)
         )
     `);

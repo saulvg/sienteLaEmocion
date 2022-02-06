@@ -2,6 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
+const fileUpload = require('express-fileupload');
 
 //creamos un servidor de express en la constante app
 const app = express();
@@ -39,6 +40,7 @@ const {
     editPass,
     recoverPass,
     resetPass,
+    editUserAvatar,
 } = require('./controllers/users');
 
 /**
@@ -52,6 +54,9 @@ const {
     editExperience,
     experienceVotes,
     newExperience,
+    getExperienceList,
+    addEntryPhotos,
+    deleteExperience,
 } = require('./controllers/entries/');
 
 /**
@@ -68,6 +73,11 @@ app.use(morgan('dev'));
 
 //Middleware que deserealiza el body en formato row (lo pasa de un formato Buffer a un formato JS) y lo pone disponible en la propiedad request.body
 app.use(express.json());
+
+// Middleware que deserializa un body en formato "form-data" y lo pone disponible
+// en la propiedad "request.body". Si hay algún archivo estará disponible en la
+// propiedad "request.files".
+app.use(fileUpload());
 
 //.................Vamos a crear todos los middlewares que tienen nuestra pagina...........................
 
@@ -100,10 +110,19 @@ app.put('/users/password/recover', recoverPass);
 
 // resetear la contraseña de un usuario utilizando un codigo de recuperacion
 app.put('/users/password/reset', resetPass);
+//Editamos el avatar del usuario
+app.put(
+    '/users/:idUser/avatar',
+    isAuth,
+    userExists,
+    canEditUser,
+    editUserAvatar
+);
+
 /**
- * ###########################
- * ## Endopoins de entradas ##
- * ###########################
+ * ##############################
+ * ## Endopoins de experiencia ##
+ * ##############################
  */
 
 // Crear una nueva entrada.
@@ -123,6 +142,15 @@ app.post(
     experienceVotes
 );
 app.post('/experiences/:idExperience/booking', isAuth, newBooking);
+//Obtener el listado de todas las experiencias
+app.get('/experiences', getExperienceList);
+
+//Subir fotos de las experiencias
+app.post('/experiences/:idExperience/photos', isAdmin, addEntryPhotos);
+
+//Eliminar una experiencia
+app.delete('/experiences/:idExperience', isAdmin, deleteExperience);
+
 /**
  * ########################
  * ## Endopoin de search ##
