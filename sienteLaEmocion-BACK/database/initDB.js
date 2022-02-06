@@ -17,9 +17,9 @@ async function initDB() {
         await connection.query('DROP TABLE IF EXISTS votes');
         await connection.query('DROP TABLE IF EXISTS booking');
         await connection.query('DROP TABLE IF EXISTS experiences_photos');
-        await connection.query('DROP TABLE IF EXISTS experiences_category');
-        await connection.query('DROP TABLE IF EXISTS company');
         await connection.query('DROP TABLE IF EXISTS experiences'); //Añadir los campos de las tablas "experiences_description", "experiences_description_type" y "address"
+        await connection.query('DROP TABLE IF EXISTS company');
+        await connection.query('DROP TABLE IF EXISTS experiences_category');
         await connection.query('DROP TABLE IF EXISTS users');
         await connection.query('DROP TABLE IF EXISTS my_experiences');
 
@@ -41,6 +41,7 @@ async function initDB() {
             postalCode MEDIUMINT NOT NULL,
             createdAt DATETIME NOT NULL, 
             modifiedAt DATETIME 
+            FOREIGN KEY (id_experiences) REFERENCES experiences(id)  
 
         )
     `);
@@ -48,7 +49,7 @@ async function initDB() {
         await connection.query(`
         CREATE TABLE experiences (
             id INT PRIMARY KEY AUTO_INCREMENT,
-            id_user INT NOT NULL,
+            id_experiences INT NOT NULL,
             capacity TINYINT NOT NULL,
             price DECIMAL NOT NULL,
             date DATETIME NOT NULL, 
@@ -65,8 +66,7 @@ async function initDB() {
             text_5 TEXT,
             text_6 TEXT,
             createdAt DATETIME NOT NULL, 
-            modifiedAt DATETIME, 
-            FOREIGN KEY (id_user) REFERENCES users(id)
+            modifiedAt DATETIME
         )
     `);
         await connection.query(`

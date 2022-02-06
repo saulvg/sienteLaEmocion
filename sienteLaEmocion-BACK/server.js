@@ -51,6 +51,7 @@ const {
     getExperience,
     editExperience,
     experienceVotes,
+    newExperience,
 } = require('./controllers/entries/');
 
 /**
@@ -105,7 +106,8 @@ app.put('/users/password/reset', resetPass);
  * ###########################
  */
 
-//............................................
+// Crear una nueva entrada.
+app.post('/experiences', isAdmin, newExperience);
 
 //Obtener una experiencia
 app.get('/experiences/:idExperience', experienceExist, getExperience);

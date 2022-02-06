@@ -2,7 +2,7 @@ const isAuth = require('./isAuth');
 const userExists = require('./userExists');
 const canEditUser = require('./canEditUser');
 const experienceExist = require('./experienceExist');
-const isAdmin = require('./isAdim');
+const isAdmin = require('./isAdmin');
 
 module.exports = {
     userExists,
