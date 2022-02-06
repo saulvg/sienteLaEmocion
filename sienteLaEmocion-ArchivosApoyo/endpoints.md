@@ -14,28 +14,28 @@
 - POST - [/users/login] - Logea a un usuario retornando un token. ✅
 
 - PUT - [/users/:idUser] - Edita informacion del usuario. ✅
-- PUT - [/users/:idUser/avatar] - Edita el avatar de un usuario. (JOSE CARLOS)
-- PUT - [/users/:idUser/password] - Edita la contraseña de un usuario. (NATALIA)
-- PUT - [/users/password/recover] - Envia un correo con el código de reseteo de contraseña a un email. (NATALIA)
-- PUT - [/users/password/reset] - Cambia la contraseña de un usuario con un código de reseteo.(NATALIA)
-- DELETE - [/users/:idUser] - Borra un usuario. (JAVIER)✅
+- PUT - [/users/:idUser/avatar] - Edita el avatar de un usuario. ✅
+- PUT - [/users/:idUser/password] - Edita la contraseña de un usuario. ✅
+- PUT - [/users/password/recover] - Envia un correo con el código de reseteo de contraseña a un email. ✅
+- PUT - [/users/password/reset] - Cambia la contraseña de un usuario con un código de reseteo.✅
+- DELETE - [/users/:idUser] - Borra un usuario. ✅
 
 ## Endpoints de actividades
 
-- GET - [/activity] - Retorna el listado de entradas. (?city=Vigo&mes=julio) (JOSE CARLOS)
-- GET - [/activity/:idExperience] - Retorna una entrada en concreto. (SAUL)
+- GET - [/activity] - Retorna el listado de entradas. (?city=Vigo&mes=julio) ✅
+- GET - [/activity/:idExperience] - Retorna una entrada en concreto. ✅
 - POST - [/activity] - Crea una entrada. (JAVIER)✅
-- POST - [/activity/:idExperience/photos] - Añade una imagen a una entrada. (JOSE CARLOS)
+- POST - [/activity/:idExperience/photos] - Añade una imagen a una entrada. ✅
 - GET - [/activity/:idExperience/ratings] - Abre las valoraciones de esa actividad (JAVIER)✅
-- PUT - [/activity/:idExperience] - Edita la descripción o el título de una entrada. (SAUL)
-- DELETE - [/activity/:idExperience] - Borra una entrada. (JOSE CARLOS)
+- PUT - [/activity/:idExperience] - Edita la descripción o el título de una entrada. ✅
+- DELETE - [/activity/:idExperience] - Borra una entrada. ✅
 
-- POST - [/activity/:idExperience/reserve] - enviar reserva de una actividad (NATALIA)
+- POST - [/activity/:idExperience/reserve] - enviar reserva de una actividad ✅
 - POST - [/activity/:idExperience/votes] - Vota una entrada. (JAVIER)✅
 
 ## Endpoin aparte
 
-- GET - [/search] - Muestra el buscador generico de la web ((?city=Vigo&mes=julio)) (SAUL)
+- GET - [/search] - Muestra el buscador generico de la web ((?city=Vigo&mes=julio)) ✅
 - GET - [/contact] - Muestra el modal de contactar (JOSE CARLOS)
 
 REUNION MARTES 13:30
