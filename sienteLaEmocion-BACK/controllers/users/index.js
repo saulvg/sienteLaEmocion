@@ -7,6 +7,9 @@ const validateUser = require('./validateUser');
 const editUser = require('./editUser');
 const newBooking = require('./bookingExperience');
 
+const editPass = require('./editPass');
+const recoverPass = require('./recoverPass');
+const resetPass = require('./resetPass');
 module.exports = {
     newUser,
     getUser,
@@ -14,4 +17,7 @@ module.exports = {
     validateUser,
     editUser,
     newBooking,
+    editPass,
+    recoverPass,
+    resetPass,
 };
