@@ -35,6 +35,7 @@ const {
     loginUser,
     validateUser,
     editUser,
+    newBooking,
 } = require('./controllers/users');
 
 /**
@@ -108,6 +109,7 @@ app.post(
     experienceExist,
     experienceVotes
 );
+app.post('/experiences/:idExperience/booking', isAuth, newBooking);
 /**
  * ########################
  * ## Endopoin de search ##

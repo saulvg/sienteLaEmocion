@@ -21,6 +21,7 @@ async function initDB() {
         await connection.query('DROP TABLE IF EXISTS company');
         await connection.query('DROP TABLE IF EXISTS experiences'); //Añadir los campos de las tablas "experiences_description", "experiences_description_type" y "address"
         await connection.query('DROP TABLE IF EXISTS users');
+        await connection.query('DROP TABLE IF EXISTS my_experiences');
 
         await connection.query(`
         CREATE TABLE users (
@@ -117,6 +118,19 @@ async function initDB() {
             FOREIGN KEY (id_user) REFERENCES users(id)
         )
     `);
+        await connection.query(`
+    CREATE TABLE my_experiences (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        id_experiences INT NOT NULL,
+        id_experiences_photos INT NOT NULL, 
+        id_experiences_category INT NOT NULL,
+        vote TINYINT,
+        createdAt DATETIME NOT NULL,
+        FOREIGN KEY (id_experiences) REFERENCES experiences(id) ON DELETE CASCADE,
+        FOREIGN KEY (id_experiences_photos) REFERENCES experiences_photos(id),
+        FOREIGN KEY (id_experiences_category) REFERENCES experiences_category(id)
+    )
+`);
 
         // Creamos la contraseña del administrador y la encriptamos.
         const ADMIN_PASS = await bcrypt.hash('123456', saltRounds);

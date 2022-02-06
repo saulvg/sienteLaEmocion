@@ -5,11 +5,13 @@ const newUser = require('./newUser');
 const loginUser = require('./loginUser');
 const validateUser = require('./validateUser');
 const editUser = require('./editUser');
+const newBooking = require('./bookingExperience');
 
 module.exports = {
     newUser,
     getUser,
     loginUser,
     validateUser,
-    editUser
+    editUser,
+    newBooking,
 };
