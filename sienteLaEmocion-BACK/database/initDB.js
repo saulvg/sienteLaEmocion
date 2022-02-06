@@ -41,7 +41,6 @@ async function initDB() {
             postalCode MEDIUMINT NOT NULL,
             createdAt DATETIME NOT NULL, 
             modifiedAt DATETIME 
-            FOREIGN KEY (id_experiences) REFERENCES experiences(id)  
 
         )
     `);
@@ -49,7 +48,7 @@ async function initDB() {
         await connection.query(`
         CREATE TABLE experiences (
             id INT PRIMARY KEY AUTO_INCREMENT,
-            id_experiences INT NOT NULL,
+            id_user INT NOT NULL,
             capacity TINYINT NOT NULL,
             price DECIMAL NOT NULL,
             date DATETIME NOT NULL, 
@@ -66,7 +65,9 @@ async function initDB() {
             text_5 TEXT,
             text_6 TEXT,
             createdAt DATETIME NOT NULL, 
-            modifiedAt DATETIME
+            modifiedAt DATETIME,
+            FOREIGN KEY (id_user) REFERENCES users(id)  
+
         )
     `);
         await connection.query(`
@@ -74,7 +75,6 @@ async function initDB() {
             id INT PRIMARY KEY AUTO_INCREMENT,
             id_experiences INT NOT NULL,
             name VARCHAR(50) NOT NULL,
-            createdAt DATETIME NOT NULL,
             FOREIGN KEY (id_experiences) REFERENCES experiences(id) ON DELETE CASCADE               
         )
     `);
