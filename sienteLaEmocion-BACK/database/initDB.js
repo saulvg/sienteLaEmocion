@@ -16,12 +16,12 @@ async function initDB() {
         connection = await getDB();
         await connection.query('DROP TABLE IF EXISTS votes');
         await connection.query('DROP TABLE IF EXISTS booking');
-        await connection.query('DROP TABLE IF EXISTS experiences_photos');
-        await connection.query('DROP TABLE IF EXISTS experiences'); //Añadir los campos de las tablas "experiences_description", "experiences_description_type" y "address"
-        await connection.query('DROP TABLE IF EXISTS company');
-        await connection.query('DROP TABLE IF EXISTS experiences_category');
-        await connection.query('DROP TABLE IF EXISTS users');
         await connection.query('DROP TABLE IF EXISTS my_experiences');
+        await connection.query('DROP TABLE IF EXISTS experiences_photos');
+        await connection.query('DROP TABLE IF EXISTS experiences_category');
+        await connection.query('DROP TABLE IF EXISTS company');
+        await connection.query('DROP TABLE IF EXISTS experiences'); //Añadir los campos de las tablas "experiences_description", "experiences_description_type" y "address"
+        await connection.query('DROP TABLE IF EXISTS users');
 
         await connection.query(`
         CREATE TABLE users (
