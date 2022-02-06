@@ -41,6 +41,7 @@ const {
     recoverPass,
     resetPass,
     editUserAvatar,
+    deleteUser,
 } = require('./controllers/users');
 
 /**
@@ -118,6 +119,9 @@ app.put(
     canEditUser,
     editUserAvatar
 );
+
+// Anonimizar un usuario.
+app.delete('/users/:idUser', isAuth, userExists, canEditUser, deleteUser);
 
 /**
  * ##############################
