@@ -8,17 +8,17 @@
 
 ## Endpoints del usuario
 
-- POST - [/users] - Crea un usuario pendiente de activar. ✅
-- GET - [/users/validate/:registrationCode] - Valida un usuario recién registrado. ✅
-- GET - [/users/:idUser] - Retorna información de un usuario concreto. ✅
-- POST - [/users/login] - Logea a un usuario retornando un token. ✅
+- POST - [/users] - Crea un usuario pendiente de activar. ✅✅
+- GET - [/users/validate/:registrationCode] - Valida un usuario recién registrado. ✅✅
+- GET - [/users/:idUser] - Retorna información de un usuario concreto. ✅✅
+- POST - [/users/login] - Logea a un usuario retornando un token. ✅ (bajar la caducidad del token, que lo ponemos a 1 dia ? )
 
-- PUT - [/users/:idUser] - Edita informacion del usuario. ✅
-- PUT - [/users/:idUser/avatar] - Edita el avatar de un usuario. ✅
-- PUT - [/users/:idUser/password] - Edita la contraseña de un usuario. ✅
-- PUT - [/users/password/recover] - Envia un correo con el código de reseteo de contraseña a un email. ✅
-- PUT - [/users/password/reset] - Cambia la contraseña de un usuario con un código de reseteo.✅
-- DELETE - [/users/:idUser] - Borra un usuario. ✅
+- PUT - [/users/:idUser] - Edita informacion del usuario. ✅ (comprobamos antes que el dni este bien escrito o damos la posibilidad de editarlo por si se han confundidio al escirbirlo?
+- PUT - [/users/:idUser/avatar] - Edita el avatar de un usuario. ✅✅
+- PUT - [/users/:idUser/password] - Edita la contraseña de un usuario. ✅✅
+- PUT - [/users/password/recover] - Envia un correo con el código de reseteo de contraseña a un email. ✅✅
+- PUT - [/users/password/reset] - Cambia la contraseña de un usuario con un código de reseteo.✅✅
+- DELETE - [/users/:idUser] - Borra un usuario. ✅✅
 
 ## Endpoints de actividades
 
@@ -38,4 +38,10 @@
 - GET - [/search] - Muestra el buscador generico de la web ((?city=Vigo&mes=julio)) ✅
 - GET - [/contact] - Muestra el modal de contactar (JOSE CARLOS)
 
-REUNION MARTES 13:30
+MEJORAS:
+
+- si en el get user buscamos al admin, que solo devuleva el correo
+- Utilizar el token para saber que usuario intenta hacer que en lugar de llamarlo cogerlo de la url
+- Quizas podriamos hacer que el admin pueda banear y desbanear gente
+- en cambiar la contraseha podriamos poner el dolble escirbe tu nueva contraseha al igual que al recuperarla
+- asegurarnos de que el dni sea valido
