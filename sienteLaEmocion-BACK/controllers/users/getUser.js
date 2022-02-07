@@ -1,8 +1,5 @@
-//consegimos un aconexionlibre con la base de datos y para eso nos conectamos con la base de datos ya que vamos a solicitar informacion del usuario.
 const getDB = require('../../database/getDB');
 
-
-//funcion controladora de el endpoin.
 const getUser = async (req, res, next) => {
     let connection;
 
@@ -18,15 +15,15 @@ const getUser = async (req, res, next) => {
         // Obtenemos todos los datos que me interesan del usuario del cuál
         // se solicita información.
         const [users] = await connection.query(
-            `SELECT id, username, email, avatar, role, biography, createdAt FROM users WHERE id = ?`,
+            `SELECT id, username, email, avatar,dni_nie, phone, postalCode ,role, biography, createdAt FROM users WHERE id = ?`,
             [idUser]
         );
 
-        // Objeto co nla información básica del usuario.
+        // Objeto con la información básica del usuario.
         const userInfo = {
             username: users[0].username,
             avatar: users[0].avatar,
-            biography:users[0].biography
+            biography: users[0].biography,
         };
 
         // Si el usuario que realiza la request es el dueño de dicho usuario o si es
@@ -36,7 +33,7 @@ const getUser = async (req, res, next) => {
             userInfo.role = users[0].role;
             userInfo.createdAt = users[0].createdAt;
         }
-        //express asume que sino ponemos el res.status('codigo de peticion') el codigo es 200, por lo que en este caso que es para si todo va bien , no haria falta ponerlo, si lo ponemos tampoco pasa nada
+
         res.send({
             status: 'ok',
             data: {
@@ -44,7 +41,6 @@ const getUser = async (req, res, next) => {
             },
         });
     } catch (error) {
-        console.error(error);//impresion de error solo para que se ubique el desarrollador
         next(error);
     } finally {
         if (connection) connection.release();

@@ -111,6 +111,7 @@ app.put('/users/password/recover', recoverPass);
 
 // resetear la contraseña de un usuario utilizando un codigo de recuperacion
 app.put('/users/password/reset', resetPass);
+
 //Editamos el avatar del usuario
 app.put(
     '/users/:idUser/avatar',
