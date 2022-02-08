@@ -34,8 +34,12 @@ const newEntry = async (req, res, next) => {
 
         // Creamos la entrada y obtenemos el valor que retorna "connection.query".
         const [newExperience] = await connection.query(
-            `INSERT INTO experiences (capacity, price, date, city, street, number, postalCode, longitude, latitude, text_1, text_2, text_3, text_4, text_5, text_6) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+            `INSERT INTO experiences 
+                (id_user, capacity, price, date, city, street, number, postalCode, longitude, latitude, text_1, text_2, text_3, text_4, text_5, text_6, createdAt) 
+            VALUES 
+                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
             [
+                1,
                 capacity,
                 price,
                 date,

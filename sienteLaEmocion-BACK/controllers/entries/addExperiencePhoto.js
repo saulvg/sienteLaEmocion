@@ -2,7 +2,7 @@ const getDB = require('../../database/getDB');
 
 const { savePhoto } = require('../../helpers');
 
-const addEntryPhotos = async (req, res, next) => {
+const addExperiencePhotos = async (req, res, next) => {
     let connection;
 
     try {
@@ -25,8 +25,8 @@ const addEntryPhotos = async (req, res, next) => {
         );
 
         // Si no hay 4 fotos lanzamos un error.
-        if (photos.length === 4) {
-            const error = new Error('Esta experiencia no tiene cuatro fotos');
+        if (photos.length >= 4) {
+            const error = new Error('Esta experiencia ya tiene cuatro fotos');
             error.httpStatus = 403;
             throw error;
         }
@@ -42,7 +42,7 @@ const addEntryPhotos = async (req, res, next) => {
 
         res.send({
             status: 'ok',
-            message: 'Foto agregada',
+            message: 'Fotos agregadas',
         });
     } catch (error) {
         next(error);
@@ -51,4 +51,4 @@ const addEntryPhotos = async (req, res, next) => {
     }
 };
 
-module.exports = addEntryPhotos;
+module.exports = addExperiencePhotos;

@@ -13,7 +13,6 @@ const search = async (req, res, next) => {
         let experiences;
 
         // Si la variable "search" no está vacía filtramos todas las experiencias en cuya propiedad
-        // "category" o "description" o "company" exista el string contenido en "search".
         if (search) {
             [experiences] = await connection.query(
                 `

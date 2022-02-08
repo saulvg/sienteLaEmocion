@@ -13,29 +13,29 @@
 - GET - [/users/:idUser] - Retorna información de un usuario concreto. ✅✅
 - POST - [/users/login] - Logea a un usuario retornando un token. ✅ (bajar la caducidad del token, que lo ponemos a 1 dia ? )
 
-- PUT - [/users/:idUser] - Edita informacion del usuario. ✅ (comprobamos antes que el dni este bien escrito o damos la posibilidad de editarlo por si se han confundidio al escirbirlo?
+- PUT - [/users/:idUser] - Edita informacion del usuario. ✅✅
 - PUT - [/users/:idUser/avatar] - Edita el avatar de un usuario. ✅✅
 - PUT - [/users/:idUser/password] - Edita la contraseña de un usuario. ✅✅
 - PUT - [/users/password/recover] - Envia un correo con el código de reseteo de contraseña a un email. ✅✅
 - PUT - [/users/password/reset] - Cambia la contraseña de un usuario con un código de reseteo.✅✅
 - DELETE - [/users/:idUser] - Borra un usuario. ✅✅
 
-## Endpoints de actividades
+## Endpoints de experiencias
 
-- GET - [/activity] - Retorna el listado de entradas. (?city=Vigo&mes=julio) ✅
-- GET - [/activity/:idExperience] - Retorna una entrada en concreto. ✅
-- POST - [/activity] - Crea una entrada. (JAVIER)✅
-- POST - [/activity/:idExperience/photos] - Añade una imagen a una entrada. ✅
-- GET - [/activity/:idExperience/ratings] - Abre las valoraciones de esa actividad (JAVIER)✅
-- PUT - [/activity/:idExperience] - Edita la descripción o el título de una entrada. ✅
-- DELETE - [/activity/:idExperience] - Borra una entrada. ✅
+- GET - [/experiences] - Retorna el listado de experiencias. (?city=Vigo&mes=julio) ✅(en getExperiences debemos hacer la media de los votos en la query, no los votos asecas)
+- GET - [/experiences/:idExperience] - Retorna una experiencia en concreto. ✅✅
+- POST - [/experiences] - Crea una experiencia. ✅ (PENDIENTE) ✅
+- POST - [/experiences/:idExperience/photos] - Añade una imagen a una experiencia. ✅ (tiene sentido diferenciar aqui entre la foto de cabezera y las demas?) ✅
+- POST - [/experiences/:idExperience/votes] - Vota una experiencia. ✅(add el middleware de userExist en el fuchero server(pero debemos cambair a no pedir el id user en ningun endpoint y cogerlo directamente del token)✅
+- PUT - [/experiences/:idExperience] - Edita la editar campos de una experiencia. ✅✅
+- DELETE - [/experiences/:idExperience] - Borra una experiencia. ✅✅
 
-- POST - [/activity/:idExperience/reserve] - enviar reserva de una actividad ✅
-- POST - [/activity/:idExperience/votes] - Vota una entrada. (JAVIER)✅
+- POST - [/experiences/:idExperience/reserve] - enviar reserva de una actividad ❌ (este fichero no esta )
+- get - [/experiences/:idExperience/reviews] - retornar las valoraciones de una experiencia. ❌ (este fichero no esta )
 
 ## Endpoin aparte
 
-- GET - [/search] - Muestra el buscador generico de la web ((?city=Vigo&mes=julio)) ✅
+- GET - [/search] - Muestra el buscador generico de la web ((?city=Vigo&mes=julio)) ✅✅
 - GET - [/contact] - Muestra el modal de contactar (JOSE CARLOS)
 
 MEJORAS:
@@ -45,3 +45,13 @@ MEJORAS:
 - Quizas podriamos hacer que el admin pueda banear y desbanear gente
 - en cambiar la contraseha podriamos poner el dolble escirbe tu nueva contraseha al igual que al recuperarla
 - asegurarnos de que el dni sea valido
+
+DUDAS:
+
+- deberiamos tener un endpoint para que el admin registrase las empresas?
+
+PENDIENTE:
+
+- tope de capacidad(natalia)
+- revisar videos de david al final lo relacionado con los shchemas
+- comprobar si el fichero addEntryPhoto sobra o no sobra (combinar con newExperience?)

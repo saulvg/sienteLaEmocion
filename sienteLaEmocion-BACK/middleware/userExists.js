@@ -8,6 +8,7 @@ const userExists = async (req, res, next) => {
 
         //Obtenemos el id del usuario al que queremso acceder
         const { idUser } = req.params;
+        //const idReqUser = req.userAuth.id;
 
         //Obtenemso el id del usuario, si esta eliminado no deberiamos poder acceder
         const [users] = await connection.query(

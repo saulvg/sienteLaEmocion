@@ -56,7 +56,7 @@ const {
     experienceVotes,
     newExperience,
     getExperienceList,
-    addEntryPhotos,
+    addExperiencePhotos,
     deleteExperience,
 } = require('./controllers/entries/');
 
@@ -143,15 +143,19 @@ app.put('/experiences/:idExperience', isAdmin, editExperience);
 app.post(
     '/experiences/:idExperience/votes',
     isAuth,
+    /* userExists, */
     experienceExist,
     experienceVotes
 );
+
+//reservar una experiencia
 app.post('/experiences/:idExperience/booking', isAuth, newBooking);
+
 //Obtener el listado de todas las experiencias
 app.get('/experiences', getExperienceList);
 
 //Subir fotos de las experiencias
-app.post('/experiences/:idExperience/photos', isAdmin, addEntryPhotos);
+app.post('/experiences/:idExperience/photos', isAdmin, addExperiencePhotos);
 
 //Eliminar una experiencia
 app.delete('/experiences/:idExperience', isAdmin, deleteExperience);

@@ -10,25 +10,10 @@ const getListEntry = async (req, res, next) => {
         //NOSOTROS VAMOS A DAR LA OPCION DE CAMBIAR EL ORDEN DEL FILTRO
         const { category, price1, price2, date, createdAt, votes } = req.query;
 
-        // Posibles valores para "order".
-        /* const validOrderOptions = [
-            'category',
-            'price',
-            'date',
-            'createdAt',
-            'votes',
-        ]; */
-
-        // Establecemos el orden por defecto en caso de que la variable "order"
-        // no exista o su contenido sea incorrecto. Si la variable "order" existe
-        // y tiene un contenido correcto nos quedamos con ese valor.
-        //const orderBy = validOrderOptions.includes(order) ? order : 'createdAt';
-
         // Variable donde almacenaremos las entradas.
         let experiences;
 
-        // Si la variable "search" no está vacía filtramos todas las entradas en cuya propiedad
-        // "title" o "description" exista el string contenido en "search".
+        // Si alguno de los filtos esta activado.
 
         if (category || (price1 && price2) || date || createdAt || votes) {
             [experiences] = await connection.query(

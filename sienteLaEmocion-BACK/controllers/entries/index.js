@@ -1,4 +1,4 @@
-const addEntryPhotos = require('./addEntryPhoto');
+const addExperiencePhotos = require('./addExperiencePhoto');
 const deleteExperience = require('./deleteExperience');
 const editExperience = require('./editExperience');
 const getExperience = require('./getExperience');
@@ -11,6 +11,6 @@ module.exports = {
     experienceVotes,
     newExperience,
     getExperienceList,
-    addEntryPhotos,
+    addExperiencePhotos,
     deleteExperience,
 };
