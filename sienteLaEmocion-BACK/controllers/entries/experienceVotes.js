@@ -13,7 +13,7 @@ const voteEntry = async (req, res, next) => {
         const idReqUser = req.userAuth.id;
 
         // Obtenemos el voto.
-        const { vote, comment } = req.body;
+        const { vote, review } = req.body;
 
         // Si falta el voto lanzamos un error.
         if (!vote) {
@@ -25,8 +25,8 @@ const voteEntry = async (req, res, next) => {
         // Array con los posibles valores válidos del voto.
         const validVotes = [1, 2, 3, 4, 5];
 
-        // Si el voto no es un valor comprendido en el arra anterior lanzamos un error.
-        if (!validVotes.includes(vote)) {
+        // Si el voto no es un valor comprendido en el array anterior lanzamos un error.
+        if (!validVotes.includes(Number(vote))) {
             const error = new Error(
                 'Solo se admiten valores enteros entre 1 y 5'
             );
@@ -65,7 +65,7 @@ const voteEntry = async (req, res, next) => {
         // Añadimos el voto.
         await connection.query(
             `INSERT INTO votes (vote, review, id_user, id_experiences, createdAt) VALUES (?, ?, ?, ?, ?)`,
-            [vote, comment, idReqUser, idExperience, new Date()]
+            [vote, review, idReqUser, idExperience, new Date()]
         );
 
         res.send({

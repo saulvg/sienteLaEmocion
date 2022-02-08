@@ -16,7 +16,8 @@ const editUser = async (req, res, next) => {
         const { idUser } = req.params;
 
         //Obtenemso los campos editables del perfil
-        const { username, newEmail, phone, biography, postalCode } = req.body;
+        const { username, newEmail, phone, biography, postalCode, dni_nie } =
+            req.body;
 
         //si no hay ningun campo a editar lanzamso un error
         if (!username && !newEmail && !phone && !biography && !postalCode) {
@@ -28,7 +29,7 @@ const editUser = async (req, res, next) => {
         //obtener los campos a editar del usuario
         const [users] = await connection.query(
             ` 
-        SELECT username, email, phone, biography, postalCode FROM users WHERE id = ?`,
+        SELECT username, email, phone, biography, postalCode, dni_nie FROM users WHERE id = ?`,
             [idUser]
         );
 
@@ -156,6 +157,14 @@ const editUser = async (req, res, next) => {
                 `
             UPDATE users SET postalCode = ?, modifiedAt = ? WHERE id = ?`,
                 [postalCode, new Date(), idUser]
+            );
+        }
+
+        if (dni_nie) {
+            await connection.query(
+                `
+            UPDATE users SET dni_nie = ?, modifiedAt = ? WHERE id = ?`,
+                [dni_nie, new Date(), idUser]
             );
         }
 

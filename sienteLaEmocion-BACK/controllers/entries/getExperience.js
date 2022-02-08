@@ -1,5 +1,4 @@
 const getDB = require('../../database/getDB');
-const { isAuth, userExists } = require('../../middleware');
 
 const getExperience = async (req, res, next) => {
     let connection;
@@ -11,7 +10,7 @@ const getExperience = async (req, res, next) => {
         //ya hemos comprobado si existe anteriormente en un middleware asi que no lo comprobamos de nuevo
         const { idExperience } = req.params;
 
-        //obtenemso la informacion de la experiencia que queremos obtener haciendo un join con los datos de otras tablas que tambien necesitamos aqui
+        //obtenemso la informacion de la experiencia que queremos
         const [experiences] = await connection.query(
             `
         SELECT 
@@ -59,33 +58,25 @@ const getExperience = async (req, res, next) => {
             [idExperience]
         );
 
-        //si el usuario esta logeado, podra ver el nombre de los participantes que han reservado esa actividad PENDIENTE DE REVISAR
-        //NECESITO LA RESERVA DE UN USUARIO
-        /* A
-        A
-        A
-        A
-        AA
-        A
-        A
-        A
-        A
-        A
-        A
-        A
-        A
-        A
-        A
-         */
+        //Bookings
+        //si el usuario esta logeado, podra ver el nombre de los participantes que han reservado esa actividad
+        const { authorization } = req.headers;
         let users_booking = '';
-        if (isAuth && userExists) {
+        if (authorization) {
             [users_booking] = await connection.query(
                 `
-            SELECT id_user FROM booking WHERE id_experiences = ?`,
+            SELECT 
+                users.username
+            FROM 
+                booking
+            LEFT JOIN users ON (booking.id_user = users.id) 
+            WHERE booking.id_experiences = ?`,
                 [idExperience]
             );
-            console.log('aquiiii', users_booking);
+        } else {
+            users_booking = '';
         }
+
         res.send({
             status: 'ok',
             data: {
@@ -93,7 +84,7 @@ const getExperience = async (req, res, next) => {
                 photos: experiences_photos,
                 company: company[0].name,
                 experiences_category: experiences_category[0].name,
-                users_booking: users_booking, //PENDIENTE DE REVISAR CON LO NOMBRADO ANTERIORMENTE
+                users_booking: users_booking,
             },
         });
     } catch (error) {

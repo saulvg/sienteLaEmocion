@@ -45,7 +45,6 @@ const newBooking = async (req, res, next) => {
             experiences.id, 
             experiences.createdAt, 
             experiences.id_user, 
-           
             experiences.capacity, 
             experiences.price, 
             experiences.date, 
@@ -105,7 +104,7 @@ const newBooking = async (req, res, next) => {
                 ]
             );
             await connection.query(
-                `INSERT INTO votes (id_experiences, id_user,vote, createdAt) VALUES (?,?, ?,?)`,
+                `INSERT INTO votes (id_experiences, id_user,vote, createdAt) VALUES (?,?,?,?)`,
                 [idExperience, idReqUser, votes[0].vote, new Date()]
             );
         }

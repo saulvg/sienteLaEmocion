@@ -15,7 +15,7 @@ const isAdmin = async (req, res, next) => {
 
         //si no hay cabecera de autorizacion lanzamos un error
         if (!authorization) {
-            const error = new Error('Falta cabecera de aurorizacion');
+            const error = new Error('Falta cabecera de autorizacion');
             error.httpStatus = 401;
             throw error;
         }

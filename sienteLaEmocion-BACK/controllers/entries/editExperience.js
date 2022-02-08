@@ -52,46 +52,7 @@ const editExperience = async (req, res, next) => {
         }
 
         //Actualizamos la base de datos
-
-        //esto asi no me deja porque los campos que voy a separar me dice que son obligatorios, procedo a separarlso
-        /* 
-        await connection.query(
-            `
-        UPDATE experiences SET 
-            text_1 = ?, 
-            text_2 = ?, 
-            text_3 = ?,  
-            capacity = ?,
-            price= ?,
-            date = ?,
-            city = ?,
-            street = ?,
-            number = ?,
-            postalCode = ?,
-            longitude = ?,
-            latitude = ?, 
-            modifiedAt = ?
-        WHERE id = ?`,
-            [
-                text_1,
-                text_2,
-                text_3,
-                capacity,
-                price,
-                date,
-                city,
-                street,
-                number,
-                postalCode,
-                longitude,
-                latitude,
-                new Date(),
-                idExperience,
-            ]
-        );
-        */
-        //Actualizamos la base de datos
-        //estos campos son los que si o si se deben rellenar al crear la experiencia, si no estan para actualizar, no se actualizan
+        //estos campos son los que si o si se deben rellenar al crear la experiencia, si no estan para actualizar, no se actualizan, por eso los separamos de la query rande preguntandoles uno a uno si esta este campo en la peticion
         if (capacity) {
             await connection.query(
                 `
