@@ -23,7 +23,7 @@ const getExperience = async (req, res, next) => {
         res.send({
             status: 'ok',
             data: {
-                review: review[0],
+                review,
             },
         });
     } catch (error) {
