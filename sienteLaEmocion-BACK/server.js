@@ -58,6 +58,7 @@ const {
     getExperienceList,
     addExperiencePhotos,
     deleteExperience,
+    getReviews,
 } = require('./controllers/entries/');
 
 /**
@@ -156,6 +157,9 @@ app.get('/experiences', getExperienceList);
 
 //Subir fotos de las experiencias
 app.post('/experiences/:idExperience/photos', isAdmin, addExperiencePhotos);
+
+//Obtenemos las reviews de una experienca
+app.get('/experiences/:idExperience/reviews', experienceExist, getReviews);
 
 //Eliminar una experiencia
 app.delete('/experiences/:idExperience', isAdmin, deleteExperience);

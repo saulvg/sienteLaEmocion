@@ -5,6 +5,8 @@ const getExperience = require('./getExperience');
 const experienceVotes = require('./experienceVotes');
 const newExperience = require('./newExperience');
 const getExperienceList = require('./getExperiencesList');
+const getReviews = require('./getReviews');
+
 module.exports = {
     getExperience,
     editExperience,
@@ -12,5 +14,6 @@ module.exports = {
     newExperience,
     getExperienceList,
     addExperiencePhotos,
+    getReviews,
     deleteExperience,
 };
