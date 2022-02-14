@@ -19,32 +19,33 @@ const getListEntry = async (req, res, next) => {
             [experiences] = await connection.query(
                 `
                 SELECT 
-                    experiences.id, 
-                    experiences.createdAt, 
-                    experiences.id_user, 
-                    experiences.capacity, 
-                    experiences.price, 
-                    experiences.date, 
-                    experiences.city, 
-                    experiences.street, 
-                    experiences.number, 
-                    experiences.postalCode, 
-                    experiences.longitude, 
-                    experiences.latitude, 
-                    experiences.text_1, 
-                    experiences.text_2, 
-                    experiences.text_3, 
-                    experiences_category.name AS category,
-                    company.name AS company
-                FROM experiences
-                LEFT JOIN experiences_category ON (experiences.id = experiences_category.id_experiences)
-                LEFT JOIN company ON (experiences.id = company.id_experiences)
-                WHERE 
-                    experiences_category.name = ? OR
-                    (experiences.price >= ? AND experiences.price <= ?) OR
-                    experiences.date LIKE ? 
-                    
-
+                experiences.id, 
+                experiences.createdAt, 
+                experiences.id_user, 
+                experiences.capacity, 
+                experiences.price, 
+                experiences.date, 
+                experiences.city, 
+                experiences.street, 
+                experiences.number, 
+                experiences.postalCode, 
+                experiences.longitude, 
+                experiences.latitude, 
+                experiences.text_1, 
+                experiences.text_2, 
+                experiences.text_3, 
+                experiences_category.name AS category,
+                company.name AS company,
+                AVG(IFNULL(votes.vote, 0)) AS votes_entry 
+            FROM experiences
+            LEFT JOIN experiences_category ON (experiences.id = experiences_category.id_experiences)
+            LEFT JOIN company ON (experiences.id = company.id_experiences)
+            LEFT JOIN votes ON (experiences.id = votes.id_experiences)
+            WHERE 
+                experiences_category.name = ? OR
+                (experiences.price >= ? AND experiences.price <= ?) OR
+                experiences.date LIKE ? 
+            GROUP BY experiences_category.id, company.id, experiences.id;  
                     `,
                 [`${category}`, price1, price2, `%${date}%`, votes]
             );
