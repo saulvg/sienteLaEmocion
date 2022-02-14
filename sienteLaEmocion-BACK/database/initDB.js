@@ -20,7 +20,7 @@ async function initDB() {
         await connection.query('DROP TABLE IF EXISTS experiences_photos');
         await connection.query('DROP TABLE IF EXISTS experiences_category');
         await connection.query('DROP TABLE IF EXISTS company');
-        await connection.query('DROP TABLE IF EXISTS experiences'); //Añadir los campos de las tablas "experiences_description", "experiences_description_type" y "address"
+        await connection.query('DROP TABLE IF EXISTS experiences');
         await connection.query('DROP TABLE IF EXISTS users');
 
         await connection.query(`
@@ -45,10 +45,13 @@ async function initDB() {
         )
     `);
 
+        //add campo fotCabezera y modificarlo en newExperience
         await connection.query(`
         CREATE TABLE experiences (
             id INT PRIMARY KEY AUTO_INCREMENT,
             id_user INT NOT NULL,
+            id_experiences_category INT NOT NULL,
+            id_company INT NOT NULL,
             capacity TINYINT NOT NULL,
             price DECIMAL NOT NULL,
             date DATETIME NOT NULL, 
@@ -67,6 +70,8 @@ async function initDB() {
             createdAt DATETIME NOT NULL, 
             modifiedAt DATETIME,
             FOREIGN KEY (id_user) REFERENCES users(id)  
+            FOREIGN KEY (id_experiences_category) REFERENCES experiences_category(id)
+            FOREIGN KAY (id_company) REFERENCES company(id)
 
         )
     `);
@@ -115,24 +120,27 @@ async function initDB() {
             id INT PRIMARY KEY AUTO_INCREMENT,
             id_experiences INT NOT NULL,
             id_user INT NOT NULL,
+            vote TINYINT,
             createdAt DATETIME NOT NULL,
             FOREIGN KEY (id_experiences) REFERENCES experiences(id) ON DELETE CASCADE,
             FOREIGN KEY (id_user) REFERENCES users(id)
         )
     `);
-        await connection.query(`
+        /*       await connection.query(`
     CREATE TABLE my_experiences (
         id INT PRIMARY KEY AUTO_INCREMENT,
         id_experiences INT NOT NULL,
         id_experiences_photos INT NOT NULL, 
-        id_experiences_category INT NOT NULL,
         vote TINYINT,
         createdAt DATETIME NOT NULL,
         FOREIGN KEY (id_experiences) REFERENCES experiences(id) ON DELETE CASCADE,
         FOREIGN KEY (id_experiences_photos) REFERENCES experiences_photos(id),
+        id_experiences_category INT NOT NULL,
         FOREIGN KEY (id_experiences_category) REFERENCES experiences_category(id)
-    )
-`);
+        )
+        
+        //mover votes de la 129 a bokoking, llevar a experieces id acategory  e id company con sus claves foraneas
+`); */
 
         // Creamos la contraseña del administrador y la encriptamos.
         const ADMIN_PASS = await bcrypt.hash('123456', saltRounds);
