@@ -1,3 +1,5 @@
+//SUBIMOS SOLO LA FOTO EN EXPERIENCE O TAMBIEN EN PHOTO
+
 const getDB = require('../../database/getDB');
 
 /* const newEntrySchema = require('../../schemas/newEntrySchema'); */
@@ -66,7 +68,7 @@ const newEntry = async (req, res, next) => {
         if (req.files && Object.keys(req.files).length > 0) {
             // Recorremos los valores de "req.files". Por si las moscas, nos quedamos únicamente
             // con las tres primeras posiciones del array. Si hay más serán ignoradas.
-            for (const photo of Object.values(req.files).slice(0, 4)) {
+            for (const photo of Object.values(req.files).slice(0, 1)) {
                 // Guardamos la foto en el servidor y obtenemos su nombre.
                 const photoName = await savePhoto(photo, 1);
 

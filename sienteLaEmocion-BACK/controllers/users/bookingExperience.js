@@ -92,6 +92,7 @@ const newBooking = async (req, res, next) => {
             [idExperience, idReqUser, new Date()]
         );
         //  const idReserva = newBooking.insertId;
+        //CAMBIAR ESTO POR INSERTASR UNICAMENTE EL VOTO EN LA TABLA BOOKING UAN VEZ PASE LA FECHA
         if (activities[0].date < new Date()) {
             await connection.query(
                 `INSERT INTO my_experiences(id_experiences, id_experiences_photos, id_experiences_category, vote, createdAt) VALUES (?, ?, ? ,?, ?)`,
