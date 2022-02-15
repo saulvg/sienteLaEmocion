@@ -7,13 +7,13 @@ const userExists = async (req, res, next) => {
         connection = await getDB();
 
         //Obtenemos el id del usuario al que queremso acceder
-        const { idUser } = req.params;
-        //const idReqUser = req.userAuth.id;
+        //const { idUser } = req.params;
+        const idReqUser = req.userAuth.id;
 
         //Obtenemso el id del usuario, si esta eliminado no deberiamos poder acceder
         const [users] = await connection.query(
             `SELECT id FROM users WHERE id = ? AND deleted = false`,
-            [idUser]
+            [idReqUser]
         );
 
         //si el suario no coincide con ninguno lanzamos un error

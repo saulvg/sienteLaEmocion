@@ -59,7 +59,7 @@ const {
     addExperiencePhotos,
     deleteExperience,
     getReviews,
-} = require('./controllers/entries/');
+} = require('./controllers/experiences');
 
 /**
  * #############################
@@ -102,10 +102,10 @@ app.post('/users/login', loginUser);
 app.get('/users/:idUser', isAuth, userExists, getUser);
 
 //Editar informacion de un usuario
-app.put('/users/:idUser', isAuth, userExists, canEditUser, editUser);
+app.put('/users/edit', isAuth, userExists, canEditUser, editUser);
 
 // editar la contraseña de un usuario
-app.put('/users/:idUser/password', isAuth, userExists, canEditUser, editPass);
+app.put('/users/edit/password', isAuth, userExists, canEditUser, editPass);
 
 // enviar un codigo de recuperación de contraseña al email del usuario
 app.put('/users/password/recover', recoverPass);
@@ -114,16 +114,10 @@ app.put('/users/password/recover', recoverPass);
 app.put('/users/password/reset', resetPass);
 
 //Editamos el avatar del usuario
-app.put(
-    '/users/:idUser/avatar',
-    isAuth,
-    userExists,
-    canEditUser,
-    editUserAvatar
-);
+app.put('/users/edit/avatar', isAuth, userExists, canEditUser, editUserAvatar);
 
 // Anonimizar un usuario.
-app.delete('/users/:idUser', isAuth, userExists, canEditUser, deleteUser);
+app.delete('/users/deleted', isAuth, userExists, canEditUser, deleteUser);
 
 /**
  * ##############################
@@ -131,7 +125,7 @@ app.delete('/users/:idUser', isAuth, userExists, canEditUser, deleteUser);
  * ##############################
  */
 
-// Crear una nueva entrada.
+// Crear una nueva experiencia.
 app.post('/experiences', isAdmin, newExperience);
 
 //Obtener una experiencia
@@ -144,7 +138,7 @@ app.put('/experiences/:idExperience', isAdmin, editExperience);
 app.post(
     '/experiences/:idExperience/votes',
     isAuth,
-    /* userExists, */
+    userExists,
     experienceExist,
     experienceVotes
 );

@@ -16,11 +16,11 @@ async function initDB() {
         connection = await getDB();
         await connection.query('DROP TABLE IF EXISTS votes');
         await connection.query('DROP TABLE IF EXISTS booking');
-        await connection.query('DROP TABLE IF EXISTS my_experiences');
+        //await connection.query('DROP TABLE IF EXISTS my_experiences');
         await connection.query('DROP TABLE IF EXISTS experiences_photos');
+        await connection.query('DROP TABLE IF EXISTS experiences');
         await connection.query('DROP TABLE IF EXISTS experiences_category');
         await connection.query('DROP TABLE IF EXISTS company');
-        await connection.query('DROP TABLE IF EXISTS experiences');
         await connection.query('DROP TABLE IF EXISTS users');
 
         await connection.query(`
@@ -44,6 +44,18 @@ async function initDB() {
 
         )
     `);
+        await connection.query(`
+        CREATE TABLE company (
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            name VARCHAR(50) NOT NULL
+    )
+`);
+        await connection.query(`
+        CREATE TABLE experiences_category (
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            name VARCHAR(50) NOT NULL
+    )
+`);
 
         //add campo fotCabezera y modificarlo en newExperience
         await connection.query(`
@@ -52,6 +64,7 @@ async function initDB() {
             id_user INT NOT NULL,
             id_experiences_category INT NOT NULL,
             id_company INT NOT NULL,
+            photoHeader VARCHAR(150),
             capacity TINYINT NOT NULL,
             price DECIMAL NOT NULL,
             date DATETIME NOT NULL, 
@@ -69,28 +82,13 @@ async function initDB() {
             text_6 TEXT,
             createdAt DATETIME NOT NULL, 
             modifiedAt DATETIME,
-            FOREIGN KEY (id_user) REFERENCES users(id)  
-            FOREIGN KEY (id_experiences_category) REFERENCES experiences_category(id)
-            FOREIGN KAY (id_company) REFERENCES company(id)
+            FOREIGN KEY (id_user) REFERENCES users(id),  
+            FOREIGN KEY (id_experiences_category) REFERENCES experiences_category(id) ON DELETE CASCADE,
+            FOREIGN KEY (id_company) REFERENCES company(id) ON DELETE CASCADE
 
         )
     `);
-        await connection.query(`
-        CREATE TABLE company (
-            id INT PRIMARY KEY AUTO_INCREMENT,
-            id_experiences INT NOT NULL,
-            name VARCHAR(50) NOT NULL,
-            FOREIGN KEY (id_experiences) REFERENCES experiences(id) ON DELETE CASCADE               
-        )
-    `);
-        await connection.query(`
-        CREATE TABLE experiences_category (
-            id INT PRIMARY KEY AUTO_INCREMENT,
-            id_experiences INT NOT NULL,
-            name VARCHAR(50) NOT NULL,
-            FOREIGN KEY (id_experiences) REFERENCES experiences(id) ON DELETE CASCADE    
-        )
-    `);
+
         await connection.query(`
         CREATE TABLE experiences_photos (
             id INT PRIMARY KEY AUTO_INCREMENT,
@@ -115,6 +113,7 @@ async function initDB() {
             
         )
     `);
+        //add campo review y eliminar tabla de votes (corregir back)
         await connection.query(`
         CREATE TABLE booking (
             id INT PRIMARY KEY AUTO_INCREMENT,
@@ -126,21 +125,6 @@ async function initDB() {
             FOREIGN KEY (id_user) REFERENCES users(id)
         )
     `);
-        /*       await connection.query(`
-    CREATE TABLE my_experiences (
-        id INT PRIMARY KEY AUTO_INCREMENT,
-        id_experiences INT NOT NULL,
-        id_experiences_photos INT NOT NULL, 
-        vote TINYINT,
-        createdAt DATETIME NOT NULL,
-        FOREIGN KEY (id_experiences) REFERENCES experiences(id) ON DELETE CASCADE,
-        FOREIGN KEY (id_experiences_photos) REFERENCES experiences_photos(id),
-        id_experiences_category INT NOT NULL,
-        FOREIGN KEY (id_experiences_category) REFERENCES experiences_category(id)
-        )
-        
-        //mover votes de la 129 a bokoking, llevar a experieces id acategory  e id company con sus claves foraneas
-`); */
 
         // Creamos la contraseña del administrador y la encriptamos.
         const ADMIN_PASS = await bcrypt.hash('123456', saltRounds);
@@ -186,7 +170,7 @@ async function initDB() {
             )
         `);
         }
-        console.log('Usuarios creados');
+        console.log('Tablas creadas');
     } catch (error) {
         console.error(error);
     } finally {

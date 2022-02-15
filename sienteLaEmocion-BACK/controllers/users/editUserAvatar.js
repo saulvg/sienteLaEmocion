@@ -9,7 +9,8 @@ const editUserAvatar = async (req, res, next) => {
         connection = await getDB();
 
         // Obtenemos el id del usuario que queremos editar.
-        const { idUser } = req.params;
+        //const { idUser } = req.params;
+        const idReqUser = req.userAuth.id;
 
         // Si la propiedad "req.files" no existe lanzamos un error. Dato que podría no existir tenemos que comprobobar previamente si existe,
         //antes de comprobar si existe "req.files.avatar".
@@ -22,7 +23,7 @@ const editUserAvatar = async (req, res, next) => {
         // Obtenemos el avatar del usuario actual.
         const [users] = await connection.query(
             `SELECT avatar FROM users WHERE id = ?`,
-            [idUser]
+            [idReqUser]
         );
 
         // Comprobamos si el usuario que queremos editar ya tiene avatar.
@@ -37,7 +38,7 @@ const editUserAvatar = async (req, res, next) => {
         // Actualizamos el usuario con el nombre del nuevo avatar.
         await connection.query(
             `UPDATE users SET avatar = ?, modifiedAt = ? WHERE id = ?`,
-            [avatarName, new Date(), idUser]
+            [avatarName, new Date(), idReqUser]
         );
 
         res.send({

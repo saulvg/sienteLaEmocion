@@ -7,7 +7,7 @@ const experiencesCategory = async () => {
         connection = await getDB();
 
         await connection.query(
-            `INSERT INTO experiences_category (id_experiences, name) VALUES (2, 'buceo'), (1, 'senderismo'), (3, 'parapente')`
+            `INSERT INTO experiences_category (name) VALUES ('buceo'), ('senderismo'), ('parapente')`
         );
     } catch (error) {
         console.error(error);
