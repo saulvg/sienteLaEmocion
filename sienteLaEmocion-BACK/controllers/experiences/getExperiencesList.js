@@ -21,7 +21,7 @@ const getListEntry = async (req, res, next) => {
                 SELECT 
                 experiences.id, 
                 experiences.createdAt, 
-                experiences.id_user, 
+                experiences.id_user,
                 experiences.capacity, 
                 experiences.price, 
                 experiences.date, 
@@ -38,8 +38,8 @@ const getListEntry = async (req, res, next) => {
                 company.name AS company,
                 AVG(IFNULL(votes.vote, 0)) AS votes_entry 
             FROM experiences
-            LEFT JOIN experiences_category ON (experiences.id = experiences_category.id_experiences)
-            LEFT JOIN company ON (experiences.id = company.id_experiences)
+            LEFT JOIN experiences_category ON (experiences.id_experiences_category = experiences_category.id)
+            LEFT JOIN company ON (experiences.id_company= company.id)
             LEFT JOIN votes ON (experiences.id = votes.id_experiences)
             WHERE 
                 experiences_category.name = ? OR
@@ -69,11 +69,15 @@ const getListEntry = async (req, res, next) => {
                     experiences.text_2, 
                     experiences.text_3, 
                     experiences_category.name AS category,
-                    company.name AS company
+                    company.name AS company,
+                    AVG(IFNULL(votes.vote, 0)) AS votes_entry
                 FROM experiences
-                LEFT JOIN experiences_category ON (experiences.id = experiences_category.id_experiences)
-                LEFT JOIN company ON (experiences.id = company.id_experiences)
+                LEFT JOIN experiences_category ON (experiences.id_experiences_category = experiences_category.id)
+                LEFT JOIN company ON (experiences.id_company= company.id)
+                LEFT JOIN votes ON (experiences.id = votes.id_experiences)
+                GROUP BY experiences_category.id, company.id, experiences.id
                 ORDER BY createdAt desc
+
                     `
             );
         }

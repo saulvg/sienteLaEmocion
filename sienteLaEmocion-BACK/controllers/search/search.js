@@ -35,8 +35,8 @@ const search = async (req, res, next) => {
                 experiences_category.name AS category,
                 company.name AS company
             FROM experiences
-            LEFT JOIN experiences_category ON (experiences.id = experiences_category.id_experiences)
-            LEFT JOIN company ON (experiences.id = company.id_experiences)
+            LEFT JOIN experiences_category ON (experiences.id = experiences_category.id)
+            LEFT JOIN company ON (experiences.id = company.id)
             WHERE 
                 experiences.text_1 LIKE ? OR
                 experiences.text_2 LIKE ? OR

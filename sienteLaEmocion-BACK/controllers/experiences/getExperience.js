@@ -16,7 +16,9 @@ const getExperience = async (req, res, next) => {
         SELECT 
             experiences.id,  
             experiences.createdAt, 
-            experiences.id_user, 
+            experiences.id_user,
+            id_experiences_category,
+            id_company, 
             experiences.capacity, 
             experiences.price, 
             experiences.date, 
@@ -47,15 +49,15 @@ const getExperience = async (req, res, next) => {
         // Company
         const [company] = await connection.query(
             `
-        SELECT name FROM company WHERE id_experiences = ?`,
-            [idExperience]
+        SELECT name FROM company WHERE id = ?`,
+            [experiences[0].id_company]
         );
 
         // Category
         const [experiences_category] = await connection.query(
             `
-        SELECT name FROM experiences_category WHERE id_experiences = ?`,
-            [idExperience]
+        SELECT name FROM experiences_category WHERE id = ?`,
+            [experiences[0].id_experiences_category]
         );
 
         //Bookings

@@ -7,14 +7,16 @@ const editPass = async (req, res, next) => {
     try {
         connection = await getDB();
         // id usuario
-        const { idUser } = req.params;
+        //const { idUser } = req.params;
+        const idReqUser = req.userAuth.id;
+
         // contraseña vieja y nueva
         const { oldPass, newPass } = req.body;
         // contraseña del usuario en el que estamos. para comprobar
         // que X usuario tiene esa contraseña y que está en la base de datos
         const [users] = await connection.query(
             `SELECT password FROM users WHERE id = ?`,
-            [idUser]
+            [idReqUser]
         );
         // guardamos en una variable un booleano : contraseña correcta o incorrecta
         const isValid = await bcrypt.compare(oldPass, users[0].password);
@@ -32,7 +34,7 @@ const editPass = async (req, res, next) => {
 
         await connection.query(
             `UPDATE users SET password = ?, modifiedAt = ? WHERE id = ?`,
-            [hashedPassword, new Date(), idUser]
+            [hashedPassword, new Date(), idReqUser]
         );
         res.send({
             status: 'ok',

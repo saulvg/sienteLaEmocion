@@ -7,7 +7,7 @@ const comnay = async () => {
         connection = await getDB();
 
         await connection.query(
-            `INSERT INTO company (id_experiences, name) VALUES (1, 'montahas felices'), (2, 'Bajo el mar'), (3, 'surcando los cielos')`
+            `INSERT INTO company (name) VALUES ('montahas felices'), ('Bajo el mar'), ('surcando los cielos')`
         );
     } catch (error) {
         console.error(error);

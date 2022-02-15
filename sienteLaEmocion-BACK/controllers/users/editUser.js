@@ -13,7 +13,8 @@ const editUser = async (req, res, next) => {
         //comprobamos que el usuario tenga permisos (token) cosa que hacemos con el middleware 'isAuth'
 
         //Obtenemos el id del usuario que queremos editar
-        const { idUser } = req.params;
+        //const { idUser } = req.params;
+        const idReqUser = req.userAuth.id;
 
         //Obtenemso los campos editables del perfil
         const { username, newEmail, phone, biography, postalCode, dni_nie } =
@@ -30,7 +31,7 @@ const editUser = async (req, res, next) => {
         const [users] = await connection.query(
             ` 
         SELECT username, email, phone, biography, postalCode, dni_nie FROM users WHERE id = ?`,
-            [idUser]
+            [idReqUser]
         );
 
         /*
@@ -62,7 +63,7 @@ const editUser = async (req, res, next) => {
             await connection.query(
                 `
             UPDATE users SET email = ?, modifiedAt = ?, registrationCode = ?, active = false WHERE id = ?`,
-                [newEmail, new Date(), registrationCode, idUser]
+                [newEmail, new Date(), registrationCode, idReqUser]
             );
 
             //mensaje de reactivar su cuenta ya que a cambiado el email
@@ -104,7 +105,7 @@ const editUser = async (req, res, next) => {
             await connection.query(
                 `
             UPDATE users SET username = ?, modifiedAt = ? WHERE id = ?`,
-                [username, new Date(), idUser]
+                [username, new Date(), idReqUser]
             );
         }
 
@@ -119,7 +120,7 @@ const editUser = async (req, res, next) => {
             await connection.query(
                 `
             UPDATE users SET phone = ?, modifiedAt = ? WHERE id = ?`,
-                [phone, new Date(), idUser]
+                [phone, new Date(), idReqUser]
             );
         }
 
@@ -141,7 +142,7 @@ const editUser = async (req, res, next) => {
             await connection.query(
                 `
             UPDATE users SET biography = ?, modifiedAt = ? WHERE id = ?`,
-                [biography, new Date(), idUser]
+                [biography, new Date(), idReqUser]
             );
         }
 
@@ -156,7 +157,7 @@ const editUser = async (req, res, next) => {
             await connection.query(
                 `
             UPDATE users SET postalCode = ?, modifiedAt = ? WHERE id = ?`,
-                [postalCode, new Date(), idUser]
+                [postalCode, new Date(), idReqUser]
             );
         }
 
@@ -164,7 +165,7 @@ const editUser = async (req, res, next) => {
             await connection.query(
                 `
             UPDATE users SET dni_nie = ?, modifiedAt = ? WHERE id = ?`,
-                [dni_nie, new Date(), idUser]
+                [dni_nie, new Date(), idReqUser]
             );
         }
 
