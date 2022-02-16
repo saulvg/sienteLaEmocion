@@ -8,15 +8,12 @@ import reportWebVitals from './reportWebVitals';
  * #################
  */
 import App from './App';
-import Header from './components/Header/Header'
-import Footer from'./components/Footer/Footer'
+
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <TokenProvider> */}
-    <Header/>
     <App/>
-    <Footer/> 
     {/* </TokenProvider> */}
   </React.StrictMode>,
   document.getElementById('root')
