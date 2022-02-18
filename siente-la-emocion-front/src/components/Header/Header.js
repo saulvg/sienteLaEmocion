@@ -1,3 +1,5 @@
+import './header.css'
+
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 
 //pendiente de haccer bien
@@ -21,6 +23,7 @@ const Header = () => {
     return(
     <header>
         <BrowserRouter>
+        <div className='headerTop'>
           <img
             src='https://w7.pngwing.com/pngs/522/295/png-transparent-computer-icons-encapsulated-postscript-mountain-angle-photography-triangle.png'
             alt='logo'
@@ -41,9 +44,14 @@ const Header = () => {
               />
             </Routes>
           </menu>
-          <h1>Siente la emocion</h1>
-          <p>Disfruta el momento</p>
-          <button>Atrevete</button>
+        </div>
+          <div className='headerTitle'>
+            <h1>Siente la emocion</h1>
+            <p>Disfruta el momento</p>
+          </div>
+          <div className='headerButton'>
+            <button>Atrevete</button>
+          </div>
         </BrowserRouter>
       </header>
     )
