@@ -1,0 +1,91 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#we {
+  background-color: rgb(255, 249, 245);
+  height: 300px;
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.homePage {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: 75%;
+}
+
+#routeDeQueVaEsto {
+  background-image: url('../../../public/img/deQueVaEsto.jpg');
+}
+#routeComents {
+  background-image: url('../../../public/img/coments.jpg');
+}
+#routeNuestrosPrincipios {
+  background-image: url('../../../public/img/nuestrosPrincipios.jpg');
+}
+#routeQueTeEstaEsperando {
+  background-image: url('../../../public/img/queTeEstaEsperando.jpg');
+}
+
+.textHPage {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 0 4rem;
+}
+#deQueVaEsto {
+  background-image: url('../../../public/img/deQueVaEsto2.jpg');
+  display: flex;
+  justify-content: right;
+}
+#nuestrosPrincipios {
+  background-image: url('../../../public/img/nuestrosPrincipios2.jpg');
+}
+#queTeEstaEsperando {
+  background-image: url('../../../public/img/queTeEstaEsperando2.jpg');
+  display: flex;
+  justify-content: right;
+}
+
+#socialNetworks {
+  background-color: rgb(255, 249, 245);
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+}
+
+#instagram {
+  background-image: url('../../../public/silueta/instagram.png');
+}
+#gmail {
+  background-image: url('../../../public/silueta/gmail.png');
+}
+#facebook {
+  background-image: url('../../../public/silueta/facebook.png');
+}
+
+#coments {
+  background-color: rgb(255, 249, 245);
+  height: 300px;
+  display: flex;
+  gap: 10rem;
+  justify-content: center;
+  align-items: center;
+}
+#comment1 {
+  background-image: url('../../../public/img/deQueVaEsto.jpg');
+}
+#comment2 {
+  background-image: url('../../../public/img/coments.jpg');
+}
+#comment3 {
+  background-image: url('../../../public/img/nuestrosPrincipios.jpg');
+}

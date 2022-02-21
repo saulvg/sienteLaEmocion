@@ -1,9 +1,13 @@
-const TextHomePage = ({title, children}) => {
+import './textHomePage.css'
+const TextHomePage = ({title, p1, p2}) => {
     return(
-        <div>
+        <div className='textHomePag'>
             <h2>{title}</h2>
             <p>
-              {children}
+              {p1}
+            </p>
+            <p>
+                {p2}
             </p>
         </div>
     )

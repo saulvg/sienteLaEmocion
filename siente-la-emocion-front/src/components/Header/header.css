@@ -1,9 +1,3 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
 header {
   display: flex;
   flex-direction: column;
@@ -35,15 +29,23 @@ header .headerTop nav {
   gap: 1rem;
   padding: 0 1rem;
 }
-header .headerTop menu nav {
+header .headerTop menu nav a {
   text-decoration: none;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
 }
 header .headerTitle {
   width: max-content;
   padding-left: 4rem;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 32px;
 }
 header .headerTitle p {
   text-align: end;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
 }
 header .headerButton {
   display: flex;
@@ -56,7 +58,8 @@ header .headerButton button {
   background-color: rgba(30, 52, 77, 100%);
   color: white;
   text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 20px;
   transition: background 0.5s;
 }
 header .headerButton button:hover {

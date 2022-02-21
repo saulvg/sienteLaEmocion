@@ -1,0 +1,18 @@
+div .textHomePag {
+  background-color: rgb(0, 163, 255);
+  width: 38rem;
+  padding: 1.5rem;
+  border-radius: 25px;
+}
+
+div .textHomePag h2 {
+  font-family: 'Bebas Neue', cursive;
+  font-weight: 400;
+  font-size: 48px;
+  padding-bottom: 1.5rem;
+}
+
+div .textHomePag p {
+  font-family: 'Montserrat', sans-serif;
+  padding-bottom: 2rem;
+}

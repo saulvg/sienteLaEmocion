@@ -1,6 +1,7 @@
 import './header.css'
 
-import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
+import { Link, } from 'react-router-dom';
+import MainHeader from '../MainHeader/MainHeader'
 
 //pendiente de haccer bien
 const token = false;
@@ -8,7 +9,7 @@ const token = false;
 const MainMenu = () => {
   return (
     <nav>
-      <Link to='/search'>Buscador</Link> <Link to='/contact'>Contactanos</Link>{' '}
+      <Link to='/search'>Buscador</Link> <Link to='/contact'>Contactanos</Link>{' '} 
       {token ? (
         <Link to='/perfil'>Perfil</Link>
       ) : (
@@ -18,42 +19,76 @@ const MainMenu = () => {
   );
 };
 
+const HeaderButon = ({to, children}) =>{
+  return(
+    <Link to={to}><button>{children}</button></Link>
+    
+  )
+}
+const Logo = () =>{
+  return(
+    <Link to='/'>
+      <img
+        src='https://w7.pngwing.com/pngs/522/295/png-transparent-computer-icons-encapsulated-postscript-mountain-angle-photography-triangle.png'
+        alt='logo'
+        width={'80px'}
+      />
+    </Link>
+    
+  )
+}
 
-const Header = () => {
+
+const Header = ({to, button}) => {
     return(
     <header>
-        <BrowserRouter>
-        <div className='headerTop'>
-          <img
-            src='https://w7.pngwing.com/pngs/522/295/png-transparent-computer-icons-encapsulated-postscript-mountain-angle-photography-triangle.png'
-            alt='logo'
-            width={'80px'}
-          />
-          <menu>
-            <MainMenu />
-            <Routes>
-              <Route path='/search' element={<div>{/* <Buscador /> */}</div>} />
-              <Route
-                path='/contact'
-                element={<div>{/* <Contactanos /> */}</div>}
-              />
-              <Route path='/perfil' element={<div>{/* <Perfil /> */}</div>} />
-              <Route
-                path='/register-login'
-                element={<div>{/* <Register-Login /> */}</div>}
-              />
-            </Routes>
-          </menu>
+      <div className='headerTop'>
+        <Logo/>
+        <menu>
+          <MainMenu />
+        </menu>
+      </div>
+        <MainHeader/>
+        <div className='headerButton'>
+          {/* <button>Atrevete</button> */}
+          <HeaderButon to={to} children={button}/>
         </div>
-          <div className='headerTitle'>
-            <h1>Siente la emocion</h1>
-            <p>Disfruta el momento</p>
-          </div>
-          <div className='headerButton'>
-            <button>Atrevete</button>
-          </div>
-        </BrowserRouter>
       </header>
     )
 }
 export default Header
+
+
+//const Header = () => {
+//  return(
+//  <header>
+//      <div className='headerTop'>
+//       <Logo/>
+//        <menu>
+//          <MainMenu />
+//          <Routes>
+//            <Route path='/search' element={<div>{/* <Buscador /> */}</div>} />
+//            <Route
+//              path='/contact'
+//              element={<div>{/* <Contactanos /> */}</div>}
+//            />
+//            <Route path='/perfil' element={<div>{/* <Perfil /> */}</div>} />
+//            <Route
+//              path='/register-login'
+//              element={<div>{/* <Register-Login /> */}</div>}
+//            />
+//          </Routes>
+//        </menu>
+//      </div>
+//        <MainHeader/>
+//        <div className='headerButton'>
+//          {/* <button>Atrevete</button> */}
+//          <HeaderButon children={'Atevete'}/>
+//          <Routes>
+//            <Route path='/listaActividades' element={<div><ListaActividades/></div>}/> 
+//          </Routes>
+//        </div>
+//    </header>
+//  )
+//}
+//export default Header

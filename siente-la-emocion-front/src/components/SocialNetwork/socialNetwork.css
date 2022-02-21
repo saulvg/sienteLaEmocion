@@ -1,0 +1,13 @@
+.networks {
+  width: 10rem;
+  height: 10rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.networks a {
+  display: block;
+  height: 10rem;
+  font-size: 0;
+}

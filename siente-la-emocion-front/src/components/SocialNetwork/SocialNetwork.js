@@ -1,3 +1,5 @@
+import './socialNetwork.css'
+
 const SocialNetwork = ({id, href, children}) => {
     return(
     <div id={id} className='networks'>
