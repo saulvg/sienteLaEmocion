@@ -3,14 +3,20 @@
   margin: 0;
   box-sizing: border-box;
 }
-
-#we {
-  background-color: rgb(255, 249, 245);
+.App {
+  --interseccionColor: rgb(255, 249, 245);
+}
+.interseccion {
+  background-color: var(--interseccionColor);
   height: 300px;
   display: flex;
-  gap: 5rem;
+  gap: 10rem;
   justify-content: center;
   align-items: center;
+}
+
+#we {
+  gap: 5rem;
 }
 
 .homePage {
@@ -53,15 +59,6 @@
   justify-content: right;
 }
 
-#socialNetworks {
-  background-color: rgb(255, 249, 245);
-  height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10rem;
-}
-
 #instagram {
   background-image: url('../../../public/silueta/instagram.png');
 }
@@ -72,20 +69,16 @@
   background-image: url('../../../public/silueta/facebook.png');
 }
 
-#coments {
-  background-color: rgb(255, 249, 245);
-  height: 300px;
-  display: flex;
-  gap: 10rem;
-  justify-content: center;
-  align-items: center;
-}
 #comment1 {
-  background-image: url('../../../public/img/deQueVaEsto.jpg');
+  background-image: url('../../../public/img/comments1.jpg');
 }
 #comment2 {
-  background-image: url('../../../public/img/coments.jpg');
+  background-image: url('../../../public/img/comments2.jpg');
 }
 #comment3 {
-  background-image: url('../../../public/img/nuestrosPrincipios.jpg');
+  background-image: url('../../../public/img/coments.jpg');
+}
+.interseccionBlanco {
+  height: 200px;
+  background-color: var(--interseccionColor);
 }
