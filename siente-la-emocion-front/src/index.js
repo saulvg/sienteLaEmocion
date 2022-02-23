@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 //import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Experience } from './pages/Experience';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import { Register } from './pages/Register';
 
 /**
  * ###############
  * ## Home Page ##
  * ###############
  */
-import HomePage from './HomePage/HomePage';
 
 /**
  * #################
@@ -19,9 +22,13 @@ import HomePage from './HomePage/HomePage';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <TokenProvider> */}
-    <HomePage />
-    {/* </TokenProvider> */}
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='experience' element={<Experience />} />
+        <Route path='register' element={<Register />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
