@@ -1,0 +1,18 @@
+section.actividad {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  justify-content: center;
+}
+.listaActividades {
+  background-color: red;
+}
+.actividad > div {
+  display: flex;
+  flex-direction: column;
+}
+.actividadF_P {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+}
