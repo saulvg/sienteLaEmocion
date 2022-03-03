@@ -1,0 +1,29 @@
+footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+footer h2 {
+  padding: 0.5rem;
+  font-family: 'Bebas Neue', cursive;
+}
+footer .footerMain {
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem;
+  border-top: 1px solid white;
+}
+
+footer h3 {
+  padding-bottom: 1rem;
+  font-family: 'Bebas Neue', cursive;
+}
+footer p a {
+  text-decoration: none;
+  color: white;
+}
+footer > p {
+  padding: 2rem 0 0 1rem;
+  font-family: 'Montserrat', sans-serif;
+}

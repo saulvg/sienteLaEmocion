@@ -1,0 +1,84 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.App {
+  --interseccionColor: rgb(255, 249, 245);
+}
+.interseccion {
+  background-color: var(--interseccionColor);
+  height: 300px;
+  display: flex;
+  gap: 10rem;
+  justify-content: center;
+  align-items: center;
+}
+
+#we {
+  gap: 5rem;
+}
+
+.homePage {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: 75%;
+}
+
+#routeDeQueVaEsto {
+  background-image: url('../../../public/img/deQueVaEsto.jpg');
+}
+#routeComents {
+  background-image: url('../../../public/img/coments.jpg');
+}
+#routeNuestrosPrincipios {
+  background-image: url('../../../public/img/nuestrosPrincipios.jpg');
+}
+#routeQueTeEstaEsperando {
+  background-image: url('../../../public/img/queTeEstaEsperando.jpg');
+}
+
+.textHPage {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 0 4rem;
+}
+#deQueVaEsto {
+  background-image: url('../../../public/img/deQueVaEsto2.jpg');
+  display: flex;
+  justify-content: right;
+}
+#nuestrosPrincipios {
+  background-image: url('../../../public/img/nuestrosPrincipios2.jpg');
+}
+#queTeEstaEsperando {
+  background-image: url('../../../public/img/queTeEstaEsperando2.jpg');
+  display: flex;
+  justify-content: right;
+}
+
+#instagram {
+  background-image: url('../../../public/silueta/instagram.png');
+}
+#gmail {
+  background-image: url('../../../public/silueta/gmail.png');
+}
+#facebook {
+  background-image: url('../../../public/silueta/facebook.png');
+}
+
+#comment1 {
+  background-image: url('../../../public/img/comments1.jpg');
+}
+#comment2 {
+  background-image: url('../../../public/img/comments2.jpg');
+}
+#comment3 {
+  background-image: url('../../../public/img/coments.jpg');
+}
+.interseccionBlanco {
+  height: 200px;
+  background-color: var(--interseccionColor);
+}

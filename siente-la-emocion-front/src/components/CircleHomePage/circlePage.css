@@ -1,0 +1,14 @@
+.route {
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.349);
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.route a {
+  text-decoration: none;
+  color: white;
+}
