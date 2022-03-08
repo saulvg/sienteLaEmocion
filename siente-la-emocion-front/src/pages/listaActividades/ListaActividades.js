@@ -1,8 +1,30 @@
+/**
+ * ###########
+ * ## Style ##
+ * ###########
+ */
 import './listaActividades.css';
-import ActividadLista from '../../components/ActividadLista/ActividadLista';
 
+/**
+ * ###########
+ * ## Hooks ##
+ * ###########
+ */
+
+/**
+ * ################
+ * ## Components ##
+ * ################
+ */
+import ActividadLista from '../../components/ActividadLista/ActividadLista';
 import Header from '../../components/Header/Header';
 import BodyActivitis from '../../components/Header/MainHeader/BodyActivitis';
+
+/**
+ * ###########
+ * ## Main ##
+ * ###########
+ */
 
 const ListaActividades = () => {
   return (
@@ -13,46 +35,7 @@ const ListaActividades = () => {
         body={<BodyActivitis />}
       />
       <span>Filtrar por ↧</span>
-      <ActividadLista
-        nombreEmpresa={'Montañas Felices'}
-        descripcionGeneral={
-          'Lorem impoijsdhfdfsdbchsgdcvbdschjgasdchasdgcvhjdsavcgdsgvjhasgjcsagcjsacgsdgvhbscvhgsdvchsdg'
-        }
-        fecha={'12/06/2023'}
-        plazas={'7/12'}
-      />
-      <ActividadLista
-        nombreEmpresa={'Montañas Felices'}
-        descripcionGeneral={
-          'Lorem impoijsdhfdfsdbchsgdcvbdschjgasdchasdgcvhjdsavcgdsgvjhasgjcsagcjsacgsdgvhbscvhgsdvchsdg'
-        }
-        fecha={'12/06/2023'}
-        plazas={'7/12'}
-      />
-      <ActividadLista
-        nombreEmpresa={'Montañas Felices'}
-        descripcionGeneral={
-          'Lorem impoijsdhfdfsdbchsgdcvbdschjgasdchasdgcvhjdsavcgdsgvjhasgjcsagcjsacgsdgvhbscvhgsdvchsdg'
-        }
-        fecha={'12/06/2023'}
-        plazas={'7/12'}
-      />
-      <ActividadLista
-        nombreEmpresa={'Montañas Felices'}
-        descripcionGeneral={
-          'Lorem impoijsdhfdfsdbchsgdcvbdschjgasdchasdgcvhjdsavcgdsgvjhasgjcsagcjsacgsdgvhbscvhgsdvchsdg'
-        }
-        fecha={'12/06/2023'}
-        plazas={'7/12'}
-      />
-      <ActividadLista
-        nombreEmpresa={'Montañas Felices'}
-        descripcionGeneral={
-          'Lorem impoijsdhfdfsdbchsgdcvbdschjgasdchasdgcvhjdsavcgdsgvjhasgjcsagcjsacgsdgvhbscvhgsdvchsdg'
-        }
-        fecha={'12/06/2023'}
-        plazas={'7/12'}
-      />
+      <ActividadLista />
     </div>
   );
 };

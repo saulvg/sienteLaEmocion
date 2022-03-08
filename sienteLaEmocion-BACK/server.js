@@ -3,6 +3,8 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const fileUpload = require('express-fileupload');
+//dependencia que llamaremos como middleware para informar al front de que el back le da perimiso para coger datos
+const cors = require('cors');
 
 //creamos un servidor de express en la constante app
 const app = express();
@@ -72,6 +74,7 @@ const search = require('./controllers/search/search');
 //habilitando asi la dependencia morgan
 //informativa
 app.use(morgan('dev'));
+app.use(cors());
 
 //Middleware que deserealiza el body en formato row (lo pasa de un formato Buffer a un formato JS) y lo pone disponible en la propiedad request.body
 app.use(express.json());

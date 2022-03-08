@@ -30,7 +30,11 @@ const getExperience = async (req, res, next) => {
             experiences.latitude, 
             experiences.text_1, 
             experiences.text_2, 
-            experiences.text_3, 
+            experiences.text_3,
+            experiences.text_4,
+            experiences.text_5,
+            experiences.text_6,
+            experiences.howManyBookings, 
             AVG(IFNULL(votes.vote, 0)) AS votes_entry 
         FROM experiences
         LEFT JOIN votes ON (experiences.id = votes.id_experiences)

@@ -80,6 +80,7 @@ async function initDB() {
             text_4 TEXT,
             text_5 TEXT,
             text_6 TEXT,
+            howManyBookings INT,
             createdAt DATETIME NOT NULL, 
             modifiedAt DATETIME,
             FOREIGN KEY (id_user) REFERENCES users(id),  

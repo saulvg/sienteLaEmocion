@@ -1,29 +1,50 @@
-import './actividadLista.css'
+import './actividadLista.css';
 
+/**
+ * ###########
+ * ## Hooks ##
+ * ###########
+ */
+import useActivities from '../../hooks/useActivities';
 
-import CircleHomePage from "../CircleHomePage/CircleHomePage"
-import SocialNetwork from "../SocialNetwork/SocialNetwork"
+import CircleHomePage from '../CircleHomePage/CircleHomePage';
+import SocialNetwork from '../SocialNetwork/SocialNetwork';
 
-const ActividadLista = ({nombreEmpresa, descripcionGeneral, fecha, plazas}) =>{
-return (
-    <section className="actividad">
+const ActividadLista = () => {
+  const { activities, error } = useActivities();
 
-        <CircleHomePage id={'idActividad'} clas={'listaActividades'} children={'Tipo actividad'}/>
+  if (error) return <div>Hubo un error: {error}</div>;
 
-            <div className="socialNetwortEmpty">
-            <h3>{nombreEmpresa}</h3>
+  return activities.length > 0 ? (
+    <ul>
+      {activities.map((activity) => {
+        return (
+          <li key={activity.id}>
+            <section className='actividad'>
+              <CircleHomePage
+                id={'idActividad'}
+                clas={'listaActividades'}
+                children={activity.category}
+              />
+
+              <div className='socialNetwortEmpty'>
+                <h3>{activity.company}</h3>
                 {/* <SocialNetwork href={'https://www.instagram.com/'} children={'instagram'}/>
                 <SocialNetwork href={'https:/es-es.facebook.com/'} children={'facebook'}/> */}
 
-
-            <p>{descripcionGeneral}</p>
+                <p>{activity.text_1 || 'Sin descripción'}</p>
                 <div className='actividadF_P'>
-            <p>{fecha} </p> 
-            <p>{plazas}</p>
+                  <p>{new Date(activity.date).toLocaleDateString()} </p>
+                  <p>{`3 / ${activity.capacity}`}</p>
                 </div>
-            </div>
-
-    </section>
-)
-}
-export default ActividadLista
+              </div>
+            </section>
+          </li>
+        );
+      })}
+    </ul>
+  ) : (
+    <div>No hay actividades</div>
+  );
+};
+export default ActividadLista;

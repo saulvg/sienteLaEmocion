@@ -11,8 +11,13 @@ const newBooking = async (req, res, next) => {
 
         // Obtenemos las propiedades del body que el usuario completa para hacer la reserva
 
-        const { username, email, phone, dni_nie, date, postalCode, message } =
-            req.body;
+        const {
+            username,
+            email,
+            phone,
+            dni_nie /*,  date */,
+            postalCode /* , message */,
+        } = req.body;
 
         // Obtenemos el id de la actividad que se quiere reservar
         const { idExperience } = req.params;
@@ -24,21 +29,19 @@ const newBooking = async (req, res, next) => {
             !email ||
             !phone ||
             !dni_nie ||
-            !date ||
-            !postalCode ||
-            !message
+            /* !date || */
+            !postalCode /*||
+            !message */
         ) {
             const error = new Error('Faltan campos');
             error.httpStatus = 400;
             throw error;
         }
-        /*const [users] = await connection.query(
-            `SELECT email FROM users WHERE id = ?`,
-            [idReqUser]
-        );*/
-        ///////////////////////////
-        //Obtener lista de actividades para saber qué actividad reserva el usuario
-        // Obtenemos la información de la entrada de la base de datos.
+        //AQUI DEBERIAMOS COMPRIBAR QUE LOS DATOS RELLENADOS POR EL USUARIO SEAN CORRECTOS O DIRECTAMENTE NO PEDIRLSO PORQUE YA SABEMSO QUE ESTA LOGEADO AL ESTAR AUTORIZADO PARA HACER LAA RESERVA
+
+        //sabemos que actividad reserva porque esta en la ruta
+
+        // Obtenemos la información de la experiencia de la base de datos.
         const [activities] = await connection.query(
             `
             SELECT 
@@ -57,6 +60,10 @@ const newBooking = async (req, res, next) => {
             experiences.text_1, 
             experiences.text_2, 
             experiences.text_3, 
+            experiences.text_4,
+            experiences.text_5,
+            experiences.text_6,
+            experiences.howManyBookings,
             AVG(IFNULL(votes.vote, 0)) AS votes_entry 
         FROM experiences
         LEFT JOIN votes ON (experiences.id = votes.id_experiences)
@@ -65,27 +72,40 @@ const newBooking = async (req, res, next) => {
 
             [idExperience]
         );
+
+        //Cogemos los diferentes datos que nos hacen falta para completar la reserva, creo que no hacen falta algunos de estos datos para realizar una reserva asi que los comento
+        /* 
         const [photos] = await connection.query(
             `SELECT id FROM experiences_photos WHERE id_experiences = ?`,
             [idExperience]
         );
+         */
+
+        /*  creo qeu si queremso el nombre de la categoria para la reserva, pero de momento lo comento
         const [categories] = await connection.query(
             `SELECT id FROM experiences_category WHERE id_experiences = ?`,
             [idExperience]
         );
+         */
+        /* 
         const [votes] = await connection.query(
             `SELECT vote FROM votes WHERE id_experiences =?`,
             [idExperience]
         );
+         */
+        /*  const [howManyBookings] = await connection.query(
+            `SELECT howManyBookings FROM experiences WHERE id_experiences = ?`,
+            [idExperience]
+        ); */
+        /* `INSERT INTO experiences (howManyBookings) VALUE (?)`, [1]; */
 
+        /* 
         `INSERT INTO votes (id_experiences, vote) VALUES (?,?)`,
             [idExperience, votes[0].vote];
-        //LEFT JOIN experiences_photos ON (experiences.id = experiences_photos.id_experiences)
+             */
 
-        /////////////////////////
-        // Creamos la reserva y obtenemos el valor que retorna "connection.query".
+        // Creamos la reserva y obtenemos el valor que retorna .
         //AQUI METERLA EN LA LISTA DE ACTIVIDADES QUE REALIZÓ EL USUARIO((?))
-        //AÑADIR CREATED AT
         const [newBooking] = await connection.query(
             `INSERT INTO booking (id_experiences, id_user, createdAt) VALUES (?, ?,?)`,
 
@@ -93,6 +113,8 @@ const newBooking = async (req, res, next) => {
         );
         //  const idReserva = newBooking.insertId;
         //CAMBIAR ESTO POR INSERTASR UNICAMENTE EL VOTO EN LA TABLA BOOKING UAN VEZ PASE LA FECHA
+
+        /* NO existe la tabla my_experience 
         if (activities[0].date < new Date()) {
             await connection.query(
                 `INSERT INTO my_experiences(id_experiences, id_experiences_photos, id_experiences_category, vote, createdAt) VALUES (?, ?, ? ,?, ?)`,
@@ -109,7 +131,7 @@ const newBooking = async (req, res, next) => {
                 [idExperience, idReqUser, votes[0].vote, new Date()]
             );
         }
-        //
+         */ //
 
         // Mensaje que enviaremos al correo del usuario.
 
