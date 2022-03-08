@@ -1,7 +1,8 @@
-import './header.css'
+import './header.css';
 
-import { Link, } from 'react-router-dom';
-import MainHeader from '../MainHeader/MainHeader'
+import { Link } from 'react-router-dom';
+import MainHeader from '../MainHeader/MainHeader';
+import BodyTitle from './MainHeader/BodyTitle';
 
 //pendiente de haccer bien
 const token = false;
@@ -9,7 +10,7 @@ const token = false;
 const MainMenu = () => {
   return (
     <nav>
-      <Link to='/search'>Buscador</Link> <Link to='/contact'>Contactanos</Link>{' '} 
+      <Link to='/search'>Buscador</Link> <Link to='/contact'>Contactanos</Link>{' '}
       {token ? (
         <Link to='/perfil'>Perfil</Link>
       ) : (
@@ -19,14 +20,15 @@ const MainMenu = () => {
   );
 };
 
-const HeaderButon = ({to, children}) =>{
-  return(
-    <Link to={to}><button>{children}</button></Link>
-    
-  )
-}
-const Logo = () =>{
-  return(
+const HeaderButon = ({ to, children }) => {
+  return (
+    <Link to={to}>
+      <button>{children}</button>
+    </Link>
+  );
+};
+const Logo = () => {
+  return (
     <Link to='/'>
       <img
         src='https://w7.pngwing.com/pngs/522/295/png-transparent-computer-icons-encapsulated-postscript-mountain-angle-photography-triangle.png'
@@ -34,30 +36,26 @@ const Logo = () =>{
         width={'80px'}
       />
     </Link>
-    
-  )
-}
+  );
+};
 
-
-const Header = ({to, button}) => {
-    return(
+const Header = ({ to, button, body }) => {
+  return (
     <header>
       <div className='headerTop'>
-        <Logo/>
+        <Logo />
         <menu>
           <MainMenu />
         </menu>
       </div>
-        <MainHeader/>
-        <div className='headerButton'>
-          {/* <button>Atrevete</button> */}
-          <HeaderButon to={to} children={button}/>
-        </div>
-      </header>
-    )
-}
-export default Header
-
+      {body}
+      <div className='headerButton'>
+        <HeaderButon to={to} children={button} />
+      </div>
+    </header>
+  );
+};
+export default Header;
 
 //const Header = () => {
 //  return(
@@ -85,10 +83,12 @@ export default Header
 //          {/* <button>Atrevete</button> */}
 //          <HeaderButon children={'Atevete'}/>
 //          <Routes>
-//            <Route path='/listaActividades' element={<div><ListaActividades/></div>}/> 
+//            <Route path='/listaActividades' element={<div><ListaActividades/></div>}/>
+//            <Route path='/listaActividades' element={<div><ListaActividades/></div>}/>
 //          </Routes>
 //        </div>
 //    </header>
 //  )
 //}
+//export default Header
 //export default Header

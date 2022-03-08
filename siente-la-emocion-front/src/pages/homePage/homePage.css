@@ -70,13 +70,13 @@
 }
 
 #comment1 {
-  background-image: url('../../../public/img/comments1.jpg');
-}
-#comment2 {
   background-image: url('../../../public/img/comments2.jpg');
 }
+#comment2 {
+  background-image: url('../../../public/img/comments1.jpg');
+}
 #comment3 {
-  background-image: url('../../../public/img/coments.jpg');
+  background-image: url('../../../public/img/comments2.jpg');
 }
 .interseccionBlanco {
   height: 200px;
