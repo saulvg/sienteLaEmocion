@@ -2,22 +2,30 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { InputElement } from '../components/InputElement';
 import { ModalCircle } from '../components/ModalCircle';
+import BlueButton from './BlueButton';
 
-export const Register = (props) => {
+const Register = (props) => {
   return (
-    <div className='modal-box'>
-      <ModalCircle name='Registro'></ModalCircle>
-      <div className='modal1'></div>
-      <div className='modal2'>
-        <div class='form-elements'>
-          <InputElement name='Email o teléfono' />
-          <InputElement name='Contraseña' />
-          <InputElement name='Confirmar contraseña' />
-          <InputElement name='Nombre de usuario' />
+    <div className='align-modal'>
+      <div className='modal-box'>
+        <ModalCircle name='Registro'></ModalCircle>
+        <div className='modal1'></div>
+        <div className='modal2'>
+          <form>
+            <div class='form-elements'>
+              <InputElement name='Email o teléfono' type='mail' />
+              <InputElement name='Contraseña' type='text' />
+              <InputElement name='Confirmar contraseña' type='text' />
+              <InputElement name='Nombre de usuario' type='text' />
+            </div>
+            <BlueButton name='registrarse' />
+          </form>
+          <div className='circle-background'></div>
         </div>
-        <div className='circle-background'></div>
+        <Outlet />
       </div>
-      <Outlet />
     </div>
   );
 };
+
+export default Register;

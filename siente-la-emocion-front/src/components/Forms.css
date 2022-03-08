@@ -33,6 +33,8 @@
   margin-bottom: 46px;
   text-align: left;
   width: 404px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .modal2 {
@@ -41,16 +43,48 @@
   text-align: center;
   position: relative;
   z-index: 1;
+  padding: 20px 0px 40px 0px;
 }
 
+.align-modal {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blue-button {
+  width: 200px;
+  height: 61px;
+  background: rgba(0, 163, 255, 0.79);
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+  color: #ffffff;
+  border: 0;
+  cursor: pointer;
+  margin: auto;
+}
+.blue-button:hover {
+  background-color: rgba(127, 205, 250, 0.79);
+  transition-duration: 0.2s;
+}
 .modal-box {
-  width: 530px;
+  width: 1192px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   margin: auto;
   overflow: hidden;
   position: relative;
+  border-radius: 13px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .modal1 {
   height: 400px;
@@ -69,8 +103,10 @@
 }
 
 .form-elements {
-  width: 400px;
   margin: auto;
+  display: grid;
+  text-align: center;
+  grid-template-columns: repeat(auto-fit(1fr, 1fr));
 }
 .modal-circle {
   position: absolute;
@@ -90,5 +126,21 @@
   font-size: 38px;
   line-height: 45px;
   color: #ffffff;
-  margin-left: 50px;
+  position: absolute;
+  top: 310px;
+  left: 151px;
+  z-index: 10;
+}
+
+.goback {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+  color: #ffffff;
+  position: absolute;
+  top: 230px;
+  left: 151px;
+  z-index: 10;
 }

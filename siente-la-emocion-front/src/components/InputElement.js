@@ -1,12 +1,12 @@
 import './Forms.css';
 
-export const InputElement = (props) => {
+export const InputElement = ({ type, name }) => {
   return (
     <label className='label-element'>
-      {props.name}
+      {name}
       <input
         className='input-element'
-        type='text'
+        type={type}
         name='name'
         placeholder='Escribe aquí...'
       />

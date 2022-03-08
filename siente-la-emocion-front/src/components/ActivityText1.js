@@ -9,7 +9,7 @@ export const ActivityText1 = ({ margin, children }) => {
         src='https://w7.pngwing.com/pngs/522/295/png-transparent-computer-icons-encapsulated-postscript-mountain-angle-photography-triangle.png'
         alt='logo'
       />
-      <div className='question-box' style={margin}>
+      <div className='question-box' style={{ margin }}>
         <p className='question'>Hola</p>
       </div>
       <div className='answer-box'>
