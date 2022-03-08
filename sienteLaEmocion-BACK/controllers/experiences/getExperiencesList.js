@@ -67,7 +67,11 @@ const getListEntry = async (req, res, next) => {
                     experiences.latitude, 
                     experiences.text_1, 
                     experiences.text_2, 
-                    experiences.text_3, 
+                    experiences.text_3,
+                    experiences.text_4,
+                    experiences.text_5,
+                    experiences.text_6,
+                    experiences.howManyBookings, 
                     experiences_category.name AS category,
                     company.name AS company,
                     AVG(IFNULL(votes.vote, 0)) AS votes_entry

@@ -1,26 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-//import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-/**
- * ###############
- * ## Home Page ##
- * ###############
- */
-import HomePage from './HomePage/HomePage';
 
 /**
  * #################
  * ## Componentes ##
  * #################
  */
+import App from './App';
+
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <TokenProvider> */}
-    <HomePage />
+    <App/>
     {/* </TokenProvider> */}
   </React.StrictMode>,
   document.getElementById('root')
