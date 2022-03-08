@@ -1,16 +1,12 @@
-import './socialNetwork.css'
+import './socialNetwork.css';
 
-const SocialNetwork = ({id, href, children}) => {
-    return(
+const SocialNetwork = ({ id, href, children }) => {
+  return (
     <div id={id} className='networks'>
-        <a
-            href={href}
-            target={'_blank'}
-            rel='noopener noreferrer'
-        >
-            {children}
-        </a>
+      <a href={href} target={'_blank'} rel='noopener noreferrer'>
+        {children}
+      </a>
     </div>
-    )
-}
-export default SocialNetwork
+  );
+};
+export default SocialNetwork;

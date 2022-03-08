@@ -10,11 +10,10 @@ import reportWebVitals from './reportWebVitals';
  */
 import App from './App';
 
-
 ReactDOM.render(
   <React.StrictMode>
     {/* <TokenProvider> */}
-    <App/>
+    <App />
     {/* </TokenProvider> */}
   </React.StrictMode>,
   document.getElementById('root')
