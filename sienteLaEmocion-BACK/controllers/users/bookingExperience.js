@@ -1,159 +1,171 @@
 const getDB = require('../../database/getDB');
 const { sendMail } = require('../../helpers');
-//const { experienceVotes } = require('../entries');
 
-// experienceVotes
 const newBooking = async (req, res, next) => {
     let connection;
+
+    // Obtenemos el id de la actividad que se quiere reservar
+    const { idExperience } = req.params;
+    // Obtenemos el id del usuario que está haciendo la reserva
+    const idReqUser = req.userAuth.id;
 
     try {
         connection = await getDB();
 
-        // Obtenemos las propiedades del body que el usuario completa para hacer la reserva
-
-        const {
-            username,
-            email,
-            phone,
-            dni_nie /*,  date */,
-            postalCode /* , message */,
-        } = req.body;
-
-        // Obtenemos el id de la actividad que se quiere reservar
-        const { idExperience } = req.params;
-        // Obtenemos el id del usuario que está haciendo la reserva
-        const idReqUser = req.userAuth.id;
-        // Si falta algún campo lanzamos un error.
-        if (
-            !username ||
-            !email ||
-            !phone ||
-            !dni_nie ||
-            /* !date || */
-            !postalCode /*||
-            !message */
-        ) {
-            const error = new Error('Faltan campos');
-            error.httpStatus = 400;
-            throw error;
-        }
-        //AQUI DEBERIAMOS COMPRIBAR QUE LOS DATOS RELLENADOS POR EL USUARIO SEAN CORRECTOS O DIRECTAMENTE NO PEDIRLSO PORQUE YA SABEMSO QUE ESTA LOGEADO AL ESTAR AUTORIZADO PARA HACER LAA RESERVA
-
-        //sabemos que actividad reserva porque esta en la ruta
-
-        // Obtenemos la información de la experiencia de la base de datos.
-        const [activities] = await connection.query(
+        //Obtenemso el correo del admin
+        const [adminEmail] = await connection.query(
             `
             SELECT 
-            experiences.id, 
-            experiences.createdAt, 
-            experiences.id_user, 
-            experiences.capacity, 
-            experiences.price, 
-            experiences.date, 
-            experiences.city, 
-            experiences.street, 
-            experiences.number, 
-            experiences.postalCode, 
-            experiences.longitude, 
-            experiences.latitude, 
-            experiences.text_1, 
-            experiences.text_2, 
-            experiences.text_3, 
-            experiences.text_4,
-            experiences.text_5,
-            experiences.text_6,
-            experiences.howManyBookings,
-            AVG(IFNULL(votes.vote, 0)) AS votes_entry 
-        FROM experiences
-        LEFT JOIN votes ON (experiences.id = votes.id_experiences)
+                email
+            FROM 
+                users
+            WHERE 
+                id = ?
+            `,
+            [1]
+        );
 
-        WHERE experiences.id = ?`,
+        // Obtenemos la propiedad message del body con el contenido si el usuario quisiersa rellenar algo
+        const { message } = req.body;
 
+        //Obtenemos los datos del usuario para realizar la reserva de la tabla users
+        const [users] = await connection.query(
+            `
+        SELECT 
+            users.id,
+            users.username,
+            users.email,
+            users.phone,
+            users.dni_nie,
+            users.postalCode
+        FROM users
+        WHERE 
+            users.id = ?
+        `,
+            [idReqUser]
+        );
+
+        // Obtenemos la información de la experiencia de la base de datos,
+        //sabemos que actividad reserva porque esta en la ruta.
+        const [experiences] = await connection.query(
+            `
+            SELECT 
+                id, 
+                createdAt, 
+                id_user,
+                id_experiences_category,
+                id_company, 
+                capacity, 
+                price, 
+                date, 
+                city, 
+                howManyBookings
+            FROM experiences
+            WHERE id = ?`,
             [idExperience]
         );
 
-        //Cogemos los diferentes datos que nos hacen falta para completar la reserva, creo que no hacen falta algunos de estos datos para realizar una reserva asi que los comento
-        /* 
-        const [photos] = await connection.query(
-            `SELECT id FROM experiences_photos WHERE id_experiences = ?`,
-            [idExperience]
-        );
-         */
-
-        /*  creo qeu si queremso el nombre de la categoria para la reserva, pero de momento lo comento
+        //Cogemos los diferentes datos que nos hacen falta para completar la reserva.
         const [categories] = await connection.query(
-            `SELECT id FROM experiences_category WHERE id_experiences = ?`,
-            [idExperience]
+            `SELECT name FROM experiences_category WHERE id = ?`,
+            [experiences[0].id_experiences_category]
         );
-         */
-        /* 
-        const [votes] = await connection.query(
-            `SELECT vote FROM votes WHERE id_experiences =?`,
-            [idExperience]
+        const [company] = await connection.query(
+            `SELECT name FROM company WHERE id = ?`,
+            [experiences[0].id_company]
         );
-         */
-        /*  const [howManyBookings] = await connection.query(
-            `SELECT howManyBookings FROM experiences WHERE id_experiences = ?`,
-            [idExperience]
-        ); */
-        /* `INSERT INTO experiences (howManyBookings) VALUE (?)`, [1]; */
 
-        /* 
-        `INSERT INTO votes (id_experiences, vote) VALUES (?,?)`,
-            [idExperience, votes[0].vote];
-             */
-
-        // Creamos la reserva y obtenemos el valor que retorna .
-        //AQUI METERLA EN LA LISTA DE ACTIVIDADES QUE REALIZÓ EL USUARIO((?))
-        const [newBooking] = await connection.query(
-            `INSERT INTO booking (id_experiences, id_user, createdAt) VALUES (?, ?,?)`,
-
-            [idExperience, idReqUser, new Date()]
+        const [bookings] = await connection.query(
+            `
+            SELECT
+                id,
+                id_experiences,
+                id_user
+            FROM    
+                booking
+            `
         );
-        //  const idReserva = newBooking.insertId;
-        //CAMBIAR ESTO POR INSERTASR UNICAMENTE EL VOTO EN LA TABLA BOOKING UAN VEZ PASE LA FECHA
 
-        /* NO existe la tabla my_experience 
-        if (activities[0].date < new Date()) {
-            await connection.query(
-                `INSERT INTO my_experiences(id_experiences, id_experiences_photos, id_experiences_category, vote, createdAt) VALUES (?, ?, ? ,?, ?)`,
-                [
-                    idExperience,
-                    photos[0].id,
-                    categories[0].id,
-                    votes[0].vote,
-                    new Date(),
-                ]
+        //Comprobamos que el usuario no haya reservado 2 veces para la misma actividad
+        const doubleBooking = bookings.filter(
+            (id) =>
+                id.id_user === idReqUser &&
+                id.id_experiences === Number(idExperience)
+        );
+
+        if (doubleBooking.length > 0) {
+            const error = new Error(
+                'Ya has reservado esta experiencia, porfavor comprueba tu bandeja de entrada, sino es asi ponte en contacto con nosotros,'
             );
-            await connection.query(
-                `INSERT INTO votes (id_experiences, id_user,vote, createdAt) VALUES (?,?,?,?)`,
-                [idExperience, idReqUser, votes[0].vote, new Date()]
-            );
+            error.httpStatus = 405;
+            throw error;
         }
-         */ //
+
+        //Insertamos los datos de reserva en la tabla correspondiente
+        await connection.query(
+            `INSERT INTO booking (id_experiences, id_user, userMessage, createdAt) VALUES (?, ?, ?, ?)`,
+
+            [idExperience, idReqUser, message, new Date()]
+        );
+
+        //Volvemos a llamar a tabla booking para poder reflejar los datos actualizados (no se si quiero estos datos para algo aparte de llamarlos en el res.send)
+        const [confirmBookings] = await connection.query(
+            `
+            SELECT
+                id,
+                id_experiences,
+                id_user,
+                userMessage
+            FROM    
+                booking
+            `
+        );
 
         // Mensaje que enviaremos al correo del usuario.
-
         res.send({
             status: 'ok',
             data: {
-                booking: newBooking[0],
+                booking: confirmBookings,
             },
             message: 'La reserva ha sido creada',
         });
-        const emailBody = `
-            Acabas de realizar una reserva en Siente la emoción hfudishfdiasu
-            `;
-        // Enviamos el email.//MIRAR SI HAY QUE COGER DATOS DEL loginUser.js
 
+        //Formateamos la fecha de la acticidad para enviarla
+        const date = experiences[0].date;
+        const dateFormat = `${date.toLocaleDateString()} a las ${date.toLocaleTimeString()}`;
+
+        const emailBodyUser = `
+            Acabas de realizar una reserva en Siente la Emoción,
+            para la actividad de ${categories[0].name},
+            en ${experiences[0].city}
+            en fecha: ${dateFormat},
+            con la empresa ${company[0].name},
+            no se acuerde que tendra que abonar ${experiences[0].price}€ antes de comenzar la experiencia.
+        `;
+        //Enviamos el correo al usuario
         await sendMail({
-            to: email,
-            subject: `Acabas de realizar una reserva en Siente la emoción hfudishfdiasu ${activities[0].date}`,
-            body: emailBody,
+            to: users[0].email,
+            subject: `Reserva en Siente la Emocion`,
+            body: emailBodyUser,
         });
-        // Obtenemos el id de la RESERVA que acabamos de crear.
-        //const idBooking = newBooking.insertId;
+
+        const emailBodyCompany = `El usuario con los datos:
+            Username: ${users[0].username},
+            Email: ${users[0].email},
+            Telefono: ${users[0].phone},
+            Dni: ${users[0].dni_nie},
+            Codigo postal: ${users[0].postalCode},
+            Acaba de reservar con la empresa ${company[0].name}, para la actividad de ${categories[0].name}, con la fecha ${dateFormat}
+            `;
+
+        //Enviamos el correo al usuario
+        /*  Funciona, lo dejo comentado para que el correo del admin, el mio no se sature con mensajes mientras hacemos pruebas
+        await sendMail({
+            to: adminEmail[0].email,
+            subject: `Reserva en Siente la Emocion empresa: ${company[0].name}`,
+            body: emailBodyCompany,
+        });
+        */
     } catch (error) {
         next(error);
     } finally {
