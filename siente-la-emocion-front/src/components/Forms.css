@@ -17,6 +17,7 @@
   margin-right: auto;
   margin-left: auto;
   margin-top: 15px;
+  padding: 0 10px;
 }
 
 .input-element::placeholder {
@@ -106,7 +107,8 @@
   margin: auto;
   display: grid;
   text-align: center;
-  grid-template-columns: repeat(auto-fit(1fr, 1fr));
+  grid-template-columns: 1fr 1fr;
+  padding: 0 10px;
 }
 .modal-circle {
   position: absolute;
@@ -116,7 +118,6 @@
   top: -187px;
   background-color: rgba(0, 163, 255, 0.79);
   border-radius: 50%;
-  text-align: center;
 }
 
 .circle-name {
@@ -127,7 +128,7 @@
   line-height: 45px;
   color: #ffffff;
   position: absolute;
-  top: 310px;
+  top: 290px;
   left: 151px;
   z-index: 10;
 }
@@ -143,4 +144,19 @@
   top: 230px;
   left: 151px;
   z-index: 10;
+}
+
+@media (max-width: 900px) {
+  .form-elements {
+    display: block;
+  }
+}
+
+@media (max-width: 450px) {
+  .form-elements {
+    width: 80%;
+  }
+  .label-element {
+    width: 100%;
+  }
 }

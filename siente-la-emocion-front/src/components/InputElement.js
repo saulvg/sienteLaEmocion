@@ -1,13 +1,23 @@
 import './Forms.css';
 
-export const InputElement = ({ type, name }) => {
+export const InputElement = ({
+  type,
+  labelName,
+  id,
+  value,
+  name,
+  onChange,
+}) => {
   return (
     <label className='label-element'>
-      {name}
+      {labelName}
       <input
         className='input-element'
         type={type}
-        name='name'
+        name={name}
+        id={id}
+        value={value}
+        onChange={onChange}
         placeholder='Escribe aquí...'
       />
     </label>

@@ -47,6 +47,10 @@
   color: white;
 }
 
+.login-register {
+  padding-top: 30px;
+}
+
 .activity {
   width: 100%;
   position: relative;
