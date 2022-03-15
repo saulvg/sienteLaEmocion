@@ -19,6 +19,13 @@
   gap: 5rem;
 }
 
+.homePage {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: 75%;
+}
+
 #routeDeQueVaEsto {
   background-image: url('../../../public/img/deQueVaEsto.jpg');
 }

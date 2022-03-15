@@ -15,7 +15,7 @@ const getUser = async (req, res, next) => {
         // Obtenemos todos los datos que me interesan del usuario del cuál
         // se solicita información.
         const [users] = await connection.query(
-            `SELECT id, username, email, avatar,dni_nie, phone, postalCode ,role, biography, createdAt FROM users WHERE id = ?`,
+            `SELECT id, username, email, avatar, dni_nie, phone, postalCode ,role, biography, createdAt FROM users WHERE id = ?`,
             [idUser]
         );
 

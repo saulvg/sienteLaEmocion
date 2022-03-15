@@ -1,19 +1,23 @@
 import './header.css';
 
 import { Link } from 'react-router-dom';
+import MainHeader from '../MainHeader/MainHeader';
 import BodyTitle from './MainHeader/BodyTitle';
-
-//pendiente de haccer bien
-const token = false;
+import useUser from '../../hooks/useUser';
 
 const MainMenu = () => {
+  const { token, user } = useUser();
+
   return (
     <nav>
       <Link to='/search'>Buscador</Link> <Link to='/contact'>Contactanos</Link>{' '}
       {token ? (
-        <Link to='/perfil'>Perfil</Link>
+        <>
+          {user ? <p>Hola {user.username}</p> : null}
+          <Link to='/perfil'>Perfil</Link>
+        </>
       ) : (
-        <Link to='/register-login'>Unete</Link>
+        <Link to='/login'>Unete</Link>
       )}
     </nav>
   );
@@ -83,9 +87,11 @@ export default Header;
 //          <HeaderButon children={'Atevete'}/>
 //          <Routes>
 //            <Route path='/listaActividades' element={<div><ListaActividades/></div>}/>
+//            <Route path='/listaActividades' element={<div><ListaActividades/></div>}/>
 //          </Routes>
 //        </div>
 //    </header>
 //  )
 //}
+//export default Header
 //export default Header
