@@ -1,9 +1,12 @@
 import { useState } from 'react';
+import useUser from '../../hooks/useUser';
+import decode from 'jwt-decode';
 
 function CompanyForm() {
-  const [companyId_company, setCompanyId_company] = useState('');
-  const [companyId_experiences_category, setCompanyId_experiences_category] =
-    useState('');
+  const { token, user } = useUser();
+
+  const [companyName, setCompanyName] = useState('');
+  const [companyCategory, setCompanyCategory] = useState('');
   const [companyCapacity, setCompanyCapacity] = useState('');
   const [companyPrice, setCompanyPrice] = useState('');
   const [companyDate, setCompanyDate] = useState('');
@@ -26,9 +29,11 @@ function CompanyForm() {
     event.preventDefault();
     //intentamos enviar los datos del formulario con una peticion de tipo POST
     try {
+      /* const decoded = decode(token); */
+
       const dataCompany = {
-        id_company: companyId_company,
-        id_experiences_category: companyId_experiences_category,
+        companyName: companyName,
+        categoryName: companyCategory,
         capacity: companyCapacity,
         price: companyPrice,
         date: companyDate,
@@ -59,6 +64,7 @@ function CompanyForm() {
           body: JSON.stringify(dataCompany),
           /* file, */
           headers: {
+            Authorization: token,
             'Content-type': 'application/json',
           },
         }
@@ -84,133 +90,137 @@ function CompanyForm() {
         setCompanyText_5(body.)
         setCompanyText_6(body.) */
       } else {
-        console.error('Error en la llamada a la API');
+        console.error('Error', body.message);
       }
     } catch (error) {
-      console.error('Error del catch:', error);
+      console.error('catch', error);
     }
   };
-
+  const decoded = decode(token);
   return (
-    <div id='companyForm'>
-      <form onSubmit={sendForm}>
-        <IdCompany
-          companyId_company={companyId_company}
-          setCompanyId_company={setCompanyId_company}
-        />
-        <IdExperiencesCategory
-          companyId_experiences_category={companyId_experiences_category}
-          setCompanyId_experiences_category={setCompanyId_experiences_category}
-        />
-        <CapacityCompany
-          companyCapacity={companyCapacity}
-          setCompanyCapacity={setCompanyCapacity}
-        />
-        <PriceCompany
-          companyPrice={companyPrice}
-          setCompanyPrice={setCompanyPrice}
-        />
-        <DateCompany
-          companyDate={companyDate}
-          setCompanyDate={setCompanyDate}
-        />
-        <CityCompany
-          companyCity={companyCity}
-          setCompanyCity={setCompanyCity}
-        />
-        <StreatCompany
-          companyStreat={companyStreat}
-          setCompanyStreat={setCompanyStreat}
-        />
-        <NumberCompany
-          companyNumber={companyNumber}
-          setCompanyNumber={setCompanyNumber}
-        />
-        <PostalCodeCompany
-          companyPostalCode={companyPostalCode}
-          setCompanyPostalCode={setCompanyPostalCode}
-        />
-        <LongitudeCompany
-          companyLongitude={companyLongitude}
-          setCompanyLongitude={setCompanyLongitude}
-        />
-        <LatitudeCompany
-          companyLatitude={companyLatitude}
-          setCompanyLatitude={setCompanyLatitude}
-        />
-        <Text1Company
-          companyText_1={companyText_1}
-          setCompanyText_1={setCompanyText_1}
-        />
-        <Text2Company
-          companyText_2={companyText_2}
-          setCompanyText_2={setCompanyText_2}
-        />
-        <Text3Company
-          companyText_3={companyText_3}
-          setCompanyText_3={setCompanyText_3}
-        />
-        <Text4Company
-          companyText_4={companyText_4}
-          setCompanyText_4={setCompanyText_4}
-        />
-        <Text5Company
-          companyText_5={companyText_5}
-          setCompanyText_5={setCompanyText_5}
-        />
-        <Text6Company
-          companyText_6={companyText_6}
-          setCompanyText_6={setCompanyText_6}
-        />
-        {/* <PhotoHeader
+    <>
+      {console.log(decoded)}
+      {decoded.id === 1 && decoded.role === 'admin' ? (
+        <div id='companyForm'>
+          <form onSubmit={sendForm}>
+            <Company
+              companyName={companyName}
+              setCompanyName={setCompanyName}
+            />
+            <ExperiencesCategory
+              companyCategory={companyCategory}
+              setCompanyCategory={setCompanyCategory}
+            />
+            <CapacityCompany
+              companyCapacity={companyCapacity}
+              setCompanyCapacity={setCompanyCapacity}
+            />
+            <PriceCompany
+              companyPrice={companyPrice}
+              setCompanyPrice={setCompanyPrice}
+            />
+            <DateCompany
+              companyDate={companyDate}
+              setCompanyDate={setCompanyDate}
+            />
+            <CityCompany
+              companyCity={companyCity}
+              setCompanyCity={setCompanyCity}
+            />
+            <StreatCompany
+              companyStreat={companyStreat}
+              setCompanyStreat={setCompanyStreat}
+            />
+            <NumberCompany
+              companyNumber={companyNumber}
+              setCompanyNumber={setCompanyNumber}
+            />
+            <PostalCodeCompany
+              companyPostalCode={companyPostalCode}
+              setCompanyPostalCode={setCompanyPostalCode}
+            />
+            <LongitudeCompany
+              companyLongitude={companyLongitude}
+              setCompanyLongitude={setCompanyLongitude}
+            />
+            <LatitudeCompany
+              companyLatitude={companyLatitude}
+              setCompanyLatitude={setCompanyLatitude}
+            />
+            <Text1Company
+              companyText_1={companyText_1}
+              setCompanyText_1={setCompanyText_1}
+            />
+            <Text2Company
+              companyText_2={companyText_2}
+              setCompanyText_2={setCompanyText_2}
+            />
+            <Text3Company
+              companyText_3={companyText_3}
+              setCompanyText_3={setCompanyText_3}
+            />
+            <Text4Company
+              companyText_4={companyText_4}
+              setCompanyText_4={setCompanyText_4}
+            />
+            <Text5Company
+              companyText_5={companyText_5}
+              setCompanyText_5={setCompanyText_5}
+            />
+            <Text6Company
+              companyText_6={companyText_6}
+              setCompanyText_6={setCompanyText_6}
+            />
+            {/* <PhotoHeader
           companyPhotoHeader={companyPhotoHeader}
           setCompanyPhotoHeader={setCompanyPhotoHeader}
         /> */}
-        <button type='submit'>Enviar</button>
-      </form>
-    </div>
+            <button type='submit'>Enviar</button>
+          </form>
+        </div>
+      ) : (
+        <div>No tienes permisos</div>
+      )}
+    </>
   );
 }
 
 export default CompanyForm;
 
-const IdCompany = ({ companyId_company, setCompanyId_company }) => {
-  const valueCompanyId_company = (event) => {
+const Company = ({ companyName, setCompanyName }) => {
+  const valueCompanyName = (event) => {
     console.log('cambio companyId_company');
-    setCompanyId_company(event.target.value);
+    setCompanyName(event.target.value);
   };
   return (
     <div className='companyForm'>
       <label>
-        Id Company:
+        Nombre company:
         <input
-          id='id_company'
+          id='companyName'
           type={'text'}
-          value={companyId_company}
-          onChange={valueCompanyId_company}
+          value={companyName}
+          onChange={valueCompanyName}
           placeholder={'Escribe aqui'}
         />
       </label>
     </div>
   );
 };
-const IdExperiencesCategory = ({
-  companyId_experiences_category,
-  setCompanyId_experiences_category,
-}) => {
-  const valueId_experiences_category = (event) => {
+const ExperiencesCategory = ({ companyCategory, setCompanyCategory }) => {
+  const valueCompanyCategory = (event) => {
     console.log('cambio id_experiences_category');
-    setCompanyId_experiences_category(event.target.value);
+    setCompanyCategory(event.target.value);
   };
   return (
     <div className='companyForm'>
       <label>
-        Id experiencia:
+        Categoria:
         <input
-          id='id_company'
+          id='companyName'
           type={'text'}
-          value={companyId_experiences_category}
-          onChange={valueId_experiences_category}
+          value={companyCategory}
+          onChange={valueCompanyCategory}
           placeholder={'Escribe aqui'}
         />
       </label>
