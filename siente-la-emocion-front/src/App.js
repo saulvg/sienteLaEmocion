@@ -6,6 +6,7 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
  * ###########
  */
 import Footer from './components/Footer/Footer';
+import CompanyForm from './pages/companyForm/companyForm';
 import HomePage from './pages/homePage/HomePage';
 import Register from './pages/Register';
 import Experience from './pages/Experience';
@@ -57,6 +58,28 @@ function App() {
           <Footer />
         </BrowserRouter>
       </AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path='*' element={<HomePage />} />
+          <Route path='/search' element={<div>{/* <Buscador /> */}</div>} />
+          <Route path='/contact' element={<div>{/* <Contactanos /> */}</div>} />
+          <Route path='/perfil' element={<div>{/* <Perfil /> */}</div>} />
+          <Route
+            path='/register-login'
+            element={<div>{/* <Register-Login /> */}</div>}
+          />
+          <Route path='/experiences' element={<CompanyForm />} />
+          <Route
+            path='/listaActividades'
+            element={
+              <div>
+                <ListaActividades />
+              </div>
+            }
+          />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </>
   );
 }
