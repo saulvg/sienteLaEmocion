@@ -1,8 +1,6 @@
 import './header.css';
 
 import { Link } from 'react-router-dom';
-import MainHeader from '../MainHeader/MainHeader';
-import BodyTitle from './MainHeader/BodyTitle';
 import useUser from '../../hooks/useUser';
 
 const MainMenu = () => {
