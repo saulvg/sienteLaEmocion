@@ -59,7 +59,7 @@ const newBooking = async (req, res, next) => {
                 price, 
                 date, 
                 city, 
-                howManyBookings
+                direction
             FROM experiences
             WHERE id = ?`,
             [idExperience]
@@ -137,7 +137,8 @@ const newBooking = async (req, res, next) => {
         const emailBodyUser = `
             Acabas de realizar una reserva en Siente la Emoción,
             para la actividad de ${categories[0].name},
-            en ${experiences[0].city}
+            en ${experiences[0].city}, 
+            ${experiences[0].direction},
             en fecha: ${dateFormat},
             con la empresa ${company[0].name},
             no se acuerde que tendra que abonar ${experiences[0].price}€ antes de comenzar la experiencia.

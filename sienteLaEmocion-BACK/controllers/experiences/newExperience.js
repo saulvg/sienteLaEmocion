@@ -23,11 +23,7 @@ const newEntry = async (req, res, next) => {
             price,
             date,
             city,
-            street,
-            number,
-            postalCode,
-            longitude,
-            latitude,
+            direction,
             text_1,
             text_2,
             text_3,
@@ -36,6 +32,18 @@ const newEntry = async (req, res, next) => {
             text_6,
         } = req.body;
 
+        if (
+            !companyName &&
+            !capacity &&
+            !price &&
+            !date &&
+            !city &&
+            !direction
+        ) {
+            const error = new Error('Faltan campos');
+            error.httpStatus = 400;
+            throw error;
+        }
         // Obtenemos las propiedades de files.
         // Si no recibimos ninguna foto lanzamos un error.
         /* if (!(req.files && req.files.photoHeader)) {
@@ -85,9 +93,9 @@ const newEntry = async (req, res, next) => {
         // Creamos la entrada y obtenemos el valor que retorna "connection.query".
         await connection.query(
             `INSERT INTO experiences 
-                (id_user, id_company, id_experiences_category, capacity, price, date, city, street, number, postalCode, longitude, latitude, text_1, text_2, text_3, text_4, text_5, text_6, createdAt) 
+                (id_user, id_company, id_experiences_category, capacity, price, date, city, direction, text_1, text_2, text_3, text_4, text_5, text_6, createdAt) 
             VALUES 
-                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
             [
                 1,
                 id_company[0][0].id,
@@ -97,11 +105,7 @@ const newEntry = async (req, res, next) => {
                 price,
                 date,
                 city,
-                street,
-                number,
-                postalCode,
-                longitude,
-                latitude,
+                direction,
                 text_1,
                 text_2,
                 text_3,

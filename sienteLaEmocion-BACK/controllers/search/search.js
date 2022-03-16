@@ -24,20 +24,20 @@ const search = async (req, res, next) => {
                 experiences.price, 
                 experiences.date, 
                 experiences.city, 
-                experiences.street, 
-                experiences.number, 
-                experiences.postalCode, 
-                experiences.longitude, 
-                experiences.latitude, 
+                experiences.direction, 
                 experiences.text_1, 
                 experiences.text_2, 
                 experiences.text_3, 
+                experiences.text_4,
+                experiences.text_5,
+                experiences.text_6,
                 experiences_category.name AS category,
                 company.name AS company
             FROM experiences
             LEFT JOIN experiences_category ON (experiences.id = experiences_category.id)
             LEFT JOIN company ON (experiences.id = company.id)
             WHERE 
+                experiences.city LIKE ? OR
                 experiences.text_1 LIKE ? OR
                 experiences.text_2 LIKE ? OR
                 experiences.text_3 LIKE ? OR
@@ -49,6 +49,7 @@ const search = async (req, res, next) => {
                 ORDER BY createdAt desc
                 `,
                 [
+                    `%${search}%`,
                     `%${search}%`,
                     `%${search}%`,
                     `%${search}%`,
