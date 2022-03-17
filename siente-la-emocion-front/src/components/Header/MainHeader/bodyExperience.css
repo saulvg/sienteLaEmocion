@@ -1,0 +1,38 @@
+.bodyExperience h1 {
+  text-align: center;
+  text-shadow: 2px 2px 2px white;
+}
+
+.bodyExperience div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.bodyExperience .textHeaderLeft {
+  width: 50%;
+}
+.bodyExperience .textHeaderRigth {
+  width: 50%;
+  align-self: flex-end;
+}
+.bodyExperience h3 {
+  background-color: rgba(137, 96, 80, 70%);
+  max-width: max-content;
+  border-radius: 20px;
+  padding: 1rem;
+  color: whitesmoke;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  margin-left: 1rem;
+  margin-bottom: -1rem;
+  position: relative;
+  z-index: 2;
+}
+.headerBody.bodyExperience p {
+  background-color: rgba(210, 164, 138, 70%);
+  border-radius: 20px;
+  padding: 2rem 1rem 1rem 1rem;
+  color: whitesmoke;
+  font-size: 14px;
+  text-align: start;
+}

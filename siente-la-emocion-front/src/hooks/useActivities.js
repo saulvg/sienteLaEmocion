@@ -18,10 +18,12 @@ const useActivities = () => {
 
         if (!response.ok) {
           setError(json.message);
+          console.log(json.message);
           return;
         }
 
         setActivities(json.data.experiences);
+        console.log(json.data.experiences);
       } catch (error) {
         setError(error.message);
       }

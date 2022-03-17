@@ -35,14 +35,14 @@ header .headerTop menu nav a {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
 }
-header .headerTitle {
-  width: max-content;
+header .headerBody {
+  margin-right: 2rem;
   padding-left: 4rem;
   font-family: 'Bebas Neue', cursive;
   font-size: 32px;
 }
-header .headerTitle p {
-  text-align: end;
+header .headerBody p {
+  /* text-align: end; */
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   font-weight: bold;
