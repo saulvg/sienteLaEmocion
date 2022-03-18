@@ -19,6 +19,7 @@ import decode from 'jwt-decode';
 
 function CompanyForm() {
   const { token } = useUser();
+  const [faltanCampos, setFaltanCampos] = useState(false) 
 
   const [companyName, setCompanyName] = useState('');
   const [companyCategory, setCompanyCategory] = useState('');
@@ -81,14 +82,22 @@ function CompanyForm() {
 
       if (response.ok) {
         console.log('hasta aqui funciona');
+        setFaltanCampos(false)
       } else {
         console.error('Error', body.message);
-        alert('faltan campos o rellendaos incorrectamente');
+        alert(`${body.message} o rellendaos incorrectamente`);
+        setFaltanCampos(true)
+        /* const prueba = document.querySelector('#companyForm')
+        prueba.innerHTML=`
+        <div>hola no funciono</div>        
+        ` */
       }
     } catch (error) {
       console.error('catch', error);
     }
   };
+  if(!token) { return <div>No te has registrado</div>}
+
   const decoded = decode(token);
 
   return (
@@ -96,9 +105,11 @@ function CompanyForm() {
       {decoded.id === 1 && decoded.role === 'admin' ? (
         <div id='companyForm'>
           <form onSubmit={sendForm}>
+          {console.log('faltan campos', faltanCampos)}
             <Company
               companyName={companyName}
               setCompanyName={setCompanyName}
+              faltanCampos={faltanCampos}
             />
             <ExperiencesCategory
               companyCategory={companyCategory}

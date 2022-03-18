@@ -1,26 +1,44 @@
-const Company = ({ companyName, setCompanyName }) => {
+const Company = ({ companyName, setCompanyName, faltanCampos }) => {
   const valueCompanyName = (event) => {
-    console.log('cambio companyId_company');
+//    console.log('cambio companyId_company');
     setCompanyName(event.target.value);
   };
   return (
+    <>
+    {faltanCampos ? (
     <div className='companyForm'>
-      <label>
-        Nombre company:
-        <input
-          id='companyName'
-          type={'text'}
-          value={companyName}
-          onChange={valueCompanyName}
-          placeholder={'Escribe aqui'}
-        />
-      </label>
-    </div>
+    <label>
+      Nombre compañia:
+      <input
+        id='companyName'
+        type={'text'}
+        value={companyName}
+        onChange={valueCompanyName}
+        placeholder={'Escribe aqui...'}
+        style={{backgroundColor:'rgb(223, 128, 128'}}
+      />
+    </label>
+  </div>
+  ):(
+  <div className='companyForm'>
+    <label>
+      Nombre compañia:
+      <input
+        id='companyName'
+        type={'text'}
+        value={companyName}
+        onChange={valueCompanyName}
+        placeholder={'Escribe aqui...'}
+      />
+    </label>
+  </div>
+  )}
+  </>
   );
 };
 const ExperiencesCategory = ({ companyCategory, setCompanyCategory }) => {
   const valueCompanyCategory = (event) => {
-    console.log('cambio id_experiences_category');
+ //   console.log('cambio id_experiences_category');
     setCompanyCategory(event.target.value);
   };
   return (
@@ -32,7 +50,7 @@ const ExperiencesCategory = ({ companyCategory, setCompanyCategory }) => {
           type={'text'}
           value={companyCategory}
           onChange={valueCompanyCategory}
-          placeholder={'Escribe aqui'}
+          placeholder={'Escribe aqui...'}
         />
       </label>
     </div>
@@ -40,7 +58,7 @@ const ExperiencesCategory = ({ companyCategory, setCompanyCategory }) => {
 };
 const CapacityCompany = ({ companyCapacity, setCompanyCapacity }) => {
   const valueCompanyCapacity = (event) => {
-    console.log('cambio companyCapacity');
+//    console.log('cambio companyCapacity');
     setCompanyCapacity(event.target.value);
   };
   return (
@@ -52,7 +70,7 @@ const CapacityCompany = ({ companyCapacity, setCompanyCapacity }) => {
           type={'text'}
           value={companyCapacity}
           onChange={valueCompanyCapacity}
-          placeholder={'Escribe aqui'}
+          placeholder={'Escribe aqui...'}
         />
       </label>
     </div>
@@ -60,7 +78,7 @@ const CapacityCompany = ({ companyCapacity, setCompanyCapacity }) => {
 };
 const PriceCompany = ({ companyPrice, setCompanyPrice }) => {
   const valueCompanyPrice = (event) => {
-    console.log('cambio companyPrice');
+//    console.log('cambio companyPrice');
     setCompanyPrice(event.target.value);
   };
   return (
@@ -72,7 +90,7 @@ const PriceCompany = ({ companyPrice, setCompanyPrice }) => {
           type={'text'}
           value={companyPrice}
           onChange={valueCompanyPrice}
-          placeholder={'Escribe aqui'}
+          placeholder={'Escribe aqui...'}
         />
       </label>
     </div>
@@ -80,7 +98,7 @@ const PriceCompany = ({ companyPrice, setCompanyPrice }) => {
 };
 const DateCompany = ({ companyDate, setCompanyDate }) => {
   const valueCompanyDate = (event) => {
-    console.log('cambio companyDate');
+//    console.log('cambio companyDate');
     setCompanyDate(event.target.value);
   };
   return (
@@ -92,7 +110,7 @@ const DateCompany = ({ companyDate, setCompanyDate }) => {
           type={'text'}
           value={companyDate}
           onChange={valueCompanyDate}
-          placeholder={'Escribe aqui'}
+          placeholder={'Escribe aqui...'}
         />
       </label>
     </div>
@@ -100,7 +118,7 @@ const DateCompany = ({ companyDate, setCompanyDate }) => {
 };
 const CityCompany = ({ companyCity, setCompanyCity }) => {
   const valueCompanyCity = (event) => {
-    console.log('cambio companyCity');
+//    console.log('cambio companyCity');
     setCompanyCity(event.target.value);
   };
   return (
@@ -112,7 +130,7 @@ const CityCompany = ({ companyCity, setCompanyCity }) => {
           type={'text'}
           value={companyCity}
           onChange={valueCompanyCity}
-          placeholder={'Escribe aqui'}
+          placeholder={'Escribe aqui...'}
         />
       </label>
     </div>
@@ -120,7 +138,7 @@ const CityCompany = ({ companyCity, setCompanyCity }) => {
 };
 const DirectionCompany = ({ companyDirection, setCompanyDirection }) => {
   const valueCompanyDirection = (event) => {
-    console.log('cambio direction');
+//    console.log('cambio direction');
     setCompanyDirection(event.target.value);
   };
   return (
@@ -132,7 +150,7 @@ const DirectionCompany = ({ companyDirection, setCompanyDirection }) => {
           type={'text'}
           value={companyDirection}
           onChange={valueCompanyDirection}
-          placeholder={'Escribe aqui'}
+          placeholder={'Escribe aqui...'}
         />
       </label>
     </div>
@@ -141,19 +159,19 @@ const DirectionCompany = ({ companyDirection, setCompanyDirection }) => {
 
 const Text1Company = ({ companyText_1, setCompanyText_1 }) => {
   const valueCompanyText_1 = (event) => {
-    console.log('cambio companyText_1');
+//    console.log('cambio companyText_1');
     setCompanyText_1(event.target.value);
   };
   return (
     <div className='companyForm'>
       <label>
         Texto 1:
-        <input
+        <textarea
           id='xCompany'
           type={'text'}
           value={companyText_1}
           onChange={valueCompanyText_1}
-          placeholder={'Escribe aqui'}
+          placeholder={'Escribe aqui...'}
         />
       </label>
     </div>
@@ -161,19 +179,19 @@ const Text1Company = ({ companyText_1, setCompanyText_1 }) => {
 };
 const Text2Company = ({ companyText_2, setCompanyText_2 }) => {
   const valueCompanyText_2 = (event) => {
-    console.log('cambio companyText_2');
+//    console.log('cambio companyText_2');
     setCompanyText_2(event.target.value);
   };
   return (
     <div className='companyForm'>
       <label>
         Texto 2:
-        <input
+        <textarea
           id='xCompany'
           type={'text'}
           value={companyText_2}
           onChange={valueCompanyText_2}
-          placeholder={'Escribe aqui'}
+          placeholder={'Escribe aqui...'}
         />
       </label>
     </div>
@@ -181,19 +199,19 @@ const Text2Company = ({ companyText_2, setCompanyText_2 }) => {
 };
 const Text3Company = ({ companyText_3, setCompanyText_3 }) => {
   const valueCompanyText_3 = (event) => {
-    console.log('cambio companyText_3');
+//    console.log('cambio companyText_3');
     setCompanyText_3(event.target.value);
   };
   return (
     <div className='companyForm'>
       <label>
         Texto 3:
-        <input
+        <textarea
           id='xCompany'
           type={'text'}
           value={companyText_3}
           onChange={valueCompanyText_3}
-          placeholder={'Escribe aqui'}
+          placeholder={'Escribe aqui...'}
         />
       </label>
     </div>
@@ -201,19 +219,19 @@ const Text3Company = ({ companyText_3, setCompanyText_3 }) => {
 };
 const Text4Company = ({ companyText_4, setCompanyText_4 }) => {
   const valueCompanyText_4 = (event) => {
-    console.log('cambio companyText_4');
+//    console.log('cambio companyText_4');
     setCompanyText_4(event.target.value);
   };
   return (
     <div className='companyForm'>
       <label>
         Texto 4:
-        <input
+        <textarea
           id='xCompany'
           type={'text'}
           value={companyText_4}
           onChange={valueCompanyText_4}
-          placeholder={'Escribe aqui'}
+          placeholder={'Escribe aqui...'}
         />
       </label>
     </div>
@@ -221,19 +239,19 @@ const Text4Company = ({ companyText_4, setCompanyText_4 }) => {
 };
 const Text5Company = ({ companyText_5, setCompanyText_5 }) => {
   const valueCompanyText_5 = (event) => {
-    console.log('cambio companyText_5');
+//    console.log('cambio companyText_5');
     setCompanyText_5(event.target.value);
   };
   return (
     <div className='companyForm'>
       <label>
         Texto 5:
-        <input
+        <textarea
           id='xCompany'
           type={'text'}
           value={companyText_5}
           onChange={valueCompanyText_5}
-          placeholder={'Escribe aqui'}
+          placeholder={'Escribe aqui...'}
         />
       </label>
     </div>
@@ -241,19 +259,19 @@ const Text5Company = ({ companyText_5, setCompanyText_5 }) => {
 };
 const Text6Company = ({ companyText_6, setCompanyText_6 }) => {
   const valueCompanyText_6 = (event) => {
-    console.log('cambio companyText_6');
+//    console.log('cambio companyText_6');
     setCompanyText_6(event.target.value);
   };
   return (
     <div className='companyForm'>
       <label>
         Texto 6:
-        <input
+        <textarea
           id='xCompany'
           type={'text'}
           value={companyText_6}
           onChange={valueCompanyText_6}
-          placeholder={'Escribe aqui'}
+          placeholder={'Escribe aqui...'}
         />
       </label>
     </div>
