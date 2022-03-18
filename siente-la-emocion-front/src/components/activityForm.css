@@ -3,7 +3,7 @@
   width: 100%;
 } */
 
-.question-box {
+.question-box:nth-child(even) {
   background-color: #4c4d37;
   width: 553px;
   display: flex;
@@ -13,6 +13,7 @@
   padding: 20px;
   position: absolute;
   top: 36px;
+  height: 150px;
   right: 357px;
   z-index: 10;
 }
@@ -54,7 +55,10 @@
 .activity {
   width: 100%;
   position: relative;
-  text-align: center;
+}
+
+.activity:nth-child(odd) {
+  text-align: end;
 }
 
 .activity-img {

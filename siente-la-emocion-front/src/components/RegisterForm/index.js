@@ -1,7 +1,6 @@
-import './style.css';
 import { useState } from 'react';
 import { InputElement } from '../InputElement';
-import BlueButton from '../../pages/BlueButton';
+import BlueButton from '../BlueButton';
 
 const RegisterForm = () => {
   const [email, setEmail] = useState('');
@@ -96,7 +95,7 @@ const RegisterForm = () => {
           <BlueButton name='registrarse' />
         </form>
       ) : (
-        <div className='register_confirmation'>
+        <div className='confirmation'>
           Te has registrado correctamente. Revisa tu correo para validar tu
           cuenta
         </div>
@@ -106,32 +105,3 @@ const RegisterForm = () => {
 };
 
 export default RegisterForm;
-{
-  /* <form className='register_form form' onSubmit={register}>
-          <div className='InputElement_container'>
-            <label htmlFor='email'>Email</label>
-            <input
-              id='email'
-              name='email'
-              type='email'
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-          </div>
-          <div className='input_container'>
-            <label htmlFor='password'>Password</label>
-            <input
-              id='password'
-              name='password'
-              type='password'
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
-          </div>
-          <input type='submit' value='Registrarse' />
-        </form> */
-}

@@ -13,6 +13,8 @@ import ListaActividades from './pages/listaActividades/ListaActividades';
 import LoginPage from './pages/LoginPage';
 import React, { useState } from 'react';
 import { useLocalStorage } from './hooks/useSessionStorage';
+import DeleteAccount from './components/DeleteAccount';
+import BookingExperience from './pages/BookingExperience/BookingExperience';
 
 //Componente para envolver a toda la aplicacion con un contexto para que este dispnible en toda la aplicacion de manera implicita el valro de token
 export const AuthContext = React.createContext();
@@ -44,6 +46,11 @@ function App() {
             <Route path='/perfil' element={<div>{/* <Perfil /> */}</div>} />
             <Route path='/register' element={<div>{<Register />}</div>} />
             <Route path='/login' element={<div>{<LoginPage />}</div>} />
+            <Route path='/delete' element={<div>{<DeleteAccount />}</div>} />
+            <Route
+              path='/booking'
+              element={<div>{<BookingExperience />}</div>}
+            />
             <Route path='/experience' element={<div>{<Experience />}</div>} />
             <Route
               path='/listaActividades'

@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { InputElement } from '../InputElement';
-import BlueButton from '../../pages/BlueButton';
+import BlueButton from '../BlueButton';
 import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../../App';
 

@@ -43,15 +43,38 @@
   background: #f4d4c1;
   text-align: center;
   position: relative;
+  bottom: 0;
+  height: 55%;
   z-index: 1;
+  padding: 20px 0px 40px 0px;
+}
+.modal3 {
+  width: 100%;
+  background: #f8efef;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  height: 50%;
+  z-index: 0;
+  padding: 20px 0px 40px 0px;
+}
+.modal4 {
+  width: 100%;
+  background: #fff9f5;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  height: 60%;
+  z-index: 0;
   padding: 20px 0px 40px 0px;
 }
 
 .align-modal {
-  height: 100vh;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 100px 0;
 }
 
 .blue-button {
@@ -59,7 +82,7 @@
   height: 61px;
   background: rgba(0, 163, 255, 0.79);
   border-radius: 40px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   font-family: Montserrat;
@@ -70,25 +93,44 @@
   color: #ffffff;
   border: 0;
   cursor: pointer;
-  margin: auto;
 }
 .blue-button:hover {
   background-color: rgba(127, 205, 250, 0.79);
   transition-duration: 0.2s;
 }
+
+.modal1 > h2 {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 68px;
+  text-align: center;
+  padding: 40px 10px;
+  text-decoration: underline;
+}
+
+.confirmation {
+  text-align: center;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 27px;
+  line-height: 21px;
+  color: black;
+  padding: 30px 10px;
+}
 .modal-box {
-  width: 1192px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  width: 65%;
+  position: relative;
+  height: auto;
   margin: auto;
   overflow: hidden;
-  position: relative;
   border-radius: 13px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .modal1 {
-  height: 400px;
+  height: 250px;
   width: 100%;
   background-color: white;
 }
@@ -96,13 +138,30 @@
 .circle-background {
   width: 100%;
   background-color: #f4d4c1;
-  height: 200px;
+  height: 280px;
   position: absolute;
-  top: -100px;
+  top: -140px;
   border-radius: 50%;
   z-index: -3;
 }
-
+.circle-background2 {
+  width: 100%;
+  background-color: #f8efef;
+  height: 280px;
+  position: absolute;
+  top: -140px;
+  border-radius: 50%;
+  z-index: -4;
+}
+.circle-background3 {
+  width: 100%;
+  background-color: #fff9f5;
+  height: 280px;
+  position: absolute;
+  top: -140px;
+  border-radius: 50%;
+  z-index: -5;
+}
 .form-elements {
   margin: auto;
   display: grid;
@@ -127,10 +186,10 @@
   font-size: 38px;
   line-height: 45px;
   color: #ffffff;
-  position: absolute;
-  top: 290px;
-  left: 151px;
+  position: relative;
   z-index: 10;
+  margin: 50px;
+  max-width: 280px;
 }
 
 .goback {
@@ -140,13 +199,31 @@
   font-size: 20px;
   line-height: 23px;
   color: #ffffff;
-  position: absolute;
-  top: 230px;
-  left: 151px;
+  position: relative;
+  margin-top: 40px;
   z-index: 10;
 }
+.delete-message {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 37px;
+  padding: 0 10px;
+}
 
-@media (max-width: 900px) {
+.delete-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 65px;
+}
+
+.blue-button + .blue-button {
+  margin-left: 75px;
+}
+
+@media (max-width: 1400px) {
   .form-elements {
     display: block;
   }
@@ -158,5 +235,50 @@
   }
   .label-element {
     width: 100%;
+  }
+}
+
+@media (max-width: 1400px) {
+  .modal-box {
+    height: 100%;
+  }
+}
+
+@media (max-width: 680px) {
+  .modal-box {
+    width: 100%;
+  }
+
+  .circle-background {
+    display: none;
+  }
+  .modal-circle {
+    width: 100%;
+    position: relative;
+    border-radius: 0;
+    height: 200px;
+    top: 0;
+    left: 0;
+  }
+
+  .modal1 {
+    display: none;
+  }
+
+  .form-titles {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .circle-name {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    position: initial;
+  }
+
+  .goback {
+    justify-content: center;
+    position: initial;
   }
 }
