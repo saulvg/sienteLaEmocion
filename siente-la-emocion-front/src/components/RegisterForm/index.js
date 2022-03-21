@@ -33,6 +33,7 @@ const RegisterForm = () => {
       setDone(true);
     } else {
       const error = await res.json();
+      console.log(error.message);
     }
   };
 

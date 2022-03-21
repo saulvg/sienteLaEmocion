@@ -59,7 +59,14 @@ function App() {
               path='/booking'
               element={<div>{<BookingExperience />}</div>}
             />
+<<<<<<< Updated upstream
             <Route path='/experiences/:idExperience' element={<Experience />} />
+=======
+            <Route
+              path='/experience/:idExperience'
+              element={<div>{<Experience />}</div>}
+            />
+>>>>>>> Stashed changes
             <Route
               path='/listaActividades'
               element={
