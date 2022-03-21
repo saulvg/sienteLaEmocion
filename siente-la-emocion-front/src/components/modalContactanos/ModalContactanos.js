@@ -1,7 +1,7 @@
 const ModalContactanos = () => {
   return (
     <>
-      <span id='contact' onClick={lisent}>
+      <span id='contact' onClick={modal}>
         Contactanos
       </span>
     </>
@@ -9,7 +9,7 @@ const ModalContactanos = () => {
 };
 export default ModalContactanos;
 
-const lisent = () => {
+const modal = () => {
   const modalBg = document.querySelector('#modal-bg');
   const modalFg = document.querySelector('#modal-fg');
   modalBg.classList.add('show');
