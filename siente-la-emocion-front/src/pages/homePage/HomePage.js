@@ -8,7 +8,7 @@ import CircleHomePage from '../../components/CircleHomePage/CircleHomePage';
 import Header from '../../components/Header/Header';
 import SocialNetwork from '../../components/SocialNetwork/SocialNetwork';
 import TextHomePage from '../../components/TextHomePage/TextHomePage';
-import BodyTitle from '../../components/Header/MainHeader/BodyTitle';
+import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
 
 const HomePage = () => {
   return (
@@ -16,7 +16,7 @@ const HomePage = () => {
       <Header
         to={'/listaActividades'}
         button={'Atrevete'}
-        body={<BodyTitle />}
+        body={<BodyHeaderHomePage />}
       />
       <main>
         <section id='we' className='interseccion'>

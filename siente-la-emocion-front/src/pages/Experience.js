@@ -5,15 +5,20 @@ import Header from '../components/Header/Header';
 import useActivities from '../hooks/useActivities';
 import useCompanies from '../hooks/useCompanies';
 import './experience.css';
+import BodyExperience from '../components/Header/MainHeader/BodyExperience';
+
 const Experience = () => {
   const { activities, error } = useActivities();
-  const { company } = useCompanies();
   return (
     <ul>
       {activities.map((activity) => {
         return (
           <li>
-            <Header to={'/listaActividades/senderismo/3'} button={'Atrevete'} />
+            <Header
+              to={'/booking'}
+              button={'Reserva'}
+              body={<BodyExperience />}
+            />
             <div className='container experiencia'>
               <div className='company-div'>
                 <h2>{activity.company}</h2>

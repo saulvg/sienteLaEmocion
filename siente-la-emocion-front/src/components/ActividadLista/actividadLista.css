@@ -13,6 +13,7 @@ section.actividad {
 }
 .actividadF_P {
   display: flex;
+  min-width: 10rem;
   justify-content: space-between;
   padding-top: 1rem;
 }

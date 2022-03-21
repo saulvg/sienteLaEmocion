@@ -21,6 +21,7 @@ const editUser = async (req, res, next) => {
             req.body;
 
         //si no hay ningun campo a editar lanzamso un error
+        //Contra intuitivo, si no se guarda nada que mas da?
         if (!username && !newEmail && !phone && !biography && !postalCode) {
             const error = new Error('Faltan campos');
             error.http = 400;
@@ -169,9 +170,59 @@ const editUser = async (req, res, next) => {
             );
         }
 
+        //Obtenemos los datos del historial de actividades reservadas por el usuario con el id propietario del perfil
+        const [experiences] = await connection.query(
+            `
+            SELECT 
+                id,
+                id_user,
+                id_experiences
+            FROM
+                booking
+            WHERE
+                id_user = ? 
+
+            `,
+            [idReqUser]
+        );
+        //Guradamos los id de las experiencias que haya hecho dicho usuario
+        const idExperiencesBooking = experiences.map(
+            (idExp) => idExp.id_experiences
+        );
+
+        const userExperiences = [];
+        for (const idExperienceBooking of idExperiencesBooking) {
+            const [experience] = await connection.query(
+                `
+                SELECT
+                    experiences.id, 
+                    experiences.price, 
+                    experiences.date, 
+                    experiences.city, 
+                    experiences.longitude, 
+                    experiences.latitude, 
+                    experiences.photoHeader,
+                    experiences_category.name AS category,
+                    company.name AS company
+                FROM experiences
+                LEFT JOIN experiences_category ON (experiences.id_experiences_category = experiences_category.id)
+                LEFT JOIN company ON (experiences.id_company= company.id)
+                LEFT JOIN votes ON (experiences.id = votes.id_experiences)
+                WHERE experiences.id = ?
+                `,
+                [idExperienceBooking]
+            );
+            userExperiences.push(experience[0]);
+        }
+
         res.send({
             status: 'ok',
-            message: `Usuario actualizado con exito. Si has cambiado tu email no olvides activar de nuevo tu usuario en el mensaje que te hemos enviado a tu correo electronico`,
+            message: `Cambios actualizados con exito. Si has cambiado tu email no olvides activar de nuevo tu usuario en el mensaje que te hemos enviado a tu correo electronico`,
+            data: {
+                /* esxperiemces: experiences, */
+                /* prueba: experiences.map((idExp) => idExp.id_experiences), */
+                userExperiences,
+            },
         });
     } catch (error) {
         next(error);

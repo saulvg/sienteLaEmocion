@@ -18,8 +18,10 @@ import './listaActividades.css';
  */
 import ActividadLista from '../../components/ActividadLista/ActividadLista';
 import Header from '../../components/Header/Header';
-import BodyActivitis from '../../components/Header/MainHeader/BodyActivitis';
+import BodyExperiencesList from '../../components/Header/MainHeader/BodyExperiencesList';
 
+//const decodeToken = decod(token)
+//console.log(token);
 /**
  * ###########
  * ## Main ##
@@ -30,9 +32,9 @@ const ListaActividades = () => {
   return (
     <div id='listaActividades'>
       <Header
-        to={'/listaActividades/senderismo/3'}
+        to={`/experiences/:idExperience`}
         button={'Atrevete'}
-        body={<BodyActivitis />}
+        body={<BodyExperiencesList />}
       />
       <span>Filtrar por ↧</span>
       <ActividadLista />

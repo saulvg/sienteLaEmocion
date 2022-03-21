@@ -4,6 +4,7 @@ import { ModalCircle } from '../components/ModalCircle';
 import RegisterForm from '../components/RegisterForm';
 
 const Register = (props) => {
+  
   return (
     <div className='align-modal'>
       <div className='modal-box'>

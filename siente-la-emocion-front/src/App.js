@@ -1,20 +1,28 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useLocalStorage } from './hooks/useSessionStorage';
+
+/**
+ * ###########
+ * ## Components ##
+ * ###########
+ */
+import Footer from './components/Footer/Footer';
 
 /**
  * ###########
  * ## Pages ##
  * ###########
  */
-import Footer from './components/Footer/Footer';
+import CompanyForm from './pages/companyForm/CompanyForm';
 import HomePage from './pages/homePage/HomePage';
 import Register from './pages/Register';
 import Experience from './pages/Experience';
 import ListaActividades from './pages/listaActividades/ListaActividades';
 import LoginPage from './pages/LoginPage';
-import React, { useState } from 'react';
-import { useLocalStorage } from './hooks/useSessionStorage';
 import DeleteAccount from './components/DeleteAccount';
 import BookingExperience from './pages/BookingExperience/BookingExperience';
+import PruebaBooking from './pages/pruebaBooking/PruebaBooking';
 
 //Componente para envolver a toda la aplicacion con un contexto para que este dispnible en toda la aplicacion de manera implicita el valro de token
 export const AuthContext = React.createContext();
@@ -51,7 +59,7 @@ function App() {
               path='/booking'
               element={<div>{<BookingExperience />}</div>}
             />
-            <Route path='/experience' element={<div>{<Experience />}</div>} />
+            <Route path='/experiences/:idExperience' element={<Experience />} />
             <Route
               path='/listaActividades'
               element={
@@ -59,6 +67,11 @@ function App() {
                   <ListaActividades />
                 </div>
               }
+            />
+            <Route path='/experiences' element={<CompanyForm />} />
+            <Route
+              path='/experiences/:idExperience/booking'
+              element={<PruebaBooking />}
             />
           </Routes>
           <Footer />

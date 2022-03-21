@@ -21,11 +21,7 @@ const editExperience = async (req, res, next) => {
             price,
             date,
             city,
-            street,
-            number,
-            postalCode,
-            longitude,
-            latitude,
+            direction,
         } = req.body;
 
         //si no se edita ningun campo lanzamos un error
@@ -40,11 +36,7 @@ const editExperience = async (req, res, next) => {
             !price &&
             !date &&
             !city &&
-            !street &&
-            !number &&
-            !postalCode &&
-            !longitude &&
-            !latitude
+            !direction
         ) {
             const error = new Error('Faltan campos');
             error.httpStatus = 400;
@@ -67,11 +59,18 @@ const editExperience = async (req, res, next) => {
                 [date, new Date(), idExperience]
             );
         }
-        if (postalCode) {
+        if (direction) {
             await connection.query(
                 `
-        UPDATE experiences SET postalCode = ?, modifiedAt = ? WHERE id = ?`,
-                [postalCode, new Date(), idExperience]
+        UPDATE experiences SET direction = ?, modifiedAt = ? WHERE id = ?`,
+                [direction, new Date(), idExperience]
+            );
+        }
+        if (city) {
+            await connection.query(
+                `
+        UPDATE experiences SET city = ?, modifiedAt = ? WHERE id = ?`,
+                [city, new Date(), idExperience]
             );
         }
 
@@ -80,25 +79,21 @@ const editExperience = async (req, res, next) => {
         UPDATE experiences SET 
             text_1 = ?, 
             text_2 = ?, 
-            text_3 = ?,  
+            text_3 = ?, 
+            text_4 = ?, 
+            text_5 = ?, 
+            text_6 = ?, 
             price= ?,
-            city = ?,
-            street = ?,
-            number = ?,
-            longitude = ?,
-            latitude = ?, 
             modifiedAt = ?
         WHERE id = ?`,
             [
                 text_1,
                 text_2,
                 text_3,
+                text_4,
+                text_5,
+                text_6,
                 price,
-                city,
-                street,
-                number,
-                longitude,
-                latitude,
                 new Date(),
                 idExperience,
             ]

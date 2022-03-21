@@ -1,0 +1,6 @@
+header .bodyHeaderHomePage {
+  width: max-content;
+}
+header .headerBody p {
+  text-align: end;
+}
