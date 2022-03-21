@@ -2,20 +2,31 @@ import './header.css';
 
 import { Link } from 'react-router-dom';
 import useUser from '../../hooks/useUser';
+import ModalContactanos from '../modalContactanos/ModalContactanos';
 
 const MainMenu = () => {
   const { token, user } = useUser();
 
   return (
     <nav>
-      <Link to='/search'>Buscador</Link> <Link to='/contact'>Contactanos</Link>{' '}
+      <Link to='/search' id='search'>
+        Buscador
+      </Link>{' '}
+      {/* <Link to='/contact' id='contact'>
+        Contactanos
+      </Link> */}
+      <ModalContactanos />{' '}
       {token ? (
         <>
           {user ? <p>Hola {user.username}</p> : null}
-          <Link to='/perfil'>Perfil</Link>
+          <Link to='/perfil' id='myself'>
+            Perfil
+          </Link>
         </>
       ) : (
-        <Link to='/login'>Unete</Link>
+        <Link to='/login' id='login'>
+          Unete
+        </Link>
       )}
     </nav>
   );
@@ -42,54 +53,20 @@ const Logo = () => {
 
 const Header = ({ to, button, body }) => {
   return (
-    <header>
-      <div className='headerTop'>
-        <Logo />
-        <menu>
-          <MainMenu />
-        </menu>
-      </div>
-      {body}
-      <div className='headerButton'>
-        <HeaderButon to={to} children={button} />
-      </div>
-    </header>
+    <>
+      <header>
+        <div className='headerTop'>
+          <Logo />
+          <menu>
+            <MainMenu />
+          </menu>
+        </div>
+        {body}
+        <div className='headerButton'>
+          <HeaderButon to={to} children={button} />
+        </div>
+      </header>
+    </>
   );
 };
 export default Header;
-
-//const Header = () => {
-//  return(
-//  <header>
-//      <div className='headerTop'>
-//       <Logo/>
-//        <menu>
-//          <MainMenu />
-//          <Routes>
-//            <Route path='/search' element={<div>{/* <Buscador /> */}</div>} />
-//            <Route
-//              path='/contact'
-//              element={<div>{/* <Contactanos /> */}</div>}
-//            />
-//            <Route path='/perfil' element={<div>{/* <Perfil /> */}</div>} />
-//            <Route
-//              path='/register-login'
-//              element={<div>{/* <Register-Login /> */}</div>}
-//            />
-//          </Routes>
-//        </menu>
-//      </div>
-//        <MainHeader/>
-//        <div className='headerButton'>
-//          {/* <button>Atrevete</button> */}
-//          <HeaderButon children={'Atevete'}/>
-//          <Routes>
-//            <Route path='/listaActividades' element={<div><ListaActividades/></div>}/>
-//            <Route path='/listaActividades' element={<div><ListaActividades/></div>}/>
-//          </Routes>
-//        </div>
-//    </header>
-//  )
-//}
-//export default Header
-//
