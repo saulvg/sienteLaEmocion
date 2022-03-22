@@ -7,18 +7,18 @@ const { MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE } = process.env;
 let pool;
 
 const getDB = async () => {
-  if (!pool) {
-    pool = mysql.createPool({
-      connectionLimit: 12,
-      host: 'localhost',
-      user: 'demo',
-      password: 'password',
-      database: 'sienteLaEmocion',
-      timezone: 'Z',
-    });
-  }
+    if (!pool) {
+        pool = mysql.createPool({
+            connectionLimit: 12,
+            host: MYSQL_HOST,
+            user: MYSQL_USER,
+            password: MYSQL_PASSWORD,
+            database: MYSQL_DATABASE,
+            timezone: 'Z',
+        });
+    }
 
-  return await pool.getConnection();
+    return await pool.getConnection();
 };
 
 module.exports = getDB;
