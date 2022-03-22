@@ -11,7 +11,7 @@ const editPass = async (req, res, next) => {
         const idReqUser = req.userAuth.id;
 
         // contraseña vieja y nueva
-        const { oldPass, newPass } = req.body;
+        const { oldPassword, newPassword } = req.body;
         // contraseña del usuario en el que estamos. para comprobar
         // que X usuario tiene esa contraseña y que está en la base de datos
         const [users] = await connection.query(
@@ -19,7 +19,7 @@ const editPass = async (req, res, next) => {
             [idReqUser]
         );
         // guardamos en una variable un booleano : contraseña correcta o incorrecta
-        const isValid = await bcrypt.compare(oldPass, users[0].password);
+        const isValid = await bcrypt.compare(oldPassword, users[0].password);
         // si es incorrecta
         if (!isValid) {
             const error = new Error('La contraseña no es correcta');
@@ -28,7 +28,7 @@ const editPass = async (req, res, next) => {
         }
 
         //hasheamos la nueva contraseña
-        const hashedPassword = await bcrypt.hash(newPass, saltRounds);
+        const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
 
         //actualizamos base de datos
 

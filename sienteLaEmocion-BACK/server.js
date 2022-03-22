@@ -120,7 +120,7 @@ app.put('/users/password/reset', resetPass);
 app.put('/users/edit/avatar', isAuth, userExists, canEditUser, editUserAvatar);
 
 // Anonimizar un usuario.
-app.delete('/users/deleted', isAuth, userExists, canEditUser, deleteUser);
+app.delete('/users/:id', isAuth, userExists, canEditUser, deleteUser);
 
 /**
  * ##############################

@@ -1,14 +1,14 @@
 //Hook para coger datos de las actividades
 import { useEffect, useState } from 'react';
 
-const useActivities = () => {
-  const [activities, setActivities] = useState([]);
+const useCompanies = () => {
+  const [company, setCompany] = useState([]);
   const [error, setError] = useState(null);
 
   //const [book, setBook] = useState([]);
 
   useEffect(() => {
-    const loadActivities = async () => {
+    const loadCompany = async () => {
       try {
         const response = await fetch(
           `${process.env.REACT_APP_BACKEND}/experiences`
@@ -18,16 +18,13 @@ const useActivities = () => {
 
         if (!response.ok) {
           setError(json.message);
-          console.log(json.message);
           return;
         }
 
-        setActivities(json.data.experiences);
-        console.log(activities);
+        setCompany(json.data.experiences);
       } catch (error) {
         setError(error.message);
       }
-      console.log(activities);
     };
 
     /*    const loadBook = async () => {
@@ -38,10 +35,10 @@ const useActivities = () => {
       }
     }; */
 
-    loadActivities();
+    loadCompany();
   }, []);
 
-  return { activities, error };
+  return { company, error };
 };
 
-export default useActivities;
+export default useCompanies;

@@ -1,5 +1,8 @@
 import './Forms.css';
-export const ModalCircle = ({ name }) => {
+export const ModalCircle = () => {
+  return <div className='modal-circle'></div>;
+};
+/* export const ModalCircle = ({ name }) => {
   const handleClick =()=>{window.history.go(-1)}
   return (
     <button onClick={handleClick}>
@@ -9,4 +12,4 @@ export const ModalCircle = ({ name }) => {
       </div>
     </button>
   );
-};
+}; */

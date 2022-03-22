@@ -30,11 +30,6 @@ code {
   width: 50%;
 }
 
-.justify-between {
-  display: flex;
-  justify-content: space-between;
-}
-
 .divide + .divide {
   border-left: 1px solid black;
 }

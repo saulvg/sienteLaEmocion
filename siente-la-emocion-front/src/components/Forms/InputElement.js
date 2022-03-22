@@ -7,6 +7,7 @@ export const InputElement = ({
   value,
   name,
   onChange,
+  htmlFor,
 }) => {
   return (
     <label className='label-element'>
