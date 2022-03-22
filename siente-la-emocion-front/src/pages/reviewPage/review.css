@@ -1,0 +1,77 @@
+/* TÍTULO PÁGINA REVIEWS */
+.tituloReview {
+  color: rgb(69, 66, 66);
+
+  display: flex;
+  align-items: flex-end;
+  padding-left: 3rem;
+}
+
+/* CONTENEDOR DE LAS REVIEWS */
+
+.reviews {
+  /*position: relative;*/
+  margin-top: 5rem;
+}
+
+/* ARTÍCULO REVIEW 
+*/
+.review {
+  background-color: cornflowerblue;
+  border-radius: 7px;
+  box-shadow: rgba(61, 90, 143, 0.274) 5px 5px;
+  width: 80rem;
+  min-height: 20rem;
+  margin-bottom: 5rem;
+  margin-left: 5rem;
+  padding-left: 5px;
+  position: relative;
+}
+
+/*En cada artículo si pongo absolute se me van juntos arriba */
+
+.reviews article:nth-child(even) {
+  background-color: rgb(81, 113, 172);
+  margin-left: 20rem;
+}
+
+/* AVATARES USUARIO */
+/*
+article:nth-of-type(even) .avatar {
+  border-radius: 50%;
+  position: absolute;
+  left: 15rem;
+  height: 20rem;
+  top: -2rem;
+  background-color: darkred;
+}*/
+/*.reviews article:nth-child(odd) .avatar {
+  border-radius: 50%;
+  position: absolute;
+  height: 20rem;
+  left: 73rem;
+  top: -2rem;
+  background-color: rgb(133, 90, 90);
+}*/
+
+/* TEXTO DE LA REVIEW */
+/*
+.review .texto {
+  border-radius: 7px;
+  background-color: rgba(191, 210, 245, 0.575);
+  margin-left: 3rem;
+  margin-right: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+}*/
+
+/* NOMBRE EMPRESA */
+/*
+.empresa {
+  width: 110rem;
+  display: flex;
+  justify-content: right;
+}
+*/

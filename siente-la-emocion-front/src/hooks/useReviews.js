@@ -1,48 +1,47 @@
 //Hook para coger datos de las actividades
 import { useEffect, useState } from 'react';
 
-const useActivities = () => {
-  const [activities, setActivities] = useState([]);
+const useReviews = (id) => {
+  const [category, setCategory] = useState([]);
+  const [reviews, setReviews] = useState([]);
   const [error, setError] = useState(null);
-
+  //id experience
   //const [book, setBook] = useState([]);
 
   useEffect(() => {
-    const loadActivities = async () => {
+    const loadReviews = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_BACKEND}/experiences`
+          `${process.env.REACT_APP_BACKEND}/experiences/2/reviews`
         );
 
         const json = await response.json();
 
         if (!response.ok) {
           setError(json.message);
-          console.log(json.message);
           return;
         }
 
-        setActivities(json.data.experiences);
-        console.log(activities);
-        console.log(json.data.experiences);
+        setReviews(json.data.review);
+        setCategory(json.data.category_name);
       } catch (error) {
         setError(error.message);
       }
-      console.log(activities);
     };
 
     /*    const loadBook = async () => {
       try {
+        HACER USE HOOK DE AVATAR COMPONENTE USERS/3  PARA COGER EL AVATAAAAAAAR
         const response = await fetch(`${process.env.REACT_APP_BACKEND}/`)
       } catch (error) {
         setError(error.message);
       }
     }; */
 
-    loadActivities();
-  }, []);
+    loadReviews();
+  }, [id]);
 
-  return { activities, error };
+  return { reviews, category, error };
 };
 
-export default useActivities;
+export default useReviews;

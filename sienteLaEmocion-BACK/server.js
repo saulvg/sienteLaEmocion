@@ -83,6 +83,8 @@ app.use(express.json());
 // en la propiedad "request.body". Si hay algún archivo estará disponible en la
 // propiedad "request.files".
 app.use(fileUpload());
+// Archivos estáticos
+app.use('/uploads', express.static('./static/uploads'));
 
 //.................Vamos a crear todos los middlewares que tienen nuestra pagina...........................
 

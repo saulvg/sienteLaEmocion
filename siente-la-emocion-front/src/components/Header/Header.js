@@ -2,26 +2,26 @@ import './header.css';
 
 import { Link } from 'react-router-dom';
 import useUser from '../../hooks/useUser';
-import ModalContactanos from '../modalContactanos/ModalContactanos';
-
+import ModalContactanos from '../ModalContactanos/ModalContactanos';
 const MainMenu = () => {
-  const { token, user } = useUser();
+  const { token, user, setToken } = useUser();
 
   return (
     <nav>
-      <Link to='/search' id='search'>
-        Buscador
-      </Link>{' '}
-      {/* <Link to='/contact' id='contact'>
-        Contactanos
-      </Link> */}
-      <ModalContactanos />{' '}
+      <Link to='/search'>Buscador</Link> <Link to='/contact'>Contactanos</Link>
+      <ModalContactanos />
       {token ? (
         <>
           {user ? <p>Hola {user.username}</p> : null}
-          <Link to='/perfil' id='myself'>
-            Perfil
-          </Link>
+          <Link to='/perfil'>Perfil</Link>
+
+          <p
+            onClick={() => {
+              setToken('');
+            }}
+          >
+            <Link to='/'>Cerrar sesión</Link>
+          </p>
         </>
       ) : (
         <Link to='/login' id='login'>

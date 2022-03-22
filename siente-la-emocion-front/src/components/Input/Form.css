@@ -1,0 +1,152 @@
+.input-element {
+  width: 40rem;
+  height: 53px;
+  padding-left: 10px;
+  display: flex;
+  outline: none;
+  background: #5f5f5f;
+  border-radius: 13px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 17px;
+  line-height: 21px;
+  color: white;
+  border: 2px solid transparent;
+}
+.input-element:focus {
+  border: 2px solid black;
+  box-shadow: 1px 0px 2px black;
+}
+.input-element::placeholder {
+  color: white;
+}
+
+.label-element {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 3px;
+  text-align: left;
+  width: 404px;
+}
+
+.modal2 {
+  width: 100%;
+  background: #f4d4c1;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.modal-box {
+  width: 530px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+}
+.modal1 {
+  height: 400px;
+  width: 100%;
+  background-color: white;
+}
+
+.circle-background {
+  width: 100%;
+  background-color: #f4d4c1;
+  height: 200px;
+  position: absolute;
+  top: -100px;
+  border-radius: 50%;
+  z-index: -3;
+}
+
+.form-elements {
+  width: 400px;
+  margin: auto;
+}
+.modal-circle {
+  position: absolute;
+  width: 440px;
+  height: 425px;
+  left: -104px;
+  top: -187px;
+  background-color: rgba(0, 163, 255, 0.79);
+  border-radius: 50%;
+  text-align: center;
+}
+
+.circle-name {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 38px;
+  line-height: 45px;
+  color: #ffffff;
+  margin-left: 50px;
+}
+.save-button {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  margin-right: auto;
+  margin-left: auto;
+  flex-direction: column;
+  margin-top: 100px;
+}
+.save {
+  height: 53px;
+  width: 10rem;
+  padding: 10px;
+  display: flex;
+  outline: none;
+  border-radius: 13px;
+  align-items: center;
+  font-size: 17px;
+  line-height: 21px;
+  color: white;
+  border: transparent;
+  background-color: #00a3ff;
+  justify-content: center;
+}
+.save:hover {
+  box-shadow: 1px 0px 10px black;
+  cursor: pointer;
+  background-color: #036daa;
+}
+.message-ok {
+  /*display: none;*/
+  color: black;
+}
+.errorData {
+  /*display: none;*/
+  color: red;
+  background-color: aquamarine;
+}
+.user-profile {
+  background-color: aquamarine;
+  width: 50%;
+  margin: 5rem;
+  padding: 3rem;
+}
+.user-experiences {
+  background-color: burlywood;
+  width: 50%;
+  margin: 5rem;
+  padding: 3rem;
+}
+.container-profile {
+  display: flex;
+  columns: 2;
+  width: 100%;
+}

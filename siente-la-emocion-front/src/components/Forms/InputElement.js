@@ -8,6 +8,7 @@ export const InputElement = ({
   name,
   onChange,
   htmlFor,
+  placeholder,
 }) => {
   return (
     <label className='label-element'>
@@ -19,7 +20,33 @@ export const InputElement = ({
         id={id}
         value={value}
         onChange={onChange}
-        placeholder='Escribe aquí...'
+        placeholder={placeholder}
+      />
+    </label>
+  );
+};
+export const TextareaElement = ({
+  type,
+  labelName,
+  id,
+  value,
+  name,
+  onChange,
+  placeholder,
+}) => {
+  return (
+    <label className='label-element'>
+      {labelName}
+      <textarea
+        className='input-element'
+        cols='60'
+        rows='10'
+        type={type}
+        name={name}
+        id={id}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
       />
     </label>
   );

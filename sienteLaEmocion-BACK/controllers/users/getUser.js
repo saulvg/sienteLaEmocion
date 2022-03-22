@@ -31,6 +31,9 @@ const getUser = async (req, res, next) => {
         if (users[0].id === idReqUser || req.userAuth.role === 'admin') {
             userInfo.email = users[0].email;
             userInfo.role = users[0].role;
+            userInfo.phone = users[0].phone;
+            userInfo.dni_nie = users[0].dni_nie;
+            userInfo.postalCode = users[0].postalCode;
             userInfo.createdAt = users[0].createdAt;
         }
 
