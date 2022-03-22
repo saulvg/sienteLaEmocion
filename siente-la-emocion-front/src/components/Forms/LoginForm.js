@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
-import { InputElement } from '../InputElement';
-import BlueButton from '../BlueButton';
+import { InputElement } from './InputElement';
+import BlueButton from './BlueButton';
 import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../../App';
 
@@ -8,6 +8,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { token, setToken } = useContext(AuthContext);
+  const [error, setError] = useState('');
 
   const login = async (e) => {
     e.preventDefault();
@@ -24,7 +25,7 @@ const LoginForm = () => {
       if (res.ok) {
         setToken(body.data.token);
       } else {
-        console.error('Error', body.message);
+        setError(body.message);
       }
     } catch (error) {
       console.error(error);
@@ -48,7 +49,7 @@ const LoginForm = () => {
           />
           <InputElement
             labelName='Contraseña'
-            type='text'
+            type='password'
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
@@ -57,6 +58,7 @@ const LoginForm = () => {
         </div>
         <BlueButton name='Iniciar sesión' />
       </form>
+      {error ?? <div className='error-msg'>{error}</div>}
     </>
   );
 };

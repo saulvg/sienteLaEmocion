@@ -108,7 +108,7 @@ app.get('/users/:idUser', isAuth, userExists, getUser);
 app.put('/users/edit', isAuth, userExists, canEditUser, editUser);
 
 // editar la contraseña de un usuario
-app.put('/users/edit/password', isAuth, userExists, canEditUser, editPass);
+app.put('/users/:idUser/password', isAuth, userExists, canEditUser, editPass);
 
 // enviar un codigo de recuperación de contraseña al email del usuario
 app.put('/users/password/recover', recoverPass);

@@ -129,8 +129,19 @@
   border-radius: 13px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+.password-box {
+  width: 35%;
+  position: relative;
+  height: auto;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 13px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .modal1 {
-  height: 250px;
+  height: 400px;
   width: 100%;
   background-color: white;
 }
@@ -188,8 +199,12 @@
   color: #ffffff;
   position: relative;
   z-index: 10;
-  margin: 50px;
   max-width: 280px;
+  margin-top: 50px;
+}
+
+.circle-content {
+  margin: 20px 10px 40px 40px;
 }
 
 .goback {
@@ -200,7 +215,6 @@
   line-height: 23px;
   color: #ffffff;
   position: relative;
-  margin-top: 40px;
   z-index: 10;
 }
 .delete-message {
@@ -210,6 +224,21 @@
   font-size: 30px;
   line-height: 37px;
   padding: 0 10px;
+}
+
+div > .error-msg {
+  color: red;
+  display: block;
+  background-color: black;
+}
+
+.back-svg {
+  position: relative;
+  z-index: 3;
+  color: white;
+  height: auto;
+  width: 20px;
+  margin-right: 10px;
 }
 
 .delete-buttons {

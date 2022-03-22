@@ -11,9 +11,9 @@ const useActivities = () => {
     const loadActivities = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_BACKEND}/experiences/7`
+          `${process.env.REACT_APP_BACKEND}/experiences`
         );
-        console.log(response.json());
+
         const json = await response.json();
 
         if (!response.ok) {
@@ -22,15 +22,12 @@ const useActivities = () => {
           return;
         }
 
-<<<<<<< Updated upstream
         setActivities(json.data.experiences);
-        console.log(json.data.experiences);
-=======
-        setActivities(json.data.experience);
->>>>>>> Stashed changes
+        console.log(activities);
       } catch (error) {
         setError(error.message);
       }
+      console.log(activities);
     };
 
     /*    const loadBook = async () => {

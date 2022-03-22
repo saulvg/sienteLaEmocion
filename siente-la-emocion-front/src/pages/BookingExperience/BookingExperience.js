@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../App';
-import BlueButton from '../../components/BlueButton';
+import BlueButton from '../../components/Forms/BlueButton';
 
 const BookingExperience = () => {
   const { token } = useContext(AuthContext);

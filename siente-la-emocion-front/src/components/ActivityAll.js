@@ -1,4 +1,4 @@
-import './activityForm.css';
+import './Forms/activityForm.css';
 
 export const ActivityText1 = ({ answer, question }) => {
   return (
@@ -9,7 +9,7 @@ export const ActivityText1 = ({ answer, question }) => {
         alt='logo'
       />
       <div className='question-box'>
-        <p className='question'>{question}?</p>
+        <p className='question'>{question}</p>
       </div>
       <div className='answer-box'>
         <p className='answer'>{answer}</p>

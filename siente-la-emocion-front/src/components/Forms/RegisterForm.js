@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import { InputElement } from '../InputElement';
-import BlueButton from '../BlueButton';
+import { useEffect, useState } from 'react';
+import { InputElement } from './InputElement';
+import BlueButton from './BlueButton';
+import { Navigate } from 'react-router-dom';
 
 const RegisterForm = () => {
   const [email, setEmail] = useState('');
@@ -10,6 +11,7 @@ const RegisterForm = () => {
   const [dni_nie, setDni_nie] = useState('');
   const [username, setUsername] = useState('');
   const [done, setDone] = useState('');
+  const [error, setError] = useState('');
 
   const register = async (e) => {
     e.preventDefault();
@@ -33,6 +35,7 @@ const RegisterForm = () => {
       setDone(true);
     } else {
       const error = await res.json();
+      setError(error);
       console.log(error.message);
     }
   };
@@ -41,7 +44,7 @@ const RegisterForm = () => {
     <>
       {!done ? (
         <form onSubmit={register}>
-          <div class='form-elements'>
+          <div className='form-elements'>
             <InputElement
               labelName='Email'
               type='mail'
@@ -94,12 +97,16 @@ const RegisterForm = () => {
             />
           </div>
           <BlueButton name='registrarse' />
+          {error ?? <div className='error-msg'>{error}</div>}
         </form>
       ) : (
-        <div className='confirmation'>
-          Te has registrado correctamente. Revisa tu correo para validar tu
-          cuenta
-        </div>
+        <>
+          <div className='confirmation'>
+            Te has registrado correctamente. Revisa tu correo para validar tu
+            cuenta
+            {/* Ejecutamos un TimeOut para volver a la página de inicio */}
+          </div>
+        </>
       )}
     </>
   );

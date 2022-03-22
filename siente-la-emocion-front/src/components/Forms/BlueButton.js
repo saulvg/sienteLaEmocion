@@ -1,4 +1,4 @@
-import '../components/Forms.css';
+import './Forms.css';
 
 const BlueButton = ({ name, onClick }) => {
   return (
