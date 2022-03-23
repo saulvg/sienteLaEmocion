@@ -3,19 +3,17 @@ import './header.css';
 import { Link } from 'react-router-dom';
 import useUser from '../../hooks/useUser';
 import ModalContactanos from '../modalContactanos/ModalContactanos';
+import ModalSearch from '../ModalSearch/ModalSearch';
 
 const MainMenu = () => {
   const { token, user } = useUser();
 
   return (
     <nav>
-      <Link to='/search' id='search'>
+      {/* <Link to='/search' id='search'>
         Buscador
-      </Link>{' '}
-      {/* <Link to='/contact' id='contact'>
-        Contactanos
       </Link> */}
-      <ModalContactanos />{' '}
+      <ModalSearch /> <ModalContactanos />{' '}
       {token ? (
         <>
           {user ? <p>Hola {user.username}</p> : null}
@@ -57,6 +55,9 @@ const Header = ({ to, button, body }) => {
       <header>
         <div className='headerTop'>
           <Logo />
+          <div id='modal-bg-Search'>
+            <div id='modal-fg-Search'></div>
+          </div>
           <menu>
             <MainMenu />
           </menu>

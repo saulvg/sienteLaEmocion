@@ -16,6 +16,26 @@ header .headerTop img {
   margin: 1.5rem 0 1.5rem 3rem;
   border-radius: 25%;
 }
+/* ............................... */
+#modal-bg-Search {
+  display: none;
+  z-index: 100;
+}
+#modal-bg-Search.show {
+  display: flex;
+  padding-top: 2rem;
+}
+#modal-fg-Search > input {
+  height: 3rem;
+  width: 20rem;
+  border-radius: 25px;
+  padding: 1rem;
+  background-color: rgba(245, 245, 245, 0.418);
+  border: 1px solid black;
+  box-shadow: 1px 1px 1px rgba(245, 245, 245, 0.418);
+  outline: 0;
+}
+/* ................... */
 header .headerTop menu {
   height: max-content;
   margin: 1.5rem;

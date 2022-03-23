@@ -153,10 +153,7 @@ app.post('/experiences/:idExperience/booking', isAuth, newBooking);
 app.get('/experiences', getExperienceList);
 
 //Subir fotos de las experiencias
-app.post(
-    '/experiences/:idExperience/photos',
-    /* isAdmin ,*/ addExperiencePhotos
-);
+app.post('/experiences/:idExperience/photos', isAdmin, addExperiencePhotos);
 
 //Obtenemos las reviews de una experienca
 app.get('/experiences/:idExperience/reviews', experienceExist, getReviews);
