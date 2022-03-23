@@ -1,15 +1,17 @@
 //Hook para coger datos de las actividades
 import { useEffect, useState } from 'react';
 
-const useFilterActivities = (term) => {
-  const [activities, setActivities] = useState([]);
+const useActivity = (id) => {
+  const [activity, setActivity] = useState(null);
   const [error, setError] = useState(null);
 
+  //const [book, setBook] = useState([]);
+
   useEffect(() => {
-    const loadActivities = async () => {
+    const loadActivity = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_BACKEND}/search?search=${term}`
+          `${process.env.REACT_APP_BACKEND}/experiences/${id}`
         );
 
         const json = await response.json();
@@ -20,16 +22,17 @@ const useFilterActivities = (term) => {
           return;
         }
 
-        setActivities(json.data.experiences);
+        setActivity(json.data);
+        console.log(json.data);
       } catch (error) {
         setError(error.message);
       }
     };
 
-    loadActivities();
-  }, [term]);
+    loadActivity();
+  }, [id]);
 
-  return { activities, error };
+  return { activity, error };
 };
 
-export default useFilterActivities;
+export default useActivity;

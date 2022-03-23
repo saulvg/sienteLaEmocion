@@ -66,7 +66,7 @@ const search = async (req, res, next) => {
         res.send({
             status: 'ok',
             data: {
-                experiences,
+                experiences: experiences,
             },
         });
     } catch (error) {

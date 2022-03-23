@@ -4,6 +4,11 @@ section.actividad {
   padding: 2rem;
   justify-content: center;
 }
+.headerActiviti {
+  background-color: aqua;
+  display: flex;
+  justify-content: space-around;
+}
 .listaActividades {
   background-color: red;
 }

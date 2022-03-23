@@ -46,13 +46,16 @@ const newEntry = async (req, res, next) => {
         }
         // Obtenemos las propiedades de files.
         // Si no recibimos ninguna foto lanzamos un error.
-        /* if (!(req.files && req.files.photoHeader)) {
+
+        const photoHeader = req.files?.photoHeader;
+
+        if (!photoHeader) {
             const error = new Error('Faltan campos');
             error.httpStatus = 400;
             throw error;
-        } */
+        }
         // Guardamos la foto en el servidor y obtenemos su nombre.
-        /* const photoHeader = await savePhoto(req.files.photoHeader, 1); */
+        const savedPhoto = await savePhoto(req.files.photoHeader, 1);
 
         //Seleccionamos el id de id_company e id_experiences_category con el nombre de las mismas, y si no existiesen las creamos
         //company
@@ -85,6 +88,7 @@ const newEntry = async (req, res, next) => {
             );
         }
 
+        //TODO: optimzar cuando haya tiempo https://github.com/mysqljs/mysql#getting-the-id-of-an-inserted-row
         id_experiences_category = await connection.query(
             `SELECT id FROM experiences_category WHERE name = ?`,
             [categoryName]
@@ -101,7 +105,7 @@ const newEntry = async (req, res, next) => {
                 id_company[0][0].id,
                 id_experiences_category[0][0].id,
                 capacity,
-                /* photoHeader, */
+                //savedPhoto,
                 price,
                 date,
                 city,

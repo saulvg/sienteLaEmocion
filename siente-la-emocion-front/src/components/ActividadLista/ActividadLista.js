@@ -31,7 +31,15 @@ const ActividadLista = () => {
                 />
 
                 <div className='socialNetwortEmpty'>
-                  <h3>{activity.company}</h3>
+                  <div className='headerActiviti'>
+                    <h3>{activity.company}</h3>
+                    <Link
+                      to={`/editExperiences/${activity.id}`}
+                      className='edit'
+                    >
+                      Lapiz
+                    </Link>
+                  </div>
                   {/* <SocialNetwork href={'https://www.instagram.com/'} children={'instagram'}/>
                 <SocialNetwork href={'https:/es-es.facebook.com/'} children={'facebook'}/> */}
 
