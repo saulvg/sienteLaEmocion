@@ -8,6 +8,7 @@ import useActivities from '../../hooks/useActivities';
 import { Modal } from '../../components/Modal/Modal';
 import Review from '../../components/Review/Review';
 import Header from '../../components/Header/Header';
+import DeleteAccount from '../../components/Forms/DeleteAccount';
 
 const ProfilePage = () => {
   const { activities } = useActivities();
@@ -27,14 +28,14 @@ const ProfilePage = () => {
               return (
                 <>
                   <p>{activity.id}</p>
-                  <Modal
-                    className='modal-review'
-                    buttonName='Añadir valoración'
-                    content={<Review />}
-                  />
                 </>
               );
             })}
+            <Modal
+              className='modal-review'
+              buttonName='Añadir valoración'
+              content={<Review />}
+            />
             <div>aaaaa</div>
           </section>
         </div>

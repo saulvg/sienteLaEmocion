@@ -2,27 +2,18 @@ import './header.css';
 
 import { Link } from 'react-router-dom';
 import useUser from '../../hooks/useUser';
-<<<<<<< HEAD
-import ModalContactanos from '../ModalContactanos/ModalContactanos';
-=======
 import ModalContactanos from '../modalContactanos/ModalContactanos';
 import ModalSearch from '../ModalSearch/ModalSearch';
 
->>>>>>> refs/remotes/origin/main
 const MainMenu = () => {
   const { token, user, setToken } = useUser();
 
   return (
     <nav>
-<<<<<<< HEAD
-      <Link to='/search'>Buscador</Link> <Link to='/contact'>Contactanos</Link>
-      <ModalContactanos />
-=======
       {/* <Link to='/search' id='search'>
         Buscador
       </Link> */}
       <ModalSearch /> <ModalContactanos />{' '}
->>>>>>> refs/remotes/origin/main
       {token ? (
         <>
           {user ? <p>Hola {user.username}</p> : null}

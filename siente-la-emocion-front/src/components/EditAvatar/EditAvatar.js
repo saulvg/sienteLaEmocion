@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import useUser from '../../hooks/useUser';
-import BlueButton from '../../pages/BlueButton';
+import BlueButton from '../Forms/BlueButton';
+
 import './EditAvatar.css';
 
 export const EditAvatar = ({ imageInputRef }) => {

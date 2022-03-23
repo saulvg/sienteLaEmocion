@@ -1,6 +1,7 @@
 import './bodyExperience.css';
 import useActivity from '../../../hooks/useActivity';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+
 const BodyActivitis = () => {
   const { idExperience } = useParams();
   const { activity, error } = useActivity(idExperience);
@@ -34,7 +35,12 @@ const BodyActivitis = () => {
           <p>{activity.text_3}</p>
         </section>
         <section className='valoraciones textHeaderRigth'>
-          <h3>Valoraciones</h3>
+          {
+            <Link to={`/experiences/${idExperience}/reviews`}>
+              <h3>Valoraciones</h3>
+              {console.log(activity.id)}
+            </Link>
+          }
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry.

@@ -20,12 +20,10 @@ import HomePage from './pages/homePage/HomePage';
 import Register from './pages/Forms/Register';
 import Experience from './pages/Experience';
 import ListaActividades from './pages/listaActividades/ListaActividades';
-import LoginPage from './pages/LoginPage';
 import { Company } from './components/inputssaul';
 //import { Perfil } from './pages/perfil/GUARDARPERFIL';
 import { ReviewPage } from './pages/reviewPage/reviewPage';
 import ProfilePage from './pages/perfil/ProfilePage';
-import ModalContactanos from './components/ModalContactanos/ModalContactanos';
 import PruebaBooking from './pages/pruebaBooking/PruebaBooking';
 import Login from './pages/Forms/Login';
 import DeleteAccount from './components/Forms/DeleteAccount';
@@ -35,6 +33,9 @@ import EditPassword from './components/Forms/EditPassword';
 //import UpExperiencesPhotos from './pages/upExperiencesPhotos/UpExperiencesPhotos';
 import EditExperience from './pages/editExperience/EditExperience';
 import Buscador from './pages/buscador/Buscador';
+import LoginPage from './pages/Forms/Login';
+import ModalContactanos from './components/modalContactanos/ModalContactanos';
+import { OtherProfile } from './pages/perfil/OtherProfile';
 /* import ModalContactanos from './components/modalContactanos/ModalContactanos';
  */
 //Componente para envolver a toda la aplicacion con un contexto para que este dispnible en toda la aplicacion de manera implicita el valro de token
@@ -69,7 +70,10 @@ function App() {
             <Route path='/experience' element={<div>{<Experience />}</div>} />
 
             <Route path='/experiences/:idExperience' element={<Experience />} />
-
+            <Route
+              path='/experiences/:idExperience/reviews'
+              element={<ReviewPage />}
+            />
             <Route
               path='/listaActividades'
               element={
@@ -80,11 +84,11 @@ function App() {
             />
             <Route
               path='/perfil/:idUser'
-              element={<div>{<ProfilePage />}</div>}
+              element={<div>{<OtherProfile />}</div>}
             />
 
             <Route path='/experiences' element={<Company />} />
-            <Route path='/comentarios' element={<ReviewPage />} />
+
             <Route
               path='/editExperiences/:idExperience'
               element={<EditExperience />}
@@ -101,3 +105,4 @@ function App() {
 }
 
 export default App;
+/*<Route path='/comentarios' element={<ReviewPage />} />*/

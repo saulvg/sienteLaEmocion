@@ -1,7 +1,7 @@
 .modal {
   position: fixed;
   z-index: 999;
-  top: 0;
+  top: -5rem;
   left: 0;
   background: rgba(0, 0, 0, 0.75);
   width: 100%;
@@ -13,7 +13,7 @@
 .modal.open {
   display: flex;
 }
-.modal-container {
+/*.modal-container {
   position: relative;
   background-color: #f4d4c1;
   min-height: 15rem;
@@ -25,23 +25,8 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-}
-.modal-close {
-  position: absolute;
-  top: 8rem;
-  left: 80px;
-  border: none;
-}
+}*/
+
 .modal-close:hover {
   cursor: pointer;
-}
-.circle-back {
-  width: 15rem;
-  height: 15rem;
-  background-color: crimson;
-  position: absolute;
-  border-radius: 50rem;
-  top: -120px;
-  right: 25rem;
-  z-index: 1;
 }

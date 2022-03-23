@@ -1,10 +1,10 @@
 import { useContext, useState } from 'react';
-import { InputElement } from '../../components/InputElement';
-import BlueButton from '../../pages/BlueButton';
 import { Navigate } from 'react-router-dom';
 import useUser from '../../hooks/useUser';
 import decode from 'jwt-decode';
 import useActivities from '../../hooks/useActivities';
+import { InputElement } from '../Forms/InputElement';
+import BlueButton from '../Forms/BlueButton';
 
 const Review = ({ id }) => {
   const [vote, setVote] = useState('');

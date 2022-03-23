@@ -8,11 +8,14 @@ import useUserProfile from '../../hooks/useUserProfile';
 import useUser from '../../hooks/useUser';
 import Header from '../../components/Header/Header';
 import { Link } from 'react-router-dom';
+import decode from 'jwt-decode';
 
 // COMPONENTE PARA REVIEW
 export const Review = ({ avatar, userName }) => {
   //const { users } = useUserProfile();
-  //const { user } = useUser();
+  const { user, token } = useUser();
+  const decoded = decode(token);
+
   const { reviews, error } = useReviews();
   if (error) return <div>Hubo un error: {error}</div>;
   console.log(reviews);
@@ -30,13 +33,23 @@ export const Review = ({ avatar, userName }) => {
                       src={'http://localhost:4000/uploads/' + review.avatar}
                       alt='aaaaa'
                     />
-                    <Link
-                      to={
-                        `/perfil/${review.id_user}` /* ID DE USUARIO PARA IR A SU PERFIL*/
-                      }
-                    >
-                      {review.username}
-                    </Link>{' '}
+                    <div>
+                      {user.id === review.id_user ? (
+                        <Link
+                          to={`/perfil` /* ID DE USUARIO PARA IR A SU PERFIL*/}
+                        >
+                          {review.username}
+                        </Link>
+                      ) : (
+                        <Link
+                          to={
+                            `/perfil/${review.id_user}` /* ID DE USUARIO PARA IR A SU PERFIL*/
+                          }
+                        >
+                          {review.username}
+                        </Link>
+                      )}
+                    </div>
                   </div>
                   <div className='texto'>
                     <p>VALORACIÓN:{review.review}</p>

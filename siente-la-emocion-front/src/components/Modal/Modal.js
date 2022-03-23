@@ -1,6 +1,6 @@
 import { ModalComponent } from './modalComponent';
 import { useModal } from '../../hooks/useModal';
-import './modal.css';
+//import './modal.css';
 
 // MODAL REUTILIZABLE
 // Aquí se importa modal component, y se le da estados de abierto o cerrado

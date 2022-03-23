@@ -10,7 +10,7 @@ const useUserProfile = (id) => {
     const loadUsers = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_BACKEND}/users/` // siempre se ve el perfil del usuario 3. poner id
+          `${process.env.REACT_APP_BACKEND}/users/3` // siempre se ve el perfil del usuario 3. poner id
         );
 
         const json = await response.json();

@@ -1,10 +1,13 @@
 //Hook para coger datos de las actividades
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+import useActivity from './useActivity';
 
 const useReviews = (id) => {
-  const [category, setCategory] = useState([]);
+  const { idExperience } = useParams();
+  const { activity, error } = useActivity(idExperience);
   const [reviews, setReviews] = useState([]);
-  const [error, setError] = useState(null);
+  const [err, setError] = useState(null);
   //id experience
   //const [book, setBook] = useState([]);
 
@@ -12,7 +15,7 @@ const useReviews = (id) => {
     const loadReviews = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_BACKEND}/experiences/2/reviews`
+          `${process.env.REACT_APP_BACKEND}/experiences/${idExperience}/reviews`
         );
 
         const json = await response.json();
@@ -22,8 +25,8 @@ const useReviews = (id) => {
           return;
         }
 
+        console.log(json.data);
         setReviews(json.data.review);
-        setCategory(json.data.category_name);
       } catch (error) {
         setError(error.message);
       }
@@ -41,7 +44,7 @@ const useReviews = (id) => {
     loadReviews();
   }, [id]);
 
-  return { reviews, category, error };
+  return { reviews, activity, error };
 };
 
 export default useReviews;

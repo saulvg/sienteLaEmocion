@@ -1,6 +1,4 @@
 import { useContext, useState } from 'react';
-import { InputElement, TextareaElement } from '../InputElement';
-import BlueButton from '../../pages/BlueButton';
 import { Navigate } from 'react-router-dom';
 import useUser from '../../hooks/useUser';
 import decode from 'jwt-decode';
@@ -9,6 +7,10 @@ import Header from '../Header/Header';
 
 import './EditProfile.css';
 import { EditAvatar } from '../EditAvatar/EditAvatar';
+import { InputElement } from '../Forms/InputElement';
+import BlueButton from '../Forms/BlueButton';
+import DeleteAccount from '../Forms/DeleteAccount';
+import { Modal } from '../Modal/Modal';
 //username, newEmail, phone, biography, postalCode, dni_nie
 const EditProfile = ({ oldName, oldEmail }) => {
   const [username, setUsername] = useState('');
@@ -119,7 +121,7 @@ const EditProfile = ({ oldName, oldEmail }) => {
                       setDni_nie(e.target.value);
                     }}
                   />
-                  <TextareaElement
+                  <textarea
                     labelName='Sobre mí'
                     cols='60'
                     rows='80px'
@@ -148,7 +150,7 @@ const EditProfile = ({ oldName, oldEmail }) => {
         </div>
       ) : (
         <>
-          <div>FALTA PERFIL DE OTRO USUARIO</div>
+          <div className='otro'>FALTA PERFIL DE OTRO USUARIO</div>
         </>
       )}
     </>
