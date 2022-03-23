@@ -6,14 +6,14 @@ import { Link } from 'react-router-dom';
  * ## Hooks ##
  * ###########
  */
-import useActivities from '../../hooks/useActivities';
+import useFilterActivities from '../../hooks/useFilterActivities';
 
 import CircleHomePage from '../CircleHomePage/CircleHomePage';
 import SocialNetwork from '../SocialNetwork/SocialNetwork';
 import Experience from '../../pages/Experience';
 
-const ActividadLista = () => {
-  const { activities, error } = useActivities();
+const ActividadFiltradaLista = () => {
+  const { activities, error } = useFilterActivities();
 
   if (error) return <div>Hubo un error: {error}</div>;
 
@@ -31,15 +31,7 @@ const ActividadLista = () => {
                 />
 
                 <div className='socialNetwortEmpty'>
-                  <div className='headerActiviti'>
-                    <h3>{activity.company}</h3>
-                    <Link
-                      to={`/editExperiences/${activity.id}`}
-                      className='edit'
-                    >
-                      Lapiz
-                    </Link>
-                  </div>
+                  <h3>{activity.company}</h3>
                   {/* <SocialNetwork href={'https://www.instagram.com/'} children={'instagram'}/>
                 <SocialNetwork href={'https:/es-es.facebook.com/'} children={'facebook'}/> */}
 
@@ -56,7 +48,7 @@ const ActividadLista = () => {
       })}
     </ul>
   ) : (
-    <div>No hay actividades</div>
+    <div>No hay actividades con esos parametros de busqueda</div>
   );
 };
-export default ActividadLista;
+export default ActividadFiltradaLista;

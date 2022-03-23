@@ -22,10 +22,21 @@ import Experience from './pages/Experience';
 import ListaActividades from './pages/listaActividades/ListaActividades';
 import LoginPage from './pages/LoginPage';
 import { Company } from './components/inputssaul';
-import { Perfil } from './pages/perfil/GUARDARPERFIL';
+//import { Perfil } from './pages/perfil/GUARDARPERFIL';
 import { ReviewPage } from './pages/reviewPage/reviewPage';
 import ProfilePage from './pages/perfil/ProfilePage';
 import ModalContactanos from './components/ModalContactanos/ModalContactanos';
+import PruebaBooking from './pages/pruebaBooking/PruebaBooking';
+import Login from './pages/Forms/Login';
+import DeleteAccount from './components/Forms/DeleteAccount';
+import BookingExperience from './pages/BookingExperience/BookingExperience';
+import EditPassword from './components/Forms/EditPassword';
+
+//import UpExperiencesPhotos from './pages/upExperiencesPhotos/UpExperiencesPhotos';
+import EditExperience from './pages/editExperience/EditExperience';
+import Buscador from './pages/buscador/Buscador';
+/* import ModalContactanos from './components/modalContactanos/ModalContactanos';
+ */
 //Componente para envolver a toda la aplicacion con un contexto para que este dispnible en toda la aplicacion de manera implicita el valro de token
 export const AuthContext = React.createContext();
 
@@ -48,9 +59,11 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<HomePage />} />
-            <Route path='/search' element={<div>{/* <Buscador /> */}</div>} />
             <Route path='/contact' element={<ModalContactanos />} />
             <Route path='/perfil' element={<div>{<ProfilePage />}</div>} />
+            <Route path='/search' element={<Buscador />} />
+            {/* <Route path='/contact' element={<ModalContactanos />} /> */}
+            <Route path='/perfil' element={<div>{/* <Perfil /> */}</div>} />
             <Route path='/register' element={<div>{<Register />}</div>} />
             <Route path='/login' element={<div>{<LoginPage />}</div>} />
             <Route path='/experience' element={<div>{<Experience />}</div>} />
@@ -72,6 +85,10 @@ function App() {
 
             <Route path='/experiences' element={<Company />} />
             <Route path='/comentarios' element={<ReviewPage />} />
+            <Route
+              path='/editExperiences/:idExperience'
+              element={<EditExperience />}
+            />
           </Routes>
           <Footer />
           <div id='modal-bg'>

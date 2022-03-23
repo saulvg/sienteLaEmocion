@@ -1,5 +1,8 @@
+import './companyForm.css';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useUser from '../../hooks/useUser';
+
 import {
   Company,
   ExperiencesCategory,
@@ -19,7 +22,7 @@ import decode from 'jwt-decode';
 
 function CompanyForm() {
   const { token } = useUser();
-  const [faltanCampos, setFaltanCampos] = useState(false) 
+  const navigate = useNavigate();
 
   const [companyName, setCompanyName] = useState('');
   const [companyCategory, setCompanyCategory] = useState('');
@@ -78,26 +81,33 @@ function CompanyForm() {
         }
       );
       const body = await response.json();
-      console.log(body);
+      console.log('body', body);
+      console.log('datacompany', dataCompany);
+      const loading = () => {
+        const redirect = document.querySelector('#companyForm');
+        redirect.innerHTML = `
+          <div id='entryCreated' >
+            <div>${body.message}</div>
+            <div class='loading'></div>
+          </div>
+        `;
+      };
 
+      const redirect = () => navigate('/');
       if (response.ok) {
-        console.log('hasta aqui funciona');
-        setFaltanCampos(false)
+        loading();
+        setTimeout(redirect, 5000);
       } else {
         console.error('Error', body.message);
-        alert(`${body.message} o rellendaos incorrectamente`);
-        setFaltanCampos(true)
-        /* const prueba = document.querySelector('#companyForm')
-        prueba.innerHTML=`
-        <div>hola no funciono</div>        
-        ` */
       }
     } catch (error) {
       console.error('catch', error);
     }
   };
-  if(!token) { return <div>No te has registrado</div>}
-
+  if (!token) {
+    return <div>No te has registrado</div>;
+  }
+  /* ................................................ */
   const decoded = decode(token);
 
   return (
@@ -105,11 +115,9 @@ function CompanyForm() {
       {decoded.id === 1 && decoded.role === 'admin' ? (
         <div id='companyForm'>
           <form onSubmit={sendForm}>
-          {console.log('faltan campos', faltanCampos)}
             <Company
               companyName={companyName}
               setCompanyName={setCompanyName}
-              faltanCampos={faltanCampos}
             />
             <ExperiencesCategory
               companyCategory={companyCategory}
