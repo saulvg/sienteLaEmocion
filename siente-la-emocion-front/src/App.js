@@ -42,7 +42,8 @@ import { OtherProfile } from './pages/perfil/OtherProfile';
 export const AuthContext = React.createContext();
 
 const AuthProvider = (props) => {
-  //importamos e utilizamos el customHook de 'useLocalStorage' pasandole como parametro el nombre que queramos que tenga esto qua vamos a guardar en el local storage
+  //importamos e utilizamos el customHook de 'useLocalStorage' pasandole como parametro el nombre que queramos que tenga esto qua
+  //vamos a guardar en el local storage
   const [user, setUser] = useState(null);
   const [token, setToken] = useLocalStorage('token');
 
@@ -61,7 +62,7 @@ function App() {
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/contact' element={<ModalContactanos />} />
-            <Route path='/perfil' element={<div>{<ProfilePage />}</div>} />
+            {/*<Route path='/perfil' element={<div>{<ProfilePage />}</div>} />*/}
             <Route path='/search' element={<Buscador />} />
             {/* <Route path='/contact' element={<ModalContactanos />} /> */}
             <Route path='/perfil' element={<div>{/* <Perfil /> */}</div>} />
@@ -84,7 +85,7 @@ function App() {
             />
             <Route
               path='/perfil/:idUser'
-              element={<div>{<OtherProfile />}</div>}
+              element={<div>{<ProfilePage />}</div>}
             />
 
             <Route path='/experiences' element={<Company />} />

@@ -1,0 +1,29 @@
+.background-color-3 {
+  background-color: #fff9f5;
+  position: absolute;
+  border-radius: 50%;
+  padding-left: 4rem;
+  width: 200rem;
+  height: 550rem;
+  left: -72rem;
+  bottom: 31rem;
+  padding-bottom: 9.6rem;
+  z-index: 0;
+}
+.background-color-4 {
+  background-color: #f4d4c1;
+  position: absolute;
+  border-radius: 50%;
+  padding-left: 4rem;
+  width: 200rem;
+  height: 550rem;
+  left: 0rem;
+  top: -10rem;
+  padding-bottom: 9.6rem;
+  z-index: -1;
+}
+.my-experiences .modal-review {
+  position: absolute;
+  z-index: -5;
+  top: 40rem;
+}

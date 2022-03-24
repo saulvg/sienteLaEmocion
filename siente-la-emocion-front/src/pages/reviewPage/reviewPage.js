@@ -13,8 +13,8 @@ import decode from 'jwt-decode';
 // COMPONENTE PARA REVIEW
 export const Review = ({ avatar, userName }) => {
   //const { users } = useUserProfile();
-  const { user, token } = useUser();
-  const decoded = decode(token);
+  // const { user, token } = useUser();
+  // const decoded = decode(token);
 
   const { reviews, error } = useReviews();
   if (error) return <div>Hubo un error: {error}</div>;
@@ -34,21 +34,13 @@ export const Review = ({ avatar, userName }) => {
                       alt='aaaaa'
                     />
                     <div>
-                      {user.id === review.id_user ? (
-                        <Link
-                          to={`/perfil` /* ID DE USUARIO PARA IR A SU PERFIL*/}
-                        >
-                          {review.username}
-                        </Link>
-                      ) : (
-                        <Link
-                          to={
-                            `/perfil/${review.id_user}` /* ID DE USUARIO PARA IR A SU PERFIL*/
-                          }
-                        >
-                          {review.username}
-                        </Link>
-                      )}
+                      <Link
+                        to={
+                          `/perfil/${review.id_user}` /* ID DE USUARIO PARA IR A SU PERFIL*/
+                        }
+                      >
+                        {review.username}
+                      </Link>
                     </div>
                   </div>
                   <div className='texto'>

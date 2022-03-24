@@ -25,6 +25,7 @@ export const InputElement = ({
     </label>
   );
 };
+
 export const TextareaElement = ({
   type,
   labelName,
@@ -38,8 +39,8 @@ export const TextareaElement = ({
     <label className='label-element'>
       {labelName}
       <textarea
-        className='input-element'
-        cols='60'
+        className='textarea-element'
+        cols='100'
         rows='10'
         type={type}
         name={name}

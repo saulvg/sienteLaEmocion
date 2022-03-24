@@ -9,6 +9,7 @@ import { Modal } from '../../components/Modal/Modal';
 import Review from '../../components/Review/Review';
 import Header from '../../components/Header/Header';
 import DeleteAccount from '../../components/Forms/DeleteAccount';
+import UserExperiences from '../../components/UserExperiences/UserExperiences';
 
 const ProfilePage = () => {
   const { activities } = useActivities();
@@ -23,20 +24,8 @@ const ProfilePage = () => {
             <EditProfile />
           </section>
           <section className='u-experiences'>
-            <h2>Mis experiencias </h2>
-            {activities.map((activity) => {
-              return (
-                <>
-                  <p>{activity.id}</p>
-                </>
-              );
-            })}
-            <Modal
-              className='modal-review'
-              buttonName='Añadir valoración'
-              content={<Review />}
-            />
-            <div>aaaaa</div>
+            <h2 className='title-experiences'>Mis experiencias </h2>
+            <UserExperiences />
           </section>
         </div>
       </body>

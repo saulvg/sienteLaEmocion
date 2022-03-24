@@ -1,13 +1,15 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import useUser from '../../hooks/useUser';
 import BlueButton from '../Forms/BlueButton';
 
 import './EditAvatar.css';
 
-export const EditAvatar = ({ imageInputRef }) => {
+export const EditAvatar = () => {
   //const { users } = useUserProfile();
   //const { user } = useUser();
   const { user, error, token } = useUser();
+  const [avatar, setAvatar] = useState();
+  const imageInputRef = useRef();
   const [newAvatar, setNewAvatar] = useState(user.avatar);
   const [didUserUpdateAvatar, setDidUserUpdateAvatar] = useState(false);
   if (error) return <div>Hubo un error: {error}</div>;
@@ -22,6 +24,7 @@ export const EditAvatar = ({ imageInputRef }) => {
           headers: {
             Authorization: token,
           },
+          body: new FormData(avatar),
         }
       );
 
@@ -53,7 +56,7 @@ export const EditAvatar = ({ imageInputRef }) => {
         accept='image/*'
         onChange={(e) => {
           setDidUserUpdateAvatar(true);
-          setNewAvatar(URL.createObjectURL(e.target.files[0]));
+          setAvatar(URL.createObjectURL(e.target.files[0]));
         }}
       />
     </div>

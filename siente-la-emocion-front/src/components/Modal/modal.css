@@ -12,6 +12,7 @@
   background-color: grey;
   justify-content: center;
   margin-top: 1rem;
+  z-index: 3;
 }
 
 .button-modal:hover {

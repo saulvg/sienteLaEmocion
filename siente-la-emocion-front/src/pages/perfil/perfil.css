@@ -30,6 +30,13 @@
   overflow: hidden;
 }
 
+.title-experiences {
+  padding: 3rem;
+  z-index: 1;
+}
+.modal-review {
+  z-index: 3;
+}
 /*
 .user .avatar {
   background-color: darkred;
@@ -78,6 +85,9 @@
   margin-left: 2rem;
   box-shadow: #946b543b 6px 8px;
   width: 55rem;
+  overflow: hidden;
+  position: relative;
+  border-radius: 7px;
 }
 /*
 .buttonHeader {
@@ -108,5 +118,14 @@ label:hover ~ label {
 
 .stars input:checked ~ label {
   color: orange;
+}
+*/
+/*
+@media (max-width: 450px) {
+  .sections {
+    display: flex;
+    flex-direction: column;
+    columns: 1;
+  }
 }
 */

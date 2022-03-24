@@ -1,5 +1,5 @@
 import './modalComponent.css';
-//import './modal.css';
+import './modal.css';
 
 // Este componente es sólo para abrir el modal y cerrarlo, exportándolo a Modal.js
 export const ModalComponent = ({ children, isOpen, closeModal }) => {

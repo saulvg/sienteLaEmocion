@@ -1,6 +1,7 @@
 import { ModalComponent } from './modalComponent';
 import { useModal } from '../../hooks/useModal';
-//import './modal.css';
+import './modal.css';
+import BlueButton from '../Forms/BlueButton';
 
 // MODAL REUTILIZABLE
 // Aquí se importa modal component, y se le da estados de abierto o cerrado
@@ -13,9 +14,9 @@ export const Modal = ({ buttonName, titleModal, content }) => {
   return (
     <>
       <div>
-        <button className='button-modal' onClick={openModal}>
+        <BlueButton className='button-modal' onClick={openModal}>
           {buttonName}
-        </button>
+        </BlueButton>
         <ModalComponent
           isOpen={isOpen}
           closeModal={closeModal}

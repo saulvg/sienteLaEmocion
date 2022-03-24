@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 import useUser from '../../hooks/useUser';
 import ModalContactanos from '../modalContactanos/ModalContactanos';
 import ModalSearch from '../ModalSearch/ModalSearch';
+import decode from 'jwt-decode';
 
 const MainMenu = () => {
   const { token, user, setToken } = useUser();
-
+  const decoded = decode(token);
   return (
     <nav>
       {/* <Link to='/search' id='search'>
@@ -17,7 +18,7 @@ const MainMenu = () => {
       {token ? (
         <>
           {user ? <p>Hola {user.username}</p> : null}
-          <Link to='/perfil'>Perfil</Link>
+          <Link to={`/perfil/${decoded.id}`}>Perfil</Link>
 
           <p
             onClick={() => {
