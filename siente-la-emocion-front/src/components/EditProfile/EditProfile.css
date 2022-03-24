@@ -1,0 +1,39 @@
+.background-color-1 {
+  background-color: #fff9f5;
+  position: absolute;
+  border-radius: 50%;
+  padding-left: 4rem;
+  width: 200rem;
+  height: 550rem;
+  left: -72rem;
+  top: 7rem;
+  padding-bottom: 9.6rem;
+}
+.background-color-2 {
+  background-color: #f4d4c1;
+  position: absolute;
+  border-radius: 50%;
+  padding-left: 4rem;
+  width: 200rem;
+  height: 550rem;
+  left: 0rem;
+  top: 10rem;
+  padding-bottom: 9.6rem;
+}
+.form-profile {
+  position: absolute;
+  left: 80rem;
+} /*
+.avatar-profile {
+  border-radius: 50%;
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+  left: 112rem;
+  top: -13rem;
+  background-color: rgb(133, 90, 90);
+}
+*/
+.otro {
+  background-color: black;
+}

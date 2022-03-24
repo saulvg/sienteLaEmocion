@@ -1,10 +1,9 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../App';
 import decode from 'jwt-decode';
 
 const useUser = () => {
   const { token, setToken, user, setUser } = useContext(AuthContext);
-
   useEffect(() => {
     const loadUser = async () => {
       try {

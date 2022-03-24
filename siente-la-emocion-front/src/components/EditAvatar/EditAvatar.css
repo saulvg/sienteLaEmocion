@@ -1,0 +1,10 @@
+.user-avatar {
+  border-radius: 50%;
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+  left: 112rem;
+  top: -13rem;
+
+  background-color: rgb(133, 90, 90);
+}

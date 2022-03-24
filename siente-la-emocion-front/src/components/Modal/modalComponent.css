@@ -1,0 +1,31 @@
+.modal {
+  position: fixed;
+  z-index: 999;
+  top: -5rem;
+  left: 0;
+  background: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  min-height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.modal.open {
+  display: flex;
+}
+.modal-container {
+  position: relative;
+  background-color: #f4d4c1;
+  min-height: 15rem;
+  min-width: 30rem;
+  overflow-y: auto;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.modal-close:hover {
+  cursor: pointer;
+}

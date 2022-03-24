@@ -1,0 +1,131 @@
+* {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.container-profile {
+  background-size: cover;
+  width: 120rem;
+  background-image: url('../../../public/img/palmera.jpg');
+}
+.sections {
+  display: flex;
+  columns: 2;
+  min-height: 1200px;
+  margin-bottom: 5rem;
+}
+
+/* APARTADO DATOS-PERFIL */
+
+.u-profile {
+  background-color: #ffffff;
+  margin-top: 4rem;
+  margin-left: 3rem;
+  box-shadow: #946b543b 6px 8px;
+  width: 55rem;
+  border-radius: 7px;
+  position: relative;
+  overflow: hidden;
+}
+
+.title-experiences {
+  padding: 3rem;
+  z-index: 1;
+}
+.modal-review {
+  z-index: 3;
+}
+/*
+.user .avatar {
+  background-color: darkred;
+  margin-left: 3rem;
+  margin-top: 3rem;
+  height: fit-content;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.212) 5px 5px;
+}
+.botones {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 25rem;
+  top: -12rem;
+  gap: 3rem;
+  width: fit-content;
+}
+.datos {
+  display: flex;
+  flex-direction: column;
+  width: 50rem;
+  height: fit-content;
+  margin-bottom: 5rem;
+}
+.datos li {
+  margin: 2px;
+  padding: 1rem;
+  border-bottom: 1px solid black;
+  background-color: rgba(192, 190, 190, 0.322);
+}
+
+/* MODAL EDITAR-GUARDAR...*/
+/*
+.modalEdit {
+  background-color: #f4d4c1;
+  border-radius: 5px;
+}
+/*APARTADO MIS EXPERIENCIAS */
+
+.u-experiences {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin-top: 4rem;
+  margin-left: 2rem;
+  box-shadow: #946b543b 6px 8px;
+  width: 55rem;
+  overflow: hidden;
+  position: relative;
+  border-radius: 7px;
+}
+/*
+.buttonHeader {
+  display: none;
+}
+header .cabecera .headerPerfil {
+  height: 40rem;
+}*/
+/*
+.stars label {
+  color: grey;
+}
+.stars input {
+  display: none;
+}
+
+
+
+.stars {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+.stars label:hover,
+label:hover ~ label {
+  color: orange;
+}
+
+.stars input:checked ~ label {
+  color: orange;
+}
+*/
+/*
+@media (max-width: 450px) {
+  .sections {
+    display: flex;
+    flex-direction: column;
+    columns: 1;
+  }
+}
+*/

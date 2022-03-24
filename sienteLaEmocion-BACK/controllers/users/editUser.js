@@ -22,11 +22,11 @@ const editUser = async (req, res, next) => {
 
         //si no hay ningun campo a editar lanzamso un error
         //Contra intuitivo, si no se guarda nada que mas da?
-        if (!username && !newEmail && !phone && !biography && !postalCode) {
+        /*if (!username && !newEmail && !phone && !biography && !postalCode) {
             const error = new Error('Faltan campos');
             error.http = 400;
             throw error;
-        }
+        }*/
 
         //obtener los campos a editar del usuario
         const [users] = await connection.query(
@@ -218,11 +218,10 @@ const editUser = async (req, res, next) => {
         res.send({
             status: 'ok',
             message: `Cambios actualizados con exito. Si has cambiado tu email no olvides activar de nuevo tu usuario en el mensaje que te hemos enviado a tu correo electronico`,
-            data: {
-                /* esxperiemces: experiences, */
-                /* prueba: experiences.map((idExp) => idExp.id_experiences), */
-                userExperiences,
-            },
+            userExperiences,
+            /* 
+                esxperiemces: experiences, */
+            /* prueba: experiences.map((idExp) => idExp.id_experiences), */
         });
     } catch (error) {
         next(error);

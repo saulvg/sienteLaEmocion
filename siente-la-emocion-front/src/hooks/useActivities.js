@@ -24,6 +24,7 @@ const useActivities = () => {
 
         setActivities(json.data.experiences);
         console.log(activities);
+        console.log(json.data.experiences);
       } catch (error) {
         setError(error.message);
       }

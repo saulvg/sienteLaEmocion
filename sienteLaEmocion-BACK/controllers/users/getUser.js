@@ -28,9 +28,13 @@ const getUser = async (req, res, next) => {
 
         // Si el usuario que realiza la request es el dueño de dicho usuario o si es
         // un administrador vamos a agregar información extra.
+
         if (users[0].id === idReqUser || req.userAuth.role === 'admin') {
             userInfo.email = users[0].email;
             userInfo.role = users[0].role;
+            userInfo.phone = users[0].phone;
+            userInfo.dni_nie = users[0].dni_nie;
+            userInfo.postalCode = users[0].postalCode;
             userInfo.createdAt = users[0].createdAt;
         }
 
