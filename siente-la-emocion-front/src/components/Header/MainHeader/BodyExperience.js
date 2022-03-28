@@ -8,7 +8,7 @@ const BodyActivitis = () => {
 
   return activity ? (
     <div className='headerBody bodyExperience'>
-      <h1>Barranquismo</h1>
+      <h1>{activity.experiences_category}</h1>
       <div>
         <section className='queIncluye textHeaderLeft'>
           <h3>Que incluye?</h3>

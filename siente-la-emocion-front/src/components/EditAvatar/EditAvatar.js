@@ -2,21 +2,23 @@ import { useRef, useState } from 'react';
 import useUser from '../../hooks/useUser';
 import BlueButton from '../Forms/BlueButton';
 
-import './EditAvatar.css';
+//import './EditAvatar.css';
 
 export const EditAvatar = () => {
   //const { users } = useUserProfile();
   //const { user } = useUser();
   const { user, error, token } = useUser();
-  const [avatar, setAvatar] = useState();
+  const [avatar, setAvatar] = useState('');
   const imageInputRef = useRef();
   const [newAvatar, setNewAvatar] = useState(user.avatar);
   const [didUserUpdateAvatar, setDidUserUpdateAvatar] = useState(false);
   if (error) return <div>Hubo un error: {error}</div>;
   const edit = async (e) => {
-    e.preventDefault();
+    //e.preventDefault();
 
     try {
+      let file = new FormData();
+      file.append('image', avatar);
       const res = await fetch(
         `${process.env.REACT_APP_BACKEND}/users/edit/avatar`,
         {
@@ -24,9 +26,11 @@ export const EditAvatar = () => {
           headers: {
             Authorization: token,
           },
-          body: new FormData(avatar),
+          body: file[0],
         }
       );
+
+      //....
 
       const body = await res.json();
       if (res.ok) {
@@ -40,26 +44,26 @@ export const EditAvatar = () => {
   };
 
   return user && token ? (
-    <div className='editable_avatar'>
-      <label htmlFor='avatar'>
+    <form onSubmit={edit} className='forem-profile'>
+      <label htmlFor='avaar'>
+        {' '}
+        hola
         <img
-          className='user-avatar'
+          className='user-avaar'
           src={'http://localhost:4000/uploads/' + user.avatar}
           alt='aaaaa'
         />
       </label>
       <input
-        ref={imageInputRef}
         type='file'
-        id='avatar'
+        id='avaar'
         style={{ display: 'none' }}
         accept='image/*'
         onChange={(e) => {
-          setDidUserUpdateAvatar(true);
-          setAvatar(URL.createObjectURL(e.target.files[0]));
+          setAvatar(e.target.files[0]);
         }}
       />
-    </div>
+    </form>
   ) : (
     <div></div>
   );
@@ -71,4 +75,14 @@ export default EditAvatar;
   className='user-avatar'
   src={'http://localhost:4000/uploads/' + user.avatar}
   alt='aaaaa'
+<input
+          id='xCompany'
+          type={'file'}
+          onChange={valueCompanyPhotoHeader}
+          required
+        />
+      </label>
+
+
+
 />;*/

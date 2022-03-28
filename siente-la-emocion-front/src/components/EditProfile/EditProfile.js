@@ -54,10 +54,8 @@ const EditProfile = ({ oldName, oldEmail }) => {
       console.error(error);
     }
   };
-  //decoded.id === idUser
-  const decoded = decode(token);
-  console.log('soy decoded ', decoded.id);
-  console.log('params', idUser);
+  //const usuario = Number(idUser);
+  //const decoded = decode(token);
   return (
     <>
       {token && user ? (
@@ -135,13 +133,15 @@ const EditProfile = ({ oldName, oldEmail }) => {
                   }}
                 />
               </div>
-              <BlueButton onClick={(e) => e.stopPropagation()}>
+              <BlueButton
+                name='Guardar cambios'
+                onClick={(e) => e.stopPropagation()}
+              >
                 <div
                   name='entry_votes_input'
                   onChange={(e, newValue) => {
                     e.stopPropagation();
                     edit(newValue);
-                    console.log(username);
                   }}
                 />
               </BlueButton>

@@ -60,6 +60,7 @@ const {
     getExperienceList,
     addExperiencePhotos,
     deleteExperience,
+    getUserExperiences,
     getReviews,
 } = require('./controllers/experiences');
 
@@ -160,6 +161,7 @@ app.post('/experiences/:idExperience/photos', isAdmin, addExperiencePhotos);
 //Obtenemos las reviews de una experienca
 app.get('/experiences/:idExperience/reviews', experienceExist, getReviews);
 
+app.get('/bookings', isAuth, userExists, getUserExperiences);
 //Eliminar una experiencia
 app.delete('/experiences/:idExperience', isAdmin, deleteExperience);
 

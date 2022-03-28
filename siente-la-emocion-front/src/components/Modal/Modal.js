@@ -14,9 +14,11 @@ export const Modal = ({ buttonName, titleModal, content }) => {
   return (
     <>
       <div>
-        <BlueButton className='button-modal' onClick={openModal}>
-          {buttonName}
-        </BlueButton>
+        <BlueButton
+          name={buttonName}
+          className='button-modal'
+          onClick={openModal}
+        ></BlueButton>
         <ModalComponent
           isOpen={isOpen}
           closeModal={closeModal}

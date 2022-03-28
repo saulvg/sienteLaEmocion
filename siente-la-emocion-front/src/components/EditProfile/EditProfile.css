@@ -23,17 +23,33 @@
 .form-profile {
   position: absolute;
   left: 80rem;
-} /*
+  top: -3rem;
+}
 .avatar-profile {
   border-radius: 50%;
   position: absolute;
   width: 10rem;
   height: 10rem;
-  left: 112rem;
-  top: -13rem;
+  left: 108rem;
+  top: -14rem;
   background-color: rgb(133, 90, 90);
 }
-*/
+
 .otro {
   background-color: black;
+}
+.input-element {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: lighter;
+  margin-top: 5px;
+}
+.label-element {
+  font-weight: normal;
+  margin-bottom: 35px;
+}
+.textarea-element {
+  width: 35rem;
+}
+.blue-button {
+  font-weight: normal;
 }

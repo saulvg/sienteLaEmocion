@@ -1,6 +1,6 @@
 * {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
+  font-family: 'Montserrat', 'Trebuchet MS', 'Lucida Sans Unicode',
+    'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -8,13 +8,16 @@
 .container-profile {
   background-size: cover;
   width: 120rem;
+  min-height: 150rem;
   background-image: url('../../../public/img/palmera.jpg');
 }
 .sections {
+  padding: 5rem;
   display: flex;
   columns: 2;
-  min-height: 1200px;
+  min-height: 1600px;
   margin-bottom: 5rem;
+  gap: 5rem;
 }
 
 /* APARTADO DATOS-PERFIL */
@@ -24,16 +27,29 @@
   margin-top: 4rem;
   margin-left: 3rem;
   box-shadow: #946b543b 6px 8px;
-  width: 55rem;
+  width: 50rem;
   border-radius: 7px;
   position: relative;
   overflow: hidden;
 }
 
 .title-experiences {
-  padding: 3rem;
+  padding: 1rem;
+  margin: 2rem;
   z-index: 1;
+  font-weight: normal;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
 }
+.title-profile {
+  padding: 1rem;
+  margin: 2rem;
+  z-index: 1;
+  font-weight: normal;
+  border-top: 2px solid #f4d4c1;
+  border-bottom: 2px solid #f4d4c1;
+}
+
 .modal-review {
   z-index: 3;
 }
@@ -84,7 +100,7 @@
   margin-top: 4rem;
   margin-left: 2rem;
   box-shadow: #946b543b 6px 8px;
-  width: 55rem;
+  width: 50rem;
   overflow: hidden;
   position: relative;
   border-radius: 7px;
@@ -129,3 +145,54 @@ label:hover ~ label {
   }
 }
 */
+.section {
+  display: flex;
+  justify-content: center;
+}
+.us-profile {
+  min-width: 70rem;
+  min-height: 70rem;
+  background-color: white;
+  margin: 5rem;
+  position: relative;
+  border-radius: 7px;
+  box-shadow: rgba(0, 0, 0, 0.274) 5px 5px;
+  overflow: hidden;
+}
+.avatar-profile-u {
+  border-radius: 50%;
+  position: absolute;
+  left: 37rem;
+  top: -7rem;
+  width: 10rem;
+  height: 10rem;
+
+  background-color: rgb(133, 90, 90);
+}
+.background-color-5 {
+  background-color: #fff9f5;
+  position: absolute;
+  border-radius: 50%;
+  padding-left: 4rem;
+  width: 200rem;
+  height: 550rem;
+  left: -65rem;
+  top: 7rem;
+  padding-bottom: 9.6rem;
+}
+.background-color-6 {
+  background-color: #f4d4c1;
+  position: absolute;
+  border-radius: 50%;
+  padding-left: 4rem;
+  width: 200rem;
+  height: 550rem;
+  left: 0rem;
+  top: 10rem;
+  padding-bottom: 9.6rem;
+}
+.o-profile {
+  position: absolute;
+  left: 80rem;
+  top: -3rem;
+}
