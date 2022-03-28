@@ -7,11 +7,16 @@ import { AuthContext } from '../../App';
 const LoginPage = () => {
   const { token, error } = useContext(AuthContext);
   return (
-    <>
-      {!token ? (
-        <div className='align-modal'>
-          <div className='modal-box'>
-            <div className='flex'>
+    <div className='align-modal'>
+      <div className='modal-box'>
+        <div className='form-titles'>
+          <div className='circle-content'>
+            <button
+              className='flex'
+              onClick={() => {
+                window.history.go(-1);
+              }}
+            >
               <svg
                 className='back-svg'
                 fill='none'
@@ -27,25 +32,23 @@ const LoginPage = () => {
                 ></path>
               </svg>
               <p className='goback'>Volver</p>
-            </div>
+            </button>
             <p className='circle-name'>Inicio de sesión</p>
-            <ModalCircle name='Inicio de sesión'></ModalCircle>
-            <div className='modal1'></div>
-            <div className='modal2'>
-              <LoginForm />
-              <div className='circle-background'></div>
-              <p className='login-register'>
-                ¿No tienes cuenta?
-                <Link to='/register'>¡Regístrate!</Link>
-              </p>
-            </div>
-            <Outlet />
           </div>
         </div>
-      ) : (
-        <p>hola</p>
-      )}
-    </>
+        <ModalCircle name='Inicio de sesión'></ModalCircle>
+        <div className='modal1'></div>
+        <div className='modal2'>
+          <LoginForm />
+          <div className='circle-background'></div>
+          <p className='login-register'>
+            ¿No tienes cuenta?
+            <Link to='/register'>¡Regístrate!</Link>
+          </p>
+        </div>
+        <Outlet />
+      </div>
+    </div>
   );
 };
 

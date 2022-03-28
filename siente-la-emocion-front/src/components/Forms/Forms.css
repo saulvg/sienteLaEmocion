@@ -44,7 +44,6 @@
   text-align: center;
   position: relative;
   bottom: 0;
-  height: 55%;
   z-index: 1;
   padding: 20px 0px 40px 0px;
 }
@@ -283,27 +282,33 @@ div > .error-msg {
   }
   .modal-circle {
     width: 100%;
-    position: relative;
-    border-radius: 0;
-    height: 200px;
-    top: 0;
     left: 0;
   }
 
   .modal1 {
-    display: none;
+    background: #f4d4c1;
+    height: 200px;
   }
 
   .form-titles {
     text-align: center;
     justify-content: center;
+    background: #f4d4c1;
+  }
+  .modal-box {
+    background: #f4d4c1;
   }
 
   .circle-name {
     text-align: center;
-    margin: 0;
+    margin: auto;
     padding: 0;
-    position: initial;
+    position: relative;
+    z-index: 1;
+  }
+
+  .circle-content {
+    margin: 20px 10px 40px 10px;
   }
 
   .goback {
