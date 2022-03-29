@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import useUser from '../../hooks/useUser';
 import BlueButton from '../Forms/BlueButton';
 
-//import './EditAvatar.css';
+import './EditAvatar.css';
 
 export const EditAvatar = () => {
   //const { users } = useUserProfile();
@@ -18,7 +18,7 @@ export const EditAvatar = () => {
 
     try {
       let file = new FormData();
-      file.append('image', avatar);
+      file.append('avatar', avatar);
       const res = await fetch(
         `${process.env.REACT_APP_BACKEND}/users/edit/avatar`,
         {
@@ -49,7 +49,7 @@ export const EditAvatar = () => {
         {' '}
         hola
         <img
-          className='user-avaar'
+          className='user-avatar'
           src={'http://localhost:4000/uploads/' + user.avatar}
           alt='aaaaa'
         />

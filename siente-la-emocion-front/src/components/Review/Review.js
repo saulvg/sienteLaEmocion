@@ -67,7 +67,7 @@ const Review = ({ id }) => {
             />
           </div>
 
-          <BlueButton onClick={(e) => e.stopPropagation()}>
+          <BlueButton name='aaaa' onClick={(e) => e.stopPropagation()}>
             <div
               name='entry_votes_input'
               onChange={(e, newValue) => {

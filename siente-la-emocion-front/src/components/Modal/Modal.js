@@ -8,7 +8,7 @@ import BlueButton from '../Forms/BlueButton';
 // usando el hook useModal
 //además de darle nombre a cada apartado del modal para su reutilización: {buttonName} etc
 
-export const Modal = ({ buttonName, titleModal, content }) => {
+export const Modal = ({ className, buttonName, titleModal, content }) => {
   const [isOpen, openModal, closeModal] = useModal(false);
   // useModa
   return (
@@ -16,7 +16,7 @@ export const Modal = ({ buttonName, titleModal, content }) => {
       <div>
         <BlueButton
           name={buttonName}
-          className='button-modal'
+          className={className}
           onClick={openModal}
         ></BlueButton>
         <ModalComponent

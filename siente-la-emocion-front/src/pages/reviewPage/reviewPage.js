@@ -29,27 +29,28 @@ export const Review = ({ avatar, userName }) => {
             <li key={review.id} className='review'>
               <section className='actividad'>
                 <article className='reviw'>
-                  <div className='user'>
+                  <ul className='user'>
                     <img
                       className='avatar'
                       src={'http://localhost:4000/uploads/' + review.avatar}
                       alt='aaaaa'
                     />
                     {token ? (
-                      <div>
+                      <div className='username'>
                         <Modal
+                          className='username-modal'
                           buttonName={review.username}
                           titleModal={review.username}
                           content={review.biography}
                         ></Modal>
                       </div>
                     ) : (
-                      <div>{review.username}</div>
+                      <div className='username'>{review.username}</div>
                     )}
-                  </div>
-                  <div className='texto'>
-                    <p>VALORACIÓN:{review.review}</p>
-                    <p>VOTO: {review.vote}</p>
+                  </ul>
+                  <div className='texto-review'>
+                    <p className='texto'>``{review.review}´´</p>
+                    <p className='voto'>Puntuación: {review.vote}</p>
                   </div>
                 </article>
               </section>
@@ -132,10 +133,11 @@ export const ReviewPage = () => {
         <Header className='' to={'/perfil'} body='Tus comentarios cuentan' />
       </header>
       <body>
-        <h1 className='title-reviews-page'>Tus comentarios cuentan</h1>
         <main className='listaReviews'>
           <section className='reviews'>
-            <h2 className='empresa'>{activity.company}</h2>{' '}
+            <h2 className='empresa'>
+              {activity.experiences_category} en {activity.company}
+            </h2>{' '}
             <Review className='article' />
           </section>
         </main>
