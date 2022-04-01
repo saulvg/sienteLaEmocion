@@ -62,7 +62,14 @@ function App() {
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/contact' element={<ModalContactanos />} />
-            <Route path='/perfil' element={<ProfilePage />} />
+            <Route
+              path='/perfil'
+              element={
+                <div>
+                  <ProfilePage />
+                </div>
+              }
+            />
             <Route path='/search' element={<Buscador />} />
             {/* <Route path='/contact' element={<ModalContactanos />} /> */}
             <Route path='/perfil' element={<div>{/* <Perfil /> */}</div>} />

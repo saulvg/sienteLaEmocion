@@ -132,16 +132,14 @@ export const ReviewPage = () => {
       <header className='cabecera'>
         <Header className='' to={'/perfil'} body='Tus comentarios cuentan' />
       </header>
-      <body>
-        <main className='listaReviews'>
-          <section className='reviews'>
-            <h2 className='empresa'>
-              {activity.experiences_category} en {activity.company}
-            </h2>{' '}
-            <Review className='article' />
-          </section>
-        </main>
-      </body>
+      <main className='listaReviews'>
+        <section className='reviews'>
+          <h2 className='empresa'>
+            {activity.experiences_category} en {activity.company}
+          </h2>{' '}
+          <Review className='article' />
+        </section>
+      </main>
     </>
   ) : (
     <div>joder</div>

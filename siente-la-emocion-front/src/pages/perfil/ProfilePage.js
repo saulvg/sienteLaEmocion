@@ -26,7 +26,7 @@ const ProfilePage = () => {
       <header className='cabecera'>
         <Header className='headerPerfil' to={'/perfil'} body='aaaaa' />
       </header>
-      <body className='container-profile'>
+      <div className='container-profile'>
         <div className='sections'>
           <section className='u-profile'>
             <h2 className='title-profile'>Mi perfil </h2>
@@ -37,7 +37,7 @@ const ProfilePage = () => {
             <UserExperiences />
           </section>
         </div>
-      </body>
+      </div>
     </>
   );
 };
