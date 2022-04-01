@@ -34,8 +34,8 @@ const search = async (req, res, next) => {
                 experiences_category.name AS category,
                 company.name AS company
             FROM experiences
-            LEFT JOIN experiences_category ON (experiences.id = experiences_category.id)
-            LEFT JOIN company ON (experiences.id = company.id)
+            LEFT JOIN experiences_category ON (experiences.id_experiences_category = experiences_category.id)
+            LEFT JOIN company ON (experiences.id_company = company.id)
             WHERE 
                 experiences.city LIKE ? OR
                 experiences.text_1 LIKE ? OR
@@ -58,7 +58,6 @@ const search = async (req, res, next) => {
                     `%${search}%`,
                     `%${search}%`,
                     `%${search}%`,
-                    `%${search}%`,
                 ]
             );
         }
@@ -66,7 +65,7 @@ const search = async (req, res, next) => {
         res.send({
             status: 'ok',
             data: {
-                experiences: experiences,
+                experiences,
             },
         });
     } catch (error) {

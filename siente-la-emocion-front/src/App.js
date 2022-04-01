@@ -20,11 +20,11 @@ import HomePage from './pages/homePage/HomePage';
 import Register from './pages/Forms/Register';
 import Experience from './pages/Experience';
 import ListaActividades from './pages/listaActividades/ListaActividades';
-import PruebaBooking from './pages/pruebaBooking/PruebaBooking';
 import Login from './pages/Forms/Login';
 import DeleteAccount from './components/Forms/DeleteAccount';
 import BookingExperience from './pages/BookingExperience/BookingExperience';
 import EditPassword from './components/Forms/EditPassword';
+import ExperiencePhoto from './pages/experiencePhoto/ExperiencePhoto';
 
 //import UpExperiencesPhotos from './pages/upExperiencesPhotos/UpExperiencesPhotos';
 import EditExperience from './pages/editExperience/EditExperience';
@@ -72,6 +72,10 @@ function App() {
               element={<div>{<Experience />}</div>}
             />
             <Route
+              path='/experiences/:idExperience/photos'
+              element={<ExperiencePhoto />}
+            />
+            <Route
               path='/listaActividades'
               element={
                 <div>
@@ -80,10 +84,7 @@ function App() {
               }
             />
             <Route path='/experiences' element={<CompanyForm />} />
-            <Route
-              path='/experiences/:idExperience/booking'
-              element={<PruebaBooking />}
-            />
+
             <Route
               path='/editExperiences/:idExperience'
               element={<EditExperience />}

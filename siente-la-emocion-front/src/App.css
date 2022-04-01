@@ -31,6 +31,17 @@
   flex-direction: column;
   gap: 1rem;
 }
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #d6d6d662;
+  border-radius: 25px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cccccc;
+  border-radius: 25px;
+}
 
 /* .App-logo {
   height: 40vmin;

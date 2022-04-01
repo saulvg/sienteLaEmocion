@@ -45,6 +45,9 @@ const isAdmin = async (req, res, next) => {
             throw error;
         }
 
+        //si todo a ido bien inyectamos en el objeto 'request la info del token (id, role') en forma de una nueva propiedad admin
+        req.admin = tokenInfo;
+
         // Pasamos el control a la siguiente función.
         next();
     } catch (error) {

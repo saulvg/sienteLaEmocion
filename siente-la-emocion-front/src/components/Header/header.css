@@ -17,7 +17,7 @@ header .headerTop img {
   border-radius: 25%;
 }
 /* ............................... */
-#modal-bg-Search {
+/* #modal-bg-Search {
   display: none;
   z-index: 100;
 }
@@ -34,6 +34,30 @@ header .headerTop img {
   border: 1px solid black;
   box-shadow: 1px 1px 1px rgba(245, 245, 245, 0.418);
   outline: 0;
+} */
+
+#inputSearch {
+  width: max-content;
+  height: max-content;
+  position: absolute;
+  top: 7rem;
+  right: 2%;
+
+  margin: auto;
+}
+#inputSearch > input {
+  background-color: blue;
+  height: 3rem;
+  width: 20rem;
+  border-radius: 25px;
+  padding: 1rem;
+  background-color: rgba(245, 245, 245, 0.418);
+  border: 1px solid black;
+  box-shadow: 1px 1px 1px rgba(245, 245, 245, 0.418);
+  outline: 0;
+}
+#inputSearch > button {
+  margin-left: -2rem;
 }
 /* ................... */
 header .headerTop menu {

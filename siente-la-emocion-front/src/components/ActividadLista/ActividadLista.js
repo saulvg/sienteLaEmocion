@@ -6,14 +6,27 @@ import { Link } from 'react-router-dom';
  * ## Hooks ##
  * ###########
  */
-import useActivities from '../../hooks/useActivities';
+import useUser from '../../hooks/useUser';
+
+/* import useActivities from '../../hooks/useActivities'; */
 
 import CircleHomePage from '../CircleHomePage/CircleHomePage';
 import SocialNetwork from '../SocialNetwork/SocialNetwork';
-import Experience from '../../pages/Experience';
+/* import Experience from '../../pages/Experience'; */
+import decode from 'jwt-decode';
 
-const ActividadLista = () => {
-  const { activities, error } = useActivities();
+const ActividadLista = ({ activities, error }) => {
+  const { token } = useUser();
+
+  let decod = 'normal';
+
+  try {
+    if (token) {
+      decod = decode(token);
+    }
+  } catch (error) {
+    console.error(error);
+  }
 
   if (error) return <div>Hubo un error: {error}</div>;
 
@@ -30,18 +43,37 @@ const ActividadLista = () => {
                   children={activity.category}
                 />
 
-                <div className='socialNetwortEmpty'>
+                <div className='descriptionActivity'>
                   <div className='headerActiviti'>
                     <h3>{activity.company}</h3>
-                    <Link
-                      to={`/editExperiences/${activity.id}`}
-                      className='edit'
-                    >
-                      Lapiz
-                    </Link>
+                    {decod.role === 'admin' ? (
+                      <Link
+                        to={`/editExperiences/${activity.id}`}
+                        className='edit'
+                      >
+                        <div className='lapiz'>Lapiz</div>
+                      </Link>
+                    ) : (
+                      /* ..................... */
+                      <div className='socialNetworks'>
+                        <SocialNetwork
+                          id={'miniInstagram'}
+                          href={
+                            activity.instagram || 'https://www.instagram.com/'
+                          }
+                          children={'instagram'}
+                          className={'mini'}
+                        />
+                        <SocialNetwork
+                          id={'miniFacebook'}
+                          href={'https:/es-es.facebook.com/'}
+                          children={'facebook'}
+                          className={'mini'}
+                        />
+                      </div>
+                      /* ............. */
+                    )}
                   </div>
-                  {/* <SocialNetwork href={'https://www.instagram.com/'} children={'instagram'}/>
-                <SocialNetwork href={'https:/es-es.facebook.com/'} children={'facebook'}/> */}
 
                   <p>{activity.text_1 || 'Sin descripción'}</p>
                   <div className='actividadF_P'>
@@ -56,7 +88,11 @@ const ActividadLista = () => {
       })}
     </ul>
   ) : (
-    <div>No hay actividades</div>
+    <div id='nExperiences'>
+      <div id='nExperiencesStyle'>
+        ❗ No se han encontrado experiencias con estos parametros de busqueda
+      </div>
+    </div>
   );
 };
 export default ActividadLista;

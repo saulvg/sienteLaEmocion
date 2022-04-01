@@ -23,11 +23,9 @@ const useActivities = () => {
         }
 
         setActivities(json.data.experiences);
-        console.log(activities);
       } catch (error) {
         setError(error.message);
       }
-      console.log(activities);
     };
 
     /*    const loadBook = async () => {

@@ -10,6 +10,8 @@ import './listaActividades.css';
  * ## Hooks ##
  * ###########
  */
+//import useFilterActivities from '../../hooks/useFilterActivities';
+import useActivities from '../../hooks/useActivities';
 
 /**
  * ################
@@ -29,6 +31,8 @@ import BodyExperiencesList from '../../components/Header/MainHeader/BodyExperien
  */
 
 const ListaActividades = () => {
+  const { activities, error } = useActivities();
+
   return (
     <div id='listaActividades'>
       <Header
@@ -37,7 +41,7 @@ const ListaActividades = () => {
         body={<BodyExperiencesList />}
       />
       <span>Filtrar por ↧</span>
-      <ActividadLista />
+      <ActividadLista activities={activities} error={error} />
     </div>
   );
 };
