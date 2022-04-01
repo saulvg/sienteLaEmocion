@@ -56,7 +56,7 @@ const HomePage = () => {
             }
           />
         </section>
-        <section id='socialNetworks' className='interseccion'>
+        <section id='socialNetworks' className='socialMedia'>
           <SocialNetwork
             id={'instagram'}
             href={'https://www.instagram.com/'}

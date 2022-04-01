@@ -14,6 +14,18 @@
   justify-content: center;
   align-items: center;
   padding: 30px 10px;
+  min-height: 350px;
+}
+
+.socialMedia {
+  background-color: var(--interseccionColor);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-around;
+  align-items: center;
+  padding: 30px 10px;
+  min-height: 350px;
 }
 
 #we {
@@ -95,5 +107,22 @@
 @media (max-width: 500px) {
   .textHPage {
     padding: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .textHPage {
+    padding: 0;
+  }
+
+  .socialMedia {
+    min-height: 0;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 964px) {
+  #deQueVaEsto {
+    justify-content: center;
   }
 }

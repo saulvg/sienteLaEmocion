@@ -1,9 +1,6 @@
 /* TÍTULO PÁGINA REVIEWS */
 
 /* CONTENEDOR DE LAS REVIEWS */
-* {
-  max-width: 120rem;
-}
 
 .reviews:first-of-type {
   margin-top: 0rem;

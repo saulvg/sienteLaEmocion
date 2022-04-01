@@ -98,9 +98,21 @@ header .headerButton button:hover {
   margin-right: 50px;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 720px) {
   header .headerBody {
     font-size: 20px;
+    margin: auto;
+    padding: 0 10px;
+  }
+
+  header .headerBody > h1 {
+    text-align: center;
+  }
+}
+
+@media (max-width: 500px) {
+  header .headerBody {
+    font-size: 16px;
     margin: auto;
     padding: 0 10px;
   }
