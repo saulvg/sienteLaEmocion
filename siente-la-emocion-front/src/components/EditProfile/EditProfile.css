@@ -26,7 +26,7 @@
   top: -3rem;
 }
 
-.input-element {
+/* .input-element {
   font-family: 'Montserrat', sans-serif;
   font-weight: lighter;
   margin-top: 5px;
@@ -34,13 +34,11 @@
 .label-element {
   font-weight: normal;
   margin-bottom: 35px;
-}
+} */
 .textarea-element {
   width: 35rem;
 }
-.blue-button {
-  font-weight: normal;
-}
+
 .password {
   position: absolute;
   right: 40rem;
