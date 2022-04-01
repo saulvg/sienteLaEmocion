@@ -4,34 +4,80 @@ import { Link } from 'react-router-dom';
 import useUser from '../../hooks/useUser';
 import ModalContactanos from '../modalContactanos/ModalContactanos';
 import ModalSearch from '../ModalSearch/ModalSearch';
-import decode from 'jwt-decode';
+import { useEffect, useState } from 'react';
 
 const MainMenu = () => {
-  const { token, user, setToken } = useUser();
+  const { token, user } = useUser();
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [toggleMenu, setToggleMenu] = useState(false);
+
+  useEffect(() => {
+    const changeWidth = () => {
+      setScreenWidth(window.innerWidth);
+      console.log('cambiando');
+    };
+
+    window.addEventListener('resize', changeWidth);
+  }, []);
+
+  /*   useEffect(() => {
+    const changeWidth = () => {
+      setScreenWidth(window.innerWidth);
+      console.log('eliminando');
+    };
+    return () => {
+      window.removeEventListener('resize', changeWidth);
+    };
+  }, []); */
 
   return (
-    <nav>
-      <Link to='/search'>Buscador</Link> <Link to='/contact'>Contactanos</Link>
-      <ModalContactanos />
-      {token ? (
-        <>
-          {user ? <p>Hola {user.username}</p> : null}
-          <Link to='/perfil'>Perfil</Link>
-
-          <p
-            onClick={() => {
-              setToken('');
-            }}
-          >
-            <Link to='/'>Cerrar sesión</Link>
-          </p>
-        </>
+    <>
+      {toggleMenu || screenWidth > 600 ? (
+        <menu>
+          <nav>
+            {/* <Link to='/search' id='search'>
+        Buscador
+      </Link> */}
+            <ModalSearch />
+            <ModalContactanos />{' '}
+            {token ? (
+              <>
+                {user ? <p>Hola {user.username}</p> : null}
+                <Link to='/perfil' id='myself' className='nav-element'>
+                  Perfil
+                </Link>
+              </>
+            ) : (
+              <Link to='/login' id='login' className='nav-element'>
+                Unete
+              </Link>
+            )}
+          </nav>
+        </menu>
       ) : (
-        <Link to='/login' id='login'>
-          Unete
-        </Link>
+        <button
+          className='toggle-button'
+          onClick={() => {
+            setToggleMenu(true);
+          }}
+        >
+          <svg
+            class='toggle-menu'
+            fill='none'
+            stroke='currentColor'
+            viewBox='0 0 24 24'
+            xmlns='http://www.w3.org/2000/svg'
+          >
+            <path
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='2'
+              d='M4 6h16M4 12h16M4 18h16'
+            ></path>
+          </svg>
+        </button>
       )}
-    </nav>
+    </>
   );
 };
 
@@ -58,14 +104,12 @@ const Header = ({ to, button, body }) => {
   return (
     <>
       <header>
-        <div className='headerTop'>
+        <div className='headerTop {header-responsive}'>
           <Logo />
           <div id='modal-bg-Search'>
             <div id='modal-fg-Search'></div>
           </div>
-          <menu>
-            <MainMenu />
-          </menu>
+          <MainMenu />
         </div>
         {body}
         <div className='headerButton'>

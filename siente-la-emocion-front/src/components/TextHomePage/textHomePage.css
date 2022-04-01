@@ -16,3 +16,14 @@ div .textHomePag p {
   font-family: 'Montserrat', sans-serif;
   padding-bottom: 2rem;
 }
+
+@media (max-width: 500px) {
+  div .textHomePag {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .textHomePag h2 {
+    text-align: center;
+  }
+}

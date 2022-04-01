@@ -4,3 +4,9 @@ header .bodyHeaderHomePage {
 header .headerBody p {
   text-align: end;
 }
+
+@media (max-width: 500px) {
+  header .headerBody p {
+    text-align: center;
+  }
+}
