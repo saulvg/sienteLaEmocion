@@ -3,9 +3,9 @@
   position: absolute;
   border-radius: 50%;
   padding-left: 4rem;
-  width: 200rem;
-  height: 550rem;
-  left: -72rem;
+  width: 400rem;
+  height: 400rem;
+  left: -40rem;
   top: 7rem;
   padding-bottom: 9.6rem;
 }
@@ -14,26 +14,34 @@
   position: absolute;
   border-radius: 50%;
   padding-left: 4rem;
-  width: 200rem;
-  height: 550rem;
+  width: 400rem;
+  height: 400rem;
   left: 0rem;
   top: 10rem;
   padding-bottom: 9.6rem;
 }
 .form-profile {
   position: absolute;
-  left: 80rem;
-} /*
-.avatar-profile {
-  border-radius: 50%;
-  position: absolute;
-  width: 10rem;
-  height: 10rem;
-  left: 112rem;
-  top: -13rem;
-  background-color: rgb(133, 90, 90);
+  left: 50rem;
+  top: -3rem;
 }
-*/
-.otro {
-  background-color: black;
+
+.input-element {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: lighter;
+  margin-top: 5px;
+}
+.label-element {
+  font-weight: normal;
+  margin-bottom: 35px;
+}
+.textarea-element {
+  width: 35rem;
+}
+.blue-button {
+  font-weight: normal;
+}
+.password {
+  position: absolute;
+  right: 40rem;
 }

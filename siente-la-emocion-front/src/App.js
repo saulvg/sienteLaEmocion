@@ -35,7 +35,7 @@ import EditExperience from './pages/editExperience/EditExperience';
 import Buscador from './pages/buscador/Buscador';
 import LoginPage from './pages/Forms/Login';
 import ModalContactanos from './components/modalContactanos/ModalContactanos';
-import { OtherProfile } from './pages/perfil/OtherProfile';
+import Review from './components/Review/Review';
 /* import ModalContactanos from './components/modalContactanos/ModalContactanos';
  */
 //Componente para envolver a toda la aplicacion con un contexto para que este dispnible en toda la aplicacion de manera implicita el valro de token
@@ -62,7 +62,7 @@ function App() {
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/contact' element={<ModalContactanos />} />
-            {/*<Route path='/perfil' element={<div>{<ProfilePage />}</div>} />*/}
+            <Route path='/perfil' element={<ProfilePage />} />
             <Route path='/search' element={<Buscador />} />
             {/* <Route path='/contact' element={<ModalContactanos />} /> */}
             <Route path='/perfil' element={<div>{/* <Perfil /> */}</div>} />
@@ -76,16 +76,16 @@ function App() {
               element={<ReviewPage />}
             />
             <Route
+              path='/experiences/:idExperience/votes'
+              element={<Review />}
+            />
+            <Route
               path='/listaActividades'
               element={
                 <div>
                   <ListaActividades />
                 </div>
               }
-            />
-            <Route
-              path='/perfil/:idUser'
-              element={<div>{<ProfilePage />}</div>}
             />
 
             <Route path='/experiences' element={<Company />} />
@@ -107,3 +107,8 @@ function App() {
 
 export default App;
 /*<Route path='/comentarios' element={<ReviewPage />} />*/
+/* <Route
+              path='/perfil/:idUser'
+              element={<div>{<ProfilePage />}</div>}
+            />
+*/

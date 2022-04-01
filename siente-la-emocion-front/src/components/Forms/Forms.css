@@ -112,8 +112,6 @@
   color: #ffffff;
   border: 0;
   cursor: pointer;
-  position: relative;
-  z-index: 3;
 }
 .blue-button:hover {
   background-color: rgba(127, 205, 250, 0.79);

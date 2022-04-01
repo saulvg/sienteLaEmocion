@@ -67,6 +67,7 @@ const getReviews = async (req, res, next) => {
         votes.id_user,
         users.username AS username, 
 users.avatar AS avatar,
+users.biography AS biography,
         id_experiences,
         votes.review,
         votes.vote

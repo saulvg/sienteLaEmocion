@@ -1,19 +1,21 @@
 import React from 'react';
-import Route from 'react-router';
+import Route, { useParams } from 'react-router';
 //import useAvatar, { Avatar } from '../../components/Avatar/Avatar';
 import useReviews from '../../hooks/useReviews';
 import './review.css';
+import useCompanies from '../../hooks/useCompanies';
 //import { Perfil } from '../perfil/GUARDARPERFIL';
 import useUserProfile from '../../hooks/useUserProfile';
 import useUser from '../../hooks/useUser';
 import Header from '../../components/Header/Header';
 import { Link } from 'react-router-dom';
 import decode from 'jwt-decode';
-
+import { Modal } from '../../components/Modal/Modal';
+import useActivity from '../../hooks/useActivity';
 // COMPONENTE PARA REVIEW
 export const Review = ({ avatar, userName }) => {
   //const { users } = useUserProfile();
-  // const { user, token } = useUser();
+  const { user, token } = useUser();
   // const decoded = decode(token);
 
   const { reviews, error } = useReviews();
@@ -24,28 +26,31 @@ export const Review = ({ avatar, userName }) => {
       <ul>
         {reviews.map((review) => {
           return (
-            <li key={review.id}>
+            <li key={review.id} className='review'>
               <section className='actividad'>
-                <article className='review'>
-                  <div className='user'>
+                <article className='reviw'>
+                  <ul className='user'>
                     <img
                       className='avatar'
                       src={'http://localhost:4000/uploads/' + review.avatar}
                       alt='aaaaa'
                     />
-                    <div>
-                      <Link
-                        to={
-                          `/perfil/${review.id_user}` /* ID DE USUARIO PARA IR A SU PERFIL*/
-                        }
-                      >
-                        {review.username}
-                      </Link>
-                    </div>
-                  </div>
-                  <div className='texto'>
-                    <p>VALORACIÓN:{review.review}</p>
-                    <p>VOTO: {review.vote}</p>
+                    {token ? (
+                      <div className='username'>
+                        <Modal
+                          className='username-modal'
+                          buttonName={review.username}
+                          titleModal={review.username}
+                          content={review.biography}
+                        ></Modal>
+                      </div>
+                    ) : (
+                      <div className='username'>{review.username}</div>
+                    )}
+                  </ul>
+                  <div className='texto-review'>
+                    <p className='texto'>``{review.review}´´</p>
+                    <p className='voto'>Puntuación: {review.vote}</p>
                   </div>
                 </article>
               </section>
@@ -117,24 +122,29 @@ id INT PRIMARY KEY AUTO_INCREMENT,
             //FOREIGN KEY (id_experiences) REFERENCES experiences(id) ON DELETE CASCADE */
 
 export const ReviewPage = () => {
-  return (
+  const { idExperience } = useParams();
+  const { company, error } = useCompanies();
+  const { activity } = useActivity(idExperience);
+  //console.log('QUE EXPERIENCIA ES:', idExperience);
+
+  return activity ? (
     <>
       <header className='cabecera'>
-        <Header className='headerPerfil' to={'/perfil'} body='aaaaa' />
+        <Header className='' to={'/perfil'} body='Tus comentarios cuentan' />
       </header>
       <body>
-        <h1 className='tituloReview'>Tus comentarios cuentan</h1>
         <main className='listaReviews'>
           <section className='reviews'>
-            <h2 className='empresa'>{/*experiences_category.name*/}</h2>
-            <article>
-              {' '}
-              <Review className />
-            </article>
+            <h2 className='empresa'>
+              {activity.experiences_category} en {activity.company}
+            </h2>{' '}
+            <Review className='article' />
           </section>
         </main>
       </body>
     </>
+  ) : (
+    <div>joder</div>
   );
 };
 /* <article className='review'>

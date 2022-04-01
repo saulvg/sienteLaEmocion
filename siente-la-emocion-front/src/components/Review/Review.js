@@ -5,17 +5,22 @@ import decode from 'jwt-decode';
 import useActivities from '../../hooks/useActivities';
 import { InputElement } from '../Forms/InputElement';
 import BlueButton from '../Forms/BlueButton';
+import useBookings from '../../hooks/useBookings';
+import { useParams } from 'react-router';
 
 const Review = ({ id }) => {
   const [vote, setVote] = useState('');
   const [review, setReview] = useState('');
   const { token } = useUser();
-  const { activities } = useActivities();
+
+  const { bookings } = useBookings();
+  const { idExperience } = useParams();
+  const { activities } = useActivities(idExperience);
   const reviews = async (e) => {
     e.preventDefault();
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_BACKEND}/experiences/2/votes`,
+        `${process.env.REACT_APP_BACKEND}/experiences/${idExperience}/votes`,
         {
           method: 'POST',
           headers: {
@@ -62,7 +67,7 @@ const Review = ({ id }) => {
             />
           </div>
 
-          <BlueButton onClick={(e) => e.stopPropagation()}>
+          <BlueButton name='aaaa' onClick={(e) => e.stopPropagation()}>
             <div
               name='entry_votes_input'
               onChange={(e, newValue) => {

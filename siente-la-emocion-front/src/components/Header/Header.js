@@ -8,17 +8,15 @@ import decode from 'jwt-decode';
 
 const MainMenu = () => {
   const { token, user, setToken } = useUser();
-  const decoded = decode(token);
+
   return (
     <nav>
-      {/* <Link to='/search' id='search'>
-        Buscador
-      </Link> */}
-      <ModalSearch /> <ModalContactanos />{' '}
+      <Link to='/search'>Buscador</Link> <Link to='/contact'>Contactanos</Link>
+      <ModalContactanos />
       {token ? (
         <>
           {user ? <p>Hola {user.username}</p> : null}
-          <Link to={`/perfil/${decoded.id}`}>Perfil</Link>
+          <Link to='/perfil'>Perfil</Link>
 
           <p
             onClick={() => {
