@@ -297,6 +297,7 @@ div > .error-msg {
   }
   .modal-box {
     background: #f4d4c1;
+    border-radius: 0;
   }
 
   .circle-name {
@@ -314,5 +315,9 @@ div > .error-msg {
   .goback {
     justify-content: center;
     position: initial;
+  }
+
+  .align-modal {
+    margin: 0;
   }
 }

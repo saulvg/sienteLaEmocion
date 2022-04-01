@@ -8,7 +8,7 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
 }
-header .headerTop {
+.headerTop {
   display: flex;
   justify-content: space-between;
 }
@@ -62,7 +62,6 @@ header .headerBody {
   font-size: 32px;
 }
 header .headerBody p {
-  /* text-align: end; */
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   font-weight: bold;
@@ -85,4 +84,48 @@ header .headerButton button {
 header .headerButton button:hover {
   background-color: transparent;
   cursor: pointer;
+}
+
+.toggle-menu {
+  width: 30px;
+  height: 30px;
+}
+
+.toggle-button {
+  background-color: transparent;
+  height: auto;
+  border: 0;
+  margin-right: 50px;
+}
+
+@media (max-width: 500px) {
+  header .headerBody {
+    font-size: 20px;
+    margin: auto;
+    padding: 0 10px;
+  }
+
+  header .headerBody > h1 {
+    text-align: center;
+  }
+}
+@media (max-width: 600px) {
+  header .headerTop menu nav {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+    display: block;
+  }
+
+  .headerTop-responsive {
+    display: block;
+  }
+
+  header .headerTop menu nav:nth-child() {
+    padding: 5px 0;
+  }
+
+  .nav-element {
+    padding: 5px 0;
+  }
 }

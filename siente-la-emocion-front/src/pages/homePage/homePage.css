@@ -8,11 +8,12 @@
 }
 .interseccion {
   background-color: var(--interseccionColor);
-  height: 300px;
   display: flex;
-  gap: 10rem;
+  flex-wrap: wrap;
+  gap: 2rem;
   justify-content: center;
   align-items: center;
+  padding: 30px 10px;
 }
 
 #we {
@@ -45,11 +46,19 @@
   background-position: center;
   padding: 0 4rem;
 }
+
+.background-img {
+  display: flex;
+  height: 650px;
+}
+
 #deQueVaEsto {
   background-image: url('../../../public/img/deQueVaEsto2.jpg');
+
   display: flex;
   justify-content: right;
 }
+
 #nuestrosPrincipios {
   background-image: url('../../../public/img/nuestrosPrincipios2.jpg');
 }
@@ -81,4 +90,10 @@
 .interseccionBlanco {
   height: 200px;
   background-color: var(--interseccionColor);
+}
+
+@media (max-width: 500px) {
+  .textHPage {
+    padding: 0;
+  }
 }
