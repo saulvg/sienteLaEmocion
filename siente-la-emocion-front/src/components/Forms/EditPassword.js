@@ -5,16 +5,14 @@ import { ModalCircle } from './ModalCircle';
 import BlueButton from './BlueButton';
 import { AuthContext } from '../../App';
 import { Navigate } from 'react-router-dom';
-import decode from 'jwt-decode';
 
-const EditPassword = ({ userId }) => {
+const EditPassword = () => {
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [repeatNewPassword, setRepeatNewPassword] = useState('');
   const [doPasswordsMatch, setDoPasswordMatch] = useState(false);
-  const [token, setToken] = useContext(AuthContext);
+  const { token, setToken } = useContext(AuthContext);
   const [done, setDone] = useState(false);
-  const decoded = decode(token);
   useEffect(() => {
     if (newPassword === repeatNewPassword) {
       setDoPasswordMatch(true);
@@ -31,7 +29,7 @@ const EditPassword = ({ userId }) => {
     }
 
     const res = await fetch(
-      `${process.env.REACT_APP_BACKEND}/users/${decoded.id}/password`,
+      `${process.env.REACT_APP_BACKEND}/users/edit/password`,
       {
         method: 'PUT',
         headers: {
@@ -52,16 +50,39 @@ const EditPassword = ({ userId }) => {
     }
   };
 
-  if (!token) {
-    return <Navigate to='/login' />;
-  }
-
   return (
     <>
       (
       <form onSubmit={editPassword}>
         <div className='align-modal'>
-          <div className='password-box'>
+          <div className='modal-box'>
+            <div className='form-titles'>
+              <div className='circle-content'>
+                <button
+                  className='flex'
+                  onClick={() => {
+                    window.history.go(-1);
+                  }}
+                >
+                  <svg
+                    className='back-svg'
+                    fill='none'
+                    stroke='currentColor'
+                    viewBox='0 0 24 24'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <path
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      stroke-width='2'
+                      d='M10 19l-7-7m0 0l7-7m-7 7h18'
+                    ></path>
+                  </svg>
+                  <p className='goback'>Volver</p>
+                </button>
+                <p className='circle-name'>Contraseña</p>
+              </div>
+            </div>
             <ModalCircle />
             <div className='modal1'></div>
             <div className='modal3'>
