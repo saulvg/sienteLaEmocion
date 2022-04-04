@@ -33,27 +33,51 @@ const MainMenu = () => {
   return (
     <>
       {toggleMenu || screenWidth > 600 ? (
-        <menu>
-          <nav>
-            {/* <Link to='/search' id='search'>
+        <div class='responsive-nav'>
+          <menu>
+            <button class='toggle-button1' onClick={() => setToggleMenu(false)}>
+              <svg
+                className='close-nav'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M6 18L18 6M6 6l12 12'
+                ></path>
+              </svg>
+            </button>
+            <nav>
+              {/* <Link to='/search' id='search'>
         Buscador
       </Link> */}
-            <ModalSearch />
-            <ModalContactanos />{' '}
-            {token ? (
-              <>
-                {user ? <p>Hola {user.username}</p> : null}
-                <Link to='/perfil' id='myself' className='nav-element'>
-                  Perfil
+              <ModalSearch />
+              <ModalContactanos />
+              {token ? (
+                <>
+                  {user ? (
+                    <span className='nav-button'>Hola {user.username}</span>
+                  ) : null}
+                  <Link
+                    to='/perfil'
+                    id='myself'
+                    className='nav-element nav-button'
+                  >
+                    Perfil
+                  </Link>
+                </>
+              ) : (
+                <Link to='/login' id='login' className='nav-element'>
+                  Unete
                 </Link>
-              </>
-            ) : (
-              <Link to='/login' id='login' className='nav-element'>
-                Unete
-              </Link>
-            )}
-          </nav>
-        </menu>
+              )}
+            </nav>
+          </menu>
+        </div>
       ) : (
         <button
           className='toggle-button'

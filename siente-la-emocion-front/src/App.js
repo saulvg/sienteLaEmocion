@@ -24,7 +24,6 @@ import { Company } from './components/inputssaul';
 //import { Perfil } from './pages/perfil/GUARDARPERFIL';
 import { ReviewPage } from './pages/reviewPage/reviewPage';
 import ProfilePage from './pages/perfil/ProfilePage';
-import PruebaBooking from './pages/pruebaBooking/PruebaBooking';
 import Login from './pages/Forms/Login';
 import DeleteAccount from './components/Forms/DeleteAccount';
 import BookingExperience from './pages/BookingExperience/BookingExperience';

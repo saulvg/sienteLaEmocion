@@ -1,9 +1,9 @@
 const ModalContactanos = () => {
   return (
     <>
-      <span id='contact' onClick={modal}>
+      <button class='nav-button' id='contact' onClick={modal}>
         Contactanos
-      </span>
+      </button>
     </>
   );
 };

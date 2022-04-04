@@ -10,9 +10,22 @@
   background-size: cover;
   background-position: center;
   opacity: 75%;
+  text-decoration: none;
 }
 
-.route a {
+.route-content {
   text-decoration: none;
   color: white;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .route {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+
+  .route a {
+    font-size: 11px;
+  }
 }

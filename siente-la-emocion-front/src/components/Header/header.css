@@ -109,10 +109,20 @@ header .headerButton button:hover {
   background-color: transparent;
   cursor: pointer;
 }
-
+.close-nav {
+  display: none;
+}
 .toggle-menu {
   width: 30px;
   height: 30px;
+}
+
+.nav-button {
+  display: block;
+  background-color: transparent;
+  border: none;
+  font-size: 14px;
+  padding: 5px 0;
 }
 
 .toggle-button {
@@ -120,6 +130,10 @@ header .headerButton button:hover {
   height: auto;
   border: 0;
   margin-right: 50px;
+}
+
+.toggle-button1 {
+  display: none;
 }
 
 @media (max-width: 720px) {
@@ -151,6 +165,24 @@ header .headerButton button:hover {
     justify-content: flex-start;
     gap: 0;
     display: block;
+    margin-top: 20px;
+  }
+
+  .toggle-button1 {
+    display: block;
+    background-color: transparent;
+    height: auto;
+    border: 0;
+    margin-right: 50px;
+    width: 100%;
+  }
+  .responsive-nav {
+    width: 70%;
+  }
+
+  .nav-button {
+    padding: 5px;
+    font-size: 14px;
   }
 
   .headerTop-responsive {
@@ -162,6 +194,17 @@ header .headerButton button:hover {
   }
 
   .nav-element {
-    padding: 5px 0;
+    padding: 5px;
+  }
+
+  .close-nav {
+    display: block;
+    width: 30px;
+    height: 30px;
+    float: right;
+  }
+
+  header .headerTop menu {
+    border: none;
   }
 }
