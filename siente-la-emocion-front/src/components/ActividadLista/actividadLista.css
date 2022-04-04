@@ -1,16 +1,32 @@
+li a {
+  text-decoration: none;
+  color: black;
+}
 section.actividad {
   display: flex;
   gap: 2rem;
   padding: 2rem;
-  justify-content: center;
+  padding-left: 5rem;
+  /*  justify-content: center; */
+  justify-content: start;
+}
+.actividad .descriptionActivity {
+  width: 65vw;
+  justify-content: space-around;
+  padding: 1rem;
+}
+.descriptionActivity > p {
+  overflow-y: scroll;
+  max-height: 5rem;
 }
 .headerActiviti {
-  background-color: aqua;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .listaActividades {
   background-color: red;
+  padding: 2rem;
+  justify-content: end;
 }
 .actividad > div {
   display: flex;
@@ -21,4 +37,43 @@ section.actividad {
   min-width: 10rem;
   justify-content: space-between;
   padding-top: 1rem;
+}
+
+.lapiz {
+  display: block;
+  background-size: contain;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 0;
+  background-image: url('../../../public/silueta/editar.png');
+}
+
+#nExperiences {
+  display: flex;
+  justify-content: center;
+  margin: 2rem;
+}
+#nExperiencesStyle {
+  border: solid 2px red;
+  border-radius: 20px;
+  padding: 2rem;
+}
+
+.socialNetworks {
+  display: flex;
+  flex-direction: row;
+  padding-right: 2rem;
+  padding-bottom: 1rem;
+  gap: 1rem;
+}
+#miniInstagram {
+  background-image: url('../../../public/silueta/instagram.png');
+  width: 3rem;
+  height: 3rem;
+}
+
+#miniFacebook {
+  background-image: url('../../../public/silueta/facebook.png');
+  width: 3rem;
+  height: 3rem;
 }

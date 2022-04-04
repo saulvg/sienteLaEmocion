@@ -29,6 +29,7 @@ import Login from './pages/Forms/Login';
 import DeleteAccount from './components/Forms/DeleteAccount';
 import BookingExperience from './pages/BookingExperience/BookingExperience';
 import EditPassword from './components/Forms/EditPassword';
+import ExperiencePhoto from './pages/experiencePhoto/ExperiencePhoto';
 
 //import UpExperiencesPhotos from './pages/upExperiencesPhotos/UpExperiencesPhotos';
 import EditExperience from './pages/editExperience/EditExperience';
@@ -87,6 +88,10 @@ function App() {
               element={<Review />}
             />
             <Route
+              path='/experiences/:idExperience/photos'
+              element={<ExperiencePhoto />}
+            />
+            <Route
               path='/listaActividades'
               element={
                 <div>
@@ -94,8 +99,7 @@ function App() {
                 </div>
               }
             />
-
-            <Route path='/experiences' element={<Company />} />
+            <Route path='/experiences' element={<CompanyForm />} />
 
             <Route
               path='/editExperiences/:idExperience'

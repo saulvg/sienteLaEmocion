@@ -2,7 +2,8 @@ import './companyForm.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useUser from '../../hooks/useUser';
-
+import Header from '../../components/Header/Header';
+import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
 import {
   Company,
   ExperiencesCategory,
@@ -17,6 +18,7 @@ import {
   Text4Company,
   Text5Company,
   Text6Company,
+  PhotoHeader,
 } from '../../components/InputsCompanyForm/InputsCompanyForm';
 import decode from 'jwt-decode';
 
@@ -37,7 +39,7 @@ function CompanyForm() {
   const [companyText_4, setCompanyText_4] = useState('');
   const [companyText_5, setCompanyText_5] = useState('');
   const [companyText_6, setCompanyText_6] = useState('');
-  /* const [companyPhotoHeader, setCompanyPhotoHeader] = useState(''); */
+  const [companyPhotoHeader, setCompanyPhotoHeader] = useState('');
 
   //Creamos una funcion manejadora del boton del formulario
   const sendForm = async (event) => {
@@ -60,23 +62,22 @@ function CompanyForm() {
         text_4: companyText_4,
         text_5: companyText_5,
         text_6: companyText_6,
-        /* photoHeader: companyPhotoHeader, */
+        photoHeader: companyPhotoHeader,
       };
 
-      //.....
-      /* let file = new FormData();
-      file.append('image', companyPhotoHeader); */
-      //....
+      const payload = new FormData();
+
+      for (const [key, value] of Object.entries(dataCompany)) {
+        payload.append(key, value);
+      }
 
       const response = await fetch(
         `${process.env.REACT_APP_BACKEND}/experiences`,
         {
           method: 'POST',
-          body: JSON.stringify(dataCompany),
-          /* file, */
+          body: payload,
           headers: {
             Authorization: token,
-            'Content-type': 'application/json',
           },
         }
       );
@@ -93,7 +94,9 @@ function CompanyForm() {
         `;
       };
 
-      const redirect = () => navigate('/');
+      console.log(body.data.id);
+      //como le digo que es la experiencia con id tal...................................
+      const redirect = () => navigate(`/experiences/${body.data.id}/photos`);
       if (response.ok) {
         loading();
         setTimeout(redirect, 5000);
@@ -112,67 +115,88 @@ function CompanyForm() {
 
   return (
     <>
-      {decoded.id === 1 && decoded.role === 'admin' ? (
+      <Header
+        to={''}
+        button={''}
+        body={<BodyHeaderHomePage />}
+        className={'simpleHeader'}
+      />
+      {decoded.role === 'admin' ? (
         <div id='companyForm'>
           <form onSubmit={sendForm}>
             <Company
               companyName={companyName}
               setCompanyName={setCompanyName}
+              placeholder={'Escribe aqui...'}
             />
             <ExperiencesCategory
               companyCategory={companyCategory}
               setCompanyCategory={setCompanyCategory}
+              placeholder={'Escribe aqui...'}
             />
             <CapacityCompany
               companyCapacity={companyCapacity}
               setCompanyCapacity={setCompanyCapacity}
+              placeholder={'Escribe aqui...'}
             />
             <PriceCompany
               companyPrice={companyPrice}
               setCompanyPrice={setCompanyPrice}
+              placeholder={'Escribe aqui...'}
             />
             <DateCompany
               companyDate={companyDate}
               setCompanyDate={setCompanyDate}
+              //placeholder={'DD/MM/AA  hh:mm'}
             />
             <CityCompany
               companyCity={companyCity}
               setCompanyCity={setCompanyCity}
+              placeholder={'Escribe aqui...'}
             />
             <DirectionCompany
               companyDirection={companyDirection}
               setCompanyDirection={setCompanyDirection}
+              placeholder={'Escribe aqui...'}
             />
 
             <Text1Company
               companyText_1={companyText_1}
               setCompanyText_1={setCompanyText_1}
+              placeholder={'Escribe aqui...'}
             />
             <Text2Company
               companyText_2={companyText_2}
               setCompanyText_2={setCompanyText_2}
+              placeholder={'Escribe aqui...'}
             />
             <Text3Company
               companyText_3={companyText_3}
               setCompanyText_3={setCompanyText_3}
+              placeholder={'Escribe aqui...'}
             />
             <Text4Company
               companyText_4={companyText_4}
               setCompanyText_4={setCompanyText_4}
+              placeholder={'Escribe aqui...'}
             />
             <Text5Company
               companyText_5={companyText_5}
               setCompanyText_5={setCompanyText_5}
+              placeholder={'Escribe aqui...'}
             />
             <Text6Company
               companyText_6={companyText_6}
               setCompanyText_6={setCompanyText_6}
+              placeholder={'Escribe aqui...'}
             />
-            {/* <PhotoHeader
-          companyPhotoHeader={companyPhotoHeader}
-          setCompanyPhotoHeader={setCompanyPhotoHeader}
-        /> */}
-            <button type='submit'>Enviar</button>
+            <PhotoHeader
+              companyPhotoHeader={companyPhotoHeader}
+              setCompanyPhotoHeader={setCompanyPhotoHeader}
+            />
+            <div className='buttonForm'>
+              <button type='submit'>Enviar</button>
+            </div>
           </form>
         </div>
       ) : (

@@ -100,11 +100,11 @@ const Logo = () => {
   );
 };
 
-const Header = ({ to, button, body }) => {
+const Header = ({ to, button, body, className }) => {
   return (
     <>
-      <header>
-        <div className='headerTop {header-responsive}'>
+      <header className={className}>
+        <div className='headerTop'>
           <Logo />
           <div id='modal-bg-Search'>
             <div id='modal-fg-Search'></div>

@@ -8,6 +8,8 @@ const { savePhoto } = require('../../helpers');
 
 const newEntry = async (req, res, next) => {
     let connection;
+    // Obtenemos el id del usuario que realiza la request.
+    const idReqAdmin = req.admin.id;
 
     try {
         connection = await getDB();
@@ -95,17 +97,17 @@ const newEntry = async (req, res, next) => {
         );
 
         // Creamos la entrada y obtenemos el valor que retorna "connection.query".
-        await connection.query(
+        const [newEntry] = await connection.query(
             `INSERT INTO experiences 
-                (id_user, id_company, id_experiences_category, capacity, price, date, city, direction, text_1, text_2, text_3, text_4, text_5, text_6, createdAt) 
+                (id_user, id_company, id_experiences_category, capacity, photoHeader, price, date, city, direction, text_1, text_2, text_3, text_4, text_5, text_6, createdAt) 
             VALUES 
-                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
             [
-                1,
+                idReqAdmin,
                 id_company[0][0].id,
                 id_experiences_category[0][0].id,
                 capacity,
-                //savedPhoto,
+                savedPhoto,
                 price,
                 date,
                 city,
@@ -123,6 +125,9 @@ const newEntry = async (req, res, next) => {
         res.send({
             status: 'ok',
             message: 'La entrada ha sido creada',
+            data: {
+                id: newEntry.insertId, //<- mirar esto
+            },
         });
     } catch (error) {
         next(error);

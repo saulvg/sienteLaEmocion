@@ -43,7 +43,7 @@ const ModalSearch = () => {
       <div onClick={() => setFormVisible(!formVisible)}>Buscador</div>
 
       {formVisible ? (
-        <form onSubmit={onFormSubmit}>
+        <form onSubmit={onFormSubmit} id='inputSearch'>
           <input
             type='search'
             value={searchTerm}

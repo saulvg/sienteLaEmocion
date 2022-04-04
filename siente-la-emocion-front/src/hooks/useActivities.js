@@ -28,7 +28,6 @@ const useActivities = () => {
       } catch (error) {
         setError(error.message);
       }
-      console.log(activities);
     };
 
     /*    const loadBook = async () => {
