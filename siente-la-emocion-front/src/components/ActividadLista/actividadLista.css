@@ -20,7 +20,7 @@ section.actividad {
   max-height: 5rem;
 }
 .headerActiviti {
-  display: flex;
+ display: flex;
   justify-content: space-between;
 }
 .listaActividades {
@@ -46,17 +46,6 @@ section.actividad {
   height: 1.5rem;
   font-size: 0;
   background-image: url('../../../public/silueta/editar.png');
-}
-
-#nExperiences {
-  display: flex;
-  justify-content: center;
-  margin: 2rem;
-}
-#nExperiencesStyle {
-  border: solid 2px red;
-  border-radius: 20px;
-  padding: 2rem;
 }
 
 .socialNetworks {

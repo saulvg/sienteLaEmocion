@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import Header from '../../components/Header/Header';
+import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
 import useUser from '../../hooks/useUser';
+import decode from 'jwt-decode';
+import Error from '../../components/error/Error';
 
 const ExperiencePhoto = () => {
   const { token } = useUser();
@@ -39,7 +43,7 @@ const ExperiencePhoto = () => {
         redirect.innerHTML = `
         <div id='entryCreated' >
           <div>${body.message}</div>
-          <div class='loading'></div>
+          <div className='loading'></div>
         </div>
       `;
       };
@@ -65,25 +69,41 @@ const ExperiencePhoto = () => {
   const dataPhoto3 = (event) => {
     setPhotos3(event.target.files[0]);
   };
+  if (!token) {
+    return <Error>No te has registrado</Error>;
+  }
+  const decoded = decode(token);
 
   return (
-    <div className='upFiles'>
-      <form onSubmit={uploadFiles}>
-        <label>
-          Selecciona foto 1
-          <input type={'file'} onChange={dataPhoto1} required />
-        </label>
-        <label>
-          Selecciona foto 2
-          <input type={'file'} onChange={dataPhoto2} required />
-        </label>
-        <label>
-          Selecciona foto 3
-          <input type={'file'} onChange={dataPhoto3} required />
-        </label>
-        <button>Subir</button>
-      </form>
-    </div>
+    <>
+      <Header
+        to={''}
+        button={''}
+        body={<BodyHeaderHomePage />}
+        className={'simpleHeader'}
+      />
+      {decoded.role === 'admin' ? (
+        <div className='upFiles'>
+          <form onSubmit={uploadFiles}>
+            <label>
+              Selecciona foto 1
+              <input type={'file'} onChange={dataPhoto1} required />
+            </label>
+            <label>
+              Selecciona foto 2
+              <input type={'file'} onChange={dataPhoto2} required />
+            </label>
+            <label>
+              Selecciona foto 3
+              <input type={'file'} onChange={dataPhoto3} required />
+            </label>
+            <button>Subir</button>
+          </form>
+        </div>
+      ) : (
+        <div>No tienes permisos</div>
+      )}
+    </>
   );
 };
 export default ExperiencePhoto;

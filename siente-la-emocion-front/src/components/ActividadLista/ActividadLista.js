@@ -1,5 +1,17 @@
+// ## Style ##
 import './actividadLista.css';
+
 import { Link } from 'react-router-dom';
+import decode from 'jwt-decode';
+
+/**
+ * ################
+ * ## Components ##
+ * ################
+ */
+import { CircleActivities } from '../CircleHomePage/CircleHomePage';
+import SocialNetwork from '../SocialNetwork/SocialNetwork';
+import Error from '../error/Error';
 
 /**
  * ###########
@@ -8,19 +20,13 @@ import { Link } from 'react-router-dom';
  */
 import useUser from '../../hooks/useUser';
 
-/* import useActivities from '../../hooks/useActivities'; */
-
-import CircleHomePage from '../CircleHomePage/CircleHomePage';
-import SocialNetwork from '../SocialNetwork/SocialNetwork';
-/* import Experience from '../../pages/Experience'; */
-import decode from 'jwt-decode';
-
+//Componente que utilizamos para pintar todas las actividades disponibles de nuestra web
 const ActividadLista = ({ activities, error }) => {
   const { token } = useUser();
-
   let decod = 'normal';
 
   try {
+    //si se a logeado el usuario decodificamos el token, para saber mas adelante si es admin, sino lo hemos inicidado a normal
     if (token) {
       decod = decode(token);
     }
@@ -28,16 +34,19 @@ const ActividadLista = ({ activities, error }) => {
     console.error(error);
   }
 
-  if (error) return <div>Hubo un error: {error}</div>;
+  //si existe algun error de la peticion al back que se hace en el Hook de useActivies y se le pasan estos parametros en Lista de actividades, pintamos un error
+  if (error) return <Error>Hubo un error:{error}</Error>;
 
+  //si no ha habido ningun error pero no hay actividades pintamos que no las hay y sino las avtividades con todos sus datos
   return activities.length > 0 ? (
     <ul>
+      {/* Cada actividadad es un li dentro de un ul con su Link, etc, si eres admin puedes editarlas desde aqui, sino no */}
       {activities.map((activity) => {
         return (
-          <li key={activity.id} id={activity.id}>
+          <li key={activity.id}>
             <Link to={`/experiences/${activity.id}`}>
               <section className='actividad'>
-                <CircleHomePage
+                <CircleActivities
                   id={'idActividad'}
                   clas={'listaActividades'}
                   children={activity.category}
@@ -74,7 +83,6 @@ const ActividadLista = ({ activities, error }) => {
                       /* ............. */
                     )}
                   </div>
-
                   <p>{activity.text_1 || 'Sin descripción'}</p>
                   <div className='actividadF_P'>
                     <p>{new Date(activity.date).toLocaleDateString()} </p>
@@ -88,11 +96,9 @@ const ActividadLista = ({ activities, error }) => {
       })}
     </ul>
   ) : (
-    <div id='nExperiences'>
-      <div id='nExperiencesStyle'>
-        ❗ No se han encontrado experiencias con estos parametros de busqueda
-      </div>
-    </div>
+    <Error>
+      No se han encontrado experiencias con estos parametros de busqueda
+    </Error>
   );
 };
 export default ActividadLista;

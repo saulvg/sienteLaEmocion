@@ -14,7 +14,6 @@ const MainMenu = () => {
   useEffect(() => {
     const changeWidth = () => {
       setScreenWidth(window.innerWidth);
-      console.log('cambiando');
     };
 
     window.addEventListener('resize', changeWidth);
@@ -33,9 +32,12 @@ const MainMenu = () => {
   return (
     <>
       {toggleMenu || screenWidth > 600 ? (
-        <div class='responsive-nav'>
+        <div className='responsive-nav'>
           <menu>
-            <button class='toggle-button1' onClick={() => setToggleMenu(false)}>
+            <button
+              className='toggle-button1'
+              onClick={() => setToggleMenu(false)}
+            >
               <svg
                 className='close-nav'
                 fill='none'
@@ -59,9 +61,9 @@ const MainMenu = () => {
               <ModalContactanos />
               {token ? (
                 <>
-                  {user ? (
+                  {/* {user ? (
                     <span className='nav-button'>Hola {user.username}</span>
-                  ) : null}
+                  ) : null} */}
                   <Link
                     to='/perfil'
                     id='myself'
@@ -86,7 +88,7 @@ const MainMenu = () => {
           }}
         >
           <svg
-            class='toggle-menu'
+            className='toggle-menu'
             fill='none'
             stroke='currentColor'
             viewBox='0 0 24 24'

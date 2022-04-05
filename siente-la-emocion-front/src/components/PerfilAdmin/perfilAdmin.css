@@ -1,0 +1,14 @@
+#adminProfile{
+    min-height: 70vh;
+    padding: 4rem;
+    background-color: rgb(255, 249, 245);
+}
+
+#adminProfile > ul{
+    background-color: whitesmoke;
+    padding: 2rem;
+    border-radius: 25px;
+}
+#adminProfile > ul > li {
+    padding-bottom: 2rem;
+}

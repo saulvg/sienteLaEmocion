@@ -1,7 +1,7 @@
 const ModalContactanos = () => {
   return (
     <>
-      <button class='nav-button' id='contact' onClick={modal}>
+      <button className='nav-button' id='contact' onClick={modal}>
         Contactanos
       </button>
     </>

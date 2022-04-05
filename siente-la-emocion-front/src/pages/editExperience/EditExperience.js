@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Error from '../../components/error/Error';
 import './editExperience.css';
 import { useParams, useNavigate } from 'react-router-dom';
 import useUser from '../../hooks/useUser';
@@ -83,14 +84,13 @@ const EditExperience = () => {
         redirect.innerHTML = `
           <div id='entryCreated' >
             <div>${body.message}</div>
-            <div class='loading'></div>
+            <div className='loading'></div>
           </div>
         `;
       };
 
       const redirect = () => navigate(`/`);
       if (response.ok) {
-        console.log('correcto');
         loading();
         setTimeout(redirect, 5000);
       } else {
@@ -195,7 +195,7 @@ const EditExperience = () => {
               </form>
             </div>
           ) : (
-            <div>cargando</div>
+            <Error>Esa experiencia no esta disponible</Error>
           )}
         </>
       ) : (

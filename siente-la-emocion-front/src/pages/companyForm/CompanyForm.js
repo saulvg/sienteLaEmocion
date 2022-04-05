@@ -1,4 +1,5 @@
 import './companyForm.css';
+import Loading from '../../components/loading/Loading';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useUser from '../../hooks/useUser';
@@ -25,6 +26,8 @@ import decode from 'jwt-decode';
 function CompanyForm() {
   const { token } = useUser();
   const navigate = useNavigate();
+  const [load, setLoad] = useState(false);
+  const [bodyLoad, setBodyLoad] = useState('');
 
   const [companyName, setCompanyName] = useState('');
   const [companyCategory, setCompanyCategory] = useState('');
@@ -82,23 +85,12 @@ function CompanyForm() {
         }
       );
       const body = await response.json();
-      console.log('body', body);
-      console.log('datacompany', dataCompany);
-      const loading = () => {
-        const redirect = document.querySelector('#companyForm');
-        redirect.innerHTML = `
-          <div id='entryCreated' >
-            <div>${body.message}</div>
-            <div class='loading'></div>
-          </div>
-        `;
-      };
 
-      console.log(body.data.id);
       //como le digo que es la experiencia con id tal...................................
       const redirect = () => navigate(`/experiences/${body.data.id}/photos`);
       if (response.ok) {
-        loading();
+        setBodyLoad(body.message);
+        setLoad(true);
         setTimeout(redirect, 5000);
       } else {
         console.error('Error', body.message);
@@ -122,83 +114,88 @@ function CompanyForm() {
         className={'simpleHeader'}
       />
       {decoded.role === 'admin' ? (
-        <div id='companyForm'>
-          <form onSubmit={sendForm}>
-            <Company
-              companyName={companyName}
-              setCompanyName={setCompanyName}
-              placeholder={'Escribe aqui...'}
-            />
-            <ExperiencesCategory
-              companyCategory={companyCategory}
-              setCompanyCategory={setCompanyCategory}
-              placeholder={'Escribe aqui...'}
-            />
-            <CapacityCompany
-              companyCapacity={companyCapacity}
-              setCompanyCapacity={setCompanyCapacity}
-              placeholder={'Escribe aqui...'}
-            />
-            <PriceCompany
-              companyPrice={companyPrice}
-              setCompanyPrice={setCompanyPrice}
-              placeholder={'Escribe aqui...'}
-            />
-            <DateCompany
-              companyDate={companyDate}
-              setCompanyDate={setCompanyDate}
-              //placeholder={'DD/MM/AA  hh:mm'}
-            />
-            <CityCompany
-              companyCity={companyCity}
-              setCompanyCity={setCompanyCity}
-              placeholder={'Escribe aqui...'}
-            />
-            <DirectionCompany
-              companyDirection={companyDirection}
-              setCompanyDirection={setCompanyDirection}
-              placeholder={'Escribe aqui...'}
-            />
+        <>
+          {!load ? (
+            <div id='companyForm '>
+              <form onSubmit={sendForm}>
+                <Company
+                  companyName={companyName}
+                  setCompanyName={setCompanyName}
+                  placeholder={'Escribe aqui...'}
+                />
+                <ExperiencesCategory
+                  companyCategory={companyCategory}
+                  setCompanyCategory={setCompanyCategory}
+                  placeholder={'Escribe aqui...'}
+                />
+                <CapacityCompany
+                  companyCapacity={companyCapacity}
+                  setCompanyCapacity={setCompanyCapacity}
+                  placeholder={'Escribe aqui...'}
+                />
+                <PriceCompany
+                  companyPrice={companyPrice}
+                  setCompanyPrice={setCompanyPrice}
+                  placeholder={'Escribe aqui...'}
+                />
+                <DateCompany
+                  companyDate={companyDate}
+                  setCompanyDate={setCompanyDate}
+                />
+                <CityCompany
+                  companyCity={companyCity}
+                  setCompanyCity={setCompanyCity}
+                  placeholder={'Escribe aqui...'}
+                />
+                <DirectionCompany
+                  companyDirection={companyDirection}
+                  setCompanyDirection={setCompanyDirection}
+                  placeholder={'Escribe aqui...'}
+                />
 
-            <Text1Company
-              companyText_1={companyText_1}
-              setCompanyText_1={setCompanyText_1}
-              placeholder={'Escribe aqui...'}
-            />
-            <Text2Company
-              companyText_2={companyText_2}
-              setCompanyText_2={setCompanyText_2}
-              placeholder={'Escribe aqui...'}
-            />
-            <Text3Company
-              companyText_3={companyText_3}
-              setCompanyText_3={setCompanyText_3}
-              placeholder={'Escribe aqui...'}
-            />
-            <Text4Company
-              companyText_4={companyText_4}
-              setCompanyText_4={setCompanyText_4}
-              placeholder={'Escribe aqui...'}
-            />
-            <Text5Company
-              companyText_5={companyText_5}
-              setCompanyText_5={setCompanyText_5}
-              placeholder={'Escribe aqui...'}
-            />
-            <Text6Company
-              companyText_6={companyText_6}
-              setCompanyText_6={setCompanyText_6}
-              placeholder={'Escribe aqui...'}
-            />
-            <PhotoHeader
-              companyPhotoHeader={companyPhotoHeader}
-              setCompanyPhotoHeader={setCompanyPhotoHeader}
-            />
-            <div className='buttonForm'>
-              <button type='submit'>Enviar</button>
+                <Text1Company
+                  companyText_1={companyText_1}
+                  setCompanyText_1={setCompanyText_1}
+                  placeholder={'Escribe aqui...'}
+                />
+                <Text2Company
+                  companyText_2={companyText_2}
+                  setCompanyText_2={setCompanyText_2}
+                  placeholder={'Escribe aqui...'}
+                />
+                <Text3Company
+                  companyText_3={companyText_3}
+                  setCompanyText_3={setCompanyText_3}
+                  placeholder={'Escribe aqui...'}
+                />
+                <Text4Company
+                  companyText_4={companyText_4}
+                  setCompanyText_4={setCompanyText_4}
+                  placeholder={'Escribe aqui...'}
+                />
+                <Text5Company
+                  companyText_5={companyText_5}
+                  setCompanyText_5={setCompanyText_5}
+                  placeholder={'Escribe aqui...'}
+                />
+                <Text6Company
+                  companyText_6={companyText_6}
+                  setCompanyText_6={setCompanyText_6}
+                  placeholder={'Escribe aqui...'}
+                />
+                <PhotoHeader
+                  companyPhotoHeader={companyPhotoHeader}
+                  setCompanyPhotoHeader={setCompanyPhotoHeader}
+                />
+                <div className='buttonForm'>
+                  <button type='submit'>Enviar</button>
+                </div>
+              </form>
             </div>
-          </form>
-        </div>
+          ) : (
+            <Loading>{bodyLoad}</Loading>
+          )}
+        </>
       ) : (
         <div>No tienes permisos</div>
       )}

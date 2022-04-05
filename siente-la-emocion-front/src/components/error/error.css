@@ -1,0 +1,10 @@
+#nExperiences {
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+  }
+  #nExperiencesStyle {
+    border: solid 2px red;
+    border-radius: 20px;
+    padding: 2rem;
+  }

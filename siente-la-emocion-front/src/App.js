@@ -75,7 +75,7 @@ function App() {
             <Route path='/perfil' element={<div>{/* <Perfil /> */}</div>} />
             <Route path='/register' element={<div>{<Register />}</div>} />
             <Route path='/login' element={<div>{<LoginPage />}</div>} />
-            <Route path='/experience' element={<div>{<Experience />}</div>} />
+            <Route path='/experience' element={<Experience />} />
 
             <Route path='/experiences/:idExperience' element={<Experience />} />
             <Route

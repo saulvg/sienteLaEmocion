@@ -16,25 +16,6 @@ header .headerTop img {
   margin: 1.5rem 0 1.5rem 3rem;
   border-radius: 25%;
 }
-/* ............................... */
-/* #modal-bg-Search {
-  display: none;
-  z-index: 100;
-}
-#modal-bg-Search.show {
-  display: flex;
-  padding-top: 2rem;
-}
-#modal-fg-Search > input {
-  height: 3rem;
-  width: 20rem;
-  border-radius: 25px;
-  padding: 1rem;
-  background-color: rgba(245, 245, 245, 0.418);
-  border: 1px solid black;
-  box-shadow: 1px 1px 1px rgba(245, 245, 245, 0.418);
-  outline: 0;
-} */
 
 #inputSearch {
   width: max-content;
@@ -72,12 +53,22 @@ header .headerTop nav {
   display: flex;
   gap: 1rem;
   padding: 0 1rem;
+  align-items: center; 
+
 }
 header .headerTop menu nav a {
   text-decoration: none;
   color: white;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
+  font-size: 16px;
+}
+header .headerTop menu nav button {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+
 }
 header .headerBody {
   margin-right: 2rem;
