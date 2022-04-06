@@ -43,7 +43,7 @@ const ActividadLista = ({ activities, error }) => {
       {/* Cada actividadad es un li dentro de un ul con su Link, etc, si eres admin puedes editarlas desde aqui, sino no */}
       {activities.map((activity) => {
         return (
-          <li key={activity.id}>
+          <li key={activity.id} className='activity-flex'>
             <Link to={`/experiences/${activity.id}`}>
               <section className='actividad'>
                 <CircleActivities
@@ -55,42 +55,39 @@ const ActividadLista = ({ activities, error }) => {
                 <div className='descriptionActivity'>
                   <div className='headerActiviti'>
                     <h3>{activity.company}</h3>
-                    {decod.role === 'admin' ? (
-                      <Link
-                        to={`/editExperiences/${activity.id}`}
-                        className='edit'
-                      >
-                        <div className='lapiz'>Lapiz</div>
-                      </Link>
-                    ) : (
-                      /* ..................... */
-                      <div className='socialNetworks'>
-                        <SocialNetwork
-                          id={'miniInstagram'}
-                          href={
-                            activity.instagram || 'https://www.instagram.com/'
-                          }
-                          children={'instagram'}
-                          className={'mini'}
-                        />
-                        <SocialNetwork
-                          id={'miniFacebook'}
-                          href={'https:/es-es.facebook.com/'}
-                          children={'facebook'}
-                          className={'mini'}
-                        />
-                      </div>
-                      /* ............. */
-                    )}
                   </div>
                   <p>{activity.text_1 || 'Sin descripción'}</p>
                   <div className='actividadF_P'>
                     <p>{new Date(activity.date).toLocaleDateString()} </p>
-                    <p>{`3 / ${activity.capacity}`}</p>
                   </div>
                 </div>
               </section>
             </Link>
+            <div>
+              {decod.role === 'admin' ? (
+                <Link to={`/editExperiences/${activity.id}`} className='edit'>
+                  <div className='lapiz'>Lapiz</div>
+                </Link>
+              ) : (
+                /* ..................... */
+                <div className='socialNetworks'>
+                  <SocialNetwork
+                    id={'miniInstagram'}
+                    href={activity.instagram || 'https://www.instagram.com/'}
+                    children={'instagram'}
+                    className={'mini'}
+                  />
+                  <SocialNetwork
+                    id={'miniFacebook'}
+                    href={'https:/es-es.facebook.com/'}
+                    children={'facebook'}
+                    className={'mini'}
+                  />
+                </div>
+                /* ............. */
+              )}
+              <p>{`3 / ${activity.capacity}`}</p>
+            </div>
           </li>
         );
       })}
