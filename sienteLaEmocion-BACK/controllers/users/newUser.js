@@ -56,14 +56,14 @@ const newUser = async (req, res, next) => {
             error.httpStatus = 400;
             throw error;
         }
-        /* 
-        if (username.contains(' ')) {
+
+        if (username.includes(' ')) {
             const error = new Error(
                 'El nombre de usuario no puede tener espacios'
             );
             error.httpStatus = 400;
             throw error;
-        } */
+        }
         //Generamos un codiogo de registro
         const registrationCode = generateRandomString(40);
 
