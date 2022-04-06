@@ -1,4 +1,7 @@
+// ## Style ##
 import './inputCompanyForm.css';
+
+//Funciones, 'Componentes' que pintaremos en CompanyForm unicamente, pero como son muchos decidimos separarlos en otro fichero
 const Company = ({ companyName, setCompanyName, placeholder }) => {
   const valueCompanyName = (event) => {
     setCompanyName(event.target.value);
@@ -8,7 +11,6 @@ const Company = ({ companyName, setCompanyName, placeholder }) => {
       <label>
         Nombre compañia:
         <input
-          id='companyName'
           type={'text'}
           value={companyName}
           onChange={valueCompanyName}
@@ -32,7 +34,6 @@ const ExperiencesCategory = ({
       <label>
         Categoria:
         <input
-          id='companyName'
           type={'text'}
           value={companyCategory}
           onChange={valueCompanyCategory}
@@ -56,7 +57,6 @@ const CapacityCompany = ({
       <label>
         Capacidad:
         <input
-          id='CapacityCompany'
           type={'text'}
           value={companyCapacity}
           onChange={valueCompanyCapacity}
@@ -76,7 +76,6 @@ const PriceCompany = ({ companyPrice, setCompanyPrice, placeholder }) => {
       <label>
         Precio:
         <input
-          id='xCompany'
           type={'text'}
           value={companyPrice}
           onChange={valueCompanyPrice}
@@ -96,7 +95,6 @@ const DateCompany = ({ companyDate, setCompanyDate }) => {
       <label>
         Fecha:
         <input
-          id='xCompany'
           type={'datetime-local'}
           value={companyDate}
           onChange={valueCompanyDate}
@@ -115,7 +113,6 @@ const CityCompany = ({ companyCity, setCompanyCity, placeholder }) => {
       <label>
         Ciudad:
         <input
-          id='xCompany'
           type={'text'}
           value={companyCity}
           onChange={valueCompanyCity}
@@ -139,7 +136,6 @@ const DirectionCompany = ({
       <label>
         Direccion:
         <input
-          id='xCompany'
           type={'text'}
           value={companyDirection}
           onChange={valueCompanyDirection}
@@ -160,7 +156,6 @@ const Text1Company = ({ companyText_1, setCompanyText_1, placeholder }) => {
       <label>
         Texto 1:
         <textarea
-          id='text_1'
           type={'text'}
           value={companyText_1}
           onChange={valueCompanyText_1}
@@ -180,7 +175,6 @@ const Text2Company = ({ companyText_2, setCompanyText_2, placeholder }) => {
       <label>
         Texto 2:
         <textarea
-          id='xCompany'
           type={'text'}
           value={companyText_2}
           onChange={valueCompanyText_2}
@@ -199,7 +193,6 @@ const Text3Company = ({ companyText_3, setCompanyText_3, placeholder }) => {
       <label>
         Texto 3:
         <textarea
-          id='xCompany'
           type={'text'}
           value={companyText_3}
           onChange={valueCompanyText_3}
@@ -218,7 +211,6 @@ const Text4Company = ({ companyText_4, setCompanyText_4, placeholder }) => {
       <label>
         Texto 4:
         <textarea
-          id='xCompany'
           type={'text'}
           value={companyText_4}
           onChange={valueCompanyText_4}
@@ -237,7 +229,6 @@ const Text5Company = ({ companyText_5, setCompanyText_5, placeholder }) => {
       <label>
         Texto 5:
         <textarea
-          id='xCompany'
           type={'text'}
           value={companyText_5}
           onChange={valueCompanyText_5}
@@ -256,7 +247,6 @@ const Text6Company = ({ companyText_6, setCompanyText_6, placeholder }) => {
       <label>
         Texto 6:
         <textarea
-          id='xCompany'
           type={'text'}
           value={companyText_6}
           onChange={valueCompanyText_6}
@@ -275,7 +265,6 @@ const PhotoHeader = ({ companyPhotoHeader, setCompanyPhotoHeader }) => {
       <label>
         photoHeader:
         <input
-          id='xCompany'
           type={'file'}
           onChange={valueCompanyPhotoHeader}
           required

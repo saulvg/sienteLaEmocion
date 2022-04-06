@@ -1,10 +1,24 @@
+// ## Style ##
 import './companyForm.css';
-import Loading from '../../components/loading/Loading';
+
+/**
+ * ###########
+ * ## React ##
+ * ###########
+ */
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useUser from '../../hooks/useUser';
+import decode from 'jwt-decode';
+
+/**
+ * ################
+ * ## Components ##
+ * ################
+ */
+import Loading from '../../components/loading/Loading';
 import Header from '../../components/Header/Header';
 import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
+import Error from '../../components/error/Error';
 import {
   Company,
   ExperiencesCategory,
@@ -21,14 +35,21 @@ import {
   Text6Company,
   PhotoHeader,
 } from '../../components/InputsCompanyForm/InputsCompanyForm';
-import decode from 'jwt-decode';
+/**
+ * ###########
+ * ## Hooks ##
+ * ###########
+ */
+import useUser from '../../hooks/useUser';
 
+//Pagina que pinta el formulario para que el admin pueda incluir una nueva actividad
 function CompanyForm() {
   const { token } = useUser();
   const navigate = useNavigate();
+  //Estados de variables que necesitamos 
   const [load, setLoad] = useState(false);
   const [bodyLoad, setBodyLoad] = useState('');
-
+  //Estados del formulario
   const [companyName, setCompanyName] = useState('');
   const [companyCategory, setCompanyCategory] = useState('');
   const [companyCapacity, setCompanyCapacity] = useState('');
@@ -48,9 +69,8 @@ function CompanyForm() {
   const sendForm = async (event) => {
     event.preventDefault();
     //intentamos enviar los datos del formulario con una peticion de tipo POST
+    //como contiene texto y archivos se hace con new Format, el bucle que recorra el objeto, etc.
     try {
-      /* const decoded = decode(token); */
-
       const dataCompany = {
         companyName: companyName,
         categoryName: companyCategory,
@@ -69,11 +89,12 @@ function CompanyForm() {
       };
 
       const payload = new FormData();
-
+      //Object.entries devuelve una matriz de pares [[companyName, elNombre], [categoryName, elNombre], [], ...]
+      //Y en cada vuelta del bucle añadimos new Format()
       for (const [key, value] of Object.entries(dataCompany)) {
         payload.append(key, value);
       }
-
+      //Postemaos 
       const response = await fetch(
         `${process.env.REACT_APP_BACKEND}/experiences`,
         {
@@ -86,9 +107,10 @@ function CompanyForm() {
       );
       const body = await response.json();
 
-      //como le digo que es la experiencia con id tal...................................
+      //Como tenemos que implementar fotos a la experiencia redirigimos hacia subir fotos a esta experiencia si todo a ido bien para eso utilizamos 'useNavigate()'
       const redirect = () => navigate(`/experiences/${body.data.id}/photos`);
       if (response.ok) {
+        //Si todo a ido bien informamos al usuario, cambiamos un estado y mostramos una pantalla de carga y redirigimos a la siguiente ventana 
         setBodyLoad(body.message);
         setLoad(true);
         setTimeout(redirect, 5000);
@@ -99,12 +121,14 @@ function CompanyForm() {
       console.error('catch', error);
     }
   };
+  //Si ni tienes token no puedes llegar hasta aqui
   if (!token) {
-    return <div>No te has registrado</div>;
+    return <Error>No te has registrado</Error>;
   }
-  /* ................................................ */
+  //Decodificamos el token para mas adelante saber si eres admin o no. gracias a 'jwt-decode' y el token que tenemos de forma global en toda la App
   const decoded = decode(token);
 
+  //Devolvemos todos los compnenetes que deseamos pintar si se cumplen las condiciones (eres admin ?), sino devolvemos el correspondiente error en Front 
   return (
     <>
       <Header
@@ -117,7 +141,9 @@ function CompanyForm() {
         <>
           {!load ? (
             <div id='companyForm '>
-              <form onSubmit={sendForm}>
+              <form onSubmit={sendForm} className='formFlex'>
+                <div>
+                  
                 <Company
                   companyName={companyName}
                   setCompanyName={setCompanyName}
@@ -152,7 +178,8 @@ function CompanyForm() {
                   setCompanyDirection={setCompanyDirection}
                   placeholder={'Escribe aqui...'}
                 />
-
+                </div>
+                <div>
                 <Text1Company
                   companyText_1={companyText_1}
                   setCompanyText_1={setCompanyText_1}
@@ -187,6 +214,8 @@ function CompanyForm() {
                   companyPhotoHeader={companyPhotoHeader}
                   setCompanyPhotoHeader={setCompanyPhotoHeader}
                 />
+
+                </div>
                 <div className='buttonForm'>
                   <button type='submit'>Enviar</button>
                 </div>
@@ -197,7 +226,7 @@ function CompanyForm() {
           )}
         </>
       ) : (
-        <div>No tienes permisos</div>
+        <Error>No tienes permisos</Error>
       )}
     </>
   );
@@ -205,26 +234,3 @@ function CompanyForm() {
 
 export default CompanyForm;
 
-//................................................
-/* const PhotoHeader = ({ companyPhotoHeader, setCompanyPhotoHeader }) => {
-  const valueCompanyPhotoHeader = (event) => {
-    console.log(event.target);
-    const fil = event.target.files[0];
-    setCompanyPhotoHeader(fil);
-  };
-  return (
-    <div className='companyPhotoHeader'>
-      <label>
-        Foto principal:
-        <input
-          id='xCompany'
-          type={'file'}
-          value={companyPhotoHeader}
-          onChange={valueCompanyPhotoHeader}
-          placeholder={'Escribe aqui'}
-        />
-      </label>
-    </div>
-  );
-};
- */
