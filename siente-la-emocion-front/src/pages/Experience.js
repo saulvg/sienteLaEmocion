@@ -11,6 +11,7 @@ import BodyExperience from '../components/Header/MainHeader/BodyExperience';
 const Experience = () => {
   const { idExperience } = useParams();
   const { activity, error } = useActivity(idExperience);
+  console.log('activity', activity);
 
   return (
     <>
@@ -28,7 +29,7 @@ const Experience = () => {
               </div>
               <ActivityText1
                 question={'¿En qué consiste este deporte?'}
-                answer={activity.text_1}
+                answer={activity.experience.text_1}
               ></ActivityText1>
               <ActivityText1
                 question={

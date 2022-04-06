@@ -1,9 +1,15 @@
 .container {
-  margin-right: 200px;
-  margin-left: 200px;
+  width: 80%;
+  margin: auto;
 }
 
 .experiencia {
   padding-top: 70px;
   padding-bottom: 268px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+  }
 }

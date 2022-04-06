@@ -15,28 +15,30 @@ const RegisterForm = () => {
 
   const register = async (e) => {
     e.preventDefault();
+    try {
+      const res = await fetch(`${process.env.REACT_APP_BACKEND}/users`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          password,
+          phone,
+          dni_nie,
+          postalCode,
+          username,
+        }),
+      });
 
-    const res = await fetch(`${process.env.REACT_APP_BACKEND}/users`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email,
-        password,
-        phone,
-        dni_nie,
-        postalCode,
-        username,
-      }),
-    });
-
-    if (res.ok) {
-      setDone(true);
-    } else {
-      const error = await res.json();
-      setError(error);
-      console.log(error.message);
+      const body = await res.json();
+      if (res.ok) {
+        setDone(true);
+      } else {
+        setError(body.message);
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
 
