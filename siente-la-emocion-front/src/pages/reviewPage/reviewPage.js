@@ -23,37 +23,35 @@ export const Review = ({ avatar, userName }) => {
   console.log(reviews);
   return reviews.length > 0 ? (
     <>
-      <ul>
+      <ul className='single-review'>
         {reviews.map((review) => {
           return (
             <li key={review.id} className='review'>
-              <section className='actividad'>
-                <article className='reviw'>
-                  <ul className='user'>
-                    <img
-                      className='avatar'
-                      src={'http://localhost:4000/uploads/' + review.avatar}
-                      alt='aaaaa'
-                    />
-                    {token ? (
-                      <div className='username'>
-                        <Modal
-                          className='username-modal'
-                          buttonName={review.username}
-                          titleModal={review.username}
-                          content={review.biography}
-                        ></Modal>
-                      </div>
-                    ) : (
-                      <div className='username'>{review.username}</div>
-                    )}
-                  </ul>
-                  <div className='texto-review'>
-                    <p className='texto'>``{review.review}´´</p>
-                    <p className='voto'>Puntuación: {review.vote}</p>
-                  </div>
-                </article>
-              </section>
+              <article className='list-reviews'>
+                <ul className='user'>
+                  <img
+                    className='avatar'
+                    src={'http://localhost:4000/uploads/' + review.avatar}
+                    alt='aaaaa'
+                  />
+                  {token ? (
+                    <div className='username'>
+                      <Modal
+                        buttonClass='username-modal'
+                        buttonName={review.username}
+                        titleModal={review.username}
+                        content={review.biography}
+                      ></Modal>
+                    </div>
+                  ) : (
+                    <div className='username'>{review.username}</div>
+                  )}
+                </ul>
+                <div className='texto-review'>
+                  <p className='texto'>``{review.review}´´</p>
+                  <p className='voto'>Puntuación: {review.vote}</p>
+                </div>
+              </article>
             </li>
           );
         })}
@@ -129,9 +127,12 @@ export const ReviewPage = () => {
 
   return activity ? (
     <>
-      <header className='cabecera'>
-        <Header className='' to={'/perfil'} body='Tus comentarios cuentan' />
-      </header>
+      <Header
+        className='cabecera'
+        to={'/perfil'}
+        body='Tus comentarios cuentan'
+      />
+
       <main className='listaReviews'>
         <section className='reviews'>
           <h2 className='empresa'>
@@ -142,7 +143,7 @@ export const ReviewPage = () => {
       </main>
     </>
   ) : (
-    <div>joder</div>
+    <div>No hay reviews de esta experiencia</div>
   );
 };
 /* <article className='review'>

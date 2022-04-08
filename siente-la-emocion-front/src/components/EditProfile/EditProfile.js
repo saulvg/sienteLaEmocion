@@ -21,6 +21,7 @@ const EditProfile = ({ oldName, oldEmail }) => {
   const [biography, setBiography] = useState('');
   const { idUser } = useParams();
   const [postalCode, setPostalCode] = useState('');
+  const [error, setError] = useState('');
 
   const [dni_nie, setDni_nie] = useState('');
 
@@ -48,7 +49,7 @@ const EditProfile = ({ oldName, oldEmail }) => {
       if (res.ok) {
         console.log(body);
       } else {
-        console.error('Error', body.message);
+        setError(body.message);
       }
     } catch (error) {
       console.error(error);
@@ -67,10 +68,14 @@ const EditProfile = ({ oldName, oldEmail }) => {
             <form onSubmit={edit} className='form-profile'>
               <div>
                 <InputElement
+                  classLabel='label-profile'
                   labelName='Nombre'
+                  className='input-profile'
                   type='text'
                   id='name'
                   name='name'
+                  pattern='[a-z]{1,15}'
+                  title='Debe contener letra minúscula'
                   placeholder={user.username}
                   value={username}
                   onChange={(e) => {
@@ -79,6 +84,8 @@ const EditProfile = ({ oldName, oldEmail }) => {
                 />
 
                 <InputElement
+                  className='input-profile'
+                  classLabel='label-profile'
                   labelName='Email'
                   type='email'
                   id='email'
@@ -90,10 +97,13 @@ const EditProfile = ({ oldName, oldEmail }) => {
                   }}
                 />
                 <InputElement
+                  className='input-profile'
+                  classLabel='label-profile'
                   labelName='Teléfono'
-                  type='number'
-                  id='phone'
-                  name='phone'
+                  type='tel'
+                  id='tel'
+                  name='tel'
+                  pattern='[0-9]{9}'
                   placeholder={user.phone}
                   value={phone}
                   onChange={(e) => {
@@ -101,10 +111,13 @@ const EditProfile = ({ oldName, oldEmail }) => {
                   }}
                 />
                 <InputElement
+                  className='input-profile'
                   labelName='Código Postal'
+                  classLabel='label-profile'
                   type='number'
                   id='postalCode'
                   name='postalCode'
+                  pattern='[0-9]{9}'
                   placeholder={user.postalCode}
                   value={postalCode}
                   onChange={(e) => {
@@ -112,10 +125,14 @@ const EditProfile = ({ oldName, oldEmail }) => {
                   }}
                 />
                 <InputElement
+                  className='input-profile'
+                  classLabel='label-profile'
                   labelName='DNI / NIE'
                   type='text'
                   id='dni_nie'
                   name='dni_nie'
+                  pattern='[0-9]{8}[A-Za-z]{1}'
+                  title='Debe poner 8 números y una letra'
                   placeholder={user.dni_nie}
                   value={dni_nie}
                   onChange={(e) => {
@@ -123,6 +140,8 @@ const EditProfile = ({ oldName, oldEmail }) => {
                   }}
                 />
                 <TextareaElement
+                  classLabel='label-profile'
+                  className='textarea-profile'
                   labelName='Sobre mí'
                   id='biography'
                   name='biography'
@@ -134,6 +153,7 @@ const EditProfile = ({ oldName, oldEmail }) => {
                 />
               </div>
               <BlueButton
+                className='button-save'
                 name='Guardar cambios'
                 onClick={(e) => e.stopPropagation()}
               >
@@ -146,11 +166,12 @@ const EditProfile = ({ oldName, oldEmail }) => {
                 />
               </BlueButton>
             </form>
+            {error ?? <div className='error-msg-profile'>{error}</div>}
           </div>{' '}
         </div>
       ) : (
         <>
-          <div className='otro'>FALTA PERFIL DE OTRO USUARIO</div>
+          <div></div>
         </>
       )}
     </>

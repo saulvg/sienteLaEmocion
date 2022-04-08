@@ -7,7 +7,7 @@ import ModalSearch from '../ModalSearch/ModalSearch';
 import { useEffect, useState } from 'react';
 
 const MainMenu = () => {
-  const { token, user } = useUser();
+  const { token, user, setToken } = useUser();
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [toggleMenu, setToggleMenu] = useState(false);
 
@@ -35,7 +35,10 @@ const MainMenu = () => {
       {toggleMenu || screenWidth > 600 ? (
         <div class='responsive-nav'>
           <menu>
-            <button class='toggle-button1' onClick={() => setToggleMenu(false)}>
+            <button
+              className='toggle-button1'
+              onClick={() => setToggleMenu(false)}
+            >
               <svg
                 className='close-nav'
                 fill='none'
@@ -46,7 +49,7 @@ const MainMenu = () => {
                 <path
                   stroke-linecap='round'
                   stroke-linejoin='round'
-                  stroke-width='2'
+                  strokeWidth='2'
                   d='M6 18L18 6M6 6l12 12'
                 ></path>
               </svg>
@@ -69,6 +72,13 @@ const MainMenu = () => {
                   >
                     Perfil
                   </Link>
+                  <p
+                    onClick={() => {
+                      setToken('');
+                    }}
+                  >
+                    <Link to='/'>Cerrar sesión</Link>
+                  </p>
                 </>
               ) : (
                 <Link to='/login' id='login' className='nav-element'>

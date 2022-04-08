@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
+/*import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import useUser from './useUser';
-/*import decodeTokenData from "../helpers/decodeTokenData";*/
+/*import decodeTokenData from "../helpers/decodeTokenData";
 
 const useUserProfile = (id) => {
   const [users, setUsers] = useState([]);
   const { idUser } = useParams();
 
   //const { activity, error } = useUser(idExperience);
-  /*const decodedToken = decodeTokenData(token);*/
+  /*const decodedToken = decodeTokenData(token);
 
   useEffect(() => {
     const loadUsers = async () => {
@@ -37,7 +37,7 @@ const useUserProfile = (id) => {
         } catch (error) {
           setError(error.message);
         }
-      }; */
+      }; 
 
     loadUsers();
   }, [id]);
@@ -46,3 +46,4 @@ const useUserProfile = (id) => {
 };
 
 export default useUserProfile;
+*/

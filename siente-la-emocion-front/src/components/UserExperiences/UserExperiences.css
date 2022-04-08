@@ -1,4 +1,12 @@
-.background-color-3 {
+@media (min-width: 320px) {
+  .sections {
+    display: flex;
+    columns: 1;
+    flex-direction: column;
+  }
+}
+
+/*.background-color-3 {
   background-color: #fff9f5;
   position: absolute;
   border-radius: 50%;
@@ -24,7 +32,9 @@
   position: absolute;
   left: 80rem;
   top: 530rem;
-} /*
+}
+*/
+/*BORRAR
 .avatar-profile {
   border-radius: 50%;
   position: absolute;

@@ -10,6 +10,8 @@ const useBookings = (id) => {
   const { idExperiencesBooking } = useParams();
   const { activity, error } = useActivity(idExperiencesBooking);
   const [bookings, setBookings] = useState([]);
+  const [review, setReview] = useState([]);
+
   const [err, setError] = useState(null);
   //id experience
   //const [book, setBook] = useState([]);
@@ -18,7 +20,7 @@ const useBookings = (id) => {
     const loadReviews = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_BACKEND}/bookings`,
+          `${process.env.REACT_APP_BACKEND}/experiences/${idExperiencesBooking}/booking`,
           {
             headers: {
               Authorization: token,
@@ -35,6 +37,7 @@ const useBookings = (id) => {
         }
 
         console.log(json.data);
+        setBookings(json.data.userExperiences);
         setBookings(json.data.userExperiences);
       } catch (error) {
         setError(error.message);

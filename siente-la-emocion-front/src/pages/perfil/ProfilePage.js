@@ -1,6 +1,6 @@
 //import './style.css';
 import useUser from '../../hooks/useUser';
-import './perfil.css';
+//import './perfil.css';
 //import UserPerfil from '../../components/EditProfile/UserPerfil';
 import { Navigate, useParams } from 'react-router';
 import EditProfile from '../../components/EditProfile/EditProfile';
@@ -14,14 +14,28 @@ import decode from 'jwt-decode';
 import useUserProfile from '../../hooks/useUserProfile';
 
 const ProfilePage = () => {
+  let decod = 'normal';
   const { token, user } = useUser();
   const { activities } = useActivities();
   const { idUser } = useParams();
   const usuario = Number(idUser);
   const decoded = decode(token);
-  const { users } = useUserProfile();
+  //const { users } = useUserProfile();
   //decoded.id === usuario && user ?
-  return (
+  try {
+    if (token) {
+      decod = decode(token);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+  return decod.role === 'admin' ? (
+    <>
+      {' '}
+      <Header className='headerPerfil' to={'/perfil'} body='aaaaa' />
+      <div>perfil admin</div>
+    </>
+  ) : (
     <>
       <header className='cabecera'>
         <Header className='headerPerfil' to={'/perfil'} body='aaaaa' />

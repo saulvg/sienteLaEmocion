@@ -169,7 +169,7 @@ const editUser = async (req, res, next) => {
                 [dni_nie, new Date(), idReqUser]
             );
         }
-
+        /*
         //Obtenemos los datos del historial de actividades reservadas por el usuario con el id propietario del perfil
         const [experiences] = await connection.query(
             `
@@ -199,8 +199,7 @@ const editUser = async (req, res, next) => {
                     experiences.price, 
                     experiences.date, 
                     experiences.city, 
-                    experiences.longitude, 
-                    experiences.latitude, 
+                    
                     experiences.photoHeader,
                     experiences_category.name AS category,
                     company.name AS company
@@ -214,11 +213,11 @@ const editUser = async (req, res, next) => {
             );
             userExperiences.push(experience[0]);
         }
-
+*/
         res.send({
             status: 'ok',
             message: `Cambios actualizados con exito. Si has cambiado tu email no olvides activar de nuevo tu usuario en el mensaje que te hemos enviado a tu correo electronico`,
-            userExperiences,
+
             /* 
                 esxperiemces: experiences, */
             /* prueba: experiences.map((idExp) => idExp.id_experiences), */

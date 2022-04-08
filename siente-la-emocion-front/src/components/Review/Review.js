@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import useUser from '../../hooks/useUser';
 import decode from 'jwt-decode';
 import useActivities from '../../hooks/useActivities';
@@ -12,10 +12,9 @@ const Review = ({ id }) => {
   const [vote, setVote] = useState('');
   const [review, setReview] = useState('');
   const { token } = useUser();
-
-  const { bookings } = useBookings();
   const { idExperience } = useParams();
-  const { activities } = useActivities(idExperience);
+  const { bookings } = useBookings();
+  const { idExperienceBookings } = useParams();
   const reviews = async (e) => {
     e.preventDefault();
     try {
@@ -44,45 +43,50 @@ const Review = ({ id }) => {
   const decoded = decode(token);
   return (
     <>
-      {decoded.id ? (
-        <form onSubmit={reviews}>
-          <div className='form-elements'>
-            <InputElement
-              labelName='Review'
-              type='text'
-              id='review'
-              name='review'
-              value={review}
-              onChange={(e) => {
-                setReview(e.target.value);
-              }}
-            />
-            <InputElement
-              labelName='voto'
-              type='number'
-              value={vote}
-              onChange={(e) => {
-                setVote(e.target.value);
-              }}
-            />
-          </div>
-
-          <BlueButton name='aaaa' onClick={(e) => e.stopPropagation()}>
-            <div
-              name='entry_votes_input'
-              onChange={(e, newValue) => {
-                e.stopPropagation();
-                reviews(newValue);
-              }}
-            />
-          </BlueButton>
-          {console.log('review')}
-        </form>
-      ) : (
-        <>
-          <div>mu mal</div>
-        </>
-      )}
+      <form onSubmit={reviews}>
+        <div className='form-elements'>
+          <InputElement
+            labelName='Review'
+            type='text'
+            id='review'
+            name='review'
+            value={review}
+            onChange={(e) => {
+              setReview(e.target.value);
+            }}
+          />
+          <InputElement
+            labelName='voto'
+            type='number'
+            value={vote}
+            onChange={(e) => {
+              setVote(e.target.value);
+            }}
+          />
+        </div>
+        {bookings ? (
+          bookings.map((book) => {
+            return (
+              <BlueButton
+                name='aaaa'
+                onClick={<Link to={`/experiences/${book.id}/votes`}></Link>}
+              >
+                <div
+                  name='entry_votes_input'
+                  onChange={(e, newValue) => {
+                    e.stopPropagation();
+                    reviews(newValue);
+                  }}
+                />
+              </BlueButton>
+            );
+          })
+        ) : (
+          <div></div>
+        )}
+        {console.log('review')}
+      </form>
+      )
     </>
   );
 };

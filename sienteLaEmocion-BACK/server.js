@@ -142,13 +142,21 @@ app.put('/experiences/:idExperience', isAdmin, editExperience);
 
 // Votar una entrada.
 app.post(
-    '/experiences/:idExperience/votes',
+    '/experiences/:idExperiencesBooking/votes',
     isAuth,
     userExists,
     experienceExist,
     experienceVotes
 );
 
+// borrar review de una experiencia
+
+app.delete(
+    'experiences/:idExperience/deleteVotes',
+    isAuth,
+    userExists,
+    experienceExist
+);
 //reservar una experiencia
 app.post('/experiences/:idExperience/booking', isAuth, newBooking);
 
@@ -161,7 +169,12 @@ app.post('/experiences/:idExperience/photos', isAdmin, addExperiencePhotos);
 //Obtenemos las reviews de una experienca
 app.get('/experiences/:idExperience/reviews', experienceExist, getReviews);
 
-app.get('/bookings', isAuth, userExists, getUserExperiences);
+app.get(
+    '/experiences/:idExperiencesBooking/booking',
+    isAuth,
+    userExists,
+    getUserExperiences
+);
 //Eliminar una experiencia
 app.delete('/experiences/:idExperience', isAdmin, deleteExperience);
 

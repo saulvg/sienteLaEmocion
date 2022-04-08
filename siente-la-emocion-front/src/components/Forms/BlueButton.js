@@ -1,8 +1,8 @@
 import './Forms.css';
 
-const BlueButton = ({ name, onClick }) => {
+const BlueButton = ({ name, onClick, buttonName }) => {
   return (
-    <button className='blue-button' onClick={onClick}>
+    <button className={buttonName} onClick={onClick}>
       {name}
     </button>
   );

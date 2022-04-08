@@ -42,6 +42,7 @@ const getUserExperiences = async (req, res, next) => {
     SELECT 
         id,
         id_user,
+        vote,
         id_experiences
     FROM
         booking
@@ -62,15 +63,15 @@ const getUserExperiences = async (req, res, next) => {
             experiences.id, 
             experiences.price, 
             experiences.date, 
-            experiences.city, 
-             
+            experiences.city,
+            booking.vote AS vote, 
             experiences.photoHeader,
             experiences_category.name AS category,
             company.name AS company
         FROM experiences
         LEFT JOIN experiences_category ON (experiences.id_experiences_category = experiences_category.id)
         LEFT JOIN company ON (experiences.id_company= company.id)
-        LEFT JOIN votes ON (experiences.id = votes.id_experiences)
+        LEFT JOIN booking ON (experiences.id = booking.id_experiences)
         WHERE experiences.id = ?
         `,
                 [idExperienceBooking]

@@ -72,7 +72,6 @@ function App() {
             />
             <Route path='/search' element={<Buscador />} />
             {/* <Route path='/contact' element={<ModalContactanos />} /> */}
-            <Route path='/perfil' element={<div>{/* <Perfil /> */}</div>} />
             <Route path='/register' element={<div>{<Register />}</div>} />
             <Route path='/login' element={<div>{<LoginPage />}</div>} />
             <Route path='/experience' element={<div>{<Experience />}</div>} />
