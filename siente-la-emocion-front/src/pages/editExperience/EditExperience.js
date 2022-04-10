@@ -23,12 +23,15 @@ import {
 import decode from 'jwt-decode';
 import Header from '../../components/Header/Header';
 import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
+import DeleteExperience from '../../components/DeleteExperience/DeleteExperience';
 
 const EditExperience = () => {
   const { idExperience } = useParams();
   const { activity, error } = useActivity(idExperience);
   const { token } = useUser();
   const navigate = useNavigate();
+
+  const [deleteModal, setDeleteModal] = useState(false)
 
   const [companyName, setCompanyName] = useState('');
   const [companyCategory, setCompanyCategory] = useState('');
@@ -117,6 +120,7 @@ const EditExperience = () => {
         <>
           {activity ? (
             <div id='companyForm'>
+              {!deleteModal ? (
               <form onSubmit={editExperience}>
                 {/* <Company
                   companyName={companyName}
@@ -141,6 +145,7 @@ const EditExperience = () => {
                 <DateCompany
                   companyDate={companyDate}
                   setCompanyDate={setCompanyDate}
+                  placeholder={activity.experience.date}
                 />
                 <div>{activity.experience.date}</div>
 
@@ -191,8 +196,11 @@ const EditExperience = () => {
                 />
                 <div className='buttonForm'>
                   <button type='submit'>Actualizar</button>
+                  <span onClick={()=>setDeleteModal(true)}>Eliminar experiencia </span>
                 </div>
-              </form>
+              </form>) : (
+                <DeleteExperience/>
+                )}
             </div>
           ) : (
             <Error>Esa experiencia no esta disponible</Error>

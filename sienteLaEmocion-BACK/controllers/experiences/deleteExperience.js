@@ -19,7 +19,7 @@ const deleteExperience = async (req, res, next) => {
 
         // Borramos las fotos del servidor.
         for (const photo of photos) {
-            await deletePhoto(photo.path, photo.description);
+            await deletePhoto(photo.path , photo.description );
         }
 
         // Borramos la entrada.

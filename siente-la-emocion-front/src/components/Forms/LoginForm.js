@@ -5,6 +5,7 @@ import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../../App';
 
 const LoginForm = () => {
+  const [togglePassword, setTogglePassword] = useState(true)
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { token, setToken } = useContext(AuthContext);
@@ -49,12 +50,13 @@ const LoginForm = () => {
           />
           <InputElement
             labelName='Contraseña'
-            type='password'
+            type= {togglePassword ? 'password' : ''} 
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
             }}
           />
+          <span onClick={()=> setTogglePassword(!togglePassword)}>👀</span>
         </div>
         <BlueButton name='Iniciar sesión' />
       </form>

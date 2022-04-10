@@ -110,12 +110,20 @@ async function deletePhoto(photoName) {
     try {
         //Creamos la ruta absoluta a la foto
         const photoPath = path.join(uploadsDir, photoName);
+        /* console.log('soy photoPath', photoPath);
+        console.log('soy process', process.argv); */
+
 
         //Eliminamos la foto del disco?
         await unlink(photoPath);
     } catch (error) {
         console.error(error);
-        throw new Error('Error al eliminar la imagen del servidor');
+        if (error.code === 'ENOENT'){
+            console.log('no pasa na seguimos');
+        }else {
+            console.error('error del catch', error.code);
+            throw new Error('Error al eliminar la imagen del servidor');
+        }
     }
 }
 

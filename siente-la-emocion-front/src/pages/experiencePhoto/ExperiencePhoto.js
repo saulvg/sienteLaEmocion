@@ -1,4 +1,5 @@
 // ## Style ##
+import './experiencePhoto.css'
 
 /**
  * ###########
@@ -24,12 +25,14 @@ import Error from '../../components/error/Error';
  * ###########
  */
 import useUser from '../../hooks/useUser';
+import ButtonForm from '../../components/ButtonForm/ButtonForm';
 
 //Pagina que pinta el formulario para que el admin pueda incluir 3 fotos de una experiencia 
 const ExperiencePhoto = () => {
   //Estados de variables que necesitamos 
   const { token } = useUser();
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState('')
   //Parametro del id de la experienia que cogemos de la ruta 
   const { idExperience } = useParams();
   //Estados del formulario
@@ -67,7 +70,7 @@ const ExperiencePhoto = () => {
         redirect.innerHTML = `
         <div id='entryCreated' >
           <div>${body.message}</div>
-          <div className='loading'></div>
+          <div class='loading'>hola</div>
         </div>
       `;
       };
@@ -78,6 +81,7 @@ const ExperiencePhoto = () => {
         setTimeout(redirect, 5000);
       } else {
         console.error('Error body', body.message);
+        setErrorMessage(body.message)
       }
     } catch (error) {
       console.error('catch', error);
@@ -112,8 +116,10 @@ const ExperiencePhoto = () => {
         className={'simpleHeader'}
       />
       {decoded.role === 'admin' ? (
-        <div className='upFiles'>
+        <> {!errorMessage ? (
+          <div className='upFiles'>
           <form onSubmit={uploadFiles}>
+            <div className='flexFormPhotos'>
             <label>
               Selecciona foto 1
               <input type={'file'} onChange={dataPhoto1} required />
@@ -126,11 +132,15 @@ const ExperiencePhoto = () => {
               Selecciona foto 3
               <input type={'file'} onChange={dataPhoto3} required />
             </label>
-            <button>Subir</button>
+            </div>
+            <ButtonForm>Subir</ButtonForm>
           </form>
         </div>
+          ) : ( <Error>{errorMessage}</Error>
+          )}
+        </>
       ) : (
-        <div>No tienes permisos</div>
+        <Error>No tienes permisos</Error>
       )}
     </>
   );

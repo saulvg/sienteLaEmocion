@@ -41,6 +41,7 @@ import {
  * ###########
  */
 import useUser from '../../hooks/useUser';
+import ButtonForm from '../../components/ButtonForm/ButtonForm';
 
 //Pagina que pinta el formulario para que el admin pueda incluir una nueva actividad
 function CompanyForm() {
@@ -141,82 +142,88 @@ function CompanyForm() {
         <>
           {!load ? (
             <div id='companyForm '>
-              <form onSubmit={sendForm} className='formFlex'>
-                <div>
-                  <Company
-                    companyName={companyName}
-                    setCompanyName={setCompanyName}
-                    placeholder={'Escribe aqui...'}
-                  />
-                  <ExperiencesCategory
-                    companyCategory={companyCategory}
-                    setCompanyCategory={setCompanyCategory}
-                    placeholder={'Escribe aqui...'}
-                  />
-                  <CapacityCompany
-                    companyCapacity={companyCapacity}
-                    setCompanyCapacity={setCompanyCapacity}
-                    placeholder={'Escribe aqui...'}
-                  />
-                  <PriceCompany
-                    companyPrice={companyPrice}
-                    setCompanyPrice={setCompanyPrice}
-                    placeholder={'Escribe aqui...'}
-                  />
+              <form onSubmit={sendForm}>
+                <div className='formFlex'>
+                  <div>
+                    <Company
+                      companyName={companyName}
+                      setCompanyName={setCompanyName}
+                      placeholder={'Escribe aqui...'}
+                    />
+                    <ExperiencesCategory
+                      companyCategory={companyCategory}
+                      setCompanyCategory={setCompanyCategory}
+                      placeholder={'Escribe aqui...'}
+                    />
+                    <CapacityCompany
+                      companyCapacity={companyCapacity}
+                      setCompanyCapacity={setCompanyCapacity}
+                      placeholder={'Escribe aqui...'}
+                    />
+                    <PriceCompany
+                      companyPrice={companyPrice}
+                      setCompanyPrice={setCompanyPrice}
+                      placeholder={'Escribe aqui...'}
+                    />
+
+                    
+                  </div>
+                  <div>
                   <DateCompany
-                    companyDate={companyDate}
-                    setCompanyDate={setCompanyDate}
-                  />
-                  <CityCompany
-                    companyCity={companyCity}
-                    setCompanyCity={setCompanyCity}
-                    placeholder={'Escribe aqui...'}
-                  />
-                  <DirectionCompany
-                    companyDirection={companyDirection}
-                    setCompanyDirection={setCompanyDirection}
-                    placeholder={'Escribe aqui...'}
-                  />
+                      companyDate={companyDate}
+                      setCompanyDate={setCompanyDate}
+                    />
+                    <CityCompany
+                      companyCity={companyCity}
+                      setCompanyCity={setCompanyCity}
+                      placeholder={'Escribe aqui...'}
+                    />
+                    <DirectionCompany
+                      companyDirection={companyDirection}
+                      setCompanyDirection={setCompanyDirection}
+                      placeholder={'Escribe aqui...'}
+                    />
+                    <PhotoHeader
+                      companyPhotoHeader={companyPhotoHeader}
+                      setCompanyPhotoHeader={setCompanyPhotoHeader}
+                    />
+                  </div>
+                  
                 </div>
                 <div>
                   <Text1Company
-                    companyText_1={companyText_1}
-                    setCompanyText_1={setCompanyText_1}
-                    placeholder={'Escribe aqui...'}
-                  />
-                  <Text2Company
-                    companyText_2={companyText_2}
-                    setCompanyText_2={setCompanyText_2}
-                    placeholder={'Escribe aqui...'}
-                  />
-                  <Text3Company
-                    companyText_3={companyText_3}
-                    setCompanyText_3={setCompanyText_3}
-                    placeholder={'Escribe aqui...'}
-                  />
-                  <Text4Company
-                    companyText_4={companyText_4}
-                    setCompanyText_4={setCompanyText_4}
-                    placeholder={'Escribe aqui...'}
-                  />
-                  <Text5Company
-                    companyText_5={companyText_5}
-                    setCompanyText_5={setCompanyText_5}
-                    placeholder={'Escribe aqui...'}
-                  />
-                  <Text6Company
-                    companyText_6={companyText_6}
-                    setCompanyText_6={setCompanyText_6}
-                    placeholder={'Escribe aqui...'}
-                  />
-                  <PhotoHeader
-                    companyPhotoHeader={companyPhotoHeader}
-                    setCompanyPhotoHeader={setCompanyPhotoHeader}
-                  />
-                </div>
-                <div className='buttonForm'>
-                  <button type='submit'>Enviar</button>
-                </div>
+                      companyText_1={companyText_1}
+                      setCompanyText_1={setCompanyText_1}
+                      placeholder={'Escribe aqui...'}
+                    />
+                    <Text2Company
+                      companyText_2={companyText_2}
+                      setCompanyText_2={setCompanyText_2}
+                      placeholder={'Escribe aqui...'}
+                    />
+                    <Text3Company
+                      companyText_3={companyText_3}
+                      setCompanyText_3={setCompanyText_3}
+                      placeholder={'Escribe aqui...'}
+                    />
+                    <Text4Company
+                      companyText_4={companyText_4}
+                      setCompanyText_4={setCompanyText_4}
+                      placeholder={'Escribe aqui...'}
+                    />
+                    <Text5Company
+                      companyText_5={companyText_5}
+                      setCompanyText_5={setCompanyText_5}
+                      placeholder={'Escribe aqui...'}
+                    />
+                    <Text6Company
+                      companyText_6={companyText_6}
+                      setCompanyText_6={setCompanyText_6}
+                      placeholder={'Escribe aqui...'}
+                    />
+                  </div>
+                  
+                <ButtonForm>Enviar</ButtonForm>
               </form>
             </div>
           ) : (

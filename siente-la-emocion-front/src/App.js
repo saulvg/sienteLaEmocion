@@ -30,12 +30,14 @@ import BookingExperience from './pages/BookingExperience/BookingExperience';
 import EditPassword from './components/Forms/EditPassword';
 import ExperiencePhoto from './pages/experiencePhoto/ExperiencePhoto';
 
-//import UpExperiencesPhotos from './pages/upExperiencesPhotos/UpExperiencesPhotos';
 import EditExperience from './pages/editExperience/EditExperience';
 import Buscador from './pages/buscador/Buscador';
 import LoginPage from './pages/Forms/Login';
 import ModalContactanos from './components/modalContactanos/ModalContactanos';
 import Review from './components/Review/Review';
+
+
+
 /* import ModalContactanos from './components/modalContactanos/ModalContactanos';
  */
 //Componente para envolver a toda la aplicacion con un contexto para que este dispnible en toda la aplicacion de manera implicita el valro de token

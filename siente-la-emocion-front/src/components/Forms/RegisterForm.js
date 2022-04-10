@@ -4,6 +4,7 @@ import BlueButton from './BlueButton';
 import { Navigate } from 'react-router-dom';
 
 const RegisterForm = () => {
+  const [togglePassword, setTogglePassword] = useState(true)
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [phone, setPhone] = useState('');
@@ -59,12 +60,14 @@ const RegisterForm = () => {
             />
             <InputElement
               labelName='Contraseña'
-              type='text'
+              type={ togglePassword ? 'password' : ''}
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
             />
+            <span onClick={()=> setTogglePassword(!togglePassword)}>👀</span>
+
             <InputElement
               labelName='Nombre de usuario'
               type='text'
