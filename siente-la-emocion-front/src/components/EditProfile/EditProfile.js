@@ -13,9 +13,11 @@ import BlueButton from '../Forms/BlueButton';
 import DeleteAccount from '../Forms/DeleteAccount';
 import { Modal } from '../Modal/Modal';
 //username, newEmail, phone, biography, postalCode, dni_nie
-const EditProfile = ({ oldName, oldEmail }) => {
+const EditProfile = ({ placeholder }) => {
   const { token, user } = useUser();
   const [username, setUsername] = useState('');
+  const [name, setName] = useState('');
+
   const [newEmail, setEmail] = useState(''); // FUNCIONA RARO
   const [phone, setPhone] = useState('');
   const [biography, setBiography] = useState('');
@@ -36,6 +38,7 @@ const EditProfile = ({ oldName, oldEmail }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          name,
           username,
           newEmail,
           phone,
@@ -74,7 +77,22 @@ const EditProfile = ({ oldName, oldEmail }) => {
                   type='text'
                   id='name'
                   name='name'
-                  pattern='[a-z]{1,15}'
+                  pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}"
+                  title='Debe contener letra minúscula o mayúscula'
+                  placeholder={user.name}
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                />
+                <InputElement
+                  classLabel='label-profile'
+                  labelName='Username'
+                  className='input-profile'
+                  type='text'
+                  id='username'
+                  name='username'
+                  pattern='^([a-z]+[0-9]{0,2}){5,12}$'
                   title='Debe contener letra minúscula'
                   placeholder={user.username}
                   value={username}
@@ -89,6 +107,7 @@ const EditProfile = ({ oldName, oldEmail }) => {
                   labelName='Email'
                   type='email'
                   id='email'
+                  pattern='^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$'
                   name='email'
                   placeholder={user.email}
                   value={newEmail}
@@ -103,7 +122,7 @@ const EditProfile = ({ oldName, oldEmail }) => {
                   type='tel'
                   id='tel'
                   name='tel'
-                  pattern='[0-9]{9}'
+                  pattern='[0-9]{9,15}'
                   placeholder={user.phone}
                   value={phone}
                   onChange={(e) => {
@@ -145,8 +164,9 @@ const EditProfile = ({ oldName, oldEmail }) => {
                   labelName='Sobre mí'
                   id='biography'
                   name='biography'
+                  pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{0,255}"
                   placeholder={user.biography}
-                  value={biography}
+                  value={biography ? biography : user.biography}
                   onChange={(e) => {
                     setBiography(e.target.value);
                   }}

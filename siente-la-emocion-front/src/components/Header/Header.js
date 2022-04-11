@@ -75,6 +75,12 @@ const MainMenu = () => {
                   <p
                     onClick={() => {
                       setToken('');
+                      if (setToken === null) {
+                        function refreshPage() {
+                          window.location.reload(false);
+                        }
+                        refreshPage();
+                      }
                     }}
                   >
                     <Link to='/'>Cerrar sesión</Link>

@@ -1,18 +1,14 @@
 //Hook para coger datos de las actividades
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
-import useActivity from './useActivity';
 import useUser from './useUser';
 
-const useBookings = (id) => {
+const useBookings = () => {
   const { token } = useUser();
   //const { idExperiencesBooking } = useParams();
-  const { idExperiencesBooking } = useParams();
-  const { activity, error } = useActivity(idExperiencesBooking);
-  const [bookings, setBookings] = useState([]);
-  const [review, setReview] = useState([]);
 
-  const [err, setError] = useState(null);
+  const [bookings, setBookings] = useState([]);
+
+  const [error, setError] = useState(null);
   //id experience
   //const [book, setBook] = useState([]);
 
@@ -20,7 +16,7 @@ const useBookings = (id) => {
     const loadReviews = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_BACKEND}/experiences/${idExperiencesBooking}/booking`,
+          `${process.env.REACT_APP_BACKEND}/bookings`,
           {
             headers: {
               Authorization: token,
@@ -38,16 +34,16 @@ const useBookings = (id) => {
 
         console.log(json.data);
         setBookings(json.data.userExperiences);
-        setBookings(json.data.userExperiences);
+        console.log('VER DATOS', json.data.userExperiences);
       } catch (error) {
         setError(error.message);
       }
     };
 
     loadReviews();
-  }, [id]);
+  }, [token]);
 
-  return { bookings, activity, error };
+  return { bookings, error };
 };
 
 export default useBookings;

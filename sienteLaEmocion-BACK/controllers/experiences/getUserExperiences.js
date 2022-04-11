@@ -60,7 +60,8 @@ const getUserExperiences = async (req, res, next) => {
             const [experience] = await connection.query(
                 `
         SELECT
-            experiences.id, 
+        booking.id,
+            experiences.id as experienceId, 
             experiences.price, 
             experiences.date, 
             experiences.city,

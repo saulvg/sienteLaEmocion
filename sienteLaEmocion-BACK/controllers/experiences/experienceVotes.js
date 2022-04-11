@@ -8,7 +8,7 @@ const voteEntry = async (req, res, next) => {
 
         // Obtenemos el id de la entrada que va a ser votada.
         const { idExperience } = req.params;
-        // const { idExperiencesBooking } = req.params;
+        const { idExperiencesBooking } = req.params;
 
         // Obtenemos el id del usuario que realiza la request.
         const idReqUser = req.userAuth.id;
@@ -72,7 +72,7 @@ const voteEntry = async (req, res, next) => {
         await connection.query(
             `
             UPDATE booking SET vote = ?  WHERE id = ?`,
-            [vote, idExperience]
+            [vote, idExperiencesBooking]
         );
 
         res.send({

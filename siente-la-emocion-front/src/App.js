@@ -35,7 +35,8 @@ import EditExperience from './pages/editExperience/EditExperience';
 import Buscador from './pages/buscador/Buscador';
 import LoginPage from './pages/Forms/Login';
 import ModalContactanos from './components/modalContactanos/ModalContactanos';
-import Review from './components/Review/Review';
+import Review, { Booking } from './components/Review/Review';
+import UserExperiences from './components/UserExperiences/UserExperiences';
 /* import ModalContactanos from './components/modalContactanos/ModalContactanos';
  */
 //Componente para envolver a toda la aplicacion con un contexto para que este dispnible en toda la aplicacion de manera implicita el valro de token
@@ -82,8 +83,8 @@ function App() {
               element={<ReviewPage />}
             />
             <Route
-              path='/experiences/:idExperience/votes'
-              element={<Review />}
+              path='/experiences/:idExperiencesBooking/votes'
+              element={<Booking />}
             />
             <Route
               path='/experiences/:idExperience/photos'

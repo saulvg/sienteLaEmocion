@@ -9,14 +9,17 @@ export const InputElement = ({
   onChange,
   htmlFor,
   placeholder,
+  pattern,
+  labelfor,
 }) => {
   return (
-    <label className='label-element'>
+    <label className='label-element' htmlFor={labelfor}>
       {labelName}
       <input
         className='input-element'
         type={type}
         name={name}
+        pattern={pattern}
         id={id}
         value={value}
         onChange={onChange}

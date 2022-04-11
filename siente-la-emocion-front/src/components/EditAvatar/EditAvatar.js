@@ -96,21 +96,46 @@ const Avatar = ({ putAvatar, setPutAvatar, button }) => {
   };
   return (
     <div onSubmit={editAvatar} className='forem-profile'>
-      <label htmlFor='avaar'>
-        <img
-          className='user-avatar'
-          src={'http://localhost:4000/uploads/' + user.avatar}
-          alt='aaaaa'
-        />
-      </label>
-      <input
-        type='file'
-        id='avaar'
-        style={{ display: 'none' }}
-        accept='image/*'
-        onChange={editAvatar}
-        button={button}
-      />
+      {!user.avatar ? (
+        <>
+          <label htmlFor='avaar'>
+            <img
+              className='user-avatar'
+              src={
+                'http://localhost:4000/uploads/3871b0f9-4f40-4c39-ba68-9860a73fe5a5.jpg'
+              }
+              alt='aaaaa'
+            />{' '}
+          </label>
+          <input
+            type='file'
+            id='avaar'
+            style={{ display: 'none' }}
+            accept='image/*'
+            onChange={editAvatar}
+            button={button}
+          />
+        </>
+      ) : (
+        <div>
+          {' '}
+          <label htmlFor='avaar'>
+            <img
+              className='user-avatar'
+              src={'http://localhost:4000/uploads/' + user.avatar}
+              alt='aaaaa'
+            />
+          </label>
+          <input
+            type='file'
+            id='avaar'
+            style={{ display: 'none' }}
+            accept='image/*'
+            onChange={editAvatar}
+            button={button}
+          />
+        </div>
+      )}{' '}
     </div>
   );
 };
