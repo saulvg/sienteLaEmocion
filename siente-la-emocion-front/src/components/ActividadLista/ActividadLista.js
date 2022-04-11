@@ -39,31 +39,32 @@ const ActividadLista = ({ activities, error }) => {
 
   //si no ha habido ningun error pero no hay actividades pintamos que no las hay y sino las avtividades con todos sus datos
   return activities.length > 0 ? (
-    <ul>
+    <ul class='w-full activities'>
       {/* Cada actividadad es un li dentro de un ul con su Link, etc, si eres admin puedes editarlas desde aqui, sino no */}
       {activities.map((activity) => {
         return (
-          <li key={activity.id} className='activity-flex'>
-            <Link to={`/experiences/${activity.id}`}>
-              <section className='actividad'>
-                <CircleActivities
-                  id={'idActividad'}
-                  clas={'listaActividades'}
-                  children={activity.category}
-                />
+          <li key={activity.id} className='activity-flex w-full '>
+            <Link
+              className='w-full actividad w-full flex'
+              to={`/experiences/${activity.id}`}
+            >
+              <CircleActivities
+                id={'idActividad'}
+                clas={'listaActividades'}
+                children={activity.category}
+              />
 
-                <div className='descriptionActivity'>
-                  <div className='headerActiviti'>
-                    <h3>{activity.company}</h3>
-                  </div>
-                  <p>{activity.text_1 || 'Sin descripción'}</p>
-                  <div className='actividadF_P'>
-                    <p>{new Date(activity.date).toLocaleDateString()} </p>
-                  </div>
+              <div className='description-activity'>
+                <div className='header-activity'>
+                  <h3>{activity.company}</h3>
                 </div>
-              </section>
+                <p className='texto'>{activity.text_1 || 'Sin descripción'}</p>
+                <div className='actividadF_P'>
+                  <p>{new Date(activity.date).toLocaleDateString()} </p>
+                </div>
+              </div>
             </Link>
-            <div>
+            <div class='activity-right'>
               {decod.role === 'admin' ? (
                 <Link to={`/editExperiences/${activity.id}`} className='edit'>
                   <div className='lapiz'>Lapiz</div>

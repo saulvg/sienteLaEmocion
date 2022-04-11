@@ -14,7 +14,6 @@ code {
 
 .flex {
   display: flex;
-  align-items: center;
 }
 
 .back-svg {
@@ -22,12 +21,16 @@ code {
   height: auto;
   color: white;
 }
-.width-full {
+.w-full {
   width: 100%;
 }
 
 .width-50 {
   width: 50%;
+}
+
+.items-center {
+  align-items: center;
 }
 
 .divide + .divide {

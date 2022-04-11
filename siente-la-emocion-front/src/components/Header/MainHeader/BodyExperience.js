@@ -1,50 +1,73 @@
 import './bodyExperience.css';
 import useActivity from '../../../hooks/useActivity';
 import { Link, useParams } from 'react-router-dom';
+import { useState } from 'react';
 
 const BodyActivitis = () => {
   const { idExperience } = useParams();
   const { activity, error } = useActivity(idExperience);
+  const [text, setText] = useState(false);
 
   return activity ? (
-    <div className='headerBody bodyExperience'>
+    <div className='header-body bodyExperience'>
       <h1>{activity.experiences_category}</h1>
-      <div>
-        <section className='queIncluye textHeaderLeft'>
-          <h3>Que incluye?</h3>
-          {
-            /* activity ? ( */
-            <p>{activity.text_1}</p>
-            /*)  : (
+      <div className='experience-texts'>
+        <section className='queIncluye text-header'>
+          <div className='experience-text-container'>
+            <div class='experience-description-content'>
+              <h3>Que incluye?</h3>
+              {
+                /* activity ? ( */
+                <p>{activity.text_1}</p>
+                /*)  : (
             <p>
               <div className='loading'></div>
             </p>
           ) */
-          }
+              }
+            </div>
+          </div>
         </section>
-        <section className='queNecesitas textHeaderRigth'>
-          <h3>Que necesitas?</h3>
-          <p>{activity.text_2}</p>
+        <section className='queNecesitas text-header'>
+          <div className='experience-text-container'>
+            <h3>Que necesitas?</h3>
+            <p>{activity.text_2}</p>
+          </div>
         </section>
-        <section className='cuantoDura textHeaderLeft'>
-          <h3>
-            Cuanto dura la experiencia?
-            <br />
-            Cuando se realiza?
-          </h3>
-          <p>{activity.text_3}</p>
+        <section className='cuantoDura text-header'>
+          <div className='experience-text-container'>
+            <h3>
+              Cuanto dura la experiencia?
+              <br />
+              Cuando se realiza?
+            </h3>
+            <p>{activity.text_3}</p>
+          </div>
         </section>
-        <section className='valoraciones textHeaderRigth'>
-          {
-            <Link to={`/experiences/${idExperience}/reviews`}>
-              <h3>Valoraciones</h3>
-              {console.log(activity.id)}
-            </Link>
-          }
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry.
-          </p>
+        <section className='valoraciones text-header'>
+          <button
+            onClick={() => {
+              setText(!text);
+              console.log('hola');
+            }}
+            className='experience-text-container'
+          >
+            <div class='experience-description-content'>
+              {
+                <h3>
+                  <Link to={`/experiences/${idExperience}/reviews`}>
+                    Valoraciones
+                  </Link>
+                </h3>
+              }
+              {text ? (
+                <p>
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry.
+                </p>
+              ) : null}
+            </div>
+          </button>
         </section>
       </div>
     </div>

@@ -1,11 +1,18 @@
 .container {
-  width: 80%;
-  margin: auto;
+  width: 1400px;
+  max-width: 95%;
+  margin: 0 auto;
 }
 
 .experiencia {
   padding-top: 70px;
   padding-bottom: 268px;
+}
+
+.activity-rigth {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 @media (max-width: 600px) {
