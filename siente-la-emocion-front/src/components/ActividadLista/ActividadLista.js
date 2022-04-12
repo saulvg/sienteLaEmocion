@@ -86,7 +86,6 @@ const ActividadLista = ({ activities, error }) => {
                 </div>
                 /* ............. */
               )}
-              <p>{`3 / ${activity.capacity}`}</p>
             </div>
           </li>
         );

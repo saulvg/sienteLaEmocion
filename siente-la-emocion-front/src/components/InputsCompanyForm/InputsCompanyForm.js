@@ -2,7 +2,7 @@
 import './inputCompanyForm.css';
 
 //Funciones, 'Componentes' que pintaremos en CompanyForm unicamente, pero como son muchos decidimos separarlos en otro fichero
-const Company = ({ companyName, setCompanyName, placeholder }) => {
+const Company = ({ companyName, setCompanyName }) => {
   const valueCompanyName = (event) => {
     setCompanyName(event.target.value);
   };
@@ -14,18 +14,13 @@ const Company = ({ companyName, setCompanyName, placeholder }) => {
           type={'text'}
           value={companyName}
           onChange={valueCompanyName}
-          placeholder={placeholder}
           required
         />
       </label>
     </div>
   );
 };
-const ExperiencesCategory = ({
-  companyCategory,
-  setCompanyCategory,
-  placeholder,
-}) => {
+const ExperiencesCategory = ({ companyCategory, setCompanyCategory }) => {
   const valueCompanyCategory = (event) => {
     setCompanyCategory(event.target.value);
   };
@@ -37,18 +32,13 @@ const ExperiencesCategory = ({
           type={'text'}
           value={companyCategory}
           onChange={valueCompanyCategory}
-          placeholder={placeholder}
           required
         />
       </label>
     </div>
   );
 };
-const CapacityCompany = ({
-  companyCapacity,
-  setCompanyCapacity,
-  placeholder,
-}) => {
+const CapacityCompany = ({ companyCapacity, setCompanyCapacity }) => {
   const valueCompanyCapacity = (event) => {
     setCompanyCapacity(event.target.value);
   };
@@ -58,16 +48,15 @@ const CapacityCompany = ({
         Capacidad:
         <input
           type={'text'}
-          value={companyCapacity ? companyCapacity : placeholder}
+          value={companyCapacity}
           onChange={valueCompanyCapacity}
-          placeholder={placeholder}
           required
         />
       </label>
     </div>
   );
 };
-const PriceCompany = ({ companyPrice, setCompanyPrice, placeholder }) => {
+const PriceCompany = ({ companyPrice, setCompanyPrice }) => {
   const valueCompanyPrice = (event) => {
     setCompanyPrice(event.target.value);
   };
@@ -77,16 +66,15 @@ const PriceCompany = ({ companyPrice, setCompanyPrice, placeholder }) => {
         Precio:
         <input
           type={'text'}
-          value={companyPrice ? companyPrice : placeholder}
+          value={companyPrice}
           onChange={valueCompanyPrice}
-          placeholder={placeholder}
           required
         />
       </label>
     </div>
   );
 };
-const DateCompany = ({ companyDate, setCompanyDate, placeholder }) => {
+const DateCompany = ({ companyDate, setCompanyDate }) => {
   const valueCompanyDate = (event) => {
     setCompanyDate(event.target.value);
   };
@@ -96,7 +84,7 @@ const DateCompany = ({ companyDate, setCompanyDate, placeholder }) => {
         Fecha:
         <input
           type={'datetime-local'}
-          value={companyDate ? companyDate : placeholder}
+          value={companyDate.replace('Z', '')}
           onChange={valueCompanyDate}
           required
         />
@@ -104,7 +92,7 @@ const DateCompany = ({ companyDate, setCompanyDate, placeholder }) => {
     </div>
   );
 };
-const CityCompany = ({ companyCity, setCompanyCity, placeholder }) => {
+const CityCompany = ({ companyCity, setCompanyCity }) => {
   const valueCompanyCity = (event) => {
     setCompanyCity(event.target.value);
   };
@@ -114,20 +102,15 @@ const CityCompany = ({ companyCity, setCompanyCity, placeholder }) => {
         Ciudad:
         <input
           type={'text'}
-          value={companyCity ? companyCity : placeholder}
+          value={companyCity}
           onChange={valueCompanyCity}
-          placeholder={placeholder}
           required
         />
       </label>
     </div>
   );
 };
-const DirectionCompany = ({
-  companyDirection,
-  setCompanyDirection,
-  placeholder,
-}) => {
+const DirectionCompany = ({ companyDirection, setCompanyDirection }) => {
   const valueCompanyDirection = (event) => {
     setCompanyDirection(event.target.value);
   };
@@ -137,9 +120,8 @@ const DirectionCompany = ({
         Direccion:
         <input
           type={'text'}
-          value={companyDirection ? companyDirection : placeholder}
+          value={companyDirection}
           onChange={valueCompanyDirection}
-          placeholder={placeholder}
           required
         />
       </label>
@@ -147,7 +129,7 @@ const DirectionCompany = ({
   );
 };
 
-const Text1Company = ({ companyText_1, setCompanyText_1, placeholder }) => {
+const Text1Company = ({ companyText_1, setCompanyText_1 }) => {
   const valueCompanyText_1 = (event) => {
     setCompanyText_1(event.target.value);
   };
@@ -157,16 +139,15 @@ const Text1Company = ({ companyText_1, setCompanyText_1, placeholder }) => {
         Texto 1:
         <textarea
           type={'text'}
-          value={companyText_1 ? companyText_1 : placeholder}
+          value={companyText_1}
           onChange={valueCompanyText_1}
-          placeholder={placeholder}
           required
         />
       </label>
     </div>
   );
 };
-const Text2Company = ({ companyText_2, setCompanyText_2, placeholder }) => {
+const Text2Company = ({ companyText_2, setCompanyText_2 }) => {
   const valueCompanyText_2 = (event) => {
     setCompanyText_2(event.target.value);
   };
@@ -176,15 +157,14 @@ const Text2Company = ({ companyText_2, setCompanyText_2, placeholder }) => {
         Texto 2:
         <textarea
           type={'text'}
-          value={companyText_2 ? companyText_2 : placeholder}
+          value={companyText_2}
           onChange={valueCompanyText_2}
-          placeholder={placeholder}
         />
       </label>
     </div>
   );
 };
-const Text3Company = ({ companyText_3, setCompanyText_3, placeholder }) => {
+const Text3Company = ({ companyText_3, setCompanyText_3 }) => {
   const valueCompanyText_3 = (event) => {
     setCompanyText_3(event.target.value);
   };
@@ -194,15 +174,14 @@ const Text3Company = ({ companyText_3, setCompanyText_3, placeholder }) => {
         Texto 3:
         <textarea
           type={'text'}
-          value={companyText_3 ? companyText_3 : placeholder}
+          value={companyText_3}
           onChange={valueCompanyText_3}
-          placeholder={placeholder}
         />
       </label>
     </div>
   );
 };
-const Text4Company = ({ companyText_4, setCompanyText_4, placeholder }) => {
+const Text4Company = ({ companyText_4, setCompanyText_4 }) => {
   const valueCompanyText_4 = (event) => {
     setCompanyText_4(event.target.value);
   };
@@ -212,15 +191,14 @@ const Text4Company = ({ companyText_4, setCompanyText_4, placeholder }) => {
         Texto 4:
         <textarea
           type={'text'}
-          value={companyText_4 ? companyText_4 : placeholder}
+          value={companyText_4}
           onChange={valueCompanyText_4}
-          placeholder={placeholder}
         />
       </label>
     </div>
   );
 };
-const Text5Company = ({ companyText_5, setCompanyText_5, placeholder }) => {
+const Text5Company = ({ companyText_5, setCompanyText_5 }) => {
   const valueCompanyText_5 = (event) => {
     setCompanyText_5(event.target.value);
   };
@@ -230,15 +208,14 @@ const Text5Company = ({ companyText_5, setCompanyText_5, placeholder }) => {
         Texto 5:
         <textarea
           type={'text'}
-          value={companyText_5 ? companyText_5 : placeholder}
+          value={companyText_5}
           onChange={valueCompanyText_5}
-          placeholder={placeholder}
         />
       </label>
     </div>
   );
 };
-const Text6Company = ({ companyText_6, setCompanyText_6, placeholder }) => {
+const Text6Company = ({ companyText_6, setCompanyText_6 }) => {
   const valueCompanyText_6 = (event) => {
     setCompanyText_6(event.target.value);
   };
@@ -248,9 +225,8 @@ const Text6Company = ({ companyText_6, setCompanyText_6, placeholder }) => {
         Texto 6:
         <textarea
           type={'text'}
-          value={companyText_6 ? companyText_6 : placeholder}
+          value={companyText_6}
           onChange={valueCompanyText_6}
-          placeholder={placeholder}
         />
       </label>
     </div>
@@ -264,11 +240,7 @@ const PhotoHeader = ({ companyPhotoHeader, setCompanyPhotoHeader }) => {
     <div className='companyPhotoHeader'>
       <label>
         Foto principal:
-        <input
-          type={'file'}
-          onChange={valueCompanyPhotoHeader}
-          required
-        />
+        <input type={'file'} onChange={valueCompanyPhotoHeader} required />
       </label>
     </div>
   );

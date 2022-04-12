@@ -13,13 +13,22 @@ const deleteExperience = async (req, res, next) => {
 
         // Seleccionamos el nombre de las fotos relaccionadas con la experiencia.
         const [photos] = await connection.query(
-            `SELECT path, description FROM experiences_photos WHERE id_experiences = ?`,
+            `SELECT id, path, description FROM experiences_photos WHERE id_experiences = ?`,
             [idExperience]
         );
-
+        /*         console.log('soy photos', photos);
+         */
         // Borramos las fotos del servidor.
         for (const photo of photos) {
-            await deletePhoto(photo.path , photo.description );
+            await deletePhoto(photo.path, photo.description);
+        }
+        //Borramos las fotos
+        for (const photo of photos) {
+            console.log('photo.id', photo.id);
+            await connection.query(
+                `DELETE FROM experiences_photos WHERE id = ? `,
+                [photo.id]
+            );
         }
 
         // Borramos la entrada.
