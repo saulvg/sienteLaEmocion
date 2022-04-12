@@ -19,9 +19,100 @@
   margin-top: 15px;
   padding: 0 10px;
 }
+
+.my-experiences {
+  width: full;
+  height: 80%;
+  overflow: auto;
+  padding: 0 40px;
+  text-decoration: none;
+  list-style-type: none;
+  margin-top: 50px;
+}
+
+.add-review-button {
+  background: rgba(0, 163, 255, 0.79);
+  border-radius: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 24px;
+  color: #ffffff;
+  border: 0;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.add-review-button:hover {
+  background-color: rgba(127, 205, 250, 0.79);
+  transition-duration: 0.2s;
+}
+.experience-content {
+  margin-left: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 80%;
+}
+
+.my-experience + .my-experience {
+  margin-top: 34px;
+}
+.experience-avatar {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  background-color: red;
+}
+.avatar-div {
+  position: absolute;
+  top: 50px;
+  right: 100px;
+}
+
+.back-button {
+  border: 0;
+}
+
+.avatar-profile {
+  width: 146px;
+  height: 146px;
+  border-radius: 50%;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-avatar {
+  border-radius: 50%;
+  width: 10rem;
+  height: 10rem;
+
+  background-color: rgb(133, 90, 90);
+}
+
+.profile-options {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  background-color: transparent;
+  border: 0;
+  display: block;
+  margin: 45px auto 0 auto;
+  text-decoration: none;
+  color: black;
+}
 .textarea-element {
   scroll-behavior: auto;
-  width: 40rem;
+  width: 100%;
   padding-left: 10px;
   display: flex;
   align-items: center;
@@ -35,8 +126,6 @@
   line-height: 21px;
   color: white;
   border: transparent;
-  margin-right: auto;
-  margin-left: auto;
   margin-top: 15px;
   padding: 0 10px;
 }
@@ -53,9 +142,66 @@
   display: block;
   margin-bottom: 46px;
   text-align: left;
-  width: 404px;
+  width: 400px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.profile-label-element {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+  display: block;
+  margin-bottom: 46px;
+  text-align: left;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.background-color-1 {
+  background-color: #fff9f5;
+  position: absolute;
+  border-radius: 50%;
+  padding-left: 4rem;
+  width: 400rem;
+  height: 400rem;
+  left: -40rem;
+  top: 7rem;
+  padding-bottom: 9.6rem;
+}
+.background-color-2 {
+  background-color: #f4d4c1;
+  position: absolute;
+  border-radius: 50%;
+  padding-left: 4rem;
+  width: 400rem;
+  height: 400rem;
+  left: 0rem;
+  top: 10rem;
+  padding-bottom: 9.6rem;
+}
+.form-profile {
+  position: absolute;
+  left: 50rem;
+  top: -3rem;
+}
+
+/* .input-element {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: lighter;
+  margin-top: 5px;
+}
+.label-element {
+  font-weight: normal;
+  margin-bottom: 35px;
+} */
+
+.password {
+  position: absolute;
+  right: 40rem;
 }
 
 .modal2 {
@@ -165,6 +311,12 @@
   background-color: white;
 }
 
+.modal1-profile {
+  height: 200px;
+  width: 100%;
+  background-color: white;
+}
+
 .circle-background {
   width: 100%;
   background-color: #f4d4c1;
@@ -197,6 +349,12 @@
   display: grid;
   text-align: center;
   grid-template-columns: 1fr 1fr;
+  padding: 0 10px;
+}
+
+.profile-elements {
+  margin: auto;
+  text-align: center;
   padding: 0 10px;
 }
 .modal-circle {
@@ -267,6 +425,19 @@ div > .error-msg {
   margin-top: 65px;
 }
 
+.profile-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile {
+  width: 50%;
+}
+
+.profile + .profile {
+  border-left: 1px solid black;
+}
+
 .blue-button + .blue-button {
   margin-left: 75px;
 }
@@ -309,7 +480,10 @@ div > .error-msg {
     background: #f4d4c1;
     height: 200px;
   }
-
+  .circle-content button {
+    border: 0;
+    background-color: red;
+  }
   .form-titles {
     text-align: center;
     justify-content: center;

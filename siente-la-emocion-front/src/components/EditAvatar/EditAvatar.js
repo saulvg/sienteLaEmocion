@@ -8,10 +8,10 @@ export const EditAvatar = () => {
   //const { users } = useUserProfile();
   //const { user } = useUser();
   const { user, error, token } = useUser();
-  const [avatar, setAvatar] = useState('');
+  const [avatar, setAvatar] = useState(''); /* 
   const imageInputRef = useRef();
   const [newAvatar, setNewAvatar] = useState(user.avatar);
-  const [didUserUpdateAvatar, setDidUserUpdateAvatar] = useState(false);
+  const [didUserUpdateAvatar, setDidUserUpdateAvatar] = useState(false); */
   if (error) return <div>Hubo un error: {error}</div>;
   const edit = async (e) => {
     //e.preventDefault();
@@ -44,19 +44,18 @@ export const EditAvatar = () => {
   };
 
   return user && token ? (
-    <form onSubmit={edit} className='forem-profile'>
-      <label htmlFor='avaar'>
+    <form onSubmit={edit} className='avatar-profile'>
+      <label htmlFor='avatar'>
         {' '}
-        hola
         <img
           className='user-avatar'
           src={'http://localhost:4000/uploads/' + user.avatar}
-          alt='aaaaa'
+          alt='sss'
         />
       </label>
       <input
         type='file'
-        id='avaar'
+        id='avatar'
         style={{ display: 'none' }}
         accept='image/*'
         onChange={(e) => {
@@ -65,7 +64,7 @@ export const EditAvatar = () => {
       />
     </form>
   ) : (
-    <div></div>
+    <div>sss</div>
   );
 };
 

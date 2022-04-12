@@ -1,30 +1,4 @@
-.background-color-3 {
-  background-color: #fff9f5;
-  position: absolute;
-  border-radius: 50%;
-  padding-left: 4rem;
-  width: 200rem;
-  height: 550rem;
-  left: -72rem;
-  top: -511rem;
-  padding-bottom: 9.6rem;
-}
-.background-color-4 {
-  background-color: #f4d4c1;
-  position: absolute;
-  border-radius: 50%;
-  padding-left: 4rem;
-  width: 200rem;
-  height: 550rem;
-  left: 0rem;
-  top: -10rem;
-  padding-bottom: 9.6rem;
-}
-.my-experiences {
-  position: absolute;
-  left: 80rem;
-  top: 530rem;
-} /*
+/*
 .avatar-profile {
   border-radius: 50%;
   position: absolute;

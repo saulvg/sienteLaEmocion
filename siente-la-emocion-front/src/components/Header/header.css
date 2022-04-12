@@ -53,8 +53,7 @@ header .headerTop nav {
   display: flex;
   gap: 1rem;
   padding: 0 1rem;
-  align-items: center; 
-
+  align-items: center;
 }
 header .headerTop menu nav a {
   text-decoration: none;
@@ -68,7 +67,11 @@ header .headerTop menu nav button {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 16px;
+}
 
+.profile-menu {
+  display: flex;
+  flex-direction: column;
 }
 header .headerBody {
   margin-right: 2rem;

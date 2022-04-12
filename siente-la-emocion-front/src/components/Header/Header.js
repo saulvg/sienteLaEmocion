@@ -5,11 +5,20 @@ import useUser from '../../hooks/useUser';
 import ModalContactanos from '../modalContactanos/ModalContactanos';
 import ModalSearch from '../ModalSearch/ModalSearch';
 import { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 const MainMenu = () => {
   const { token, user } = useUser();
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [displayProfile, setDisplayProfile] = useState(false);
+  const DropDownContainer = styled('div')``;
+  const DropDownHeader = styled('div')``;
+  const DropDownListContainer = styled('div')``;
+  const DropDownList = styled('ul')``;
+  const ListItem = styled('li')``;
+  const [isOpen, setIsOpen] = useState(false);
+  const toggling = () => setIsOpen(!isOpen);
 
   useEffect(() => {
     const changeWidth = () => {
@@ -60,18 +69,24 @@ const MainMenu = () => {
               <ModalSearch />
               <ModalContactanos />
               {token ? (
-                <>
-                  {/* {user ? (
-                    <span className='nav-button'>Hola {user.username}</span>
-                  ) : null} */}
-                  <Link
-                    to='/perfil'
-                    id='myself'
-                    className='nav-element nav-button'
-                  >
-                    Perfil
-                  </Link>
-                </>
+                <DropDownContainer>
+                  <DropDownHeader onClick={toggling}>NickName</DropDownHeader>
+                  {isOpen && (
+                    <DropDownListContainer>
+                      <DropDownList>
+                        <ListItem>
+                          <Link
+                            to='/perfil'
+                            id='myself'
+                            className='nav-element nav-button'
+                          >
+                            Perfil
+                          </Link>
+                        </ListItem>
+                      </DropDownList>
+                    </DropDownListContainer>
+                  )}
+                </DropDownContainer>
               ) : (
                 <Link to='/login' id='login' className='nav-element'>
                   Unete

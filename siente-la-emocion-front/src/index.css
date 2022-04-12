@@ -33,6 +33,10 @@ code {
   align-items: center;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
 .divide + .divide {
   border-left: 1px solid black;
 }

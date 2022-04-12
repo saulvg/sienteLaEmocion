@@ -29,36 +29,36 @@ const UserExperiences = ({ oldName, oldEmail }) => {
   //decoded.id === idUser
 
   return token && user ? (
-    <>
-      <ul>
-        {bookings.length > 0 ? (
-          <div className='background-color-3'>
-            <div className='background-color-4'>
-              <div className='my-experiences'>
-                {bookings.map((book) => {
-                  return (
-                    <li key={book.id}>
-                      <h2>{book.company}</h2>
-                      <h3>{book.category}</h3>
-                      <p>{book.city}</p>
+    <ul className='my-experiences'>
+      {bookings.length > 0 ? (
+        <>
+          {bookings.map((book) => {
+            return (
+              <li key={book.id} className='my-experience'>
+                <div className='flex w-full '>
+                  <span className='experience-avatar'></span>
+                  <div className='experience-content'>
+                    <div>
+                      <h2>
+                        {book.category} ({book.company})
+                      </h2>
+                    </div>
+                    <div className='flex items-center justify-between w-full'>
+                      <button className='add-review-button'>
+                        Añadir valoración
+                      </button>
                       <p>{book.date}</p>
-                      <Modal
-                        className='reviews'
-                        buttonName='Añadir valoración'
-                        content={<Review />}
-                      />
-                    </li>
-                  );
-                })}
-              </div>
-            </div>
-            ) : (<div>aaaaa</div>)
-          </div>
-        ) : (
-          <div>nose</div>
-        )}
-      </ul>
-    </>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </>
+      ) : (
+        <div>nose</div>
+      )}
+    </ul>
   ) : (
     <div></div>
   );
