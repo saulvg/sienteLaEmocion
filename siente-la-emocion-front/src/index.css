@@ -16,6 +16,10 @@ code {
   display: flex;
 }
 
+.flex-end {
+  justify-content: end;
+}
+
 .back-svg {
   width: 40px;
   height: auto;

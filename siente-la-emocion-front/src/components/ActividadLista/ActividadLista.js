@@ -39,7 +39,7 @@ const ActividadLista = ({ activities, error }) => {
 
   //si no ha habido ningun error pero no hay actividades pintamos que no las hay y sino las avtividades con todos sus datos
   return activities.length > 0 ? (
-    <ul class='w-full activities'>
+    <ul class='w-full activities container'>
       {/* Cada actividadad es un li dentro de un ul con su Link, etc, si eres admin puedes editarlas desde aqui, sino no */}
       {activities.map((activity) => {
         return (
