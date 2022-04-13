@@ -10,7 +10,7 @@ const Register = (props) => {
         <div className='form-titles'>
           <div className='circle-content'>
             <button
-              className='flex'
+              className='flex back-button'
               onClick={() => {
                 window.history.go(-1);
               }}

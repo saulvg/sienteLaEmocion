@@ -122,7 +122,7 @@ const Header = ({ to, button, body, className }) => {
                     </>
                   ) : (
                     <Link to='/login' id='login' className='nav-element'>
-                      Unete
+                      Inicia sesión
                     </Link>
                   )}
                 </nav>
