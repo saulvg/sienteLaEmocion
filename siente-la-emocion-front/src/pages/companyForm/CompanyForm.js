@@ -230,7 +230,7 @@ function CompanyForm() {
                     />
                     <InputElement
                       labelName='capacity'
-                      type='number'
+                      type='text'
                       id='capacity'
                       name='capacity'
                       value={companyCapacity}
