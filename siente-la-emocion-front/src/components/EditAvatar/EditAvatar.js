@@ -8,11 +8,11 @@ export const EditAvatar = () => {
   //const { users } = useUserProfile();
   //const { user } = useUser();
   const { user, error, token } = useUser();
-  const [avatar, setAvatar] = useState('');
+  const [avatar, setAvatar] = useState(''); /* 
   const imageInputRef = useRef();
   const [newAvatar, setNewAvatar] = useState(user.avatar);
-  const [didUserUpdateAvatar, setDidUserUpdateAvatar] = useState(false);
-  if (error) return <div>Hubo un error: {error}</div>;
+  const [didUserUpdateAvatar, setDidUserUpdateAvatar] = useState(false); */
+/* if (error) return <div>Hubo un error: {error}</div>;
   const edit = async (e) => {
     //e.preventDefault();
 
@@ -47,14 +47,13 @@ export const EditAvatar = () => {
     setAvatar(event.target.files[0]);
   };
   return user && token ? (
-    <form onSubmit={edit} className='forem-profile'>
-      <label htmlFor='avaar'>
+    <form onSubmit={edit} className='avatar-profile'>
+      <label htmlFor='avatar'>
         {' '}
-        hola
         <img
           className='user-avatar'
           src={'http://localhost:4000/uploads/' + user.avatar}
-          alt='aaaaa'
+          alt='sss'
         />
         <input
           type='file'
@@ -65,12 +64,21 @@ export const EditAvatar = () => {
         />
       </label>
       <button>Subir</button>
+      <input
+        type='file'
+        id='avatar'
+        style={{ display: 'none' }}
+        accept='image/*'
+        onChange={(e) => {
+          setAvatar(e.target.files[0]);
+        }}
+      />
     </form>
   ) : (
-    <div></div>
+    <div>sss</div>
   );
 };
-/*
+
 <img
   className='user-avatar'
   src={'http://localhost:4000/uploads/' + user.avatar}
@@ -82,7 +90,7 @@ export const EditAvatar = () => {
           required
         />
       </label>
-/>;*/
+/>; */
 import React from 'react';
 
 import './EditAvatar.css';

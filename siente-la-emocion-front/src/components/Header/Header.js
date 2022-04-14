@@ -5,121 +5,7 @@ import useUser from '../../hooks/useUser';
 import ModalContactanos from '../modalContactanos/ModalContactanos';
 import ModalSearch from '../ModalSearch/ModalSearch';
 import { useEffect, useState } from 'react';
-
-const MainMenu = () => {
-  const { token, user, setToken } = useUser();
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  const [toggleMenu, setToggleMenu] = useState(false);
-
-  useEffect(() => {
-    const changeWidth = () => {
-      setScreenWidth(window.innerWidth);
-      console.log('cambiando');
-    };
-
-    window.addEventListener('resize', changeWidth);
-  }, []);
-
-  /*   useEffect(() => {
-    const changeWidth = () => {
-      setScreenWidth(window.innerWidth);
-      console.log('eliminando');
-    };
-    return () => {
-      window.removeEventListener('resize', changeWidth);
-    };
-  }, []); */
-
-  return (
-    <>
-      {toggleMenu || screenWidth > 600 ? (
-        <div class='responsive-nav'>
-          <menu>
-            <button
-              className='toggle-button1'
-              onClick={() => setToggleMenu(false)}
-            >
-              <svg
-                className='close-nav'
-                fill='none'
-                stroke='currentColor'
-                viewBox='0 0 24 24'
-                xmlns='http://www.w3.org/2000/svg'
-              >
-                <path
-                  stroke-linecap='round'
-                  stroke-linejoin='round'
-                  strokeWidth='2'
-                  d='M6 18L18 6M6 6l12 12'
-                ></path>
-              </svg>
-            </button>
-            <nav>
-              {/* <Link to='/search' id='search'>
-        Buscador
-      </Link> */}
-              <ModalSearch />
-              <ModalContactanos />
-              {token ? (
-                <>
-                  {user ? (
-                    <span className='nav-button'>Hola {user.username}</span>
-                  ) : null}
-                  <Link
-                    to='/perfil'
-                    id='myself'
-                    className='nav-element nav-button'
-                  >
-                    Perfil
-                  </Link>
-                  <p
-                    onClick={() => {
-                      setToken('');
-                      if (setToken === null) {
-                        function refreshPage() {
-                          window.location.reload(false);
-                        }
-                        refreshPage();
-                      }
-                    }}
-                  >
-                    <Link to='/'>Cerrar sesión</Link>
-                  </p>
-                </>
-              ) : (
-                <Link to='/login' id='login' className='nav-element'>
-                  Unete
-                </Link>
-              )}
-            </nav>
-          </menu>
-        </div>
-      ) : (
-        <button
-          className='toggle-button'
-          onClick={() => {
-            setToggleMenu(true);
-          }}
-        >
-          <svg
-            class='toggle-menu'
-            fill='none'
-            stroke='currentColor'
-            viewBox='0 0 24 24'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <path
-              stroke-linecap='round'
-              stroke-linejoin='round'
-              stroke-width='2'
-              d='M4 6h16M4 12h16M4 18h16'
-            ></path>
-          </svg>
-        </button>
-      )}
-    </>
-  );
-};
+import styled from 'styled-components';
 
 const HeaderButon = ({ to, children }) => {
   return (
@@ -141,15 +27,130 @@ const Logo = () => {
 };
 
 const Header = ({ to, button, body, className }) => {
+  const { token, setToken } = useUser();
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [toggleMenu, setToggleMenu] = useState(false);
+  const [displayProfile, setDisplayProfile] = useState(false);
+  const DropDownContainer = styled('div')``;
+  const DropDownHeader = styled('div')``;
+  const DropDownListContainer = styled('div')``;
+  const DropDownList = styled('ul')``;
+  const ListItem = styled('li')``;
+  const [isOpen, setIsOpen] = useState(false);
+  const toggling = () => setIsOpen(!isOpen);
+
+  const [formVisible, setFormVisible] = useState(false);
+
+  useEffect(() => {
+    const changeWidth = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', changeWidth);
+  }, []);
+
   return (
     <>
       <header className={className}>
         <div className='headerTop'>
           <Logo />
-          <div id='modal-bg-Search'>
-            <div id='modal-fg-Search'></div>
-          </div>
-          <MainMenu />
+          {formVisible ? <ModalSearch /> : null}
+          {toggleMenu || screenWidth > 600 ? (
+            <div className='responsive-nav'>
+              <menu>
+                <button
+                  className='toggle-button1'
+                  onClick={() => setToggleMenu(false)}
+                >
+                  <svg
+                    className='close-nav'
+                    fill='none'
+                    stroke='currentColor'
+                    viewBox='0 0 24 24'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      strokeWidth='2'
+                      d='M6 18L18 6M6 6l12 12'
+                    ></path>
+                  </svg>
+                </button>
+                <nav>
+                  {/* <Link to='/search' id='search'>
+        Buscador
+      </Link> */}
+
+                  <button
+                    className='nav-button'
+                    onClick={() => setFormVisible(!formVisible)}
+                  >
+                    Buscador
+                  </button>
+
+                  <ModalContactanos />
+                  {token ? (
+                    <>
+                      <DropDownContainer>
+                        <DropDownHeader onClick={toggling}>
+                          NickName
+                        </DropDownHeader>
+                        {isOpen && (
+                          <DropDownListContainer>
+                            <DropDownList>
+                              <ListItem>
+                                <Link
+                                  to='/perfil'
+                                  id='myself'
+                                  className='nav-element nav-button'
+                                >
+                                  Perfil
+                                </Link>
+                                <button
+                                  onClick={() => {
+                                    setToken(null);
+                                  }}
+                                >
+                                  Cerrar sesión
+                                </button>
+                              </ListItem>
+                            </DropDownList>
+                          </DropDownListContainer>
+                        )}
+                      </DropDownContainer>
+                    </>
+                  ) : (
+                    <Link to='/login' id='login' className='nav-element'>
+                      Inicia sesión
+                    </Link>
+                  )}
+                </nav>
+              </menu>
+            </div>
+          ) : (
+            <button
+              className='toggle-button'
+              onClick={() => {
+                setToggleMenu(true);
+              }}
+            >
+              <svg
+                className='toggle-menu'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M4 6h16M4 12h16M4 18h16'
+                ></path>
+              </svg>
+            </button>
+          )}
         </div>
         {body}
         <div className='headerButton'>

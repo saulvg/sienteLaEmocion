@@ -90,6 +90,39 @@ export const Booking = ({ book }) => {
           />
         </div>
       ) : (
+        /*      {decoded.id ? (
+        <form onSubmit={reviews}>
+          <div className='form-elements'>
+            <InputElement
+              labelName='Review'
+              type='text'
+              id='review'
+              name='review'
+              value={review}
+              onChange={(e) => {
+                setReview(e.target.value);
+              }}
+            />
+            <InputElement
+              labelName='voto'
+              type='number'
+              value={vote}
+              onChange={(e) => {
+                setVote(e.target.value);
+              }}
+            />
+          </div>
+
+          <BlueButton name='aaaa' onClick={(e) => e.stopPropagation()}>
+            <div
+              name='entry_votes_input'
+              onChange={(e, newValue) => {
+                e.stopPropagation();
+                reviews(newValue);
+              }}
+            />
+          </BlueButton>
+        </form> */
         <div>
           <h1>la experiencia aun no pasó</h1>
         </div>

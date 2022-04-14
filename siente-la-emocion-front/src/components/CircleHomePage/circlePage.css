@@ -16,7 +16,9 @@
 .route-content {
   text-decoration: none;
   color: white;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 500px) {

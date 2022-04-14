@@ -32,7 +32,9 @@ const search = async (req, res, next) => {
                 experiences.text_5,
                 experiences.text_6,
                 experiences_category.name AS category,
-                company.name AS company
+                company.name AS company,
+                company.companyInstagram,
+                company.companyFacebook
             FROM experiences
             LEFT JOIN experiences_category ON (experiences.id_experiences_category = experiences_category.id)
             LEFT JOIN company ON (experiences.id_company = company.id)
@@ -59,6 +61,36 @@ const search = async (req, res, next) => {
                     `%${search}%`,
                     `%${search}%`,
                 ]
+            );
+        } else {
+            [experiences] = await connection.query(
+                `
+                SELECT 
+                    experiences.id, 
+                    experiences.createdAt, 
+                    experiences.id_user, 
+                    experiences.capacity, 
+                    experiences.price, 
+                    experiences.date, 
+                    experiences.city, 
+                    experiences.direction, 
+                    experiences.text_1, 
+                    experiences.text_2, 
+                    experiences.text_3,
+                    experiences.text_4,
+                    experiences.text_5,
+                    experiences.text_6,
+                    experiences_category.name AS category,
+                    company.name AS company,
+                    company.companyInstagram,
+                    company.companyFacebook
+                FROM experiences
+                LEFT JOIN experiences_category ON (experiences.id_experiences_category = experiences_category.id)
+                LEFT JOIN company ON (experiences.id_company= company.id)
+                GROUP BY experiences_category.id, company.id, experiences.id
+                ORDER BY createdAt desc
+
+                    `
             );
         }
 

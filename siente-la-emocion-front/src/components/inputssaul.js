@@ -6,7 +6,7 @@ const Company = ({ companyName, setCompanyName }) => {
   return (
     <div className='companyForm'>
       <label>
-        Nombre company:
+        Nombre ssss:
         <input
           id='companyName'
           type={'text'}

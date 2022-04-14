@@ -100,6 +100,14 @@ const newBooking = async (req, res, next) => {
             error.httpStatus = 405;
             throw error;
         }
+        //Comprobamos si se han hecho el numero maximo de reservas
+        if (bookings.length > experiences[0].capacity) {
+            const error = new Error(
+                'Ya han reservado el numero maximo de personas, lo sentimos'
+            );
+            error.httpStatus = 405;
+            throw error;
+        }
 
         //Insertamos los datos de reserva en la tabla correspondiente
         await connection.query(

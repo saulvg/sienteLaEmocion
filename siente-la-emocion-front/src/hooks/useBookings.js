@@ -32,7 +32,6 @@ const useBookings = () => {
           return;
         }
 
-        console.log(json.data);
         setBookings(json.data.userExperiences);
         console.log('VER DATOS', json.data.userExperiences);
       } catch (error) {

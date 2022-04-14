@@ -3,8 +3,10 @@ import { InputElement } from './InputElement';
 import BlueButton from './BlueButton';
 import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../../App';
+import Error from '../error/Error';
 
 const LoginForm = () => {
+  const [togglePassword, setTogglePassword] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { token, setToken } = useContext(AuthContext);
@@ -49,16 +51,17 @@ const LoginForm = () => {
           />
           <InputElement
             labelName='Contraseña'
-            type='password'
+            type={togglePassword ? 'password' : ''}
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
             }}
           />
+          <span onClick={() => setTogglePassword(!togglePassword)}>👀</span>
         </div>
+        {error ? <Error className='error-msg'>{error}</Error> : null}
         <BlueButton name='Iniciar sesión' />
       </form>
-      {error ?? <div className='error-msg'>{error}</div>}
     </>
   );
 };

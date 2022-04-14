@@ -29,6 +29,39 @@ const UserExperiences = () => {
         )}
       </ul>
     </>
+    /* return token && user ? (
+    <ul className='my-experiences'>
+      {bookings.length > 0 ? (
+        <>
+          {bookings.map((book) => {
+            return (
+              <li key={book.id} className='my-experience'>
+                <div className='flex w-full '>
+                  <span className='experience-avatar'></span>
+                  <div className='experience-content'>
+                    <div>
+                      <h2>
+                        {book.category} ({book.company})
+                      </h2>
+                    </div>
+                    <div className='flex items-center justify-between w-full'>
+                      <button className='add-review-button'>
+                        Añadir valoración
+                      </button>
+                      <p>{book.date}</p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </>
+      ) : (
+        <div>nose</div>
+      )}
+    </ul>
+  ) : (
+    <div></div> */
   );
 };
 

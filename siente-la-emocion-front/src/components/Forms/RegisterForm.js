@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { InputElement } from './InputElement';
 import BlueButton from './BlueButton';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
+import Error from '../error/Error';
+import Loading from '../loading/Loading';
 
 const RegisterForm = () => {
+  const [togglePassword, setTogglePassword] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [phone, setPhone] = useState('');
@@ -13,32 +16,37 @@ const RegisterForm = () => {
   const [name, setName] = useState('');
   const [done, setDone] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const register = async (e) => {
     e.preventDefault();
+    try {
+      const res = await fetch(`${process.env.REACT_APP_BACKEND}/users`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          password,
+          phone,
+          dni_nie,
+          postalCode,
+          username,
+        }),
+      });
 
-    const res = await fetch(`${process.env.REACT_APP_BACKEND}/users`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        password,
-        phone,
-        dni_nie,
-        postalCode,
-        username,
-      }),
-    });
+      const body = await res.json();
+      const redirect = () => navigate('/login');
 
-    if (res.ok) {
-      setDone(true);
-    } else {
-      const error = await res.json();
-      setError(error);
-      console.log(error.message);
+      if (res.ok) {
+        setDone(true);
+        setTimeout(redirect, 5000);
+      } else {
+        setError(body.message);
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -69,12 +77,14 @@ const RegisterForm = () => {
             />
             <InputElement
               labelName='Contraseña'
-              type='text'
+              type={togglePassword ? 'password' : ''}
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
             />
+            <span onClick={() => setTogglePassword(!togglePassword)}>👀</span>
+
             <InputElement
               labelName='Nombre de usuario'
               type='text'
@@ -108,16 +118,15 @@ const RegisterForm = () => {
               }}
             />
           </div>
-          <BlueButton name='registrarse' />
-          {error ?? <div className='error-msg'>{error}</div>}
+          {error ? <Error className='error-msg'>{error}</Error> : null}
+          <BlueButton name='Registrarse' />
         </form>
       ) : (
         <>
-          <div className='confirmation'>
+          <Loading className='confirmation'>
             Te has registrado correctamente. Revisa tu correo para validar tu
             cuenta
-            {/* Ejecutamos un TimeOut para volver a la página de inicio */}
-          </div>
+          </Loading>
         </>
       )}
     </>

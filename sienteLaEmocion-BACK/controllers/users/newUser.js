@@ -30,7 +30,41 @@ const newUser = async (req, res, next) => {
             error.httpStatus = 400;
             throw error;
         }
+        // Comprobamos si existe un usuario con ese email.
+        /*  const [users] = await connection.query(
+            `SELECT id, role, password, active FROM users WHERE email = ?`,
+            [email]
+        ); */
 
+        // Variable que almacenará un valor booleano: contraseña correcta o incorrecta.
+        /* let validEmail;
+
+        // En caso de que exista un usuario con el email establecido en el body comprobamos
+        // si la contraseña es correcta.
+        if (users.length > 0) {
+            validEmail = await bcrypt.compare(email, users[0].email);
+        }
+
+        if (validEmail) {
+            const error = new Error('Email ya existente');
+            error.httpStatus = 401;
+            throw error;
+        } */
+        if (password.length < 5 || password.length > 10) {
+            const error = new Error(
+                'Contraseña debe de tener entre 5 y 10 caracteres'
+            );
+            error.httpStatus = 400;
+            throw error;
+        }
+
+        if (username.includes(' ')) {
+            const error = new Error(
+                'El nombre de usuario no puede tener espacios'
+            );
+            error.httpStatus = 400;
+            throw error;
+        }
         //Generamos un codiogo de registro
         const registrationCode = generateRandomString(40);
 

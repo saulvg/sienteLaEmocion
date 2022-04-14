@@ -1,0 +1,20 @@
+.buttonForm {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+  }
+   .buttonForm button {
+    padding: 1rem 3rem;
+    border-radius: 30px;
+    background-color: rgba(30, 52, 77, 100%);
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 20px;
+    transition: background 0.5s;
+  }
+   .buttonForm button:hover {
+    background-color: transparent;
+    color: rgba(30, 52, 77, 100%);
+    cursor: pointer;
+  }
