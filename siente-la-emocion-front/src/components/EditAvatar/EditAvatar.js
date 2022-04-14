@@ -148,7 +148,7 @@ const Avatar = ({ putAvatar, setPutAvatar, button }) => {
   );
 };
 
-export const EditAvatar = () => {
+const EditAvatar = () => {
   const { token } = useUser();
   const [putAvatar, setPutAvatar] = useState('');
 
@@ -236,3 +236,4 @@ export const EditAvatar = () => {
     </>
   );
 };
+export default EditAvatar;
