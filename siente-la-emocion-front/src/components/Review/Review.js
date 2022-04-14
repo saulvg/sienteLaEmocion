@@ -165,7 +165,9 @@ export const Booking = ({ book }) => {
           />
         </div>
       ) : (
-        <div></div>
+        <div>
+          <h1>la experiencia aun no pasó</h1>
+        </div>
       )}
     </>
   ) : (

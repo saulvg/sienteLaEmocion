@@ -4,7 +4,6 @@ import useUser from './useUser';
 
 const useBookings = () => {
   const { token } = useUser();
-  //const { idExperiencesBooking } = useParams();
 
   const [bookings, setBookings] = useState([]);
 
@@ -32,7 +31,6 @@ const useBookings = () => {
           return;
         }
 
-        console.log(json.data);
         setBookings(json.data.userExperiences);
         console.log('VER DATOS', json.data.userExperiences);
       } catch (error) {

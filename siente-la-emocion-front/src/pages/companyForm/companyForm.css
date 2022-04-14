@@ -1,8 +1,8 @@
-#entryCreated {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  padding: 2rem;
+.formFlex{
+    display: flex;
 }
+.formFlex div {
+    width: 50%;
+}
+
+

@@ -115,7 +115,12 @@ async function deletePhoto(photoName) {
         await unlink(photoPath);
     } catch (error) {
         console.error(error);
-        throw new Error('Error al eliminar la imagen del servidor');
+        if (error.code === 'ENOENT') {
+            console.log('no pasa na seguimos');
+        } else {
+            console.error('error del catch', error.code);
+            throw new Error('Error al eliminar la imagen del servidor');
+        }
     }
 }
 

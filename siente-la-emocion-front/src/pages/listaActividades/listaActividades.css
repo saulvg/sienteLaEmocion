@@ -1,3 +1,221 @@
-#listaActividades > span {
-  background-color: aqua;
+#listaActividades {
+  background-color: #fff9f5;
+}
+
+.filter-content {
+  width: 339px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  padding: 17px 23px;
+}
+
+.filter-title {
+  font-family: 'Bebas Neue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 36px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.adventure-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 5px;
+}
+
+.svg-filter {
+  height: 60px;
+  width: auto;
+  margin: auto;
+}
+
+.filter-section + .filter-section {
+  margin-top: 20px;
+}
+
+.activity-content {
+  padding: 20px 0 100px;
+}
+
+.star-svg {
+  height: 30px;
+  width: auto;
+}
+
+.filter-by {
+  background-color: transparent;
+  border: none;
+  margin-bottom: 30px;
+}
+
+.star-svg + .star-svg {
+  margin-left: 5px;
+}
+
+.star-svg:hover {
+  color: black;
+}
+
+.filter-checkbox + .filter-checkbox {
+  margin-top: 10px;
+}
+
+.price-filter {
+  margin-right: 30px;
+  height: 20px;
+  width: 20px;
+}
+
+.map-input {
+  background: #f8f8f8;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 60%;
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.map-search {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  padding: 10px;
+  border: 0;
+}
+
+.map {
+  height: 300px;
+  background-color: red;
+  margin-top: 20px;
+}
+
+.map-search:hover {
+  background-color: rgb(113, 108, 108);
+  transition-duration: 0.2s;
+  color: white;
+}
+
+.react-calendar__navigation button {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.react-calendar__navigation {
+  text-align: center;
+}
+
+.react-calendar__month-view__weekdays {
+  border: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.react-calendar__month-view__days button {
+  border: 0;
+  background-color: transparent;
+  font-size: 18px;
+}
+
+.react-calendar__month-view__days button:hover {
+  background-color: red;
+}
+
+.activities {
+  margin-top: 30px;
+  height: 115vh;
+  overflow: auto;
+}
+
+@media (max-width: 1200px) {
+  .activity-content {
+    display: block;
+  }
+
+  .filter-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .filter-section + .filter-section {
+    margin-left: 0px;
+    margin-top: 0;
+  }
+  .filter-section {
+    text-align: center;
+  }
+
+  #aventura {
+    width: 18%;
+  }
+
+  .filter-map {
+    width: 18%;
+    text-align: center;
+  }
+
+  .map {
+    height: 150px;
+  }
+
+  #ratings {
+    width: 18%;
+  }
+
+  #precios {
+    width: 18%;
+  }
+  #calendar {
+    width: 18%;
+  }
+
+  .filter-title {
+    font-size: 20px;
+  }
+
+  .react-calendar__navigation button {
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .react-calendar__navigation {
+    text-align: center;
+  }
+
+  .react-calendar__month-view__weekdays {
+    border: 0;
+    margin-bottom: 10px;
+    font-size: 10px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .react-calendar__month-view__days button {
+    border: 0;
+    background-color: transparent;
+    font-size: 18px;
+  }
+
+  .svg-filter {
+    height: 30px;
+  }
+  .map-input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .map-search {
+    margin: auto;
+  }
 }

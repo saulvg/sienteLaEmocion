@@ -1,4 +1,5 @@
 import './homePage.css';
+import '../../components/Header/header.css';
 /**
  * #################
  * ## Componentes ##
