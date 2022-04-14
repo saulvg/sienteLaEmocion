@@ -54,25 +54,25 @@ const getUserExperiences = async (req, res, next) => {
         );
         //Guradamos los id de las experiencias que haya hecho dicho usuario
         idExperiencesBooking = experiences.map((idExp) => idExp.id_experiences);
-
+        //LEFT JOIN booking ON (experiences.id = booking.id_experiences)
         const userExperiences = [];
         for (const idExperienceBooking of idExperiencesBooking) {
             const [experience] = await connection.query(
                 `
         SELECT
-        booking.id,
+     
             experiences.id as experienceId, 
             experiences.price, 
             experiences.date, 
             experiences.city,
-            booking.vote AS vote, 
             experiences.photoHeader,
             experiences_category.name AS category,
             company.name AS company
         FROM experiences
         LEFT JOIN experiences_category ON (experiences.id_experiences_category = experiences_category.id)
+        
         LEFT JOIN company ON (experiences.id_company= company.id)
-        LEFT JOIN booking ON (experiences.id = booking.id_experiences)
+
         WHERE experiences.id = ?
         `,
                 [idExperienceBooking]

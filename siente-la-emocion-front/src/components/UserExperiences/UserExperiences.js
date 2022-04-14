@@ -25,7 +25,9 @@ const UserExperiences = () => {
             </div>
           </div>
         ) : (
-          <div>nose</div>
+          <div>
+            ¿Todavía no has realizado ninguna experiencia? ¡Atrévete! boton
+          </div>
         )}
       </ul>
     </>

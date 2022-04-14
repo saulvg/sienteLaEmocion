@@ -28,7 +28,7 @@ const useBookings = () => {
         const json = await response.json();
 
         if (!response.ok) {
-          setError(json.message);
+          setError('HOLAAA', json.message);
           return;
         }
 
@@ -36,7 +36,7 @@ const useBookings = () => {
         setBookings(json.data.userExperiences);
         console.log('VER DATOS', json.data.userExperiences);
       } catch (error) {
-        setError(error.message);
+        setError('ERROR ', error.message);
       }
     };
 

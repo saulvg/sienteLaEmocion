@@ -49,7 +49,22 @@ export const Review = ({ avatar, userName }) => {
                 </ul>
                 <div className='texto-review'>
                   <p className='texto'>``{review.review}´´</p>
-                  <p className='voto'>Puntuación: {review.vote}</p>
+                  <p className='voto'>
+                    Puntuación:{' '}
+                    {review.vote === 5 ? (
+                      <div>★★★★★ </div>
+                    ) : review.vote === 4 ? (
+                      <div>★★★★</div>
+                    ) : review.vote === 3 ? (
+                      <div>★★★</div>
+                    ) : review.vote === 2 ? (
+                      <div>★★</div>
+                    ) : review.vote === 1 ? (
+                      <div>★</div>
+                    ) : (
+                      <div></div>
+                    )}
+                  </p>
                 </div>
               </article>
             </li>

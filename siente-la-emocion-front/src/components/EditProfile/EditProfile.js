@@ -71,9 +71,9 @@ const EditProfile = ({ placeholder }) => {
             <form onSubmit={edit} className='form-profile'>
               <div>
                 <InputElement
-                  classLabel='label-profile'
+                  labelClassName='label-element'
                   labelName='Nombre'
-                  className='input-profile'
+                  inputClassName='input-element'
                   type='text'
                   id='name'
                   name='name'
@@ -88,7 +88,7 @@ const EditProfile = ({ placeholder }) => {
                 <InputElement
                   classLabel='label-profile'
                   labelName='Username'
-                  className='input-profile'
+                  inputClassName='input-element'
                   type='text'
                   id='username'
                   name='username'
@@ -102,7 +102,7 @@ const EditProfile = ({ placeholder }) => {
                 />
 
                 <InputElement
-                  className='input-profile'
+                  inputClassName='input-element'
                   classLabel='label-profile'
                   labelName='Email'
                   type='email'
@@ -116,7 +116,7 @@ const EditProfile = ({ placeholder }) => {
                   }}
                 />
                 <InputElement
-                  className='input-profile'
+                  inputClassName='input-element'
                   classLabel='label-profile'
                   labelName='Teléfono'
                   type='tel'
@@ -130,7 +130,7 @@ const EditProfile = ({ placeholder }) => {
                   }}
                 />
                 <InputElement
-                  className='input-profile'
+                  inputClassName='input-element'
                   labelName='Código Postal'
                   classLabel='label-profile'
                   type='number'
@@ -144,7 +144,7 @@ const EditProfile = ({ placeholder }) => {
                   }}
                 />
                 <InputElement
-                  className='input-profile'
+                  inputClassName='input-element'
                   classLabel='label-profile'
                   labelName='DNI / NIE'
                   type='text'

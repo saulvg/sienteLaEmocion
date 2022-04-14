@@ -11,12 +11,14 @@ export const InputElement = ({
   placeholder,
   pattern,
   labelfor,
+  labelClassName,
+  inputClassName,
 }) => {
   return (
-    <label className='label-element' htmlFor={labelfor}>
+    <label className={labelClassName} htmlFor={labelfor}>
       {labelName}
       <input
-        className='input-element'
+        className={inputClassName}
         type={type}
         name={name}
         pattern={pattern}

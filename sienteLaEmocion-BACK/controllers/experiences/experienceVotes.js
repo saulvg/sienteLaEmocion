@@ -71,7 +71,7 @@ const voteEntry = async (req, res, next) => {
 
         await connection.query(
             `
-            UPDATE booking SET vote = ?  WHERE id = ?`,
+            INSERT INTO booking (vote) VALUES (?)`,
             [vote, idExperiencesBooking]
         );
 
