@@ -8,10 +8,13 @@ const CircleHomePage = ({ id, clas, href, children }) => {
 };
 export default CircleHomePage;
 
-export const CircleActivities = ({ id, clas, children }) => {
+export const CircleActivities = ({ id, clas, children, image }) => {
   return (
     <div id={id} className={`route-content route ${clas}`}>
       {children}
+      <div className='imgHeader'>
+        <img src={image} alt='fotoExperiencia' />
+      </div>
     </div>
   );
 };

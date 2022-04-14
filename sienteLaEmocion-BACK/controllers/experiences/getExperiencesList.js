@@ -29,13 +29,19 @@ const getListEntry = async (req, res, next) => {
                 experiences.direction,  
                 experiences.text_1, 
                 experiences.text_2, 
-                experiences.text_3, 
+                experiences.text_3,
+                experiences.text_4,
+                experiences.text_5,
+                experiences.text_6, 
+                experiences.photoHeader, 
                 experiences_category.name AS category,
                 company.name AS company,
+                company.companyInstagram,
+                company.companyFacebook,
                 AVG(IFNULL(votes.vote, 0)) AS votes_entry 
             FROM experiences
             LEFT JOIN experiences_category ON (experiences.id_experiences_category = experiences_category.id)
-            LEFT JOIN company ON (experiences.id_company= company.id)
+            LEFT JOIN company ON (experiences.id_company = company.id)
             LEFT JOIN votes ON (experiences.id = votes.id_experiences)
             WHERE 
                 experiences_category.name = ? OR
@@ -45,6 +51,9 @@ const getListEntry = async (req, res, next) => {
                     `,
                 [`${category}`, price1, price2, `%${date}%`, votes]
             );
+            /*                      booking.id AS booking,
+               LEFT JOIN booking ON (experiences.id = booking.id_experiences)
+ */
         } else {
             [experiences] = await connection.query(
                 `
@@ -63,9 +72,11 @@ const getListEntry = async (req, res, next) => {
                     experiences.text_4,
                     experiences.text_5,
                     experiences.text_6,
-                    experiences.howManyBookings, 
+                    experiences.photoHeader, 
                     experiences_category.name AS category,
                     company.name AS company,
+                    company.companyInstagram,
+                    company.companyFacebook,
                     AVG(IFNULL(votes.vote, 0)) AS votes_entry
                 FROM experiences
                 LEFT JOIN experiences_category ON (experiences.id_experiences_category = experiences_category.id)
@@ -77,11 +88,24 @@ const getListEntry = async (req, res, next) => {
                     `
             );
         }
+        /* //Bookings
+        //si el usuario esta logeado, podra ver el nombre de los participantes que han reservado esa actividad
+        let users_booking = '';
+        
+            [users_booking] = await connection.query(
+                `
+            SELECT 
+                users.username, booking.id_experiences
+            FROM 
+                booking
+            LEFT JOIN users ON (booking.id_user = users.id) `
+            ); */
 
         res.send({
             status: 'ok',
             data: {
                 experiences,
+                /* users_booking: users_booking.length */
             },
         });
     } catch (error) {

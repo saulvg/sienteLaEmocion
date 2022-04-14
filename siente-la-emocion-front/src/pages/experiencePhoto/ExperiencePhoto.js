@@ -1,4 +1,5 @@
 // ## Style ##
+import './experiencePhoto.css';
 
 /**
  * ###########
@@ -17,6 +18,7 @@ import decode from 'jwt-decode';
 import Header from '../../components/Header/Header';
 import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
 import Error from '../../components/error/Error';
+import Loading from '../../components/loading/Loading';
 
 /**
  * ###########
@@ -24,13 +26,16 @@ import Error from '../../components/error/Error';
  * ###########
  */
 import useUser from '../../hooks/useUser';
+import ButtonForm from '../../components/ButtonForm/ButtonForm';
 
-//Pagina que pinta el formulario para que el admin pueda incluir 3 fotos de una experiencia 
+//Pagina que pinta el formulario para que el admin pueda incluir 3 fotos de una experiencia
 const ExperiencePhoto = () => {
-  //Estados de variables que necesitamos 
+  //Estados de variables que necesitamos
   const { token } = useUser();
   const navigate = useNavigate();
-  //Parametro del id de la experienia que cogemos de la ruta 
+  const [errorMessage, setErrorMessage] = useState('');
+  const [load, setLoad] = useState('');
+  //Parametro del id de la experienia que cogemos de la ruta
   const { idExperience } = useParams();
   //Estados del formulario
   const [photos1, setPhotos1] = useState('');
@@ -41,7 +46,7 @@ const ExperiencePhoto = () => {
   const uploadFiles = async (e) => {
     e.preventDefault();
     //intentamos enviar los datos del formulario con una peticion de tipo POST
-    //Al ser de tipo archivo, segimos el proceso de new FormData(), append , etc. 
+    //Al ser de tipo archivo, segimos el proceso de new FormData(), append , etc.
     //NO TE OLVIDES, EL BACK ESTA ESPERANDO POR EL MISMO NOMBRE, en este caso photoBody, photo1, ...
     try {
       let photoBody = new FormData();
@@ -61,23 +66,14 @@ const ExperiencePhoto = () => {
       );
       const body = await response.json();
 
-      //Funcion que modificamos el DOM para que aparezca una ventana de cargando 
-      const loading = () => {
-        const redirect = document.querySelector('.upFiles');
-        redirect.innerHTML = `
-        <div id='entryCreated' >
-          <div>${body.message}</div>
-          <div className='loading'></div>
-        </div>
-      `;
-      };
       const redirect = () => navigate('/');
-        //Si todo a ido bien informamos al usuario modificando el DOM, mostramos una pantalla de carga y redirigimos a la siguiente ventana 
-        if (response.ok) {
-        loading();
+      //Si todo a ido bien informamos al usuario modificando el DOM, mostramos una pantalla de carga y redirigimos a la siguiente ventana
+      if (response.ok) {
+        setLoad(body.message);
         setTimeout(redirect, 5000);
       } else {
         console.error('Error body', body.message);
+        setErrorMessage(body.message);
       }
     } catch (error) {
       console.error('catch', error);
@@ -97,12 +93,22 @@ const ExperiencePhoto = () => {
 
   //Si ni tienes token no puedes llegar hasta aqui
   if (!token) {
-    return <Error>No te has registrado</Error>;
+    return (
+      <>
+        <Header
+          to={''}
+          button={''}
+          body={<BodyHeaderHomePage />}
+          className={'simpleHeader'}
+        />
+        <Error>No te has registrado</Error>
+      </>
+    );
   }
   //Decodificamos el token para mas adelante saber si eres admin o no. gracias a 'jwt-decode' y el token que tenemos de forma global en toda la App
   const decoded = decode(token);
-  
-  //Devolvemso lo que desamos pintar si se cumplen las condiciones (eres admin ?), sino devolvemos el correspondiente error en Front 
+
+  //Devolvemso lo que desamos pintar si se cumplen las condiciones (eres admin ?), sino devolvemos el correspondiente error en Front
   return (
     <>
       <Header
@@ -112,25 +118,39 @@ const ExperiencePhoto = () => {
         className={'simpleHeader'}
       />
       {decoded.role === 'admin' ? (
-        <div className='upFiles'>
-          <form onSubmit={uploadFiles}>
-            <label>
-              Selecciona foto 1
-              <input type={'file'} onChange={dataPhoto1} required />
-            </label>
-            <label>
-              Selecciona foto 2
-              <input type={'file'} onChange={dataPhoto2} required />
-            </label>
-            <label>
-              Selecciona foto 3
-              <input type={'file'} onChange={dataPhoto3} required />
-            </label>
-            <button>Subir</button>
-          </form>
-        </div>
+        <>
+          {!load ? (
+            <>
+              {!errorMessage ? (
+                <div className='upFiles'>
+                  <form onSubmit={uploadFiles}>
+                    <div className='flexFormPhotos'>
+                      <label>
+                        Selecciona foto 1
+                        <input type={'file'} onChange={dataPhoto1} required />
+                      </label>
+                      <label>
+                        Selecciona foto 2
+                        <input type={'file'} onChange={dataPhoto2} required />
+                      </label>
+                      <label>
+                        Selecciona foto 3
+                        <input type={'file'} onChange={dataPhoto3} required />
+                      </label>
+                    </div>
+                    <ButtonForm>Subir</ButtonForm>
+                  </form>
+                </div>
+              ) : (
+                <Error>{errorMessage}</Error>
+              )}
+            </>
+          ) : (
+            <Loading>{load}</Loading>
+          )}
+        </>
       ) : (
-        <div>No tienes permisos</div>
+        <Error>No tienes permisos</Error>
       )}
     </>
   );

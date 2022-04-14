@@ -11,19 +11,15 @@ const BodyActivitis = () => {
   return activity ? (
     <div className='header-body bodyExperience'>
       <h1>{activity.experiences_category}</h1>
-      <div className='experience-texts'>
+      {/* <div className='experience-texts'>
         <section className='queIncluye text-header'>
           <div className='experience-text-container'>
             <div class='experience-description-content'>
               <h3>Que incluye?</h3>
-              {
-                /* activity ? ( */
+              
+          
                 <p>{activity.text_1}</p>
-                /*)  : (
-            <p>
-              <div className='loading'></div>
-            </p>
-          ) */
+         
               }
             </div>
           </div>
@@ -67,7 +63,34 @@ const BodyActivitis = () => {
                 </p>
               ) : null}
             </div>
-          </button>
+          </button> */}
+      <div>
+        <section className='queIncluye textHeaderLeft'>
+          <h3>Que incluye?</h3>
+          <p>{activity.experience.text_1}</p>
+        </section>
+        <section className='queNecesitas textHeaderRigth'>
+          <h3>Que necesitas?</h3>
+          <p>{activity.experience.text_2}</p>
+        </section>
+        <section className='cuantoDura textHeaderLeft'>
+          <h3>
+            Cuanto dura la experiencia?
+            <br />
+            Cuando se realiza?
+          </h3>
+          <p>{activity.experience.text_3}</p>
+        </section>
+        <section className='valoraciones textHeaderRigth'>
+          {
+            <Link to={`/experiences/${idExperience}/reviews`}>
+              <h3>Valoraciones</h3>
+            </Link>
+          }
+          <p>
+            Haz click aqui para disfrutar de todas las valoraione que tuvo esta
+            experiencia
+          </p>
         </section>
       </div>
     </div>

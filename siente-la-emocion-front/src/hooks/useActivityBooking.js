@@ -34,6 +34,7 @@ const useBookings = (id) => {
           return;
         }
 
+        console.log(json.data);
         setBookings(json.data.userExperiences);
       } catch (error) {
         setError(error.message);

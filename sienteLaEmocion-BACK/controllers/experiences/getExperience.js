@@ -10,7 +10,7 @@ const getExperience = async (req, res, next) => {
         //ya hemos comprobado si existe anteriormente en un middleware asi que no lo comprobamos de nuevo
         const { idExperience } = req.params;
 
-        //obtenemso la informacion de la experiencia que queremos
+        //Obtenemso la informacion de la experiencia que queremos
         const [experiences] = await connection.query(
             `
         SELECT 
@@ -30,7 +30,6 @@ const getExperience = async (req, res, next) => {
             experiences.text_4,
             experiences.text_5,
             experiences.text_6,
-            experiences.howManyBookings, 
             AVG(IFNULL(votes.vote, 0)) AS votes_entry 
         FROM experiences
         LEFT JOIN votes ON (experiences.id = votes.id_experiences)
@@ -49,7 +48,9 @@ const getExperience = async (req, res, next) => {
         // Company
         const [company] = await connection.query(
             `
-        SELECT name FROM company WHERE id = ?`,
+        SELECT 
+            name
+        FROM company WHERE id = ?`,
             [experiences[0].id_company]
         );
 
@@ -61,23 +62,25 @@ const getExperience = async (req, res, next) => {
         );
 
         //Bookings
-        //si el usuario esta logeado, podra ver el nombre de los participantes que han reservado esa actividad
         const { authorization } = req.headers;
-        let users_booking = '';
-        if (authorization) {
-            [users_booking] = await connection.query(
-                `
+
+        const [users_booking] = await connection.query(
+            `
             SELECT 
+                users.id,
                 users.username
             FROM 
                 booking
             LEFT JOIN users ON (booking.id_user = users.id) 
             WHERE booking.id_experiences = ?`,
-                [idExperience]
-            );
-        } else {
-            users_booking = '';
-        }
+            [idExperience]
+        );
+        //si el usuario esta logeado, podra ver el nombre de los participantes que han reservado esa actividad
+        //sino solo la cantidad de usuarios que han reservado
+        let authorizedUser;
+        authorization
+            ? (authorizedUser = users_booking)
+            : (authorizedUser = users_booking.length);
 
         res.send({
             status: 'ok',
@@ -86,7 +89,7 @@ const getExperience = async (req, res, next) => {
                 photos: experiences_photos,
                 company: company[0].name,
                 experiences_category: experiences_category[0].name,
-                users_booking: users_booking,
+                users_booking: authorizedUser,
             },
         });
     } catch (error) {

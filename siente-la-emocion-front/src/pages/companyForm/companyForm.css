@@ -1,3 +1,8 @@
 .formFlex{
     display: flex;
 }
+.formFlex div {
+    width: 50%;
+}
+
+

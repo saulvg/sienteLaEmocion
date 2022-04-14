@@ -47,7 +47,9 @@ async function initDB() {
         await connection.query(`
         CREATE TABLE company (
             id INT PRIMARY KEY AUTO_INCREMENT,
-            name VARCHAR(50) NOT NULL
+            name VARCHAR(50) NOT NULL, 
+            companyInstagram VARCHAR(100),
+            companyFacebook VARCHAR(100)
     )
 `);
         await connection.query(`
@@ -76,7 +78,6 @@ async function initDB() {
             text_4 TEXT,
             text_5 TEXT,
             text_6 TEXT,
-            howManyBookings INT,
             createdAt DATETIME NOT NULL, 
             modifiedAt DATETIME,
             FOREIGN KEY (id_user) REFERENCES users(id),  

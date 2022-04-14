@@ -1,0 +1,28 @@
+.upFiles {
+    background-color: rgb(255, 249, 245);
+    height: 65vh;
+}
+
+.upFiles .flexFormPhotos{
+    padding: 2rem 5rem;
+    display: flex;
+    justify-content: space-around;
+}
+.upFiles input {
+    display: flex;
+    outline: none;
+  
+    font-family: Montserrat;
+    /* border: transparent; */
+    border: solid thin black;
+    border-radius: 25px;
+  
+    padding: 0 10px;
+  
+    font-style: normal;
+    font-weight: bold;
+}
+
+@media (max-width:400px) {
+    .upFiles{background-color: aqua;}
+}

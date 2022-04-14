@@ -19,7 +19,6 @@ const useActivities = () => {
           console.log(json.message);
           return;
         }
-
         setActivities(json.data.experiences);
       } catch (error) {
         setError(error.message);

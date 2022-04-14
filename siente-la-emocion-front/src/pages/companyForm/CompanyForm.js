@@ -27,6 +27,8 @@ import {
   DateCompany,
   CityCompany,
   AdresssCompany,
+  CompanyInstagram,
+  CompanyFacebook,
   Text1Company,
   Text2Company,
   Text3Company,
@@ -48,13 +50,13 @@ import {
 } from '../../components/Forms/InputElement';
 import BlueButton from '../../components/Forms/BlueButton';
 
-//Pagina que pinta el formulario para que el admin pueda incluir una nueva actividad
+//Pagina que pinta el formulario para que el admin pueda incluir una nueva experiencia
 function CompanyForm() {
   const { token } = useUser();
   const navigate = useNavigate();
   //Estados de variables que necesitamos
-  const [load, setLoad] = useState(false);
-  const [bodyLoad, setBodyLoad] = useState('');
+  const [load, setLoad] = useState('');
+  const [error, setError] = useState('');
   //Estados del formulario
   const [companyName, setCompanyName] = useState('');
   const [companyCategory, setCompanyCategory] = useState('');
@@ -63,6 +65,8 @@ function CompanyForm() {
   const [companyDate, setCompanyDate] = useState('');
   const [companyCity, setCompanyCity] = useState('');
   const [companyAddress, setCompanyAddress] = useState('');
+  const [companyInstagram, setCompanyInstagram] = useState('');
+  const [companyFacebook, setCompanyFacebook] = useState('');
   const [companyText_1, setCompanyText_1] = useState('');
   const [companyText_2, setCompanyText_2] = useState('');
   const [companyText_3, setCompanyText_3] = useState('');
@@ -98,6 +102,8 @@ function CompanyForm() {
         date: companyDate,
         city: companyCity,
         direction: companyAddress,
+        companyInstagram,
+        companyFacebook,
         text_1: companyText_1,
         text_2: companyText_2,
         text_3: companyText_3,
@@ -130,11 +136,11 @@ function CompanyForm() {
       const redirect = () => navigate(`/experiences/${body.data.id}/photos`);
       if (response.ok) {
         //Si todo a ido bien informamos al usuario, cambiamos un estado y mostramos una pantalla de carga y redirigimos a la siguiente ventana
-        setBodyLoad(body.message);
-        setLoad(true);
+        setLoad(body.message);
         setTimeout(redirect, 5000);
       } else {
         console.error('Error', body.message);
+        setError(body.message);
       }
     } catch (error) {
       console.error('catch', error);
@@ -142,7 +148,17 @@ function CompanyForm() {
   };
   //Si ni tienes token no puedes llegar hasta aqui
   if (!token) {
-    return <Error>No te has registrado</Error>;
+    return (
+      <>
+        <Header
+          to={''}
+          button={''}
+          body={<BodyHeaderHomePage />}
+          className={'simpleHeader'}
+        />
+        <Error>No te has registrado</Error>
+      </>
+    );
   }
   //Decodificamos el token para mas adelante saber si eres admin o no. gracias a 'jwt-decode' y el token que tenemos de forma global en toda la App
   const decoded = decode(token);
@@ -323,7 +339,7 @@ function CompanyForm() {
               </div>
             </div>
           ) : (
-            <Loading>{bodyLoad}</Loading>
+            <Loading>{load}</Loading>
           )}
         </>
       ) : (

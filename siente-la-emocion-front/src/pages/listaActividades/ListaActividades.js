@@ -1,8 +1,4 @@
-/**
- * ###########
- * ## Style ##
- * ###########
- */
+// ## Style ##
 import './listaActividades.css';
 
 /**
@@ -10,7 +6,6 @@ import './listaActividades.css';
  * ## Hooks ##
  * ###########
  */
-//import useFilterActivities from '../../hooks/useFilterActivities';
 import useActivities from '../../hooks/useActivities';
 
 /**
@@ -24,17 +19,11 @@ import BodyExperiencesList from '../../components/Header/MainHeader/BodyExperien
 import { useState } from 'react';
 import { Calendar } from 'react-calendar';
 
-//const decodeToken = decod(token)
-//console.log(token);
-/**
- * ###########
- * ## Main ##
- * ###########
- */
-
+//Pagina que pinta la lista de todas las experiencias disponibles en la Web
 const ListaActividades = () => {
   const [filter, setFilter] = useState(false);
   const { activities, error } = useActivities();
+  console.log('soy activities', activities);
 
   return (
     <div id='listaActividades'>
