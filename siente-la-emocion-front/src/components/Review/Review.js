@@ -76,7 +76,6 @@ const Review = ({ id }) => {
               }}
             />
           </BlueButton>
-          {console.log('review')}
         </form>
       ) : (
         <>

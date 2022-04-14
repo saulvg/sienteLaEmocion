@@ -20,13 +20,11 @@ import Loading from '../loading/Loading';
 
 const DeleteExperience = () => {
   const { token } = useContext(AuthContext);
-  console.log(token);
   const { idExperience } = useParams();
   const [done, setDone] = useState('');
-  console.log(idExperience);
   const navigate = useNavigate();
-  const [load, setLoad] = useState(false);
-  const [bodyLoad, setBodyLoad] = useState('');
+  const [load, setLoad] = useState('');
+  const [error, setError] = useState('');
 
   const deleteExperience = async (event) => {
     event.preventDefault();
@@ -44,13 +42,12 @@ const DeleteExperience = () => {
       const redirect = () => navigate('/');
 
       if (response.ok) {
-        console.log('Experiencia eliminada con exito');
-        setBodyLoad(body.message);
-        setLoad(true);
+        setLoad(body.message);
         setTimeout(redirect, 5000);
         setDone(true);
       } else {
         console.error('Error', body.message);
+        setError(body.message);
       }
     } catch (error) {
       console.error(error);
@@ -74,6 +71,7 @@ const DeleteExperience = () => {
                 <div className='circle-background'></div>
                 {!done ? (
                   <>
+                    {error ? <Error>{error}</Error> : null}
                     <p className='delete-message'>
                       ¿Seguro que quieres eliminar la experiencia?
                     </p>
@@ -92,7 +90,7 @@ const DeleteExperience = () => {
           </div>
         </form>
       ) : (
-        <Loading>{bodyLoad}</Loading>
+        <Loading>{load}</Loading>
       )}
     </>
   );

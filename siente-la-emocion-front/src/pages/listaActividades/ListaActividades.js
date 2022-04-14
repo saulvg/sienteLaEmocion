@@ -1,8 +1,4 @@
-/**
- * ###########
- * ## Style ##
- * ###########
- */
+// ## Style ##
 import './listaActividades.css';
 
 /**
@@ -10,7 +6,6 @@ import './listaActividades.css';
  * ## Hooks ##
  * ###########
  */
-//import useFilterActivities from '../../hooks/useFilterActivities';
 import useActivities from '../../hooks/useActivities';
 
 /**
@@ -22,16 +17,10 @@ import ActividadLista from '../../components/ActividadLista/ActividadLista';
 import Header from '../../components/Header/Header';
 import BodyExperiencesList from '../../components/Header/MainHeader/BodyExperiencesList';
 
-//const decodeToken = decod(token)
-//console.log(token);
-/**
- * ###########
- * ## Main ##
- * ###########
- */
-
+//Pagina que pinta la lista de todas las experiencias disponibles en la Web
 const ListaActividades = () => {
   const { activities, error } = useActivities();
+  console.log('soy activities', activities);
 
   return (
     <div id='listaActividades'>

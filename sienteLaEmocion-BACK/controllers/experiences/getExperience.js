@@ -10,7 +10,7 @@ const getExperience = async (req, res, next) => {
         //ya hemos comprobado si existe anteriormente en un middleware asi que no lo comprobamos de nuevo
         const { idExperience } = req.params;
 
-        //obtenemso la informacion de la experiencia que queremos
+        //Obtenemso la informacion de la experiencia que queremos
         const [experiences] = await connection.query(
             `
         SELECT 
@@ -48,7 +48,9 @@ const getExperience = async (req, res, next) => {
         // Company
         const [company] = await connection.query(
             `
-        SELECT name FROM company WHERE id = ?`,
+        SELECT 
+            name
+        FROM company WHERE id = ?`,
             [experiences[0].id_company]
         );
 

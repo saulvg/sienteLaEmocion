@@ -34,8 +34,7 @@ const ExperiencePhoto = () => {
   const { token } = useUser();
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState('');
-  const [load, setLoad] = useState(false);
-  const [bodyLoad, setBodyLoad] = useState('');
+  const [load, setLoad] = useState('');
   //Parametro del id de la experienia que cogemos de la ruta
   const { idExperience } = useParams();
   //Estados del formulario
@@ -70,8 +69,7 @@ const ExperiencePhoto = () => {
       const redirect = () => navigate('/');
       //Si todo a ido bien informamos al usuario modificando el DOM, mostramos una pantalla de carga y redirigimos a la siguiente ventana
       if (response.ok) {
-        setBodyLoad(body.message);
-        setLoad(true);
+        setLoad(body.message);
         setTimeout(redirect, 5000);
       } else {
         console.error('Error body', body.message);
@@ -95,7 +93,17 @@ const ExperiencePhoto = () => {
 
   //Si ni tienes token no puedes llegar hasta aqui
   if (!token) {
-    return <Error>No te has registrado</Error>;
+    return (
+      <>
+        <Header
+          to={''}
+          button={''}
+          body={<BodyHeaderHomePage />}
+          className={'simpleHeader'}
+        />
+        <Error>No te has registrado</Error>
+      </>
+    );
   }
   //Decodificamos el token para mas adelante saber si eres admin o no. gracias a 'jwt-decode' y el token que tenemos de forma global en toda la App
   const decoded = decode(token);
@@ -138,7 +146,7 @@ const ExperiencePhoto = () => {
               )}
             </>
           ) : (
-            <Loading>{bodyLoad}</Loading>
+            <Loading>{load}</Loading>
           )}
         </>
       ) : (

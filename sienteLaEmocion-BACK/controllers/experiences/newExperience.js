@@ -26,6 +26,8 @@ const newEntry = async (req, res, next) => {
             date,
             city,
             direction,
+            companyInstagram,
+            companyFacebook,
             text_1,
             text_2,
             text_3,
@@ -67,9 +69,10 @@ const newEntry = async (req, res, next) => {
             [companyName]
         );
         if (id_company[0].length <= 0) {
-            await connection.query(`INSERT INTO company (name) VALUES (?)`, [
-                companyName,
-            ]);
+            await connection.query(
+                `INSERT INTO company (name, companyInstagram, companyFacebook) VALUES (?, ?, ?)`,
+                [companyName, companyInstagram, companyFacebook]
+            );
         }
         id_company = await connection.query(
             `SELECT id FROM company WHERE name = ?`,

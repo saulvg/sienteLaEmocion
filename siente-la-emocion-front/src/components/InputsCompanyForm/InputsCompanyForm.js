@@ -129,6 +129,41 @@ const DirectionCompany = ({ companyDirection, setCompanyDirection }) => {
   );
 };
 
+const CompanyInstagram = ({ companyInstagram, setCompanyInstagram }) => {
+  const valueCompanyInstagram = (event) => {
+    setCompanyInstagram(event.target.value);
+  };
+  return (
+    <div className='companyForm '>
+      <label>
+        Enlace Instagram:
+        <input
+          type={'text'}
+          value={companyInstagram}
+          onChange={valueCompanyInstagram}
+        />
+      </label>
+    </div>
+  );
+};
+const CompanyFacebook = ({ companyFacebook, setCompanyFacebook }) => {
+  const valueCompanyFacebook = (event) => {
+    setCompanyFacebook(event.target.value);
+  };
+  return (
+    <div className='companyForm '>
+      <label>
+        Enlace Facebook:
+        <input
+          type={'text'}
+          value={companyFacebook}
+          onChange={valueCompanyFacebook}
+        />
+      </label>
+    </div>
+  );
+};
+
 const Text1Company = ({ companyText_1, setCompanyText_1 }) => {
   const valueCompanyText_1 = (event) => {
     setCompanyText_1(event.target.value);
@@ -254,6 +289,8 @@ export {
   DateCompany,
   CityCompany,
   DirectionCompany,
+  CompanyInstagram,
+  CompanyFacebook,
   Text1Company,
   Text2Company,
   Text3Company,

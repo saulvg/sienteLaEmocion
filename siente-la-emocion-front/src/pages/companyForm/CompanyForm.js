@@ -27,6 +27,8 @@ import {
   DateCompany,
   CityCompany,
   DirectionCompany,
+  CompanyInstagram,
+  CompanyFacebook,
   Text1Company,
   Text2Company,
   Text3Company,
@@ -43,13 +45,13 @@ import {
 import useUser from '../../hooks/useUser';
 import ButtonForm from '../../components/ButtonForm/ButtonForm';
 
-//Pagina que pinta el formulario para que el admin pueda incluir una nueva actividad
+//Pagina que pinta el formulario para que el admin pueda incluir una nueva experiencia
 function CompanyForm() {
   const { token } = useUser();
   const navigate = useNavigate();
   //Estados de variables que necesitamos
-  const [load, setLoad] = useState(false);
-  const [bodyLoad, setBodyLoad] = useState('');
+  const [load, setLoad] = useState('');
+  const [error, setError] = useState('');
   //Estados del formulario
   const [companyName, setCompanyName] = useState('');
   const [companyCategory, setCompanyCategory] = useState('');
@@ -58,6 +60,8 @@ function CompanyForm() {
   const [companyDate, setCompanyDate] = useState('');
   const [companyCity, setCompanyCity] = useState('');
   const [companyDirection, setCompanyDirection] = useState('');
+  const [companyInstagram, setCompanyInstagram] = useState('');
+  const [companyFacebook, setCompanyFacebook] = useState('');
   const [companyText_1, setCompanyText_1] = useState('');
   const [companyText_2, setCompanyText_2] = useState('');
   const [companyText_3, setCompanyText_3] = useState('');
@@ -80,6 +84,8 @@ function CompanyForm() {
         date: companyDate,
         city: companyCity,
         direction: companyDirection,
+        companyInstagram,
+        companyFacebook,
         text_1: companyText_1,
         text_2: companyText_2,
         text_3: companyText_3,
@@ -112,11 +118,11 @@ function CompanyForm() {
       const redirect = () => navigate(`/experiences/${body.data.id}/photos`);
       if (response.ok) {
         //Si todo a ido bien informamos al usuario, cambiamos un estado y mostramos una pantalla de carga y redirigimos a la siguiente ventana
-        setBodyLoad(body.message);
-        setLoad(true);
+        setLoad(body.message);
         setTimeout(redirect, 5000);
       } else {
         console.error('Error', body.message);
+        setError(body.message);
       }
     } catch (error) {
       console.error('catch', error);
@@ -124,7 +130,17 @@ function CompanyForm() {
   };
   //Si ni tienes token no puedes llegar hasta aqui
   if (!token) {
-    return <Error>No te has registrado</Error>;
+    return (
+      <>
+        <Header
+          to={''}
+          button={''}
+          body={<BodyHeaderHomePage />}
+          className={'simpleHeader'}
+        />
+        <Error>No te has registrado</Error>
+      </>
+    );
   }
   //Decodificamos el token para mas adelante saber si eres admin o no. gracias a 'jwt-decode' y el token que tenemos de forma global en toda la App
   const decoded = decode(token);
@@ -148,86 +164,82 @@ function CompanyForm() {
                     <Company
                       companyName={companyName}
                       setCompanyName={setCompanyName}
-                      placeholder={'Escribe aqui...'}
                     />
                     <ExperiencesCategory
                       companyCategory={companyCategory}
                       setCompanyCategory={setCompanyCategory}
-                      placeholder={'Escribe aqui...'}
                     />
                     <CapacityCompany
                       companyCapacity={companyCapacity}
                       setCompanyCapacity={setCompanyCapacity}
                       placeholder={'Escribe aqui...'}
                     />
+                    <CompanyFacebook
+                      companyFacebook={companyFacebook}
+                      setCompanyFacebook={setCompanyFacebook}
+                    />
                     <PriceCompany
                       companyPrice={companyPrice}
                       setCompanyPrice={setCompanyPrice}
-                      placeholder={'Escribe aqui...'}
                     />
-
-                    
                   </div>
                   <div>
-                  <DateCompany
+                    <DateCompany
                       companyDate={companyDate}
                       setCompanyDate={setCompanyDate}
                     />
                     <CityCompany
                       companyCity={companyCity}
                       setCompanyCity={setCompanyCity}
-                      placeholder={'Escribe aqui...'}
                     />
                     <DirectionCompany
                       companyDirection={companyDirection}
                       setCompanyDirection={setCompanyDirection}
-                      placeholder={'Escribe aqui...'}
+                    />
+                    <CompanyInstagram
+                      companyInstagram={companyInstagram}
+                      setCompanyInstagram={setCompanyInstagram}
                     />
                     <PhotoHeader
                       companyPhotoHeader={companyPhotoHeader}
                       setCompanyPhotoHeader={setCompanyPhotoHeader}
                     />
                   </div>
-                  
                 </div>
                 <div>
                   <Text1Company
-                      companyText_1={companyText_1}
-                      setCompanyText_1={setCompanyText_1}
-                      placeholder={'Escribe aqui...'}
-                    />
-                    <Text2Company
-                      companyText_2={companyText_2}
-                      setCompanyText_2={setCompanyText_2}
-                      placeholder={'Escribe aqui...'}
-                    />
-                    <Text3Company
-                      companyText_3={companyText_3}
-                      setCompanyText_3={setCompanyText_3}
-                      placeholder={'Escribe aqui...'}
-                    />
-                    <Text4Company
-                      companyText_4={companyText_4}
-                      setCompanyText_4={setCompanyText_4}
-                      placeholder={'Escribe aqui...'}
-                    />
-                    <Text5Company
-                      companyText_5={companyText_5}
-                      setCompanyText_5={setCompanyText_5}
-                      placeholder={'Escribe aqui...'}
-                    />
-                    <Text6Company
-                      companyText_6={companyText_6}
-                      setCompanyText_6={setCompanyText_6}
-                      placeholder={'Escribe aqui...'}
-                    />
-                  </div>
-                  
+                    companyText_1={companyText_1}
+                    setCompanyText_1={setCompanyText_1}
+                  />
+                  <Text2Company
+                    companyText_2={companyText_2}
+                    setCompanyText_2={setCompanyText_2}
+                  />
+                  <Text3Company
+                    companyText_3={companyText_3}
+                    setCompanyText_3={setCompanyText_3}
+                  />
+                  <Text4Company
+                    companyText_4={companyText_4}
+                    setCompanyText_4={setCompanyText_4}
+                    placeholder={'Escribe aqui...'}
+                  />
+                  <Text5Company
+                    companyText_5={companyText_5}
+                    setCompanyText_5={setCompanyText_5}
+                  />
+                  <Text6Company
+                    companyText_6={companyText_6}
+                    setCompanyText_6={setCompanyText_6}
+                  />
+                </div>
+                {error ? <Error>{error}</Error> : null}
+
                 <ButtonForm>Enviar</ButtonForm>
               </form>
             </div>
           ) : (
-            <Loading>{bodyLoad}</Loading>
+            <Loading>{load}</Loading>
           )}
         </>
       ) : (

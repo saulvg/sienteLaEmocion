@@ -14,11 +14,14 @@ const Experience = () => {
   const { idExperience } = useParams();
   const { activity, error } = useActivity(idExperience);
   const { token } = useUser();
-  console.log('activity', activity);
 
   return (
     <>
-      <Header to={'/booking'} button={'Reserva'} body={<BodyExperience />} />
+      <Header
+        to={`/experiences/${idExperience}/booking`} /* ................ */
+        button={'Reserva'}
+        body={<BodyExperience />}
+      />
       {activity ? (
         <>
           <ul>

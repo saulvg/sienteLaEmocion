@@ -1,6 +1,13 @@
+.bodyError{
+ /*  min-height: 100vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  
+}
 #nExperiences {
     display: flex;
-    justify-content: center;
     margin: 2rem;
   }
   #nExperiencesStyle {
@@ -8,3 +15,4 @@
     border-radius: 20px;
     padding: 2rem;
   }
+  

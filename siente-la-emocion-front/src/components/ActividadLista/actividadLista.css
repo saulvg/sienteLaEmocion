@@ -2,6 +2,7 @@ li a {
   text-decoration: none;
   color: black;
 }
+
 section.actividad {
   display: flex;
   gap: 2rem;
@@ -9,7 +10,9 @@ section.actividad {
   padding-left: 5rem;
   /*  justify-content: center; */
   justify-content: start;
+
 }
+
 .actividad .descriptionActivity {
   width: 65vw;
   justify-content: space-around;
@@ -24,7 +27,7 @@ section.actividad {
   justify-content: space-between;
 }
 .listaActividades {
-  background-color: red;
+  /* background-color: red; */
   padding: 2rem;
   justify-content: end;
 }

@@ -1,14 +1,23 @@
+// ## Style ##
 import './App.css';
+/**
+ * ###########
+ * ## React ##
+ * ###########
+ */
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import React, { useState } from 'react';
 import { useLocalStorage } from './hooks/useSessionStorage';
 
 /**
- * ###########
+ * ################
  * ## Components ##
- * ###########
+ * ################
  */
 import Footer from './components/Footer/Footer';
+import ModalContactanos from './components/modalContactanos/ModalContactanos';
+import Review from './components/Review/Review';
+import EditPassword from './components/Forms/EditPassword';
 
 /**
  * ###########
@@ -20,26 +29,14 @@ import HomePage from './pages/homePage/HomePage';
 import Register from './pages/Forms/Register';
 import Experience from './pages/Experience';
 import ListaActividades from './pages/listaActividades/ListaActividades';
-import { Company } from './components/inputssaul';
-//import { Perfil } from './pages/perfil/GUARDARPERFIL';
 import { ReviewPage } from './pages/reviewPage/reviewPage';
 import ProfilePage from './pages/perfil/ProfilePage';
-import Login from './pages/Forms/Login';
-import DeleteAccount from './components/Forms/DeleteAccount';
 import BookingExperience from './pages/BookingExperience/BookingExperience';
-import EditPassword from './components/Forms/EditPassword';
 import ExperiencePhoto from './pages/experiencePhoto/ExperiencePhoto';
-
 import EditExperience from './pages/editExperience/EditExperience';
 import Buscador from './pages/buscador/Buscador';
 import LoginPage from './pages/Forms/Login';
-import ModalContactanos from './components/modalContactanos/ModalContactanos';
-import Review from './components/Review/Review';
 
-
-
-/* import ModalContactanos from './components/modalContactanos/ModalContactanos';
- */
 //Componente para envolver a toda la aplicacion con un contexto para que este dispnible en toda la aplicacion de manera implicita el valro de token
 export const AuthContext = React.createContext();
 
@@ -62,6 +59,11 @@ function App() {
       <AuthProvider>
         <BrowserRouter>
           <Routes>
+            {/**
+             * ##############
+             * ## Usuarios ##
+             * ##############
+             */}
             <Route path='/' element={<HomePage />} />
             <Route path='/contact' element={<ModalContactanos />} />
             <Route
@@ -73,15 +75,10 @@ function App() {
               }
             />
             <Route path='/search' element={<Buscador />} />
-            {/* <Route path='/contact' element={<ModalContactanos />} /> */}
             <Route path='/perfil' element={<div>{/* <Perfil /> */}</div>} />
-            <Route path='/register' element={<div>{<Register />}</div>} />
-            <Route path='/login' element={<div>{<LoginPage />}</div>} />
-            <Route
-              path='/editPassword'
-              element={<div>{<EditPassword />}</div>}
-            />
-            <Route path='/experiences/:idExperience' element={<Experience />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/editPassword' element={<EditPassword />} />
             <Route
               path='/experiences/:idExperience/reviews'
               element={<ReviewPage />}
@@ -91,19 +88,23 @@ function App() {
               element={<Review />}
             />
             <Route
+              path='/experiences/:idExperience/booking'
+              element={<BookingExperience />}
+            />
+            <Route path='/listaActividades' element={<ListaActividades />} />
+
+            {/**
+             * ############
+             * ## Admins ##
+             * ############
+             */}
+            <Route path='/experiences/:idExperience' element={<Experience />} />
+            <Route
               path='/experiences/:idExperience/photos'
               element={<ExperiencePhoto />}
             />
-            <Route
-              path='/listaActividades'
-              element={
-                <div>
-                  <ListaActividades />
-                </div>
-              }
-            />
-            <Route path='/experiences' element={<CompanyForm />} />
 
+            <Route path='/experiences' element={<CompanyForm />} />
             <Route
               path='/editExperiences/:idExperience'
               element={<EditExperience />}
@@ -120,9 +121,3 @@ function App() {
 }
 
 export default App;
-/*<Route path='/comentarios' element={<ReviewPage />} />*/
-/* <Route
-              path='/perfil/:idUser'
-              element={<div>{<ProfilePage />}</div>}
-            />
-*/

@@ -30,7 +30,6 @@ const useActivity = (id) => {
         }
 
         setActivity(json.data);
-        console.log(json.data);
       } catch (error) {
         setError(error.message);
       }

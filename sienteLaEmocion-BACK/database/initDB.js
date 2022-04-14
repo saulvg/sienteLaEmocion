@@ -47,7 +47,9 @@ async function initDB() {
         await connection.query(`
         CREATE TABLE company (
             id INT PRIMARY KEY AUTO_INCREMENT,
-            name VARCHAR(50) NOT NULL
+            name VARCHAR(50) NOT NULL, 
+            companyInstagram VARCHAR(100),
+            companyFacebook VARCHAR(100)
     )
 `);
         await connection.query(`

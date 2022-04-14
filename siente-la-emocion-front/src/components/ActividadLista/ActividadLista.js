@@ -1,6 +1,11 @@
 // ## Style ##
 import './actividadLista.css';
 
+/**
+ * ###########
+ * ## React ##
+ * ###########
+ */
 import { Link } from 'react-router-dom';
 import decode from 'jwt-decode';
 
@@ -50,6 +55,7 @@ const ActividadLista = ({ activities, error }) => {
                   id={'idActividad'}
                   clas={'listaActividades'}
                   children={activity.category}
+                  image={activity.photoHeader}
                 />
 
                 <div className='descriptionActivity'>
@@ -71,18 +77,22 @@ const ActividadLista = ({ activities, error }) => {
               ) : (
                 /* ..................... */
                 <div className='socialNetworks'>
-                  <SocialNetwork
-                    id={'miniInstagram'}
-                    href={activity.instagram || 'https://www.instagram.com/'}
-                    children={'instagram'}
-                    className={'mini'}
-                  />
-                  <SocialNetwork
-                    id={'miniFacebook'}
-                    href={'https:/es-es.facebook.com/'}
-                    children={'facebook'}
-                    className={'mini'}
-                  />
+                  {activity.companyInstagram ? (
+                    <SocialNetwork
+                      id={'miniInstagram'}
+                      href={activity.companyInstagram}
+                      children={'instagram'}
+                      className={'mini'}
+                    />
+                  ) : null}
+                  {activity.companyFacebook ? (
+                    <SocialNetwork
+                      id={'miniFacebook'}
+                      href={activity.companyFacebook}
+                      children={'facebook'}
+                      className={'mini'}
+                    />
+                  ) : null}
                 </div>
                 /* ............. */
               )}
