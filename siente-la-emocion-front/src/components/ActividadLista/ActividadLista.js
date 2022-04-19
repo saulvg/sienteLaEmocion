@@ -65,7 +65,7 @@ const ActividadLista = ({ activities, error }) => {
                 <div className='header-activity'>
                   <h3>{activity.company}</h3>
                 </div>
-                <p className='texto'>{activity.text_1 || 'Sin descripción'}</p>
+                <p className='texto'>{activity.text_4 || 'Sin descripción'}</p>
                 <div className='actividadF_P'>
                   <p>{new Date(activity.date).toLocaleDateString()} </p>
                 </div>
