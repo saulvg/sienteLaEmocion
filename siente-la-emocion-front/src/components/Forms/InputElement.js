@@ -9,6 +9,7 @@ export const InputElement = ({
   onChange,
   htmlFor,
   placeholder,
+  span,
 }) => {
   return (
     <label className='label-element'>

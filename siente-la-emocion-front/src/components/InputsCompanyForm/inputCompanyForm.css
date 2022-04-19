@@ -9,8 +9,8 @@ textarea:required:invalid {
   /* background-color: aqua; */
   margin: 2rem 5rem;
 }
-.companyPhotoHeader{
-  margin: 2rem 5rem;
+.companyPhotoHeader {
+  margin: auto;
 }
 
 .companyForm input {

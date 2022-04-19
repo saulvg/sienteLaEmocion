@@ -47,6 +47,9 @@
   padding: 5px 10px;
 }
 
+.circle-content button {
+  border: 0;
+}
 .add-review-button:hover {
   background-color: rgba(127, 205, 250, 0.79);
   transition-duration: 0.2s;

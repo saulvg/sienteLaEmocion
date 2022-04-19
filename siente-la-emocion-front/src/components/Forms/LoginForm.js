@@ -49,15 +49,17 @@ const LoginForm = () => {
               setEmail(e.target.value);
             }}
           />
-          <InputElement
-            labelName='Contraseña'
-            type={togglePassword ? 'password' : ''}
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-          <span onClick={() => setTogglePassword(!togglePassword)}>👀</span>
+          <div className='flex'>
+            <InputElement
+              labelName='Contraseña'
+              type={togglePassword ? 'password' : ''}
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+            <span onClick={() => setTogglePassword(!togglePassword)}>👀</span>
+          </div>
         </div>
         {error ? <Error className='error-msg'>{error}</Error> : null}
         <BlueButton name='Iniciar sesión' />

@@ -16,18 +16,21 @@ import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHom
 import { ModalCircle } from '../../components/Forms/ModalCircle';
 import EditAvatar from '../../components/EditAvatar/EditAvatar';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ProfilePage = () => {
-  const { token, user } = useUser();
+  const { token, setToken, user } = useUser();
   const { activities } = useActivities();
   const { idUser } = useParams();
   const usuario = Number(idUser);
   const { users } = useUserProfile();
+  const navigate = useNavigate();
+  const redirect = () => navigate('/');
   //decoded.id === usuario && user ?
-
+  /* 
   if (!token) {
     return <Error>No te has registrado</Error>;
-  }
+  } */
   const decoded = decode(token);
 
   return (
@@ -90,6 +93,15 @@ const ProfilePage = () => {
                   </Link>
                   <button className='profile-options' onClick={Modal}>
                     Eliminar cuenta
+                  </button>
+                  <button
+                    className='profile-options'
+                    onClick={() => {
+                      setToken(null);
+                      navigate('/');
+                    }}
+                  >
+                    Cerrar sesión
                   </button>
                 </div>
                 <section className=' profile'>
