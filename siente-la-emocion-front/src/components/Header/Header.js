@@ -6,6 +6,7 @@ import ModalContactanos from '../modalContactanos/ModalContactanos';
 import ModalSearch from '../ModalSearch/ModalSearch';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import UpDownPage from '../UpDownPage/UpDownPage';
 
 const HeaderButon = ({ to, children }) => {
   return (
@@ -156,6 +157,7 @@ const Header = ({ to, button, body, className }) => {
         <div className='headerButton'>
           <HeaderButon to={to} children={button} />
         </div>
+        <UpDownPage />
       </header>
     </>
   );
