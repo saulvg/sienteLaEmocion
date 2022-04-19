@@ -273,7 +273,7 @@ const PhotoHeader = ({ companyPhotoHeader, setCompanyPhotoHeader }) => {
   };
   return (
     <div className='companyPhotoHeader'>
-      <label>
+      <label className='label-element'>
         Foto principal:
         <input type={'file'} onChange={valueCompanyPhotoHeader} required />
       </label>

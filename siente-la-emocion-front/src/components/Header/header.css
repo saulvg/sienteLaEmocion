@@ -7,6 +7,7 @@ header {
   background-image: url('../../../public/img/imgHomePage.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
 }
 
 .activity-description {
@@ -36,10 +37,15 @@ header .headerTop img {
 
   margin: auto;
 }
+
+#inputSearch button {
+  background: transparent;
+  border: 0;
+}
 #inputSearch > input {
   background-color: blue;
   height: 3rem;
-  width: 20rem;
+  width: 100%;
   border-radius: 25px;
   padding: 1rem;
   background-color: rgba(245, 245, 245, 0.418);
@@ -55,6 +61,7 @@ header .headerTop menu {
   height: max-content;
   border-top: 2px solid white;
   border-bottom: 2px solid white;
+  padding: 10px 0;
 }
 header .headerTop nav {
   background-color: rgba(53, 44, 41, 50%);
@@ -168,7 +175,9 @@ header .headerButton button:hover {
   background-color: transparent;
   height: auto;
   border: 0;
-  margin-right: 50px;
+  position: absolute;
+  right: 50px;
+  top: 50px;
 }
 
 .toggle-button1 {
@@ -198,8 +207,8 @@ header .headerButton button:hover {
     text-align: center;
   }
 }
-@media (max-width: 600px) {
-  header .headerTop menu nav {
+@media (max-width: 750px) {
+  .mobile-nav {
     flex-direction: column;
     justify-content: flex-start;
     gap: 0;
@@ -240,10 +249,16 @@ header .headerButton button:hover {
     display: block;
     width: 30px;
     height: 30px;
-    float: right;
+    position: absolute;
+    right: 50px;
+    top: 50px;
   }
 
   header .headerTop menu {
     border: none;
+  }
+
+  .headerTop {
+    padding: 0 50px;
   }
 }

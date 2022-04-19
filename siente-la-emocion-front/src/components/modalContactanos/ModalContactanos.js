@@ -15,10 +15,8 @@ const modal = () => {
   const modalFg = document.querySelector('#modal-fg');
   modalBg.classList.add('show');
   modalFg.innerHTML = `
-  <div class="contacta-bg"></div>
-  <div class="contacta-bg2"></div>
-  <div class="contacta-bg3"></div>
-    <section class="contacta-section">
+  <div class="contacta-bg">
+  <section class="contacta-section">
     <div>
         <h2>¿Quieres formar parte de nosotros?</h2>
     </div>
@@ -47,6 +45,10 @@ const modal = () => {
         </div>
     </div>
     </section>
+    </div>
+  <div class="contacta-bg2"></div>
+  <div class="contacta-bg3"></div>
+    
     
   `;
 
