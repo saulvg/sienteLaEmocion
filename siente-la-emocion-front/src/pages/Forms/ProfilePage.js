@@ -17,6 +17,7 @@ import { ModalCircle } from '../../components/Forms/ModalCircle';
 import EditAvatar from '../../components/EditAvatar/EditAvatar';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const ProfilePage = () => {
   const { token, setToken, user } = useUser();
@@ -25,7 +26,7 @@ const ProfilePage = () => {
   const usuario = Number(idUser);
   const { users } = useUserProfile();
   const navigate = useNavigate();
-  const redirect = () => navigate('/');
+  const [deleteModal, setDeleteModal] = useState(false);
   //decoded.id === usuario && user ?
   /* 
   if (!token) {
@@ -44,75 +45,86 @@ const ProfilePage = () => {
       {decoded.role === 'admin' ? (
         <PerfilAdmin />
       ) : (
-        <div className='align-modal'>
-          <div className='modal-box'>
-            <div className='avatar-div'>
-              <EditAvatar />
-            </div>
-            <div className='form-titles'>
-              <div className='circle-content'>
-                <button
-                  className='flex back-button'
-                  onClick={() => {
-                    window.history.go(-1);
-                  }}
-                >
-                  <svg
-                    className='back-svg'
-                    fill='none'
-                    stroke='currentColor'
-                    viewBox='0 0 24 24'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
-                      stroke-width='2'
-                      d='M10 19l-7-7m0 0l7-7m-7 7h18'
-                    ></path>
-                  </svg>
-                  <p className='goback'>Volver</p>
-                </button>
-                <p className='circle-name'>Perfil</p>
-              </div>
-            </div>
-            <ModalCircle name='Registro'></ModalCircle>
-            <div className='modal1-profile'></div>
-            <div className='modal3'>
-              <div className='circle-background2'></div>
-            </div>
-            <div className='modal4'>
-              <div className='circle-background3'></div>
-            </div>
-            <div className='modal2'>
-              <div className='profile-flex'>
-                <div className='profile'>
-                  <EditProfile />
-                  <Link className='profile-options' to='/editPassword'>
-                    Cambia tu contraseña
-                  </Link>
-                  <button className='profile-options' onClick={Modal}>
-                    Eliminar cuenta
-                  </button>
-                  <button
-                    className='profile-options'
-                    onClick={() => {
-                      setToken(null);
-                      navigate('/');
-                    }}
-                  >
-                    Cerrar sesión
-                  </button>
+        <>
+          {!deleteModal ? (
+            <div className='align-modal'>
+              <div className='modal-box'>
+                <div className='avatar-div'>
+                  <EditAvatar />
                 </div>
-                <section className=' profile'>
-                  <h2 className='experiences-title'>Mis experiencias </h2>
-                  <UserExperiences />
-                </section>
+                <div className='form-titles'>
+                  <div className='circle-content'>
+                    <button
+                      className='flex back-button'
+                      onClick={() => {
+                        window.history.go(-1);
+                      }}
+                    >
+                      <svg
+                        className='back-svg'
+                        fill='none'
+                        stroke='currentColor'
+                        viewBox='0 0 24 24'
+                        xmlns='http://www.w3.org/2000/svg'
+                      >
+                        <path
+                          stroke-linecap='round'
+                          stroke-linejoin='round'
+                          stroke-width='2'
+                          d='M10 19l-7-7m0 0l7-7m-7 7h18'
+                        ></path>
+                      </svg>
+                      <p className='goback'>Volver</p>
+                    </button>
+                    <p className='circle-name'>Perfil</p>
+                  </div>
+                </div>
+                <ModalCircle name='Registro'></ModalCircle>
+                <div className='modal1-profile'></div>
+                <div className='modal3'>
+                  <div className='circle-background2'></div>
+                </div>
+                <div className='modal4'>
+                  <div className='circle-background3'></div>
+                </div>
+                <div className='modal2'>
+                  <div className='profile-flex'>
+                    <div className='profile'>
+                      <EditProfile />
+                      <Link className='profile-options' to='/editPassword'>
+                        Cambia tu contraseña
+                      </Link>
+                      <button
+                        className='profile-options'
+                        onClick={() => {
+                          setDeleteModal(true);
+                        }}
+                      >
+                        Eliminar cuenta
+                      </button>
+                      <button
+                        className='profile-options'
+                        onClick={() => {
+                          setToken(null);
+                          navigate('/');
+                        }}
+                      >
+                        Cerrar sesión
+                      </button>
+                    </div>
+                    <section className=' profile'>
+                      <h2 className='experiences-title'>Mis experiencias </h2>
+                      <UserExperiences />
+                    </section>
+                  </div>
+                  <div className='circle-background'></div>
+                </div>
               </div>
-              <div className='circle-background'></div>
             </div>
-          </div>
-        </div>
+          ) : (
+            <DeleteAccount />
+          )}
+        </>
       )}
     </>
   );
