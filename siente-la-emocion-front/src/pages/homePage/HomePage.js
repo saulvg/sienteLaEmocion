@@ -15,7 +15,7 @@ const HomePage = () => {
   return (
     <div className='App'>
       <Header
-        to={'/listaActividades'}
+        to={'/allexperiences'}
         button={'Atrevete'}
         body={<BodyHeaderHomePage />}
       />

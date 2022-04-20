@@ -1,5 +1,6 @@
 //gracias a la dependecia dotenv y a requerirla aqui (en el fichero principal), puedo importar variables de entorno con el process.env, sin necesidad de requerirla en todos los ficheros que hacen referencia a este
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const fileUpload = require('express-fileupload');
@@ -84,8 +85,9 @@ app.use(express.json());
 // en la propiedad "request.body". Si hay algún archivo estará disponible en la
 // propiedad "request.files".
 app.use(fileUpload());
-// Archivos estáticos
-app.use('/uploads', express.static('./static/uploads'));
+// Archivos estáticos, middleware recursos statico
+//app.use('/uploads', express.static('./static/uploads'));
+app.use('/uploads', express.static(path.join(__dirname, '/static/uploads')));
 
 //.................Vamos a crear todos los middlewares que tienen nuestra pagina...........................
 

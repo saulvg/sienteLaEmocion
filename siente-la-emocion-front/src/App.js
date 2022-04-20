@@ -93,7 +93,7 @@ function App() {
               path='/experiences/:idExperience/booking'
               element={<BookingExperience />}
             />
-            <Route path='/listaActividades' element={<ListaActividades />} />
+            <Route path='/allexperiences' element={<ListaActividades />} />
 
             {/**
              * ############

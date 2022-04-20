@@ -47,6 +47,7 @@ const ActividadLista = ({ activities, error }) => {
     <ul class='w-full activities container'>
       {/* Cada actividadad es un li dentro de un ul con su Link, etc, si eres admin puedes editarlas desde aqui, sino no */}
       {activities.map((activity) => {
+        console.log(activity);
         return (
           <li key={activity.id} className='activity-flex w-full '>
             <Link
@@ -57,7 +58,7 @@ const ActividadLista = ({ activities, error }) => {
                 id={'idActividad'}
                 clas={'listaActividades'}
                 children={activity.category}
-                image={activity.photoHeader}
+                image={`${process.env.REACT_APP_BACKEND}/uploads/${activity.photoHeader}`}
               />
 
               <div className='description-activity'>
