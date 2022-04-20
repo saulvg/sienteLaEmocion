@@ -12,3 +12,17 @@
 #adminProfile > ul > li {
     padding-bottom: 2rem;
 }
+
+
+  .title-profile {
+    padding: 1rem;
+    margin: 2rem;
+    z-index: 1;
+    font-weight: normal;
+    border-top: 2px solid #f4d4c1;
+    border-bottom: 2px solid #f4d4c1;
+  }
+
+  #adminProfile ul{
+    list-style: none;
+  }
