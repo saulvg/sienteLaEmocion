@@ -58,7 +58,7 @@ const ActividadLista = ({ activities, error }) => {
                 id={'idActividad'}
                 clas={'listaActividades'}
                 children={activity.category}
-                image={`${process.env.REACT_APP_BACKEND}/static/uploads/${activity.photoHeader}`}
+                image={`${process.env.REACT_APP_BACKEND}/uploads/${activity.photoHeader}`}
               />
 
               <div className='description-activity'>
