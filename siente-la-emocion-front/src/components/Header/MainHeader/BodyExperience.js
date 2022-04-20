@@ -51,7 +51,10 @@ const BodyActivitis = () => {
                   </Link>
                 </h3>
               }
-              <p>{activity.experience.text_4}</p>
+              <p>
+                Si deseas ver las valoraciones de esta actividad solo haz click
+                aqui
+              </p>
             </div>
           </button>
         </section>
