@@ -20,7 +20,6 @@ const useActivities = () => {
           return;
         }
         setActivities(json.data.experiences);
-        console.log('soy jsonata', json.data);
       } catch (error) {
         setError(error.message);
       }

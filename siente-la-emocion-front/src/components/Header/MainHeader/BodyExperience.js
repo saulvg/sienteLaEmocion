@@ -7,7 +7,6 @@ const BodyActivitis = () => {
   const { idExperience } = useParams();
   const { activity, error } = useActivity(idExperience);
   const [text, setText] = useState(false);
-  console.log('asasd', activity);
 
   return activity ? (
     <div className='header-body bodyExperience container'>
