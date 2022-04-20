@@ -7,6 +7,8 @@ import './listaActividades.css';
  * ###########
  */
 import useActivities from '../../hooks/useActivities';
+import useActivity from '../../hooks/useActivity';
+import useActivityPhotos from '../../hooks/useActivityPhotos';
 
 /**
  * ################
@@ -24,25 +26,33 @@ const ListaActividades = () => {
   const [filter, setFilter] = useState(false);
   const { activities, error } = useActivities();
   console.log('activities', activities);
-  const idExperience = activities.map((id) => id.id);
+
+  /*   const idExperience = activities.map((id) => id.id);
   const randomExperience = Math.floor(Math.random() * idExperience.length);
   console.log('randomExperience', randomExperience);
   const ranExper = activities[randomExperience];
   console.log('randomeeeee', activities[randomExperience]);
-  console.log('activitiesIndex', activities[0]);
+  console.log('activitiesIndex', activities[0]); */
   /* const today = new Date();
   console.log(today);
   const allActivies = activities.map(
     (activity) => activity.date === new Date()
-  );
-  console.log('filtradas', allActivies); */
+    );
+    console.log('filtradas', allActivies); */
+  const { photos, errorLoadPhoto } = useActivityPhotos(6);
+  console.log('photo', photos);
 
   return (
     <div id='listaActividades'>
       <Header
-        to={`/experiences/${ranExper}`} /* ................ */
+        bg={
+          photos
+            ? `${process.env.REACT_APP_BACKEND}/uploads/${photos[0].path}`
+            : null
+        }
+        to={`/experiences/${6}`} /* ................ */
         button={'Atrevete'}
-        body={<BodyExperiencesList randomActivity={ranExper} />}
+        body={<BodyExperiencesList randomActivity={6} />}
       />
       <div className='container flex activity-content'>
         <div className='filter'>

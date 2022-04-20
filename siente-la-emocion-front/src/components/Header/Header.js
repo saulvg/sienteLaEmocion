@@ -27,7 +27,7 @@ const Logo = () => {
   );
 };
 
-const Header = ({ to, button, body, className }) => {
+const Header = ({ bg, to, button, body, className }) => {
   const { token, setToken } = useUser();
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -44,7 +44,7 @@ const Header = ({ to, button, body, className }) => {
 
   return (
     <>
-      <header className={className}>
+      <header className={className} style={{ backgroundImage: `url('${bg}')` }}>
         <div className='headerTop'>
           <Logo />
           {formVisible ? <ModalSearch /> : null}
