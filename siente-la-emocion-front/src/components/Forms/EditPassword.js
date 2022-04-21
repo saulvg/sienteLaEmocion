@@ -57,7 +57,6 @@ const EditPassword = () => {
 
   return (
     <>
-      (
       <form onSubmit={editPassword}>
         <div className='align-modal'>
           <div className='modal-box'>
@@ -140,7 +139,6 @@ const EditPassword = () => {
           </div>
         </div>
       </form>
-      )
     </>
   );
 };

@@ -205,6 +205,15 @@ header .headerButton button:hover {
 
   header .headerBody > h1 {
     text-align: center;
+    font-size: ;
+  }
+
+  .activity-header-body h1 {
+    font-size: 50px;
+  }
+
+  .activity-description {
+    width: 100% !important;
   }
 }
 @media (max-width: 750px) {
@@ -260,5 +269,22 @@ header .headerButton button:hover {
 
   .headerTop {
     padding: 0 50px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .activity-header-body {
+    display: block;
+    text-align: center;
+  }
+
+  .activity-description {
+    width: 90%;
+    text-align: center;
+    margin: 30px auto;
+  }
+
+  .activity-description h3 {
+    text-align: center;
   }
 }

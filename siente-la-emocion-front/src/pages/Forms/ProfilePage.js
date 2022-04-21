@@ -91,17 +91,16 @@ const ProfilePage = () => {
                   <div className='profile-flex'>
                     <div className='profile'>
                       <EditProfile />
-                      <Link className='profile-options' to='/editPassword'>
-                        Cambia tu contraseña
-                      </Link>
-                      <button
-                        className='profile-options'
-                        onClick={() => {
-                          setDeleteModal(true);
-                        }}
-                      >
-                        Eliminar cuenta
-                      </button>
+                    </div>
+                    <section className=' profile'>
+                      <h2 className='experiences-title'>Mis experiencias </h2>
+                      <UserExperiences />
+                    </section>
+                  </div>
+                  <div className='circle-background'></div>
+                  <div>
+                    <Link className='profile-options' to='/editPassword'>
+                      Cambia tu contraseña
                       <button
                         className='profile-options'
                         onClick={() => {
@@ -111,13 +110,16 @@ const ProfilePage = () => {
                       >
                         Cerrar sesión
                       </button>
-                    </div>
-                    <section className=' profile'>
-                      <h2 className='experiences-title'>Mis experiencias </h2>
-                      <UserExperiences />
-                    </section>
+                    </Link>
+                    <button
+                      className='profile-options'
+                      onClick={() => {
+                        setDeleteModal(true);
+                      }}
+                    >
+                      Eliminar cuenta
+                    </button>
                   </div>
-                  <div className='circle-background'></div>
                 </div>
               </div>
             </div>

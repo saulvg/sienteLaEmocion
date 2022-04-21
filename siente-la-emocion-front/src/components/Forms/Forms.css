@@ -108,6 +108,7 @@
   line-height: 24px;
   background-color: transparent;
   border: 0;
+  cursor: pointer;
   display: block;
   margin: 45px auto 0 auto;
   text-decoration: none;
@@ -149,6 +150,7 @@
   width: 400px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 10px;
 }
 
 .profile-label-element {
@@ -277,6 +279,8 @@
   text-align: center;
   padding: 40px 10px;
   text-decoration: underline;
+  position: relative;
+  z-index: 5;
 }
 
 .confirmation {
@@ -441,6 +445,7 @@ div > .error-msg {
   display: flex;
   justify-content: center;
   margin-top: 65px;
+  padding: 0 10px;
 }
 
 .profile-flex {
@@ -464,6 +469,24 @@ div > .error-msg {
   .form-elements {
     display: block;
   }
+  .modal-box {
+    height: 100%;
+  }
+
+  .profile-flex {
+    display: block;
+  }
+
+  .profile {
+    width: 100%;
+  }
+
+  .profile + .profile {
+    border-left: none;
+    border-top: 1px solid black;
+    margin-top: 30px;
+    padding-top: 30px;
+  }
 }
 
 @media (max-width: 450px) {
@@ -475,12 +498,6 @@ div > .error-msg {
   }
 }
 
-@media (max-width: 1400px) {
-  .modal-box {
-    height: 100%;
-  }
-}
-
 @media (max-width: 680px) {
   .modal-box {
     width: 100%;
@@ -489,9 +506,26 @@ div > .error-msg {
   .circle-background {
     display: none;
   }
+
+  .circle-background2 {
+    display: none;
+  }
+
+  .circle-background3 {
+    display: none;
+  }
+  .modal3 {
+    display: none;
+  }
+
+  .modal4 {
+    display: none;
+  }
+
   .modal-circle {
     width: 100%;
     left: 0;
+    border-radius: 25%;
   }
 
   .modal1 {

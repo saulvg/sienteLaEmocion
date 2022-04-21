@@ -19,6 +19,7 @@ import Loading from '../../components/loading/Loading';
 import { useContext, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { TextareaElement } from '../../components/Forms/InputElement';
 
 //Pagina que pinta el formulario para qeu los usuarios puedan reservar su actividad
 const BookingExperience = () => {
@@ -104,20 +105,21 @@ const BookingExperience = () => {
                       <>
                         {!load ? (
                           <>
-                            <div className='flex width-full '>
+                            <div className='flex w-full items-center space-between '>
                               <div className='width-50 divide'>
-                                <label>
+                                <label className='label-element'>
                                   Si tienes un mensaje para nosotros:
-                                  <textarea
+                                  <TextareaElement
                                     type={'text'}
                                     value={message}
                                     onChange={(e) => {
                                       setUserMessage(e.target.value);
+                                      console.log(message);
                                     }}
                                   />
                                 </label>
                               </div>
-                              <div className='delete-buttons'>
+                              <div>
                                 <BlueButton
                                   type='submit'
                                   name={'Reservar'}

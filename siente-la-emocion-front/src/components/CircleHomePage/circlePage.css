@@ -20,14 +20,3 @@
   justify-content: center;
   align-items: center;
 }
-
-@media (max-width: 500px) {
-  .route {
-    width: 6.5rem;
-    height: 6.5rem;
-  }
-
-  .route a {
-    font-size: 11px;
-  }
-}
