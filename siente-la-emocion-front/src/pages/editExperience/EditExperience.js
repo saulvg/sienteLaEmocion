@@ -35,7 +35,7 @@ import {
   Text4Company,
   Text5Company,
   Text6Company,
-  PhotoHeader,
+  /* PhotoHeader, */
 } from '../../components/InputsCompanyForm/InputsCompanyForm';
 import Header from '../../components/Header/Header';
 import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
@@ -53,7 +53,7 @@ const EditExperience = () => {
   const [load, setLoad] = useState('');
 
   //Estados del formulario
-  const [companyPhotoHeader, setCompanyPhotoHeader] = useState('');
+  //const [companyPhotoHeader, setCompanyPhotoHeader] = useState('');
   //No necesitamos volver a crear los estado porque estos ya los tenemso en el formulario de 'CompanyForm', lo que queremso es obtener esos estados, y asi poder editarlos 'SetActivity'
   const { activity, setActivity } = useActivity(idExperience);
   //Funcion que recibe el nombre de un campo y lo edita la funcion que contiene con el valor qeu recibe
@@ -75,20 +75,36 @@ const EditExperience = () => {
     //intentamos actualizar los datos del formulario con la peticion tipo 'PUT'
     //como contiene texto y archivos se hace con new Format, el bucle que recorra el objeto, etc.
     try {
-      const payload = new FormData();
+      /*  const payload = new FormData();
       for (const [key, value] of Object.entries(activity)) {
         payload.append(key, value);
-      }
+        console.log(payload);
+      } */
+
+      const payload = {
+        text_1: activity.experience.text_1,
+        text_2: activity.experience.text_2,
+        text_3: activity.experience.text_3,
+        text_4: activity.experience.text_4,
+        text_5: activity.experience.text_5,
+        text_6: activity.experience.text_6,
+        capacity: activity.experience.capacity,
+        price: activity.experience.price,
+        date: activity.experience.date.replace('Z', ''),
+        city: activity.experience.city,
+        direction: activity.experience.direction,
+      };
 
       //Hacemos 'PUT'
       const response = await fetch(
         `${process.env.REACT_APP_BACKEND}/experiences/${idExperience}`,
         {
           method: 'PUT',
-          body: payload,
           headers: {
             Authorization: token,
+            'Content-Type': 'application/json',
           },
+          body: JSON.stringify(payload),
         }
       );
       const body = await response.json();
@@ -185,10 +201,10 @@ const EditExperience = () => {
                         companyText_6={activity.experience.text_6}
                         setCompanyText_6={updateActivity('text_6')}
                       />
-                      <PhotoHeader
+                      {/* <PhotoHeader
                         companyPhotoHeader={companyPhotoHeader}
                         setCompanyPhotoHeader={setCompanyPhotoHeader}
-                      />
+                      /> */}
                       {error ? <Error>{error}</Error> : null}
                       <div className='buttonForm'>
                         <button type='submit'>Actualizar</button>
