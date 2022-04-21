@@ -3,6 +3,14 @@ import './listaActividades.css';
 
 /**
  * ###########
+ * ## React ##
+ * ###########
+ */
+import { useNavigate } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
+
+/**
+ * ###########
  * ## Hooks ##
  * ###########
  */
@@ -22,7 +30,15 @@ import { Calendar } from 'react-calendar';
 //Pagina que pinta la lista de todas las experiencias disponibles en la Web
 const ListaActividades = () => {
   const [filter, setFilter] = useState(false);
-  const { activities, error } = useActivities();
+
+  const [category, setCategory] = useState('');
+  const [price, setPrice] = useState('');
+  const navigate = useNavigate();
+  //navigate(`${prueba}`);
+  const [params] = useSearchParams();
+  const term = params.get('category');
+  const { activities, error } = useActivities(term);
+
   console.log('soy activities', activities);
 
   return (
@@ -45,9 +61,121 @@ const ListaActividades = () => {
           {filter ? (
             <div className='filter-content filter-section'>
               <div id='aventura'>
-                <h3 class='filter-title'>aventura</h3>
-                <div className='adventure-grid '>
-                  <svg
+                <h3 className='filter-title'>aventura</h3>
+                <div className='icon-filterStyle adventure-grid '>
+                  <div
+                    className='icon-filterStyle escalada'
+                    onClick={() => {
+                      /* ${window.location.href} */
+                      !category
+                        ? setCategory(`?category=escalada`)
+                        : setCategory('');
+                    }}
+                  ></div>
+                  <div
+                    className='icon-filterStyle ciclismo'
+                    onClick={() => {
+                      /* ${window.location.href} */
+                      !category
+                        ? setCategory(`?category=ciclismo`)
+                        : setCategory('');
+                    }}
+                  >
+                    Ciclismo
+                  </div>
+                  <div
+                    className='icon-filterStyle paracaidismo'
+                    onClick={() => {
+                      /* ${window.location.href} */
+                      !category
+                        ? setCategory(`?category=paracaidismo`)
+                        : setCategory('');
+                    }}
+                  >
+                    Paracaidismo
+                  </div>
+                  <div
+                    className='icon-filterStyle esqui'
+                    onClick={() => {
+                      /* ${window.location.href} */
+                      !category
+                        ? setCategory(`?category=esqui`)
+                        : setCategory('');
+                    }}
+                  >
+                    Esqui
+                  </div>
+                  <div
+                    className='icon-filterStyle buceo'
+                    onClick={() => {
+                      /* ${window.location.href} */
+                      !category
+                        ? setCategory(`?category=buceo`)
+                        : setCategory('');
+                    }}
+                  >
+                    Buceo
+                  </div>
+                  <div
+                    className='icon-filterStyle piraguismo'
+                    onClick={() => {
+                      /* ${window.location.href} */
+                      !category
+                        ? setCategory(`?category=piraguismo`)
+                        : setCategory('');
+                    }}
+                  >
+                    Piraguismo
+                  </div>
+                  <div
+                    className='icon-filterStyle yoga'
+                    onClick={() => {
+                      /* ${window.location.href} */
+                      !category
+                        ? setCategory(`?category=yoga`)
+                        : setCategory('');
+                    }}
+                  >
+                    Yoga
+                  </div>
+                  <div
+                    className='icon-filterStyle motorBike'
+                    onClick={() => {
+                      /* ${window.location.href} */
+                      !category
+                        ? setCategory(`?category=motorBike`)
+                        : setCategory('');
+                    }}
+                  >
+                    MotorBike
+                  </div>
+                  <div
+                    className='icon-filterStyle espeleologia'
+                    onClick={() => {
+                      /* ${window.location.href} */
+                      !category
+                        ? setCategory(`?category=espeleologia`)
+                        : setCategory('');
+                    }}
+                  >
+                    Esperiologio
+                  </div>
+                  {console.log('ruta', category)}; Escalada
+                  {/* <svg
+                    className='svg-filter '
+                    fill='none'
+                    stroke='currentColor'
+                    viewBox='0 0 24 24'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <path
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      stroke-width='2'
+                      d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
+                    ></path>
+                  </svg> */}
+                  {/* <svg
                     className='svg-filter '
                     fill='none'
                     stroke='currentColor'
@@ -200,21 +328,7 @@ const ListaActividades = () => {
                       stroke-width='2'
                       d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
                     ></path>
-                  </svg>
-                  <svg
-                    className='svg-filter '
-                    fill='none'
-                    stroke='currentColor'
-                    viewBox='0 0 24 24'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
-                      stroke-width='2'
-                      d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
-                    ></path>
-                  </svg>
+                  </svg> */}
                 </div>
               </div>
               <div className='filter-section filter-map'>
@@ -302,6 +416,7 @@ const ListaActividades = () => {
                   </svg>
                 </div>
               </div>
+              {/* .... */}
               <div id='precios' className='filter-section'>
                 <h3 className='filter-title'>precios</h3>
                 <div className='flex items-center filter-checkbox'>
@@ -316,11 +431,16 @@ const ListaActividades = () => {
                   <input className='price-filter' type={'checkbox'}></input>
                   <label>40 - 60 €</label>
                 </div>
+                <div className='flex items-center filter-checkbox'>
+                  <input className='price-filter' type={'checkbox'}></input>
+                  <label> {'> 60 €'}</label>
+                </div>
               </div>
               <div id='calendar' className='filter-section'>
                 <h3 className='filter-title'>Fechas</h3>
                 <Calendar />
               </div>
+              <button onClick={() => navigate(category)}>Filtrar</button>
             </div>
           ) : null}
         </div>

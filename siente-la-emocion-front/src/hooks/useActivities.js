@@ -1,15 +1,18 @@
 //Hook para coger datos de las actividades
 import { useEffect, useState } from 'react';
 
-const useActivities = () => {
+const useActivities = (term) => {
   const [activities, setActivities] = useState([]);
   const [error, setError] = useState(null);
+  console.log('escalada', term);
 
   useEffect(() => {
     const loadActivities = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_BACKEND}/experiences`
+          term
+            ? `${process.env.REACT_APP_BACKEND}/experiences?category=${term}`
+            : `${process.env.REACT_APP_BACKEND}/experiences`
         );
 
         const json = await response.json();
@@ -27,7 +30,7 @@ const useActivities = () => {
     };
 
     loadActivities();
-  }, []);
+  }, [term]);
 
   return { activities, error };
 };

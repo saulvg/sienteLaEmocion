@@ -7,7 +7,7 @@ const getListEntry = async (req, res, next) => {
         connection = await getDB();
 
         // Obtenemos los posibles query params.
-        //NOSOTROS VAMOS A DAR LA OPCION DE CAMBIAR EL ORDEN DEL FILTRO
+        //NOSOTROS NO VAMOS A DAR LA OPCION DE CAMBIAR EL ORDEN DEL FILTRO
         const { category, price1, price2, date, createdAt, votes } = req.query;
 
         // Variable donde almacenaremos las entradas.
