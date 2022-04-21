@@ -1,19 +1,24 @@
 //Hook para coger datos de las actividades
 import { useEffect, useState } from 'react';
 
-const useActivities = (term) => {
+const useActivities = (termCategory, termPrice1, termPrice2) => {
   const [activities, setActivities] = useState([]);
   const [error, setError] = useState(null);
-  console.log('escalada', term);
+  console.log('escalada', termCategory);
 
   useEffect(() => {
     const loadActivities = async () => {
       try {
-        const response = await fetch(
-          term
-            ? `${process.env.REACT_APP_BACKEND}/experiences?category=${term}`
-            : `${process.env.REACT_APP_BACKEND}/experiences`
-        );
+        const ruta = `${process.env.REACT_APP_BACKEND}/experiences`;
+        let response = await fetch(ruta);
+        if (termCategory) {
+          response = await fetch(`${ruta}?category=${termCategory}`);
+        }
+        if (termPrice1 && termPrice2) {
+          response = await fetch(
+            `${ruta}?price1=${termPrice1}&price2=${termPrice1}`
+          );
+        }
 
         const json = await response.json();
 
@@ -23,14 +28,13 @@ const useActivities = (term) => {
           return;
         }
         setActivities(json.data.experiences);
-        console.log('soy jsonata', json.data);
       } catch (error) {
         setError(error.message);
       }
     };
 
     loadActivities();
-  }, [term]);
+  }, [termCategory, termPrice1, termPrice2]);
 
   return { activities, error };
 };

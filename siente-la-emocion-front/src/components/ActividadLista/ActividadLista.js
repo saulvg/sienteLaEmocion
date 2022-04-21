@@ -47,7 +47,6 @@ const ActividadLista = ({ activities, error }) => {
     <ul class='w-full activities container'>
       {/* Cada actividadad es un li dentro de un ul con su Link, etc, si eres admin puedes editarlas desde aqui, sino no */}
       {activities.map((activity) => {
-        console.log(activity);
         return (
           <li key={activity.id} className='activity-flex w-full '>
             <Link
@@ -68,6 +67,7 @@ const ActividadLista = ({ activities, error }) => {
                 <p className='texto'>{activity.text_1 || 'Sin descripción'}</p>
                 <div className='actividadF_P'>
                   <p>{new Date(activity.date).toLocaleDateString()} </p>
+                  <p>Precio: {activity.price}</p>
                 </div>
               </div>
             </Link>

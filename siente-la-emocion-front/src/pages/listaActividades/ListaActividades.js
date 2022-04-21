@@ -36,10 +36,15 @@ const ListaActividades = () => {
   const navigate = useNavigate();
   //navigate(`${prueba}`);
   const [params] = useSearchParams();
-  const term = params.get('category');
-  const { activities, error } = useActivities(term);
+  const termCategory = params.get('category');
+  const termPrice1 = params.get('price1');
+  const termPrice2 = params.get('price2');
 
-  console.log('soy activities', activities);
+  const { activities, error } = useActivities(
+    termCategory,
+    termPrice1,
+    termPrice2
+  );
 
   return (
     <div id='listaActividades'>
@@ -66,7 +71,6 @@ const ListaActividades = () => {
                   <div
                     className='icon-filterStyle escalada'
                     onClick={() => {
-                      /* ${window.location.href} */
                       !category
                         ? setCategory(`?category=escalada`)
                         : setCategory('');
@@ -160,7 +164,7 @@ const ListaActividades = () => {
                   >
                     Esperiologio
                   </div>
-                  {console.log('ruta', category)}; Escalada
+                  {console.log('rutaCategory', category)}; Escalada
                   {/* <svg
                     className='svg-filter '
                     fill='none'
@@ -420,8 +424,13 @@ const ListaActividades = () => {
               <div id='precios' className='filter-section'>
                 <h3 className='filter-title'>precios</h3>
                 <div className='flex items-center filter-checkbox'>
-                  <input className='price-filter' type={'checkbox'}></input>
-                  <label>0 - 20 €</label>
+                  <input
+                    name='0-20'
+                    className='price-filter'
+                    type={'checkbox'}
+                    onClick={() => setPrice('?price1=0&price2=33')}
+                  ></input>
+                  <label for='0-20'>0 - 20 €</label>
                 </div>
                 <div className='flex items-center filter-checkbox'>
                   <input className='price-filter' type={'checkbox'}></input>
@@ -435,12 +444,15 @@ const ListaActividades = () => {
                   <input className='price-filter' type={'checkbox'}></input>
                   <label> {'> 60 €'}</label>
                 </div>
+                {console.log('rutaPrice', price)}; Escalada
               </div>
               <div id='calendar' className='filter-section'>
                 <h3 className='filter-title'>Fechas</h3>
                 <Calendar />
               </div>
-              <button onClick={() => navigate(category)}>Filtrar</button>
+              <button onClick={() => navigate(category || price)}>
+                Filtrar
+              </button>
             </div>
           ) : null}
         </div>
