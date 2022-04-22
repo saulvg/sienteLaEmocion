@@ -1,53 +1,50 @@
-.go-top-container{
-    position: fixed;
-    bottom:0rem;
-    right: 0rem;
-    width: 6.6rem;
-    height: 6.6rem;
-    z-index: 1;
+.go-top-container {
+  position: fixed;
+  bottom: 0rem;
+  right: 0rem;
+  width: 6.6rem;
+  height: 6.6rem;
+  z-index: 1;
 }
-.go-top-button{
-   /*  width: 0rem;
+.go-top-button {
+  /*  width: 0rem;
     height: 0rem;
     z-index: -1; */
-    width: 6.6rem;
-    height: 6.6rem;
-    z-index: 11;
-    background-color: #2071b2;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: .2s;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
+  width: 4.6rem;
+  height: 4.6rem;
+  z-index: 11;
+  background-color: #2071b2;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .go-top-button i {
-    position: absolute;
-    font-size: 1.7rem;
-    top: 48%;
-    left: 50%;
-    /* transform: translate(-50%, -50%) scale(0); */
-    transform: translate(-50%, -50%) scale(1);
-    color: white;
-    transition: .2s;
+  position: absolute;
+  font-size: 1.7rem;
+  top: 48%;
+  left: 50%;
+  /* transform: translate(-50%, -50%) scale(0); */
+  transform: translate(-50%, -50%) scale(1);
+  color: white;
+  transition: 0.2s;
 }
-.arrow-up{
-    
+.arrow-up {
   background-size: contain;
-  font-size: 0; 
-  height: 3rem;
-  width: 1.5rem;
+  font-size: 0;
+  height: 1.5rem;
+  width: 0.75rem;
   background-image: url('../../../public/silueta/flecha-arriba.png');
 }
-.arrow-down{
-    
-    background-size: contain;
-    font-size: 0; 
-    height: 3rem;
-    width: 1.5rem;
-    background-image: url('../../../public/silueta/flecha-abajo.png');
-  }
+.arrow-down {
+  background-size: contain;
+  font-size: 0;
+  height: 1.5rem;
+  width: 0.75rem;
+  background-image: url('../../../public/silueta/flecha-abajo.png');
+}
 
 /* .show{
     z-index: 10;
@@ -78,3 +75,9 @@
         height: 6.6rem;
     }
 } */
+
+@media (max-width: 768px) {
+  .go-top-button {
+    display: none;
+  }
+}

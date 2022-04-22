@@ -101,10 +101,14 @@ const getListEntry = async (req, res, next) => {
             LEFT JOIN users ON (booking.id_user = users.id) `
             ); */
 
+        const experienceFuture = experiences.filter(
+            (date) => date.date > new Date()
+        );
+
         res.send({
             status: 'ok',
             data: {
-                experiences,
+                experiences: experienceFuture,
                 /* users_booking: users_booking.length */
             },
         });

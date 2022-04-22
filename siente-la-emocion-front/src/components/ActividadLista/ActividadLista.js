@@ -40,11 +40,11 @@ const ActividadLista = ({ activities, error }) => {
   }
 
   //si existe algun error de la peticion al back que se hace en el Hook de useActivies y se le pasan estos parametros en Lista de actividades, pintamos un error
-  if (error) return <Error>Hubo un error:{error}</Error>;
+  if (error) return <Error>{error}</Error>;
 
   //si no ha habido ningun error pero no hay actividades pintamos que no las hay y sino las avtividades con todos sus datos
   return activities.length > 0 ? (
-    <ul class='w-full activities container'>
+    <ul className='w-full activities container'>
       {/* Cada actividadad es un li dentro de un ul con su Link, etc, si eres admin puedes editarlas desde aqui, sino no */}
       {activities.map((activity) => {
         return (
@@ -55,7 +55,7 @@ const ActividadLista = ({ activities, error }) => {
             >
               <CircleActivities
                 id={'idActividad'}
-                clas={'listaActividades'}
+                clas={'experience-list'}
                 children={activity.category}
                 image={`${process.env.REACT_APP_BACKEND}/uploads/${activity.photoHeader}`}
               />
@@ -64,21 +64,21 @@ const ActividadLista = ({ activities, error }) => {
                 <div className='header-activity'>
                   <h3>{activity.company}</h3>
                 </div>
-                <p className='texto'>{activity.text_1 || 'Sin descripción'}</p>
-                <div className='actividadF_P'>
+                <p className='texto'>{activity.text_4 || 'Sin descripción'}</p>
+                <div className='experience-date'>
                   <p>{new Date(activity.date).toLocaleDateString()} </p>
                   <p>Precio: {activity.price}</p>
                 </div>
               </div>
             </Link>
-            <div class='activity-right'>
+            <div className='activity-right'>
               {decod.role === 'admin' ? (
                 <Link to={`/editExperiences/${activity.id}`} className='edit'>
                   <div className='lapiz'>Lapiz</div>
                 </Link>
               ) : (
                 /* ..................... */
-                <div className='socialNetworks'>
+                <div className='social-networks'>
                   {activity.companyInstagram ? (
                     <SocialNetwork
                       id={'miniInstagram'}
@@ -104,9 +104,7 @@ const ActividadLista = ({ activities, error }) => {
       })}
     </ul>
   ) : (
-    <Error>
-      No se han encontrado experiencias con estos parametros de busqueda
-    </Error>
+    <Error>No se han encontrado experiencias</Error>
   );
 };
 export default ActividadLista;

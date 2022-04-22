@@ -21,8 +21,6 @@
   align-items: end;
 }
 
- 
-
 @media (max-width: 500px) {
   .route {
     width: 6.5rem;

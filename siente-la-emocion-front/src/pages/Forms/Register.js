@@ -36,6 +36,12 @@ const Register = (props) => {
         </div>
         <ModalCircle name='Registro'></ModalCircle>
         <div className='modal1'></div>
+        <div className='modal3'>
+          <div className='circle-background2'></div>
+        </div>
+        <div className='modal4'>
+          <div className='circle-background3'></div>
+        </div>
         <div className='modal2'>
           <RegisterForm />
           <div className='circle-background'></div>
