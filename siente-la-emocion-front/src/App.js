@@ -36,6 +36,7 @@ import ExperiencePhoto from './pages/experiencePhoto/ExperiencePhoto';
 import EditExperience from './pages/editExperience/EditExperience';
 import Buscador from './pages/buscador/Buscador';
 import LoginPage from './pages/Forms/Login';
+
 import ModalContactanos from './components/modalContactanos/ModalContactanos';
 import Review, { Booking } from './components/Review/Review';
 import UserExperiences from './components/UserExperiences/UserExperiences';
@@ -70,18 +71,10 @@ function App() {
              */}
             <Route path='/' element={<HomePage />} />
             <Route path='/contact' element={<ModalContactanos />} />
-            <Route
-              path='/perfil'
-              element={
-                <div>
-                  <ProfilePage />
-                </div>
-              }
-            />
+            <Route path='/perfil' element={<ProfilePage />} />
             <Route path='/search' element={<Buscador />} />
 
             <Route path='/experiences/:idExperience' element={<Experience />} />
-            <Route path='/perfil' element={<div>{/* <Perfil /> */}</div>} />
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/editPassword' element={<EditPassword />} />

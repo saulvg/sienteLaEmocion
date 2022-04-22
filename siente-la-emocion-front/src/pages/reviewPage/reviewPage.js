@@ -20,7 +20,7 @@ export const Review = ({ avatar, userName }) => {
 
   const { reviews, error } = useReviews();
   if (error) return <div>Hubo un error: {error}</div>;
-  console.log(reviews);
+  console.log('VER REVIEWS', reviews);
   return reviews.length > 0 ? (
     <>
       <ul className='single-review'>

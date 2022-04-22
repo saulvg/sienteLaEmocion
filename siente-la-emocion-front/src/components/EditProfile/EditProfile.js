@@ -1,3 +1,18 @@
+/*  const updateActivity = (field) => {
+    return (value) => {
+      setActivity({
+        ...activity,
+        experience: {
+          ...activity.experience,
+          [field]: value,
+        },
+      });
+    };
+  };
+*/
+
+// METER PATTERN EN EL PERFIL NUEVO
+
 import { useContext, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import useUser from '../../hooks/useUser';

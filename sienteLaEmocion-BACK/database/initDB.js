@@ -25,7 +25,6 @@ async function initDB() {
 
         await connection.query(`
         CREATE TABLE users (
-            name VARCHAR(50) NOT NULL,
             id INT PRIMARY KEY AUTO_INCREMENT,
             email VARCHAR(100) UNIQUE NOT NULL,
             password VARCHAR(100) NOT NULL,
@@ -154,14 +153,13 @@ async function initDB() {
             // Datos faker.
             const email = faker.internet.email();
             const username = faker.internet.userName();
-            const name = faker.name.findName();
 
             const password = await bcrypt.hash('123456', saltRounds);
 
             //insertamos un usuario en cada repeticion
             await connection.query(`
-            INSERT INTO users (name, email, username, password, dni_nie, postalCode, phone, active, createdAt)
-            VALUES ("${name}",
+            INSERT INTO users (email, username, password, dni_nie, postalCode, phone, active, createdAt)
+            VALUES (
                 "${email}", 
                 "${username}",
                 "${password}",
