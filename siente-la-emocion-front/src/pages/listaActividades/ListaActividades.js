@@ -39,7 +39,7 @@ const ListaActividades = () => {
     (activity) => activity.date === new Date()
     );
     console.log('filtradas', allActivies); */
-  const { photos, errorLoadPhoto } = useActivityPhotos(4);
+  const { photos, errorLoadPhoto } = useActivityPhotos(1);
   console.log('photo', photos);
 
   return (
@@ -52,7 +52,7 @@ const ListaActividades = () => {
         } */
         to={`/experiences/${4}`} /* ................ */
         button={'Atrevete'}
-        body={<BodyExperiencesList randomActivity={4} />}
+        body={<BodyExperiencesList randomActivity={1} />}
       />
       <div className='container flex activity-content'>
         <div className='filter'>
