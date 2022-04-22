@@ -41,6 +41,8 @@ import Header from '../../components/Header/Header';
 import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
 import DeleteExperience from '../../components/DeleteExperience/DeleteExperience';
 import Loading from '../../components/loading/Loading';
+import BlueButton from '../../components/Forms/BlueButton';
+import { ModalCircle } from '../../components/Forms/ModalCircle';
 
 //Pagina que pinta el formulario para que el admin pueda editar casi todos los campos de una experiencia
 const EditExperience = () => {
@@ -153,66 +155,121 @@ const EditExperience = () => {
               {activity ? (
                 <div id='companyForm'>
                   {!deleteModal ? (
-                    <form onSubmit={editExperience}>
-                      <CapacityCompany
-                        companyCapacity={activity.experience.capacity}
-                        setCompanyCapacity={updateActivity('capacity')}
-                      />
-                      <PriceCompany
-                        companyPrice={activity.experience.price}
-                        setCompanyPrice={updateActivity('price')}
-                      />
-                      <DateCompany
-                        companyDate={activity.experience.date}
-                        setCompanyDate={updateActivity('date')}
-                      />
-                      {/* ... */}
+                    <div className='align-modal'>
+                      <div className='modal-box'>
+                        <div className='form-titles'>
+                          <div className='circle-content'>
+                            <button
+                              className='flex'
+                              onClick={() => {
+                                window.history.go(-1);
+                              }}
+                            >
+                              <svg
+                                className='back-svg'
+                                fill='none'
+                                stroke='currentColor'
+                                viewBox='0 0 24 24'
+                                xmlns='http://www.w3.org/2000/svg'
+                              >
+                                <path
+                                  stroke-linecap='round'
+                                  stroke-linejoin='round'
+                                  stroke-width='2'
+                                  d='M10 19l-7-7m0 0l7-7m-7 7h18'
+                                ></path>
+                              </svg>
+                              <p className='goback'>Volver</p>
+                            </button>
+                            <p className='circle-name'>Editar Experiencia</p>
+                          </div>
+                        </div>
+                        <ModalCircle name='Registro'></ModalCircle>
+                        <div className='modal1'></div>
+                        <div className='modal3'>
+                          <div className='circle-background2'></div>
+                        </div>
+                        <div className='modal4'>
+                          <div className='circle-background3'></div>
+                        </div>
+                        <div className='modal2'>
+                          <form onSubmit={editExperience}>
+                            <div className='flex company-form'>
+                              <div className='company-div'>
+                                <CapacityCompany
+                                  companyCapacity={activity.experience.capacity}
+                                  setCompanyCapacity={updateActivity(
+                                    'capacity'
+                                  )}
+                                />
+                                <PriceCompany
+                                  companyPrice={activity.experience.price}
+                                  setCompanyPrice={updateActivity('price')}
+                                />
+                                <DateCompany
+                                  companyDate={activity.experience.date}
+                                  setCompanyDate={updateActivity('date')}
+                                />
+                                {/* ... */}
 
-                      <CityCompany
-                        companyCity={activity.experience.city}
-                        setCompanyCity={updateActivity('city')}
-                      />
-                      <DirectionCompany
-                        companyDirection={activity.experience.direction}
-                        setCompanyDirection={updateActivity('direction')}
-                      />
-
-                      <Text1Company
-                        companyText_1={activity.experience.text_1}
-                        setCompanyText_1={updateActivity('companyText_1')}
-                      />
-                      <Text2Company
-                        companyText_2={activity.experience.text_2}
-                        setCompanyText_2={updateActivity('text_2')}
-                      />
-                      <Text3Company
-                        companyText_3={activity.experience.text_3}
-                        setCompanyText_3={updateActivity('text_3')}
-                      />
-                      <Text4Company
-                        companyText_4={activity.experience.text_4}
-                        setCompanyText_4={updateActivity('text_4')}
-                      />
-                      <Text5Company
-                        companyText_5={activity.experience.text_5}
-                        setCompanyText_5={updateActivity('text_5')}
-                      />
-                      <Text6Company
-                        companyText_6={activity.experience.text_6}
-                        setCompanyText_6={updateActivity('text_6')}
-                      />
-                      {/* <PhotoHeader
-                        companyPhotoHeader={companyPhotoHeader}
-                        setCompanyPhotoHeader={setCompanyPhotoHeader}
-                      /> */}
-                      {error ? <Error>{error}</Error> : null}
-                      <div className='buttonForm'>
-                        <button type='submit'>Actualizar</button>
-                        <span onClick={() => setDeleteModal(true)}>
-                          Eliminar experiencia{' '}
-                        </span>
+                                <CityCompany
+                                  companyCity={activity.experience.city}
+                                  setCompanyCity={updateActivity('city')}
+                                />
+                                <DirectionCompany
+                                  companyDirection={
+                                    activity.experience.direction
+                                  }
+                                  setCompanyDirection={updateActivity(
+                                    'direction'
+                                  )}
+                                />
+                                <Text1Company
+                                  companyText_1={activity.experience.text_1}
+                                  setCompanyText_1={updateActivity(
+                                    'companyText_1'
+                                  )}
+                                />
+                                <Text2Company
+                                  companyText_2={activity.experience.text_2}
+                                  setCompanyText_2={updateActivity('text_2')}
+                                />
+                              </div>
+                              <div className='company-div'>
+                                <Text3Company
+                                  companyText_3={activity.experience.text_3}
+                                  setCompanyText_3={updateActivity('text_3')}
+                                />
+                                <Text4Company
+                                  companyText_4={activity.experience.text_4}
+                                  setCompanyText_4={updateActivity('text_4')}
+                                />
+                                <Text5Company
+                                  companyText_5={activity.experience.text_5}
+                                  setCompanyText_5={updateActivity('text_5')}
+                                />
+                                <Text6Company
+                                  companyText_6={activity.experience.text_6}
+                                  setCompanyText_6={updateActivity('text_6')}
+                                />
+                                <PhotoHeader
+                                  companyPhotoHeader={companyPhotoHeader}
+                                  setCompanyPhotoHeader={setCompanyPhotoHeader}
+                                />
+                                {error ? <Error>{error}</Error> : null}
+                              </div>
+                            </div>
+                            <div className='buttonForm'>
+                              <button type='submit'>Actualizar</button>
+                              <span onClick={() => setDeleteModal(true)}>
+                                Eliminar experiencia{' '}
+                              </span>
+                            </div>
+                          </form>
+                          <div className='circle-background'></div>
+                        </div>
                       </div>
-                    </form>
+                    </div>
                   ) : (
                     <DeleteExperience />
                   )}

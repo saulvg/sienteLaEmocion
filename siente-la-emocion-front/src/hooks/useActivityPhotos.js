@@ -1,16 +1,15 @@
-//Hook para coger datos de las actividades
 import { useEffect, useState } from 'react';
 import useUser from './useUser';
 
-const useActivity = (id) => {
-  const [activity, setActivity] = useState(null);
-  const [error, setError] = useState(null);
+const useActivityPhotos = (id) => {
+  const [photos, setPhotos] = useState(null);
+  const [errorLoadPhoto, setErrorLoadPhoto] = useState(null);
   const { token } = useUser();
 
   //const [book, setBook] = useState([]);
 
   useEffect(() => {
-    const loadActivity = async () => {
+    const loadPhotosActivity = async () => {
       try {
         const response = await fetch(
           `${process.env.REACT_APP_BACKEND}/experiences/${id}`,
@@ -24,20 +23,20 @@ const useActivity = (id) => {
         const json = await response.json();
 
         if (!response.ok) {
-          setError(json.message);
+          setErrorLoadPhoto(json.message);
           return;
         }
 
-        setActivity(json.data);
+        setPhotos(json.data.photos);
       } catch (error) {
-        setError(error.message);
+        setErrorLoadPhoto(error.message);
       }
     };
 
-    loadActivity();
+    loadPhotosActivity();
   }, [id]);
 
-  return { activity, error, setActivity };
+  return { photos, errorLoadPhoto };
 };
 
-export default useActivity;
+export default useActivityPhotos;

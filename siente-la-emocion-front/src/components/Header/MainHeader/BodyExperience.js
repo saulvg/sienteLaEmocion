@@ -7,7 +7,6 @@ const BodyActivitis = () => {
   const { idExperience } = useParams();
   const { activity, error } = useActivity(idExperience);
   const [text, setText] = useState(false);
-  console.log('asasd', activity);
 
   return activity ? (
     <div className='header-body bodyExperience container'>
@@ -52,7 +51,7 @@ const BodyActivitis = () => {
                 </h3>
               }
               <p>
-                Si deseas ver las valoraciones de esta actividad solo haz click
+                Si quieres saber que valoraciones tiene esta empresa haz click
                 aqui
               </p>
             </div>

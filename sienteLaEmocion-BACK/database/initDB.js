@@ -174,12 +174,29 @@ async function initDB() {
         connection = await getDB();
 
         await connection.query(
-            `INSERT INTO company (name, companyInstagram, companyFacebook) VALUES ('montañas felices', 'https://www.instagram.com/onclimb_official/', 'https://es-es.facebook.com/'), ('EquinoClub', 'https://www.instagram.com/onclimb_official/', 'https://es-es.facebook.com/'), ('Astronautas del las profundidades', 'https://www.instagram.com/onclimb_official/', 'https://es-es.facebook.com/')`
+            `INSERT INTO company 
+                (name, companyInstagram, companyFacebook)
+            VALUES 
+                ('montañas felices', 'https://www.instagram.com/onclimb_official/', 'https://es-es.facebook.com/'),
+                ('EquinoClub', 'https://www.instagram.com/onclimb_official/', 'https://es-es.facebook.com/'),
+                ('Astronautas del las profundidades', 'https://www.instagram.com/onclimb_official/', 'https://es-es.facebook.com/'),
+                ('espeleologia', 'https://www.instagram.com/onclimb_official/', 'https://es-es.facebook.com/'),
+                ('motorBike', 'https://www.instagram.com/onclimb_official/', 'https://es-es.facebook.com/'),
+                ('yoga', 'https://www.instagram.com/onclimb_official/', 'https://es-es.facebook.com/'),
+                ('piraguismo', 'https://www.instagram.com/onclimb_official/', 'https://es-es.facebook.com/'),
+                ('esqui', 'https://www.instagram.com/onclimb_official/', 'https://es-es.facebook.com/'),
+                ('paracaidismo', 'https://www.instagram.com/onclimb_official/', 'https://es-es.facebook.com/'),
+                ('ciclismo', 'https://www.instagram.com/onclimb_official/', 'https://es-es.facebook.com/')
+                
+                `
         );
         console.log('Comañias creadas');
 
         await connection.query(
-            `INSERT INTO experiences_category (name) VALUES ('Escalada'), ('Monta a Caballo'), ('Buceo')`
+            `INSERT INTO experiences_category 
+                (name) 
+            VALUES 
+                ('Escalada'), ('Monta a Caballo'), ('Buceo'),('espeleologia'),('motorBike'),('yoga'),('piraguismo'),('esqui'),('paracaidismo'),('ciclismo')`
         );
         console.log('Categorias creadas');
 
@@ -187,7 +204,7 @@ async function initDB() {
             `INSERT INTO experiences 
                 (id_user, id_experiences_category, id_company, capacity, price, date, city, direction, text_1, text_2, text_3, text_4, text_5, text_6, createdAt) 
             VALUES 
-                (1, 1, 1, 12, 67,'2022-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
+                (1, 1, 1, 12, 67,'2023-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
 
                 'Equipo: casco, arnés, material técnico, pie de gato y avituallamiento.
                 Seguro de Responsabilidad Civil.
@@ -206,7 +223,7 @@ async function initDB() {
 
                 '2022-02-03 16:37:55'),
 
-                (1, 2, 2, 8, 32,'2022-02-03 16:37:55', 'Teruel', 'Albarracin N 23', 
+                (1, 2, 2, 8, 32,'2023-02-03 16:37:55', 'Teruel', 'Albarracin N 23', 
 
                 'Equipo: casco y avituallamiento.
                 Seguro de Responsabilidad Civil.
@@ -225,7 +242,7 @@ async function initDB() {
 
                 '2022-02-03 16:37:55'),
                 
-                (1, 2, 2, 8, 32,'2022-02-03 16:37:55', 'Teruel', 'Albarracin N 23', 
+                (1, 3, 3, 8, 32,'2023-02-03 16:37:55', 'Teruel', 'Albarracin N 23', 
 
                 'Equipo: chaleco salvavidas, pala y kayak.
                 Seguro de Responsabilidad Civil.
@@ -241,6 +258,120 @@ async function initDB() {
                 'Una experiencia única que te permitirá descubrir paisajes increíbles rodeados de naturaleza y aves como el buitre leonado o el águila real. El Alto Turia de Valencia en todo su esplendor y majestuosidad, como sólo la vista desde un kayak puede ofrecer.', 
                 
                 'Esta actividad es perfecta para disfrutar de un fantástico día de primavera o verano con amigos o familia. Los Kayak con varias plazas permiten dosificar bien el esfuerzo y disfrutar en compañía de una ruta inolvidable por el embalse. El embalse de Benagéber cuenta con 722 hectáreas navegables e incluye entre sus límites la reserva de fauna natural Valdeserillas. Un enclave precioso a menos de 1 hora de Valencia.',
+
+                '2022-02-03 16:37:55'), 
+
+                (1, 4, 4, 12, 67,'2023-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
+
+                'Equipo: casco, arnés, material técnico, pie de gato y avituallamiento.
+                Seguro de Responsabilidad Civil.
+                Seguro de Accidentes.',
+                
+                'Calzado de montaña, agua y mochila.',
+                
+                'Media jornada.
+                Todo el año.',
+
+                'Podrás disfrutar de esta maravillosa actividad en un entorno único como es el Alto Turia en la Serranía de Valencia. Auténtico paraíso de la escalada con un entorno inmejorable, vías ferratas, gargantas, desfiladeros y murallas de hasta 200 m de altura.',
+
+                'La Escalada es un deporte que consiste en realizar una progresión vertical ya sea en roca natural o en una instalación artificial (rocódromo). Para ellos iremos equipados con arnés y casco, estaremos unidos a la pared por una cuerda y sujetados por un guía en todo momento., Apto para todos los públicos, se trata de una toma de contacto con la escalada donde conocerás el material y realizaras una jornada de iniciación escalando vías de poca dificultad técnica para que puedas experimentar las sensaciones que proporciona este deporte sin preocuparte de nada. Nivel apto para personas aficionados a la naturaleza y con destreza para andar por la montaña. Pasos más técnicos pero de un nivel muy asequible, donde el disfrute es lo principal. Seguridad y diversión a partes iguales.', 
+
+                'Nivel para personas con experiencia anterior en escalada. Vías técnicas y largos de mayor altura. Tramos con mayor exigencia física pero donde la diversión se encuentra en cada pared.', 
+
+                '2022-02-03 16:37:55'),
+                
+                (1, 5, 5, 12, 67,'2023-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
+
+                'Equipo: casco, arnés, material técnico, pie de gato y avituallamiento.
+                Seguro de Responsabilidad Civil.
+                Seguro de Accidentes.',
+                
+                'Calzado de montaña, agua y mochila.',
+                
+                'Media jornada.
+                Todo el año.',
+
+                'Podrás disfrutar de esta maravillosa actividad en un entorno único como es el Alto Turia en la Serranía de Valencia. Auténtico paraíso de la escalada con un entorno inmejorable, vías ferratas, gargantas, desfiladeros y murallas de hasta 200 m de altura.',
+
+                'La Escalada es un deporte que consiste en realizar una progresión vertical ya sea en roca natural o en una instalación artificial (rocódromo). Para ellos iremos equipados con arnés y casco, estaremos unidos a la pared por una cuerda y sujetados por un guía en todo momento., Apto para todos los públicos, se trata de una toma de contacto con la escalada donde conocerás el material y realizaras una jornada de iniciación escalando vías de poca dificultad técnica para que puedas experimentar las sensaciones que proporciona este deporte sin preocuparte de nada. Nivel apto para personas aficionados a la naturaleza y con destreza para andar por la montaña. Pasos más técnicos pero de un nivel muy asequible, donde el disfrute es lo principal. Seguridad y diversión a partes iguales.', 
+
+                'Nivel para personas con experiencia anterior en escalada. Vías técnicas y largos de mayor altura. Tramos con mayor exigencia física pero donde la diversión se encuentra en cada pared.', 
+
+                '2022-02-03 16:37:55'),
+                
+                (1, 6, 6, 12, 67,'2023-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
+
+                'Equipo: casco, arnés, material técnico, pie de gato y avituallamiento.
+                Seguro de Responsabilidad Civil.
+                Seguro de Accidentes.',
+                
+                'Calzado de montaña, agua y mochila.',
+                
+                'Media jornada.
+                Todo el año.',
+
+                'Podrás disfrutar de esta maravillosa actividad en un entorno único como es el Alto Turia en la Serranía de Valencia. Auténtico paraíso de la escalada con un entorno inmejorable, vías ferratas, gargantas, desfiladeros y murallas de hasta 200 m de altura.',
+
+                'La Escalada es un deporte que consiste en realizar una progresión vertical ya sea en roca natural o en una instalación artificial (rocódromo). Para ellos iremos equipados con arnés y casco, estaremos unidos a la pared por una cuerda y sujetados por un guía en todo momento., Apto para todos los públicos, se trata de una toma de contacto con la escalada donde conocerás el material y realizaras una jornada de iniciación escalando vías de poca dificultad técnica para que puedas experimentar las sensaciones que proporciona este deporte sin preocuparte de nada. Nivel apto para personas aficionados a la naturaleza y con destreza para andar por la montaña. Pasos más técnicos pero de un nivel muy asequible, donde el disfrute es lo principal. Seguridad y diversión a partes iguales.', 
+
+                'Nivel para personas con experiencia anterior en escalada. Vías técnicas y largos de mayor altura. Tramos con mayor exigencia física pero donde la diversión se encuentra en cada pared.', 
+
+                '2022-02-03 16:37:55'),
+                
+                (1, 7, 7, 12, 67,'2023-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
+
+                'Equipo: casco, arnés, material técnico, pie de gato y avituallamiento.
+                Seguro de Responsabilidad Civil.
+                Seguro de Accidentes.',
+                
+                'Calzado de montaña, agua y mochila.',
+                
+                'Media jornada.
+                Todo el año.',
+
+                'Podrás disfrutar de esta maravillosa actividad en un entorno único como es el Alto Turia en la Serranía de Valencia. Auténtico paraíso de la escalada con un entorno inmejorable, vías ferratas, gargantas, desfiladeros y murallas de hasta 200 m de altura.',
+
+                'La Escalada es un deporte que consiste en realizar una progresión vertical ya sea en roca natural o en una instalación artificial (rocódromo). Para ellos iremos equipados con arnés y casco, estaremos unidos a la pared por una cuerda y sujetados por un guía en todo momento., Apto para todos los públicos, se trata de una toma de contacto con la escalada donde conocerás el material y realizaras una jornada de iniciación escalando vías de poca dificultad técnica para que puedas experimentar las sensaciones que proporciona este deporte sin preocuparte de nada. Nivel apto para personas aficionados a la naturaleza y con destreza para andar por la montaña. Pasos más técnicos pero de un nivel muy asequible, donde el disfrute es lo principal. Seguridad y diversión a partes iguales.', 
+
+                'Nivel para personas con experiencia anterior en escalada. Vías técnicas y largos de mayor altura. Tramos con mayor exigencia física pero donde la diversión se encuentra en cada pared.', 
+
+                '2022-02-03 16:37:55'),
+                
+                (1, 8, 8, 12, 67,'2023-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
+
+                'Equipo: casco, arnés, material técnico, pie de gato y avituallamiento.
+                Seguro de Responsabilidad Civil.
+                Seguro de Accidentes.',
+                
+                'Calzado de montaña, agua y mochila.',
+                
+                'Media jornada.
+                Todo el año.',
+
+                'Podrás disfrutar de esta maravillosa actividad en un entorno único como es el Alto Turia en la Serranía de Valencia. Auténtico paraíso de la escalada con un entorno inmejorable, vías ferratas, gargantas, desfiladeros y murallas de hasta 200 m de altura.',
+
+                'La Escalada es un deporte que consiste en realizar una progresión vertical ya sea en roca natural o en una instalación artificial (rocódromo). Para ellos iremos equipados con arnés y casco, estaremos unidos a la pared por una cuerda y sujetados por un guía en todo momento., Apto para todos los públicos, se trata de una toma de contacto con la escalada donde conocerás el material y realizaras una jornada de iniciación escalando vías de poca dificultad técnica para que puedas experimentar las sensaciones que proporciona este deporte sin preocuparte de nada. Nivel apto para personas aficionados a la naturaleza y con destreza para andar por la montaña. Pasos más técnicos pero de un nivel muy asequible, donde el disfrute es lo principal. Seguridad y diversión a partes iguales.', 
+
+                'Nivel para personas con experiencia anterior en escalada. Vías técnicas y largos de mayor altura. Tramos con mayor exigencia física pero donde la diversión se encuentra en cada pared.', 
+
+                '2022-02-03 16:37:55'),
+                
+                (1, 9, 9, 12, 67,'2023-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
+
+                'Equipo: casco, arnés, material técnico, pie de gato y avituallamiento.
+                Seguro de Responsabilidad Civil.
+                Seguro de Accidentes.',
+                
+                'Calzado de montaña, agua y mochila.',
+                
+                'Media jornada.
+                Todo el año.',
+
+                'Podrás disfrutar de esta maravillosa actividad en un entorno único como es el Alto Turia en la Serranía de Valencia. Auténtico paraíso de la escalada con un entorno inmejorable, vías ferratas, gargantas, desfiladeros y murallas de hasta 200 m de altura.',
+
+                'La Escalada es un deporte que consiste en realizar una progresión vertical ya sea en roca natural o en una instalación artificial (rocódromo). Para ellos iremos equipados con arnés y casco, estaremos unidos a la pared por una cuerda y sujetados por un guía en todo momento., Apto para todos los públicos, se trata de una toma de contacto con la escalada donde conocerás el material y realizaras una jornada de iniciación escalando vías de poca dificultad técnica para que puedas experimentar las sensaciones que proporciona este deporte sin preocuparte de nada. Nivel apto para personas aficionados a la naturaleza y con destreza para andar por la montaña. Pasos más técnicos pero de un nivel muy asequible, donde el disfrute es lo principal. Seguridad y diversión a partes iguales.', 
+
+                'Nivel para personas con experiencia anterior en escalada. Vías técnicas y largos de mayor altura. Tramos con mayor exigencia física pero donde la diversión se encuentra en cada pared.', 
 
                 '2022-02-03 16:37:55')`
         );

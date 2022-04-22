@@ -133,6 +133,7 @@
   margin-top: 30px;
   height: 115vh;
   overflow: auto;
+  padding: 0 10px;
 }
 
 @media (max-width: 1200px) {
@@ -218,4 +219,41 @@
   .map-search {
     margin: auto;
   }
+}
+
+
+/* ............. */
+.icon-filterStyle{
+  height: 2rem;
+   width: 2rem;
+   background-size: contain;
+  font-size: 0; 
+  
+} 
+.escalada{
+   background-image: url('../../../public/silueta/escalada.png');
+ }
+.ciclismo{
+  background-image: url('../../../public/silueta/ciclismo.png');
+}
+.paracaidismo{
+  background-image: url('../../../public/silueta/cielo.png');
+}
+.esqui{
+  background-image: url('../../../public/silueta/esqui.png');
+}
+.buceo{
+  background-image: url('../../../public/silueta/mascara-de-buceo.png');
+}
+.piraguismo{
+  background-image: url('../../../public/silueta/rio-agua.png');
+}
+.yoga{
+  background-image: url('../../../public/silueta/meditacion.png');
+}
+.motorBike{
+  background-image: url('../../../public/silueta/motorkike.png');
+}
+.espeleologia{
+  background-image: url('../../../public/silueta/espeleologia.png');
 }
