@@ -101,16 +101,16 @@ const ProfilePage = () => {
                   <div>
                     <Link className='profile-options' to='/editPassword'>
                       Cambia tu contraseña
-                      <button
-                        className='profile-options'
-                        onClick={() => {
-                          setToken(null);
-                          navigate('/');
-                        }}
-                      >
-                        Cerrar sesión
-                      </button>
                     </Link>
+                    <button
+                      className='profile-options'
+                      onClick={() => {
+                        setToken(null);
+                        navigate('/');
+                      }}
+                    >
+                      Cerrar sesión
+                    </button>
                     <button
                       className='profile-options'
                       onClick={() => {

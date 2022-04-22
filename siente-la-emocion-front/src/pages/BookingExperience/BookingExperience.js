@@ -10,7 +10,7 @@ import Error from '../../components/error/Error';
 import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
 import Header from '../../components/Header/Header';
 import Loading from '../../components/loading/Loading';
-
+import '../../components/Forms/Forms.css';
 /**
  * ###########
  * ## React ##
@@ -105,8 +105,8 @@ const BookingExperience = () => {
                       <>
                         {!load ? (
                           <>
-                            <div className='flex w-full items-center space-between '>
-                              <div className='width-50 divide'>
+                            <div className='flex w-full items-center justify-between bookings'>
+                              <div className=' divide'>
                                 <label className='label-element'>
                                   Si tienes un mensaje para nosotros:
                                   <TextareaElement

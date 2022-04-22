@@ -13,7 +13,7 @@ const BodyExperiencesList = () => {
           scrambled it to make a type specimen book. It has survived not only
           five centuries, but also the leap into electronic typesetting.
         </p>
-        <div className='socialNetworks flex-end'>
+        <div className='social-networks flex flex-end'>
           <SocialNetwork
             id={'miniInstagram'}
             children={'instagram'}

@@ -399,7 +399,7 @@
   position: relative;
   z-index: 10;
   max-width: 280px;
-  margin-top: 25px;
+  margin-top: 50px;
 }
 
 .circle-content {
@@ -440,6 +440,10 @@ div > .error-msg {
   margin-right: 10px;
 }
 
+.bookings {
+  padding: 0 10px;
+}
+
 .delete-buttons {
   width: 100%;
   display: flex;
@@ -463,6 +467,12 @@ div > .error-msg {
 
 .blue-button + .blue-button {
   margin-left: 75px;
+}
+
+@media (max-width: 1530px) {
+  .bookings {
+    display: block;
+  }
 }
 
 @media (max-width: 1400px) {
@@ -498,7 +508,7 @@ div > .error-msg {
   }
 }
 
-@media (max-width: 680px) {
+@media (max-width: 1000px) {
   .modal-box {
     width: 100%;
   }
@@ -534,7 +544,7 @@ div > .error-msg {
   }
   .circle-content button {
     border: 0;
-    background-color: red;
+    background-color: transparent;
   }
   .form-titles {
     text-align: center;
@@ -548,7 +558,7 @@ div > .error-msg {
 
   .circle-name {
     text-align: center;
-    margin: auto;
+    margin: 50px auto;
     padding: 0;
     position: relative;
     z-index: 1;
@@ -565,5 +575,34 @@ div > .error-msg {
 
   .align-modal {
     margin: 0;
+  }
+
+  .modal1-profile {
+    background-color: #f4d4c1;
+  }
+
+  .avatar-div {
+    z-index: 10;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 100px;
+  }
+
+  .avatar-profile {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+  }
+}
+@media (max-width: 550px) {
+  .blue-button {
+    display: block;
+    margin: auto;
+  }
+  .blue-button + .blue-button {
+    margin-left: 0;
+    margin-top: 20px;
   }
 }

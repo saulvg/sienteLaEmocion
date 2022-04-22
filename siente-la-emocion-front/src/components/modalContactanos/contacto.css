@@ -68,6 +68,7 @@
   font-size: 36px;
   line-height: 43px;
   text-align: center;
+  padding: 0 10px;
 }
 
 #modal-fg section div {
@@ -116,4 +117,29 @@
 .contact-social-media img {
   height: 30px;
   width: auto;
+}
+
+@media (max-width: 1200px) {
+  #modal-fg {
+    width: 100%;
+    border-radius: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .contacta-bg {
+    flex-direction: column;
+  }
+
+  .contacta-section + .contacta-section {
+    border-left: 0;
+    border-top: solid 1px black;
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+
+  #modal-fg section {
+    width: 100%;
+    height: 50%;
+  }
 }
