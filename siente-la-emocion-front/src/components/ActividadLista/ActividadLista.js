@@ -56,7 +56,7 @@ const ActividadLista = ({ activities, error }) => {
             >
               <CircleActivities
                 id={'idActividad'}
-                clas={'listaActividades'}
+                clas={'experience-list'}
                 children={activity.category}
                 image={`${process.env.REACT_APP_BACKEND}/uploads/${activity.photoHeader}`}
               />
@@ -66,7 +66,7 @@ const ActividadLista = ({ activities, error }) => {
                   <h3>{activity.company}</h3>
                 </div>
                 <p className='texto'>{activity.text_1 || 'Sin descripción'}</p>
-                <div className='actividadF_P'>
+                <div className='experience-date'>
                   <p>{new Date(activity.date).toLocaleDateString()} </p>
                 </div>
               </div>
@@ -78,7 +78,7 @@ const ActividadLista = ({ activities, error }) => {
                 </Link>
               ) : (
                 /* ..................... */
-                <div className='socialNetworks'>
+                <div className='social-networks'>
                   {activity.companyInstagram ? (
                     <SocialNetwork
                       id={'miniInstagram'}

@@ -16,9 +16,9 @@ export const CircleActivities = ({ id, clas, children, image }) => {
       style={{ backgroundImage: `url('${image}')` }}
     >
       {children}
-      {/* <div className='imgHeader' style={{ backgroundImage: `url('${image}')` }}>
+      <div className='img-header'>
         <img src={image} alt='fotoExperiencia' />
-      </div> */}
+      </div>
     </div>
   );
 };
