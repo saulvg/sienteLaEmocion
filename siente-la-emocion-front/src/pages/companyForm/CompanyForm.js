@@ -217,19 +217,21 @@ function CompanyForm() {
                     <div className='flex company-form'>
                       <div className='company-div'>
                         <InputElement
-                          labelName='company'
+                          labelName='Empresa'
                           type='text'
                           id='company'
                           name='company'
+                          required='required'
                           value={companyName}
                           onChange={(e) => {
                             setCompanyName(e.target.value);
                           }}
                         />
                         <InputElement
-                          labelName='experience'
+                          labelName='Experiencia'
                           type='text'
                           id='experience'
+                          required='required'
                           name='experience'
                           value={companyCategory}
                           onChange={(e) => {
@@ -237,9 +239,10 @@ function CompanyForm() {
                           }}
                         />
                         <InputElement
-                          labelName='capacity'
+                          labelName='Capacidad'
                           type='text'
                           id='capacity'
+                          required='required'
                           name='capacity'
                           value={companyCapacity}
                           onChange={(e) => {
@@ -247,9 +250,10 @@ function CompanyForm() {
                           }}
                         />
                         <InputElement
-                          labelName='price'
+                          labelName='Precio'
                           type='text'
                           id='price'
+                          required='required'
                           name='price'
                           value={companyPrice}
                           onChange={(e) => {
@@ -257,9 +261,10 @@ function CompanyForm() {
                           }}
                         />
                         <InputElement
-                          labelName='date'
+                          labelName='Fecha'
                           type='datetime-local'
                           id='date'
+                          required='required'
                           name='company'
                           value={companyDate}
                           onChange={(e) => {
@@ -267,9 +272,10 @@ function CompanyForm() {
                           }}
                         />
                         <InputElement
-                          labelName='city'
+                          labelName='Ciudad'
                           type='text'
                           id='city'
+                          required='required'
                           name='city'
                           value={companyCity}
                           onChange={(e) => {
@@ -277,9 +283,10 @@ function CompanyForm() {
                           }}
                         />
                         <InputElement
-                          labelName='address'
+                          labelName='Dirección'
                           type='text'
                           id='address'
+                          required='required'
                           name='address'
                           value={companyAddress}
                           onChange={(e) => {
@@ -287,8 +294,8 @@ function CompanyForm() {
                           }}
                         />
                         <TextareaElement
-                          type='text'
-                          labelName='Texto 1'
+                          labelName='¿Qué incluye?'
+                          type='Texto 1'
                           id='text1'
                           value={companyText_1}
                           name=''
@@ -297,40 +304,41 @@ function CompanyForm() {
                       </div>
                       <div className='company-div'>
                         <TextareaElement
-                          type='text'
-                          labelName='Texto 2'
+                          labelName='¿Qué necesitas?'
+                          type='Texto 2'
                           id='text2'
                           value={companyText_2}
                           name=''
                           onChange={(e) => setCompanyText_2(e.target.value)}
                         />
                         <TextareaElement
-                          type='text'
-                          labelName='Texto 3'
+                          labelName='¿Cuánto dura la experiencia? ¿Cuánto se realiza?'
+                          type='Texto 3'
                           id='text3'
                           value={companyText_3}
                           name=''
                           onChange={(e) => setCompanyText_3(e.target.value)}
                         />
                         <TextareaElement
-                          type='text'
-                          labelName='Texto 4'
+                          labelName='¿En qué consiste este deporte?'
+                          type='Texto 4'
                           id='text4'
+                          required='required'
                           value={companyText_4}
                           name=''
                           onChange={(e) => setCompanyText_4(e.target.value)}
                         />
                         <TextareaElement
-                          type='text'
-                          labelName='Texto 5'
+                          labelName='¿Qué nivel de dificultad hay? ¿Y si no tengo experiencia?'
+                          type='Texto 5'
                           id='text5'
                           value={companyText_5}
                           name=''
                           onChange={(e) => setCompanyText_5(e.target.value)}
                         />
                         <TextareaElement
-                          type='text'
-                          labelName='Texto 6'
+                          labelName='Si ya tienes experiencia...'
+                          type='Texto 6'
                           id='text6'
                           value={companyText_6}
                           name=''

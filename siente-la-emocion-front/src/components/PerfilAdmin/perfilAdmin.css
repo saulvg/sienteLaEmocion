@@ -1,28 +1,36 @@
-#adminProfile{
-    min-height: 70vh;
-    padding: 4rem;
-    background-color: rgb(255, 249, 245);
+#adminProfile {
+  min-height: 70vh;
+  padding: 4rem;
+  background-color: rgb(255, 249, 245);
 }
 
-#adminProfile > ul{
-    background-color: whitesmoke;
-    padding: 2rem;
-    border-radius: 25px;
+#adminProfile > ul {
+  background-color: whitesmoke;
+  padding: 2rem;
+  border-radius: 25px;
 }
 #adminProfile > ul > li {
-    padding-bottom: 2rem;
+  padding-bottom: 2rem;
+  font-size: 18px;
+}
+#adminProfile > ul > li button {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  font-size: 18px;
+  font-style: none;
+  font-weight: normal;
 }
 
+.title-profile {
+  padding: 1rem;
+  margin: 2rem;
+  z-index: 1;
+  font-weight: normal;
+  border-top: 2px solid #f4d4c1;
+  border-bottom: 2px solid #f4d4c1;
+}
 
-  .title-profile {
-    padding: 1rem;
-    margin: 2rem;
-    z-index: 1;
-    font-weight: normal;
-    border-top: 2px solid #f4d4c1;
-    border-bottom: 2px solid #f4d4c1;
-  }
-
-  #adminProfile ul{
-    list-style: none;
-  }
+#adminProfile ul {
+  list-style: none;
+}

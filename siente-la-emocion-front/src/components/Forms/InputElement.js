@@ -10,7 +10,7 @@ export const InputElement = ({
   onChange,
   htmlFor,
   placeholder,
-  span,
+  required,
 }) => {
   return (
     <label className='label-element'>
@@ -21,6 +21,7 @@ export const InputElement = ({
         name={name}
         id={id}
         value={value}
+        required={required}
         onChange={onChange}
         placeholder={placeholder}
       />
@@ -37,7 +38,7 @@ export const InputPassword = ({
   onChange,
   htmlFor,
   placeholder,
-  span,
+  required,
 }) => {
   const [togglePassword, setTogglePassword] = useState(true);
   return (
@@ -52,6 +53,7 @@ export const InputPassword = ({
           value={value}
           onChange={onChange}
           placeholder={placeholder}
+          required={required}
         />
         <span onClick={() => setTogglePassword(!togglePassword)}>👀</span>
       </div>
@@ -67,6 +69,7 @@ export const TextareaElement = ({
   name,
   onChange,
   placeholder,
+  required,
 }) => {
   return (
     <label className='label-element'>
@@ -76,6 +79,7 @@ export const TextareaElement = ({
         cols='100'
         rows='10'
         type={type}
+        required={required}
         name={name}
         id={id}
         value={value}

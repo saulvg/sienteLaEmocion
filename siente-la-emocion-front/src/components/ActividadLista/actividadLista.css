@@ -20,7 +20,7 @@ section.actividad {
 .experience-list {
   flex-shrink: 0;
 }
-.experience.date {
+.experience-date {
   display: flex;
   min-width: 10rem;
   justify-content: space-between;
