@@ -35,7 +35,6 @@ import {
   Text4Company,
   Text5Company,
   Text6Company,
-  /* PhotoHeader, */
 } from '../../components/InputsCompanyForm/InputsCompanyForm';
 import Header from '../../components/Header/Header';
 import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
@@ -55,7 +54,6 @@ const EditExperience = () => {
   const [load, setLoad] = useState('');
 
   //Estados del formulario
-  //const [companyPhotoHeader, setCompanyPhotoHeader] = useState('');
   //No necesitamos volver a crear los estado porque estos ya los tenemso en el formulario de 'CompanyForm', lo que queremso es obtener esos estados, y asi poder editarlos 'SetActivity'
   const { activity, setActivity } = useActivity(idExperience);
   //Funcion que recibe el nombre de un campo y lo edita la funcion que contiene con el valor qeu recibe
@@ -251,10 +249,6 @@ const EditExperience = () => {
                                 <Text6Company
                                   companyText_6={activity.experience.text_6}
                                   setCompanyText_6={updateActivity('text_6')}
-                                />
-                                <PhotoHeader
-                                  companyPhotoHeader={companyPhotoHeader}
-                                  setCompanyPhotoHeader={setCompanyPhotoHeader}
                                 />
                                 {error ? <Error>{error}</Error> : null}
                               </div>
