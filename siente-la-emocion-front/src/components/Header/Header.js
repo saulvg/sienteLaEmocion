@@ -44,7 +44,12 @@ const Header = ({ bg, to, button, body, className }) => {
 
   return (
     <>
-      <header className={className} style={{ backgroundImage: `url('${bg}')` }}>
+      <header
+        className={className}
+        /* style={{
+          backgroundImage: `url('${bg}')`,
+        }} */
+      >
         <div className='headerTop'>
           <Logo />
           {formVisible ? <ModalSearch /> : null}

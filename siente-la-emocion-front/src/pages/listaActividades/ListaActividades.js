@@ -39,20 +39,20 @@ const ListaActividades = () => {
     (activity) => activity.date === new Date()
     );
     console.log('filtradas', allActivies); */
-  const { photos, errorLoadPhoto } = useActivityPhotos(6);
+  const { photos, errorLoadPhoto } = useActivityPhotos(4);
   console.log('photo', photos);
 
   return (
     <div id='listaActividades'>
       <Header
-        bg={
+        /* bg={
           photos
             ? `${process.env.REACT_APP_BACKEND}/uploads/${photos[0].path}`
             : null
-        }
-        to={`/experiences/${6}`} /* ................ */
+        } */
+        to={`/experiences/${4}`} /* ................ */
         button={'Atrevete'}
-        body={<BodyExperiencesList randomActivity={6} />}
+        body={<BodyExperiencesList randomActivity={4} />}
       />
       <div className='container flex activity-content'>
         <div className='filter'>

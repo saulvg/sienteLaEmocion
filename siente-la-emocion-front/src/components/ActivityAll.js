@@ -1,11 +1,15 @@
 import './Forms/activityForm.css';
 
-export const ActivityText1 = ({ answer, question }) => {
+export const ActivityText1 = ({ image, answer, question }) => {
   return (
     <div className='activity'>
       <img
         className='activity-img'
-        src='https://w7.pngwing.com/pngs/522/295/png-transparent-computer-icons-encapsulated-postscript-mountain-angle-photography-triangle.png'
+        src={
+          image
+            ? image
+            : 'https://blogdigital.es/wp-content/uploads/2015/09/imagen-no-encontrada.jpg'
+        }
         alt='logo'
       />
       <div className='question-box'>

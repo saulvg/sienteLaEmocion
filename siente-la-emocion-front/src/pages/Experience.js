@@ -14,7 +14,7 @@ const Experience = () => {
   const { idExperience } = useParams();
   const { activity, error } = useActivity(idExperience);
   const { token } = useUser();
-
+  console.log('activity', activity);
   return (
     <>
       <Header
@@ -31,16 +31,19 @@ const Experience = () => {
                   <h2>{activity.company}</h2>
                 </div>
                 <ActivityText1
+                  image={`${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[0].path}`}
                   question={'¿En qué consiste este deporte?'}
                   answer={activity.experience.text_4}
                 ></ActivityText1>
                 <ActivityText1
+                  image={`${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[1].path}`}
                   question={
                     '¿Qué niveles de dificultad hay? ¿Y si no tengo experiencia?'
                   }
                   answer={activity.experience.text_5}
                 ></ActivityText1>
                 <ActivityText1
+                  image={`${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[2].path}`}
                   question={'Si ya tienes experiencia...'}
                   answer={activity.experience.text_6}
                 ></ActivityText1>

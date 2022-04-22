@@ -187,7 +187,7 @@ async function initDB() {
             `INSERT INTO experiences 
                 (id_user, id_experiences_category, id_company, capacity, price, date, city, direction, text_1, text_2, text_3, text_4, text_5, text_6, createdAt) 
             VALUES 
-                (1, 1, 1, 12, 67,'2022-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
+                (1, 1, 1, 12, 67,'2023-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
 
                 'Equipo: casco, arnés, material técnico, pie de gato y avituallamiento.
                 Seguro de Responsabilidad Civil.
@@ -206,7 +206,7 @@ async function initDB() {
 
                 '2022-02-03 16:37:55'),
 
-                (1, 2, 2, 8, 32,'2022-02-03 16:37:55', 'Teruel', 'Albarracin N 23', 
+                (1, 2, 2, 8, 32,'2023-02-03 16:37:55', 'Teruel', 'Albarracin N 23', 
 
                 'Equipo: casco y avituallamiento.
                 Seguro de Responsabilidad Civil.
@@ -225,7 +225,7 @@ async function initDB() {
 
                 '2022-02-03 16:37:55'),
                 
-                (1, 2, 2, 8, 32,'2022-02-03 16:37:55', 'Teruel', 'Albarracin N 23', 
+                (1, 2, 2, 8, 32,'2023-02-03 16:37:55', 'Teruel', 'Albarracin N 23', 
 
                 'Equipo: chaleco salvavidas, pala y kayak.
                 Seguro de Responsabilidad Civil.

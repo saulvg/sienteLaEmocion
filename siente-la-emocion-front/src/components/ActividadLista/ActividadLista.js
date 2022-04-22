@@ -103,9 +103,7 @@ const ActividadLista = ({ activities, error }) => {
       })}
     </ul>
   ) : (
-    <Error>
-      No se han encontrado experiencias con estos parametros de busqueda
-    </Error>
+    <Error>No se han encontrado experiencias</Error>
   );
 };
 export default ActividadLista;
