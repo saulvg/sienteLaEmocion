@@ -1,16 +1,24 @@
 //Hook para coger datos de las actividades
 import { useEffect, useState } from 'react';
 
-const useActivities = () => {
+const useActivities = (termCategory, termPrice1, termPrice2) => {
   const [activities, setActivities] = useState([]);
   const [error, setError] = useState(null);
+  console.log('escalada', termCategory);
 
   useEffect(() => {
     const loadActivities = async () => {
       try {
-        const response = await fetch(
-          `${process.env.REACT_APP_BACKEND}/experiences`
-        );
+        const ruta = `${process.env.REACT_APP_BACKEND}/experiences`;
+        let response = await fetch(ruta);
+        if (termCategory) {
+          response = await fetch(`${ruta}?category=${termCategory}`);
+        }
+        if (termPrice1 && termPrice2) {
+          response = await fetch(
+            `${ruta}?price1=${termPrice1}&price2=${termPrice1}`
+          );
+        }
 
         const json = await response.json();
 
@@ -26,7 +34,7 @@ const useActivities = () => {
     };
 
     loadActivities();
-  }, []);
+  }, [termCategory, termPrice1, termPrice2]);
 
   return { activities, error };
 };

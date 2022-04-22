@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { InputElement } from './InputElement';
+import { InputElement, InputPassword } from './InputElement';
 import BlueButton from './BlueButton';
 import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../../App';
@@ -49,15 +49,15 @@ const LoginForm = () => {
               setEmail(e.target.value);
             }}
           />
-          <InputElement
-            labelName='Contraseña'
-            type={togglePassword ? 'password' : ''}
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-          <span onClick={() => setTogglePassword(!togglePassword)}>👀</span>
+          <div className='flex'>
+            <InputPassword
+              labelName='Contraseña'
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+          </div>
         </div>
         {error ? <Error className='error-msg'>{error}</Error> : null}
         <BlueButton name='Iniciar sesión' />

@@ -12,17 +12,15 @@ section.actividad {
 .description-activity {
   width: 100%;
   justify-content: space-around;
-  padding: 1rem;
+  padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
 }
 
-.listaActividades {
-  /* background-color: red; */
-  padding: 2rem;
+.experience-list {
   flex-shrink: 0;
 }
-.actividadF_P {
+.experience-date {
   display: flex;
   min-width: 10rem;
   justify-content: space-between;
@@ -31,7 +29,7 @@ section.actividad {
 
 .texto {
   word-break: break-all;
-  height: 40px;
+  height: 60px;
   overflow: auto;
 }
 
@@ -44,7 +42,7 @@ section.actividad {
   background-image: url('../../../public/silueta/editar.png');
 }
 
-.socialNetworks {
+.social-networks {
   display: flex;
   flex-direction: row;
   padding-right: 2rem;
@@ -74,4 +72,42 @@ section.actividad {
   padding: 2rem;
   display: flex;
   justify-content: space-between;
+  background-color: rgb(230, 243, 243);
+  border-radius: 20px;
+}
+
+.activity-flex + .activity-flex {
+  margin-top: 20px;
+}
+
+@media (max-width: 700px) {
+  .activity-flex {
+    display: block;
+    border-radius: 13px;
+    background-color: rgb(248, 241, 232);
+  }
+  .description-activity h3 {
+    font-size: 25px;
+  }
+
+  .experience.date {
+    justify-content: center;
+  }
+
+  .description-activity p {
+    font-size: 20px;
+  }
+  .social-networks {
+    text-align: center;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .actividad {
+    display: block;
+    text-align: center;
+  }
+  .route {
+    margin: 0 auto 20px;
+  }
 }

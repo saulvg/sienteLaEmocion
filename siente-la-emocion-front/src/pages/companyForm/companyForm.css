@@ -1,8 +1,14 @@
-.formFlex{
-    display: flex;
+.formFlex {
+  display: flex;
 }
 .formFlex div {
-    width: 50%;
+  width: 50%;
 }
 
+.company-form div {
+  width: 50%;
+}
 
+.company-div + .company-div {
+  border-left: 1px solid black;
+}

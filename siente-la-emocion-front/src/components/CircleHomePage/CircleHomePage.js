@@ -10,9 +10,13 @@ export default CircleHomePage;
 
 export const CircleActivities = ({ id, clas, children, image }) => {
   return (
-    <div id={id} className={`route-content route ${clas}`}>
+    <div
+      id={id}
+      className={`route-content route ${clas}`}
+      style={{ backgroundImage: `url('${image}')` }}
+    >
       {children}
-      <div className='imgHeader'>
+      <div className='img-header'>
         <img src={image} alt='fotoExperiencia' />
       </div>
     </div>

@@ -1,16 +1,16 @@
 input:required:invalid {
-  background-color: rgba(253, 228, 173, 0.493);
+  background-color: rgba(128, 128, 127, 0.493);
 }
 
 textarea:required:invalid {
-  background-color: rgba(253, 228, 173, 0.493);
+  background-color: rgba(128, 128, 127, 0.493);
 }
 .companyForm {
   /* background-color: aqua; */
   margin: 2rem 5rem;
 }
-.companyPhotoHeader{
-  margin: 2rem 5rem;
+.companyPhotoHeader {
+  margin: auto;
 }
 
 .companyForm input {
@@ -24,26 +24,6 @@ textarea:required:invalid {
   /* border: transparent; */
   border: solid thin black;
   border-radius: 25px;
-
-  padding: 0 10px;
-
-  font-style: normal;
-  font-weight: bold;
-}
-
-.companyForm textarea {
-  height: 100px;
-  overflow-y: scroll;
-  resize: none;
-  /* width: 25rem; */
-  width: 65vw;
-  display: flex;
-
-  outline: none;
-
-  font-family: Montserrat;
-  border: solid thin black;
-  border-radius: 7px;
 
   padding: 0 10px;
 

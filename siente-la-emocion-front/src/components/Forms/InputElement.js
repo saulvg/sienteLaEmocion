@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './Forms.css';
 
 export const InputElement = ({
@@ -8,25 +9,57 @@ export const InputElement = ({
   name,
   onChange,
   htmlFor,
-  placeholder,
-  pattern,
   labelfor,
-  labelClassName,
-  inputClassName,
+  pattern,
+  placeholder,
+  required,
 }) => {
   return (
-    <label className={labelClassName} htmlFor={labelfor}>
+    <label className='label-element' htmlFor={labelfor}>
       {labelName}
       <input
-        className={inputClassName}
+        className='input-element'
         type={type}
         name={name}
         pattern={pattern}
         id={id}
         value={value}
+        required={required}
         onChange={onChange}
         placeholder={placeholder}
       />
+    </label>
+  );
+};
+
+export const InputPassword = ({
+  type,
+  labelName,
+  id,
+  value,
+  name,
+  onChange,
+  htmlFor,
+  placeholder,
+  required,
+}) => {
+  const [togglePassword, setTogglePassword] = useState(true);
+  return (
+    <label className='label-element'>
+      {labelName}
+      <div className='flex input-element'>
+        <input
+          className='input-password'
+          type={togglePassword ? 'password' : ''}
+          name={name}
+          id={id}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          required={required}
+        />
+        <span onClick={() => setTogglePassword(!togglePassword)}>👀</span>
+      </div>
     </label>
   );
 };
@@ -39,6 +72,7 @@ export const TextareaElement = ({
   name,
   onChange,
   placeholder,
+  required,
 }) => {
   return (
     <label className='label-element'>
@@ -48,6 +82,7 @@ export const TextareaElement = ({
         cols='100'
         rows='10'
         type={type}
+        required={required}
         name={name}
         id={id}
         value={value}

@@ -1,11 +1,14 @@
 import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../App';
 import BlueButton from './BlueButton';
 import './Forms.css';
 
 const DeleteAccount = () => {
-  const { token } = useContext(AuthContext);
+  const { token, setToken } = useContext(AuthContext);
   const [done, setDone] = useState('');
+  const navigate = useNavigate();
+  const redirect = () => navigate('/');
   const deleteUser = async (e) => {
     e.preventDefault();
 
@@ -19,6 +22,8 @@ const DeleteAccount = () => {
     if (res.ok) {
       console.log('Usuario eliminado');
       setDone(true);
+      setTimeout(redirect, 5000);
+      setToken(null);
     } else {
       const error = await res.json();
       console.log('error');

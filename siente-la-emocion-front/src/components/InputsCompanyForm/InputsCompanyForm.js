@@ -1,23 +1,22 @@
 // ## Style ##
 import './inputCompanyForm.css';
-
+import '../Forms/Forms.css';
 //Funciones, 'Componentes' que pintaremos en CompanyForm unicamente, pero como son muchos decidimos separarlos en otro fichero
 const Company = ({ companyName, setCompanyName }) => {
   const valueCompanyName = (event) => {
     setCompanyName(event.target.value);
   };
   return (
-    <div className='companyForm '>
-      <label>
-        Nombre compañia:
-        <input
-          type={'text'}
-          value={companyName}
-          onChange={valueCompanyName}
-          required
-        />
-      </label>
-    </div>
+    <label className='label-element'>
+      Nombre compañia:
+      <input
+        className='input-element'
+        type={'text'}
+        value={companyName}
+        onChange={valueCompanyName}
+        required
+      />
+    </label>
   );
 };
 const ExperiencesCategory = ({ companyCategory, setCompanyCategory }) => {
@@ -25,17 +24,16 @@ const ExperiencesCategory = ({ companyCategory, setCompanyCategory }) => {
     setCompanyCategory(event.target.value);
   };
   return (
-    <div className='companyForm '>
-      <label>
-        Categoria:
-        <input
-          type={'text'}
-          value={companyCategory}
-          onChange={valueCompanyCategory}
-          required
-        />
-      </label>
-    </div>
+    <label className='label-element'>
+      Categoria:
+      <input
+        className='input-element'
+        type={'text'}
+        value={companyCategory}
+        onChange={valueCompanyCategory}
+        required
+      />
+    </label>
   );
 };
 const CapacityCompany = ({ companyCapacity, setCompanyCapacity }) => {
@@ -43,17 +41,16 @@ const CapacityCompany = ({ companyCapacity, setCompanyCapacity }) => {
     setCompanyCapacity(event.target.value);
   };
   return (
-    <div className='companyForm '>
-      <label>
-        Capacidad:
-        <input
-          type={'text'}
-          value={companyCapacity}
-          onChange={valueCompanyCapacity}
-          required
-        />
-      </label>
-    </div>
+    <label className='label-element'>
+      Capacidad:
+      <input
+        className='input-element'
+        type={'text'}
+        value={companyCapacity}
+        onChange={valueCompanyCapacity}
+        required
+      />
+    </label>
   );
 };
 const PriceCompany = ({ companyPrice, setCompanyPrice }) => {
@@ -61,17 +58,16 @@ const PriceCompany = ({ companyPrice, setCompanyPrice }) => {
     setCompanyPrice(event.target.value);
   };
   return (
-    <div className='companyForm '>
-      <label>
-        Precio:
-        <input
-          type={'text'}
-          value={companyPrice}
-          onChange={valueCompanyPrice}
-          required
-        />
-      </label>
-    </div>
+    <label className='label-element'>
+      Precio:
+      <input
+        className='input-element'
+        type={'text'}
+        value={companyPrice}
+        onChange={valueCompanyPrice}
+        required
+      />
+    </label>
   );
 };
 const DateCompany = ({ companyDate, setCompanyDate }) => {
@@ -79,17 +75,16 @@ const DateCompany = ({ companyDate, setCompanyDate }) => {
     setCompanyDate(event.target.value);
   };
   return (
-    <div className='companyForm'>
-      <label>
-        Fecha:
-        <input
-          type={'datetime-local'}
-          value={companyDate.replace('Z', '')}
-          onChange={valueCompanyDate}
-          required
-        />
-      </label>
-    </div>
+    <label className='label-element'>
+      Fecha:
+      <input
+        className='input-element'
+        type={'datetime-local'}
+        value={companyDate.replace('Z', '')}
+        onChange={valueCompanyDate}
+        required
+      />
+    </label>
   );
 };
 const CityCompany = ({ companyCity, setCompanyCity }) => {
@@ -97,17 +92,16 @@ const CityCompany = ({ companyCity, setCompanyCity }) => {
     setCompanyCity(event.target.value);
   };
   return (
-    <div className='companyForm'>
-      <label>
-        Ciudad:
-        <input
-          type={'text'}
-          value={companyCity}
-          onChange={valueCompanyCity}
-          required
-        />
-      </label>
-    </div>
+    <label className='label-element'>
+      Ciudad:
+      <input
+        className='input-element'
+        type={'text'}
+        value={companyCity}
+        onChange={valueCompanyCity}
+        required
+      />
+    </label>
   );
 };
 const DirectionCompany = ({ companyDirection, setCompanyDirection }) => {
@@ -115,17 +109,16 @@ const DirectionCompany = ({ companyDirection, setCompanyDirection }) => {
     setCompanyDirection(event.target.value);
   };
   return (
-    <div className='companyForm'>
-      <label>
-        Direccion:
-        <input
-          type={'text'}
-          value={companyDirection}
-          onChange={valueCompanyDirection}
-          required
-        />
-      </label>
-    </div>
+    <label className='label-element'>
+      Direccion:
+      <input
+        className='input-element'
+        type={'text'}
+        value={companyDirection}
+        onChange={valueCompanyDirection}
+        required
+      />
+    </label>
   );
 };
 
@@ -134,16 +127,14 @@ const CompanyInstagram = ({ companyInstagram, setCompanyInstagram }) => {
     setCompanyInstagram(event.target.value);
   };
   return (
-    <div className='companyForm '>
-      <label>
-        Enlace Instagram:
-        <input
-          type={'text'}
-          value={companyInstagram}
-          onChange={valueCompanyInstagram}
-        />
-      </label>
-    </div>
+    <label>
+      Enlace Instagram:
+      <input
+        type={'text'}
+        value={companyInstagram}
+        onChange={valueCompanyInstagram}
+      />
+    </label>
   );
 };
 const CompanyFacebook = ({ companyFacebook, setCompanyFacebook }) => {
@@ -151,16 +142,14 @@ const CompanyFacebook = ({ companyFacebook, setCompanyFacebook }) => {
     setCompanyFacebook(event.target.value);
   };
   return (
-    <div className='companyForm '>
-      <label>
-        Enlace Facebook:
-        <input
-          type={'text'}
-          value={companyFacebook}
-          onChange={valueCompanyFacebook}
-        />
-      </label>
-    </div>
+    <label>
+      Enlace Facebook:
+      <input
+        type={'text'}
+        value={companyFacebook}
+        onChange={valueCompanyFacebook}
+      />
+    </label>
   );
 };
 
@@ -169,17 +158,18 @@ const Text1Company = ({ companyText_1, setCompanyText_1 }) => {
     setCompanyText_1(event.target.value);
   };
   return (
-    <div className='companyForm'>
-      <label>
-        Texto 1:
-        <textarea
-          type={'text'}
-          value={companyText_1}
-          onChange={valueCompanyText_1}
-          required
-        />
-      </label>
-    </div>
+    <label className='label-element'>
+      Texto 1:
+      <textarea
+        className='textarea-element'
+        cols='100'
+        rows='10'
+        type={'text'}
+        value={companyText_1}
+        onChange={valueCompanyText_1}
+        required
+      />
+    </label>
   );
 };
 const Text2Company = ({ companyText_2, setCompanyText_2 }) => {
@@ -187,16 +177,17 @@ const Text2Company = ({ companyText_2, setCompanyText_2 }) => {
     setCompanyText_2(event.target.value);
   };
   return (
-    <div className='companyForm'>
-      <label>
-        Texto 2:
-        <textarea
-          type={'text'}
-          value={companyText_2}
-          onChange={valueCompanyText_2}
-        />
-      </label>
-    </div>
+    <label className='label-element'>
+      Texto 2:
+      <textarea
+        className='textarea-element'
+        cols='100'
+        rows='10'
+        type={'text'}
+        value={companyText_2}
+        onChange={valueCompanyText_2}
+      />
+    </label>
   );
 };
 const Text3Company = ({ companyText_3, setCompanyText_3 }) => {
@@ -204,16 +195,17 @@ const Text3Company = ({ companyText_3, setCompanyText_3 }) => {
     setCompanyText_3(event.target.value);
   };
   return (
-    <div className='companyForm'>
-      <label>
-        Texto 3:
-        <textarea
-          type={'text'}
-          value={companyText_3}
-          onChange={valueCompanyText_3}
-        />
-      </label>
-    </div>
+    <label className='label-element'>
+      Texto 3:
+      <textarea
+        className='textarea-element'
+        cols='100'
+        rows='10'
+        type={'text'}
+        value={companyText_3}
+        onChange={valueCompanyText_3}
+      />
+    </label>
   );
 };
 const Text4Company = ({ companyText_4, setCompanyText_4 }) => {
@@ -221,16 +213,17 @@ const Text4Company = ({ companyText_4, setCompanyText_4 }) => {
     setCompanyText_4(event.target.value);
   };
   return (
-    <div className='companyForm'>
-      <label>
-        Texto 4:
-        <textarea
-          type={'text'}
-          value={companyText_4}
-          onChange={valueCompanyText_4}
-        />
-      </label>
-    </div>
+    <label className='label-element'>
+      Texto 4:
+      <textarea
+        className='textarea-element'
+        cols='100'
+        rows='10'
+        type={'text'}
+        value={companyText_4}
+        onChange={valueCompanyText_4}
+      />
+    </label>
   );
 };
 const Text5Company = ({ companyText_5, setCompanyText_5 }) => {
@@ -238,16 +231,17 @@ const Text5Company = ({ companyText_5, setCompanyText_5 }) => {
     setCompanyText_5(event.target.value);
   };
   return (
-    <div className='companyForm'>
-      <label>
-        Texto 5:
-        <textarea
-          type={'text'}
-          value={companyText_5}
-          onChange={valueCompanyText_5}
-        />
-      </label>
-    </div>
+    <label className='label-element'>
+      Texto 5:
+      <textarea
+        className='textarea-element'
+        cols='100'
+        rows='10'
+        type={'text'}
+        value={companyText_5}
+        onChange={valueCompanyText_5}
+      />
+    </label>
   );
 };
 const Text6Company = ({ companyText_6, setCompanyText_6 }) => {
@@ -255,16 +249,17 @@ const Text6Company = ({ companyText_6, setCompanyText_6 }) => {
     setCompanyText_6(event.target.value);
   };
   return (
-    <div className='companyForm'>
-      <label>
-        Texto 6:
-        <textarea
-          type={'text'}
-          value={companyText_6}
-          onChange={valueCompanyText_6}
-        />
-      </label>
-    </div>
+    <label className='label-element'>
+      Texto 6:
+      <textarea
+        className='textarea-element'
+        cols='100'
+        rows='10'
+        type={'text'}
+        value={companyText_6}
+        onChange={valueCompanyText_6}
+      />
+    </label>
   );
 };
 const PhotoHeader = ({ companyPhotoHeader, setCompanyPhotoHeader }) => {
@@ -273,7 +268,7 @@ const PhotoHeader = ({ companyPhotoHeader, setCompanyPhotoHeader }) => {
   };
   return (
     <div className='companyPhotoHeader'>
-      <label>
+      <label className='label-element'>
         Foto principal:
         <input type={'file'} onChange={valueCompanyPhotoHeader} required />
       </label>

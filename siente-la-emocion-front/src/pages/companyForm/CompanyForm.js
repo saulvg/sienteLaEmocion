@@ -206,132 +206,151 @@ function CompanyForm() {
                 </div>
                 <ModalCircle name='Registro'></ModalCircle>
                 <div className='modal1'></div>
+                <div className='modal3'>
+                  <div className='circle-background2'></div>
+                </div>
+                <div className='modal4'>
+                  <div className='circle-background3'></div>
+                </div>
                 <div className='modal2'>
                   <form onSubmit={sendForm}>
-                    <InputElement
-                      labelName='company'
-                      type='text'
-                      id='company'
-                      name='company'
-                      value={companyName}
-                      onChange={(e) => {
-                        setCompanyName(e.target.value);
-                      }}
-                    />
-                    <InputElement
-                      labelName='experience'
-                      type='text'
-                      id='experience'
-                      name='experience'
-                      value={companyCategory}
-                      onChange={(e) => {
-                        setCompanyCategory(e.target.value);
-                      }}
-                    />
-                    <InputElement
-                      labelName='capacity'
-                      type='text'
-                      id='capacity'
-                      name='capacity'
-                      value={companyCapacity}
-                      onChange={(e) => {
-                        setCompanyCapacity(e.target.value);
-                      }}
-                    />
-                    <InputElement
-                      labelName='price'
-                      type='text'
-                      id='price'
-                      name='price'
-                      value={companyPrice}
-                      onChange={(e) => {
-                        setCompanyPrice(e.target.value);
-                      }}
-                    />
-                    <InputElement
-                      labelName='date'
-                      type='datetime-local'
-                      id='date'
-                      name='company'
-                      value={companyDate}
-                      onChange={(e) => {
-                        setCompanyDate(e.target.value);
-                      }}
-                    />
-                    <InputElement
-                      labelName='city'
-                      type='text'
-                      id='city'
-                      name='city'
-                      value={companyCity}
-                      onChange={(e) => {
-                        setCompanyCity(e.target.value);
-                      }}
-                    />
-                    <InputElement
-                      labelName='address'
-                      type='text'
-                      id='address'
-                      name='address'
-                      value={companyAddress}
-                      onChange={(e) => {
-                        setCompanyAddress(e.target.value);
-                      }}
-                    />
+                    <div className='flex company-form'>
+                      <div className='company-div'>
+                        <InputElement
+                          labelName='Empresa'
+                          type='text'
+                          id='company'
+                          name='company'
+                          required='required'
+                          value={companyName}
+                          onChange={(e) => {
+                            setCompanyName(e.target.value);
+                          }}
+                        />
+                        <InputElement
+                          labelName='Experiencia'
+                          type='text'
+                          id='experience'
+                          required='required'
+                          name='experience'
+                          value={companyCategory}
+                          onChange={(e) => {
+                            setCompanyCategory(e.target.value);
+                          }}
+                        />
+                        <InputElement
+                          labelName='Capacidad'
+                          type='text'
+                          id='capacity'
+                          required='required'
+                          name='capacity'
+                          value={companyCapacity}
+                          onChange={(e) => {
+                            setCompanyCapacity(e.target.value);
+                          }}
+                        />
+                        <InputElement
+                          labelName='Precio'
+                          type='text'
+                          id='price'
+                          required='required'
+                          name='price'
+                          value={companyPrice}
+                          onChange={(e) => {
+                            setCompanyPrice(e.target.value);
+                          }}
+                        />
+                        <InputElement
+                          labelName='Fecha'
+                          type='datetime-local'
+                          id='date'
+                          required='required'
+                          name='company'
+                          value={companyDate}
+                          onChange={(e) => {
+                            setCompanyDate(e.target.value);
+                          }}
+                        />
+                        <InputElement
+                          labelName='Ciudad'
+                          type='text'
+                          id='city'
+                          required='required'
+                          name='city'
+                          value={companyCity}
+                          onChange={(e) => {
+                            setCompanyCity(e.target.value);
+                          }}
+                        />
+                        <InputElement
+                          labelName='Dirección'
+                          type='text'
+                          id='address'
+                          required='required'
+                          name='address'
+                          value={companyAddress}
+                          onChange={(e) => {
+                            setCompanyAddress(e.target.value);
+                          }}
+                        />
+                        <TextareaElement
+                          labelName='¿Qué incluye?'
+                          type='Texto 1'
+                          id='text1'
+                          value={companyText_1}
+                          name=''
+                          onChange={(e) => setCompanyText_1(e.target.value)}
+                        />
+                      </div>
+                      <div className='company-div'>
+                        <TextareaElement
+                          labelName='¿Qué necesitas?'
+                          type='Texto 2'
+                          id='text2'
+                          value={companyText_2}
+                          name=''
+                          onChange={(e) => setCompanyText_2(e.target.value)}
+                        />
+                        <TextareaElement
+                          labelName='¿Cuánto dura la experiencia? ¿Cuánto se realiza?'
+                          type='Texto 3'
+                          id='text3'
+                          value={companyText_3}
+                          name=''
+                          onChange={(e) => setCompanyText_3(e.target.value)}
+                        />
+                        <TextareaElement
+                          labelName='¿En qué consiste este deporte?'
+                          type='Texto 4'
+                          id='text4'
+                          required='required'
+                          value={companyText_4}
+                          name=''
+                          onChange={(e) => setCompanyText_4(e.target.value)}
+                        />
+                        <TextareaElement
+                          labelName='¿Qué nivel de dificultad hay? ¿Y si no tengo experiencia?'
+                          type='Texto 5'
+                          id='text5'
+                          value={companyText_5}
+                          name=''
+                          onChange={(e) => setCompanyText_5(e.target.value)}
+                        />
+                        <TextareaElement
+                          labelName='Si ya tienes experiencia...'
+                          type='Texto 6'
+                          id='text6'
+                          value={companyText_6}
+                          name=''
+                          onChange={(e) => setCompanyText_6(e.target.value)}
+                        />
 
-                    <TextareaElement
-                      type='text'
-                      labelName='Texto 1'
-                      id='text1'
-                      value={companyText_1}
-                      name=''
-                      onChange={(e) => setCompanyText_1(e.target.value)}
-                    />
-                    <TextareaElement
-                      type='text'
-                      labelName='Texto 2'
-                      id='text2'
-                      value={companyText_2}
-                      name=''
-                      onChange={(e) => setCompanyText_2(e.target.value)}
-                    />
-                    <TextareaElement
-                      type='text'
-                      labelName='Texto 3'
-                      id='text3'
-                      value={companyText_3}
-                      name=''
-                      onChange={(e) => setCompanyText_3(e.target.value)}
-                    />
-                    <TextareaElement
-                      type='text'
-                      labelName='Texto 4'
-                      id='text4'
-                      value={companyText_4}
-                      name=''
-                      onChange={(e) => setCompanyText_4(e.target.value)}
-                    />
-                    <TextareaElement
-                      type='text'
-                      labelName='Texto 5'
-                      id='text5'
-                      value={companyText_5}
-                      name=''
-                      onChange={(e) => setCompanyText_5(e.target.value)}
-                    />
-                    <TextareaElement
-                      type='text'
-                      labelName='Texto 6'
-                      id='text6'
-                      value={companyText_6}
-                      name=''
-                      onChange={(e) => setCompanyText_6(e.target.value)}
-                    />
-
-                    <PhotoHeader
-                      companyPhotoHeader={companyPhotoHeader}
-                      setCompanyPhotoHeader={setCompanyPhotoHeader}
-                    />
+                        <PhotoHeader
+                          companyPhotoHeader={companyPhotoHeader}
+                          setCompanyPhotoHeader={setCompanyPhotoHeader}
+                        />
+                      </div>
+                    </div>
                     <BlueButton name='Enviar'></BlueButton>
                   </form>
                   <div className='circle-background'></div>

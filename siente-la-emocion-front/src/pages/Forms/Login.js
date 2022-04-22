@@ -3,9 +3,9 @@ import { Link, Outlet } from 'react-router-dom';
 import { ModalCircle } from '../../components/Forms/ModalCircle';
 import { useContext } from 'react';
 import { AuthContext } from '../../App';
+import '../../components/Forms/Forms.css';
 
 const LoginPage = () => {
-  const { token, error } = useContext(AuthContext);
   return (
     <div className='align-modal'>
       <div className='modal-box'>
@@ -38,6 +38,12 @@ const LoginPage = () => {
         </div>
         <ModalCircle name='Inicio de sesión'></ModalCircle>
         <div className='modal1'></div>
+        <div className='modal3'>
+          <div className='circle-background2'></div>
+        </div>
+        <div className='modal4'>
+          <div className='circle-background3'></div>
+        </div>
         <div className='modal2'>
           <LoginForm />
           <div className='circle-background'></div>

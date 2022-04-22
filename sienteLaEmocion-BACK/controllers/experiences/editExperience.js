@@ -1,5 +1,5 @@
 const getDB = require('../../database/getDB');
-const { savePhoto } = require('../../helpers');
+//const { savePhoto } = require('../../helpers');
 
 const editExperience = async (req, res, next) => {
     let connection;
@@ -27,7 +27,7 @@ const editExperience = async (req, res, next) => {
             category, */
         } = req.body;
 
-        const photoHeader = req.files?.photoHeader;
+        //const photoHeader = req.files?.photoHeader;
 
         //si no se edita ningun campo lanzamos un error
         if (
@@ -41,8 +41,8 @@ const editExperience = async (req, res, next) => {
             !price &&
             !date &&
             !city &&
-            !direction &&
-            !photoHeader
+            !direction //&&
+            //!photoHeader
             /* !name &&
             !category */
         ) {
@@ -52,7 +52,7 @@ const editExperience = async (req, res, next) => {
         }
 
         // Guardamos la foto en el servidor y obtenemos su nombre.
-        const savedPhoto = await savePhoto(req.files.photoHeader, 1);
+        //const savedPhoto = await savePhoto(req.files.photoHeader, 1);
 
         //Actualizamos la base de datos
         //estos campos son los que si o si se deben rellenar al crear la experiencia, si no estan para actualizar, no se actualizan, por eso los separamos de la query rande preguntandoles uno a uno si esta este campo en la peticion
@@ -83,13 +83,13 @@ const editExperience = async (req, res, next) => {
                 [category, companyCategory]
             );
         } */
-        if (photoHeader) {
+        /* if (photoHeader) {
             await connection.query(
                 `
             UPDATE experiences SET photoHeader = ?, modifiedAt = ? WHERE id = ?`,
                 [savedPhoto, new Date(), idExperience]
             );
-        }
+        } */
 
         if (capacity) {
             await connection.query(
