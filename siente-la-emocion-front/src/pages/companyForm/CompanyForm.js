@@ -206,6 +206,12 @@ function CompanyForm() {
                 </div>
                 <ModalCircle name='Registro'></ModalCircle>
                 <div className='modal1'></div>
+                <div className='modal3'>
+                  <div className='circle-background2'></div>
+                </div>
+                <div className='modal4'>
+                  <div className='circle-background3'></div>
+                </div>
                 <div className='modal2'>
                   <form onSubmit={sendForm}>
                     <div className='flex company-form'>
@@ -288,6 +294,8 @@ function CompanyForm() {
                           name=''
                           onChange={(e) => setCompanyText_1(e.target.value)}
                         />
+                      </div>
+                      <div className='company-div'>
                         <TextareaElement
                           type='text'
                           labelName='Texto 2'
@@ -296,8 +304,6 @@ function CompanyForm() {
                           name=''
                           onChange={(e) => setCompanyText_2(e.target.value)}
                         />
-                      </div>
-                      <div className='company-div'>
                         <TextareaElement
                           type='text'
                           labelName='Texto 3'

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { InputElement } from './InputElement';
+import { InputElement, InputPassword } from './InputElement';
 import BlueButton from './BlueButton';
 import { Navigate, useNavigate } from 'react-router-dom';
 import Error from '../error/Error';
@@ -64,15 +64,13 @@ const RegisterForm = () => {
                 setEmail(e.target.value);
               }}
             />
-            <InputElement
+            <InputPassword
               labelName='Contraseña'
-              type={togglePassword ? 'password' : ''}
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
             />
-            <span onClick={() => setTogglePassword(!togglePassword)}>👀</span>
 
             <InputElement
               labelName='Nombre de usuario'

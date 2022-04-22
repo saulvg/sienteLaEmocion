@@ -30,23 +30,3 @@ textarea:required:invalid {
   font-style: normal;
   font-weight: bold;
 }
-
-.companyForm textarea {
-  height: 100px;
-  overflow-y: scroll;
-  resize: none;
-  /* width: 25rem; */
-  width: 65vw;
-  display: flex;
-
-  outline: none;
-
-  font-family: Montserrat;
-  border: solid thin black;
-  border-radius: 7px;
-
-  padding: 0 10px;
-
-  font-style: normal;
-  font-weight: bold;
-}

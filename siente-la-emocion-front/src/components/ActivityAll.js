@@ -1,6 +1,12 @@
 import './Forms/activityForm.css';
 
-export const ActivityText1 = ({ image, answer, question }) => {
+export const ActivityText1 = ({
+  image,
+  answer,
+  question,
+  questionBox,
+  answerBox,
+}) => {
   return (
     <div className='activity'>
       <img
@@ -12,10 +18,10 @@ export const ActivityText1 = ({ image, answer, question }) => {
         }
         alt='logo'
       />
-      <div className='question-box'>
+      <div className={questionBox}>
         <p className='question'>{question}</p>
       </div>
-      <div className='answer-box'>
+      <div className={answerBox}>
         <p className='answer'>{answer}</p>
       </div>
     </div>

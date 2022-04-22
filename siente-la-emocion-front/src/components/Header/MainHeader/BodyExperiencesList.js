@@ -10,7 +10,7 @@ const BodyExperiencesList = ({ randomActivity }) => {
       <div className='activity-description'>
         <h3>{activity.company}</h3>
         <p>{activity.experience.text_4}</p>
-        <div className='socialNetworks flex-end'>
+        <div className='social-networks flex flex-end'>
           <SocialNetwork
             id={'miniInstagram'}
             children={'instagram'}
