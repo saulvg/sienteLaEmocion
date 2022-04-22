@@ -242,7 +242,7 @@ async function initDB() {
 
                 '2022-02-03 16:37:55'),
                 
-                (1, 3, 3, 8, 32,'2022-02-03 16:37:55', 'Teruel', 'Albarracin N 23', 
+                (1, 3, 3, 8, 32,'2023-02-03 16:37:55', 'Teruel', 'Albarracin N 23', 
 
                 'Equipo: chaleco salvavidas, pala y kayak.
                 Seguro de Responsabilidad Civil.
@@ -261,7 +261,7 @@ async function initDB() {
 
                 '2022-02-03 16:37:55'), 
 
-                (1, 4, 4, 12, 67,'2022-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
+                (1, 4, 4, 12, 67,'2023-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
 
                 'Equipo: casco, arnés, material técnico, pie de gato y avituallamiento.
                 Seguro de Responsabilidad Civil.
@@ -280,7 +280,7 @@ async function initDB() {
 
                 '2022-02-03 16:37:55'),
                 
-                (1, 5, 5, 12, 67,'2022-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
+                (1, 5, 5, 12, 67,'2023-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
 
                 'Equipo: casco, arnés, material técnico, pie de gato y avituallamiento.
                 Seguro de Responsabilidad Civil.
@@ -299,7 +299,7 @@ async function initDB() {
 
                 '2022-02-03 16:37:55'),
                 
-                (1, 6, 6, 12, 67,'2022-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
+                (1, 6, 6, 12, 67,'2023-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
 
                 'Equipo: casco, arnés, material técnico, pie de gato y avituallamiento.
                 Seguro de Responsabilidad Civil.
@@ -318,7 +318,7 @@ async function initDB() {
 
                 '2022-02-03 16:37:55'),
                 
-                (1, 7, 7, 12, 67,'2022-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
+                (1, 7, 7, 12, 67,'2023-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
 
                 'Equipo: casco, arnés, material técnico, pie de gato y avituallamiento.
                 Seguro de Responsabilidad Civil.
@@ -337,7 +337,7 @@ async function initDB() {
 
                 '2022-02-03 16:37:55'),
                 
-                (1, 8, 8, 12, 67,'2022-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
+                (1, 8, 8, 12, 67,'2023-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
 
                 'Equipo: casco, arnés, material técnico, pie de gato y avituallamiento.
                 Seguro de Responsabilidad Civil.
@@ -356,7 +356,7 @@ async function initDB() {
 
                 '2022-02-03 16:37:55'),
                 
-                (1, 9, 9, 12, 67,'2022-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
+                (1, 9, 9, 12, 67,'2023-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
 
                 'Equipo: casco, arnés, material técnico, pie de gato y avituallamiento.
                 Seguro de Responsabilidad Civil.
