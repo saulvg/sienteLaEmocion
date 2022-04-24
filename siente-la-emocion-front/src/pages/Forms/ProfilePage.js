@@ -14,17 +14,12 @@ import Error from '../../components/error/Error';
 import PerfilAdmin from '../../components/PerfilAdmin/PerfilAdmin';
 import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
 import { ModalCircle } from '../../components/Forms/ModalCircle';
-import EditAvatar from '../../components/EditAvatar/EditAvatar';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 const ProfilePage = () => {
   const { token, setToken, user } = useUser();
-  const { activities } = useActivities();
-  const { idUser } = useParams();
-  const usuario = Number(idUser);
-  const { users } = useUserProfile();
   const navigate = useNavigate();
   const [deleteModal, setDeleteModal] = useState(false);
   //decoded.id === usuario && user ?
@@ -49,9 +44,7 @@ const ProfilePage = () => {
           {!deleteModal ? (
             <div className='align-modal'>
               <div className='modal-box'>
-                <div className='avatar-div'>
-                  <EditAvatar />
-                </div>
+                <div className='avatar-div'></div>
                 <div className='form-titles'>
                   <div className='circle-content'>
                     <button

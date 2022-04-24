@@ -6,6 +6,7 @@ import useActivities from '../../hooks/useActivities';
 import Header from '../Header/Header';
 import { useParams } from 'react-router-dom';
 
+import EditAvatar from '../../components/EditAvatar/EditAvatar';
 import { InputElement, TextareaElement } from './InputElement';
 import BlueButton from './BlueButton';
 import DeleteAccount from './DeleteAccount';
@@ -58,6 +59,7 @@ const EditProfile = ({ oldName, oldEmail }) => {
     <>
       {token && user ? (
         <>
+          <EditAvatar />
           <form onSubmit={edit}>
             <div className='profile-elements'>
               <InputElement

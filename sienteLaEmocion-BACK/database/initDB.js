@@ -130,9 +130,8 @@ async function initDB() {
 
         // Insertamos el usuario administrador.
         await connection.query(`
-        INSERT INTO users (name, email, password, username, active, role, dni_nie, postalCode, phone, createdAt)
+        INSERT INTO users (email, password, username, active, role, dni_nie, postalCode, phone, createdAt)
         VALUES (
-            "saul proyecto",
             "saulvgproyecto@gmail.com",
             "${ADMIN_PASS}",
             "Admin",
