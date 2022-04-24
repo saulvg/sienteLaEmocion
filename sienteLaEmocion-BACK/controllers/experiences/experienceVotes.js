@@ -7,7 +7,8 @@ const voteEntry = async (req, res, next) => {
         connection = await getDB();
 
         // Obtenemos el id de la entrada que va a ser votada.
-        const { idExperienceBooking } = req.params;
+        const { idExperience } = req.params;
+        const { idExperiencesBooking } = req.params;
 
         // Obtenemos el id del usuario que realiza la request.
         const idReqUser = req.userAuth.id;
@@ -37,7 +38,7 @@ const voteEntry = async (req, res, next) => {
         // Obtenemos la propiedad "idEntry" de la entrada que va a ser votada.
         const [experiences] = await connection.query(
             `SELECT id_user FROM experiences WHERE id = ?`,
-            [idExperienceBooking]
+            [idExperience]
         );
 
         // Si el usuario que está intentando votar es el dueño de la entrada lanzamos
@@ -52,7 +53,7 @@ const voteEntry = async (req, res, next) => {
         // sobre esta entrada.
         const [votes] = await connection.query(
             `SELECT id FROM votes WHERE id_user = ? AND id_experiences = ?`,
-            [idReqUser, idExperienceBooking]
+            [idReqUser, idExperience]
         );
 
         // Si el usuario ya ha votado la entrada lanzamos un error.
@@ -65,7 +66,13 @@ const voteEntry = async (req, res, next) => {
         // Añadimos el voto.
         await connection.query(
             `INSERT INTO votes (vote, review, id_user, id_experiences, createdAt) VALUES (?, ?, ?, ?, ?)`,
-            [vote, review, idReqUser, idExperienceBooking, new Date()]
+            [vote, review, idReqUser, idExperience, new Date()]
+        );
+
+        await connection.query(
+            `
+            INSERT INTO booking (vote) VALUES (?)`,
+            [vote, idExperiencesBooking]
         );
 
         res.send({

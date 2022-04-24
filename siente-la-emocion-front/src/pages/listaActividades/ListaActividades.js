@@ -27,7 +27,7 @@ import ActividadLista from '../../components/ActividadLista/ActividadLista';
 import Header from '../../components/Header/Header';
 import BodyExperiencesList from '../../components/Header/MainHeader/BodyExperiencesList';
 import { useState } from 'react';
-import { Calendar } from 'react-calendar';
+//import { Calendar } from 'react-calendar';
 
 //Pagina que pinta la lista de todas las experiencias disponibles en la Web
 const ListaActividades = () => {
@@ -471,7 +471,6 @@ const ListaActividades = () => {
               </div>
               <div id='calendar' className='filter-section'>
                 <h3 className='filter-title'>Fechas</h3>
-                <Calendar />
               </div>
               <button onClick={() => navigate(category || price)}>
                 Filtrar

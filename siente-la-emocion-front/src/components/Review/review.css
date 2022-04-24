@@ -1,3 +1,20 @@
-.entry_votes_input {
-  position: absolute;
+.stars[type='radio'] {
+  display: none;
+}
+
+.label-stars {
+  color: grey;
+}
+
+.ranking {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+.label-stars:hover,
+.label-stars:hover ~ .label-stars {
+  color: orange;
+}
+.stars[type='radio']:checked ~ .label-stars {
+  color: orange;
 }

@@ -1,16 +1,13 @@
 //Hook para coger datos de las actividades
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
-import useActivity from './useActivity';
 import useUser from './useUser';
 
-const useBookings = (id) => {
+const useBookings = () => {
   const { token } = useUser();
-  //const { idExperiencesBooking } = useParams();
-  const { idExperiencesBooking } = useParams();
-  const { activity, error } = useActivity(idExperiencesBooking);
+
   const [bookings, setBookings] = useState([]);
-  const [err, setError] = useState(null);
+
+  const [error, setError] = useState(null);
   //id experience
   //const [book, setBook] = useState([]);
 
@@ -30,20 +27,21 @@ const useBookings = (id) => {
         const json = await response.json();
 
         if (!response.ok) {
-          setError(json.message);
+          setError('HOLAAA', json.message);
           return;
         }
 
         setBookings(json.data.userExperiences);
+        console.log('VER DATOS', json.data.userExperiences);
       } catch (error) {
-        setError(error.message);
+        setError('ERROR ', error.message);
       }
     };
 
     loadReviews();
-  }, [id]);
+  }, [token]);
 
-  return { bookings, activity, error };
+  return { bookings, error };
 };
 
 export default useBookings;

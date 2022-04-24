@@ -130,8 +130,9 @@ async function initDB() {
 
         // Insertamos el usuario administrador.
         await connection.query(`
-        INSERT INTO users (email, password, username, active, role, dni_nie, postalCode, phone, createdAt)
+        INSERT INTO users (name, email, password, username, active, role, dni_nie, postalCode, phone, createdAt)
         VALUES (
+            "saul proyecto",
             "saulvgproyecto@gmail.com",
             "${ADMIN_PASS}",
             "Admin",
@@ -151,7 +152,8 @@ async function initDB() {
         for (let i = 0; i < USERS; i++) {
             // Datos faker.
             const email = faker.internet.email();
-            const username = faker.name.findName();
+            const username = faker.internet.userName();
+
             const password = await bcrypt.hash('123456', saltRounds);
 
             //insertamos un usuario en cada repeticion

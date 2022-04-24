@@ -26,6 +26,7 @@ const LoginForm = () => {
       const body = await res.json();
       if (res.ok) {
         setToken(body.data.token);
+        console.log('iniciado');
       } else {
         setError(body.message);
       }

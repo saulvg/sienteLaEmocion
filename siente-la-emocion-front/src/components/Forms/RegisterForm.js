@@ -13,6 +13,7 @@ const RegisterForm = () => {
   const [postalCode, setPostalCode] = useState('');
   const [dni_nie, setDni_nie] = useState('');
   const [username, setUsername] = useState('');
+  const [name, setName] = useState('');
   const [done, setDone] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -54,6 +55,16 @@ const RegisterForm = () => {
       {!done ? (
         <form onSubmit={register}>
           <div className='form-elements'>
+            <InputElement
+              labelName='Nombre'
+              type='text'
+              id='text'
+              name='text'
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+            />
             <InputElement
               labelName='Email'
               type='mail'

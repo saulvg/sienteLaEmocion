@@ -13,11 +13,12 @@ const newUser = async (req, res, next) => {
         connection = await getDB();
 
         //obtenemos los campos necesarios del body con destructurin
-        const { email, password, username, dni_nie, postalCode, phone } =
+        const { name, email, password, username, dni_nie, postalCode, phone } =
             req.body;
 
         //como estos seis campos son obligatorios comproamos que estan rellenados
         if (
+            !name ||
             !email ||
             !password ||
             !username ||
@@ -72,8 +73,9 @@ const newUser = async (req, res, next) => {
 
         //Guardamos el usuario en la base de datos
         await connection.query(
-            `INSERT INTO users (email, password, username, dni_nie, postalCode, phone, registrationCode, createdAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+            `INSERT INTO users (name, email, password, username, dni_nie, postalCode, phone, registrationCode, createdAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
             [
+                name,
                 email,
                 hashedPasswors,
                 username,

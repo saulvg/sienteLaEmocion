@@ -17,8 +17,15 @@ const editUser = async (req, res, next) => {
         const idReqUser = req.userAuth.id;
 
         //Obtenemso los campos editables del perfil
-        const { username, newEmail, phone, biography, postalCode, dni_nie } =
-            req.body;
+        const {
+            name,
+            username,
+            newEmail,
+            phone,
+            biography,
+            postalCode,
+            dni_nie,
+        } = req.body;
 
         //si no hay ningun campo a editar lanzamso un error
         //Contra intuitivo, si no se guarda nada que mas da?
@@ -31,7 +38,7 @@ const editUser = async (req, res, next) => {
         //obtener los campos a editar del usuario
         const [users] = await connection.query(
             ` 
-        SELECT username, email, phone, biography, postalCode, dni_nie FROM users WHERE id = ?`,
+        SELECT name, username, email, phone, biography, postalCode, dni_nie FROM users WHERE id = ?`,
             [idReqUser]
         );
 
@@ -83,12 +90,38 @@ const editUser = async (req, res, next) => {
 
         /*
          * ##############
+         * ## Name ##
+         * ##############
+         */
+
+        //comprobamos si el nuevo name es distinto al anterior y si existe en nuevo name
+        if (name && name !== users[0].name) {
+            //comprobamos que no exista en la base de datos
+            const [newName] = await connection.query(
+                `
+            SELECT id FROM users WHERE name = ?`,
+                [name]
+            );
+            if (newName.length > 0) {
+                const error = new Error('Ya existe un usuario con ese nombre');
+                error.httpStatus = 409;
+                throw error;
+            }
+
+            //si no salta ningun error actulizamos la base de datos
+            await connection.query(
+                `
+            UPDATE users SET name = ?, modifiedAt = ? WHERE id = ?`,
+                [name, new Date(), idReqUser]
+            );
+        }
+        /*
+         * ##############
          * ## UserName ##
          * ##############
          */
 
         //comprobamos si el nuevo username es distinto al anterior y si existe en nuevo username
-
         if (username && username !== users[0].username) {
             //comprobamos que no exista en la base de datos
             const [newUserName] = await connection.query(
@@ -169,7 +202,7 @@ const editUser = async (req, res, next) => {
                 [dni_nie, new Date(), idReqUser]
             );
         }
-
+        /*
         //Obtenemos los datos del historial de actividades reservadas por el usuario con el id propietario del perfil
         const [experiences] = await connection.query(
             `
@@ -199,8 +232,7 @@ const editUser = async (req, res, next) => {
                     experiences.price, 
                     experiences.date, 
                     experiences.city, 
-                    experiences.longitude, 
-                    experiences.latitude, 
+                    
                     experiences.photoHeader,
                     experiences_category.name AS category,
                     company.name AS company
@@ -214,11 +246,11 @@ const editUser = async (req, res, next) => {
             );
             userExperiences.push(experience[0]);
         }
-
+*/
         res.send({
             status: 'ok',
             message: `Cambios actualizados con exito. Si has cambiado tu email no olvides activar de nuevo tu usuario en el mensaje que te hemos enviado a tu correo electronico`,
-            userExperiences,
+
             /* 
                 esxperiemces: experiences, */
             /* prueba: experiences.map((idExp) => idExp.id_experiences), */
