@@ -18,8 +18,7 @@
   color: white;
   display: flex;
   justify-content: center;
-  align-items:end;
-  padding-bottom: 2rem;
+  align-items: end;
 }
 
 @media (max-width: 500px) {
