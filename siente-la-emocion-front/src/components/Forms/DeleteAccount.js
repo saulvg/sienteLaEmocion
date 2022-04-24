@@ -4,6 +4,7 @@ import { AuthContext } from '../../App';
 import BlueButton from './BlueButton';
 import './Forms.css';
 import decode from 'jwt-decode';
+import Loading from '../loading/Loading';
 
 const DeleteAccount = () => {
   const { token, setToken } = useContext(AuthContext);
@@ -68,7 +69,9 @@ const DeleteAccount = () => {
                   </div>
                 </>
               ) : (
-                <p className='confirmation'>Tu cuenta ha sido eliminada</p>
+                <Loading className='confirmation'>
+                  Tu cuenta ha sido eliminada
+                </Loading>
               )}
             </div>
           </div>
