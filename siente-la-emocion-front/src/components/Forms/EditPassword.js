@@ -1,10 +1,13 @@
 import { useState, useEffect, useContext } from 'react';
 import './Forms.css';
-import { InputElement } from './InputElement';
+import { InputPassword } from './InputElement';
 import { ModalCircle } from './ModalCircle';
 import BlueButton from './BlueButton';
 import { AuthContext } from '../../App';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Loading from '../loading/Loading';
+import Error from '../error/Error';
+
 
 const EditPassword = () => {
   const [oldPassword, setOldPassword] = useState('');
@@ -14,6 +17,8 @@ const EditPassword = () => {
   const { token, setToken } = useContext(AuthContext);
   const [done, setDone] = useState(false);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (newPassword === repeatNewPassword) {
       setDoPasswordMatch(true);
@@ -43,10 +48,14 @@ const EditPassword = () => {
         }
       );
       const body = await res.json();
+
+      const redirect = () => navigate('/login');
+
       if (res.ok) {
         console.log('Contraseña actualizada, inicia sesión de nuevo');
         setToken('');
         setDone(true);
+        setTimeout(redirect, 5000);
       } else {
         setError(body.message);
       }
@@ -76,9 +85,9 @@ const EditPassword = () => {
                     xmlns='http://www.w3.org/2000/svg'
                   >
                     <path
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
-                      stroke-width='2'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      strokeWidth='2'
                       d='M10 19l-7-7m0 0l7-7m-7 7h18'
                     ></path>
                   </svg>
@@ -99,7 +108,7 @@ const EditPassword = () => {
               <div className='circle-background'></div>
               {!done ? (
                 <>
-                  <InputElement
+                  <InputPassword
                     id='oldPassword'
                     labelName='Contraseña actual'
                     type='password'
@@ -107,8 +116,8 @@ const EditPassword = () => {
                     onChange={(e) => {
                       setOldPassword(e.target.value);
                     }}
-                  ></InputElement>
-                  <InputElement
+                  ></InputPassword>
+                  <InputPassword
                     labelName='Contraseña nueva'
                     id='newPassword'
                     type='password'
@@ -116,8 +125,8 @@ const EditPassword = () => {
                     onChange={(e) => {
                       setNewPassword(e.target.value);
                     }}
-                  ></InputElement>
-                  <InputElement
+                  ></InputPassword>
+                  <InputPassword
                     labelName='Contraseña nueva'
                     type='password'
                     id='repeatNewPassword'
@@ -125,15 +134,15 @@ const EditPassword = () => {
                     onChange={(e) => {
                       setRepeatNewPassword(e.target.value);
                     }}
-                  ></InputElement>
+                  ></InputPassword>
+                    {error ?? <Error /* className='error-msg' */>{error}</Error>}
                   <div className='delete-buttons'>
                     <BlueButton name='Cambiar' type='submit' />
                     <BlueButton name='Cancelar' />
-                    {error ?? <div className='error-msg'>{error}</div>}
                   </div>
                 </>
               ) : (
-                <p className='confirmation'>Tu contraseña se ha actualizado</p>
+                <Loading /* className='confirmation' */>Tu contraseña se ha actualizado</Loading>
               )}
             </div>
           </div>
