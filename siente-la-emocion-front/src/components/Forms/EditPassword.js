@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 import Loading from '../loading/Loading';
 import Error from '../error/Error';
 
-
 const EditPassword = () => {
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -135,14 +134,18 @@ const EditPassword = () => {
                       setRepeatNewPassword(e.target.value);
                     }}
                   ></InputPassword>
-                    {error ?? <Error /* className='error-msg' */>{error}</Error>}
+                  {error ? (
+                    <Error /* className='error-msg' */>{error}</Error>
+                  ) : null}
                   <div className='delete-buttons'>
                     <BlueButton name='Cambiar' type='submit' />
                     <BlueButton name='Cancelar' />
                   </div>
                 </>
               ) : (
-                <Loading /* className='confirmation' */>Tu contraseña se ha actualizado</Loading>
+                <Loading /* className='confirmation' */>
+                  Tu contraseña se ha actualizado
+                </Loading>
               )}
             </div>
           </div>

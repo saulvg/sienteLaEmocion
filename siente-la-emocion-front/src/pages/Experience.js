@@ -30,14 +30,14 @@ const Experience = () => {
                   <h2>{activity.company}</h2>
                 </div>
                 <ActivityText1
-                  image={`${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[0].path}`}
+                  image={`${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[0]?.path}`}
                   question={'¿En qué consiste este deporte?'}
                   answer={activity.experience.text_4}
                   questionBox={'question-box'}
                   answerBox={'answer-box'}
                 ></ActivityText1>
                 <ActivityText1
-                  image={`${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[1].path}`}
+                  image={`${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[1]?.path}`}
                   question={
                     '¿Qué niveles de dificultad hay? ¿Y si no tengo experiencia?'
                   }
@@ -46,7 +46,7 @@ const Experience = () => {
                   answerBox={'answer-box-right'}
                 ></ActivityText1>
                 <ActivityText1
-                  image={`${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[2].path}`}
+                  image={`${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[2]?.path}`}
                   question={'Si ya tienes experiencia...'}
                   answer={activity.experience.text_6}
                   questionBox={'question-box'}

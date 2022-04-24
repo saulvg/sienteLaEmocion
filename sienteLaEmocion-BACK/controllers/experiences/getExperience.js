@@ -24,6 +24,7 @@ const getExperience = async (req, res, next) => {
             experiences.date, 
             experiences.city, 
             experiences.direction, 
+            experiences.photoHeader,
             experiences.text_1, 
             experiences.text_2, 
             experiences.text_3,
