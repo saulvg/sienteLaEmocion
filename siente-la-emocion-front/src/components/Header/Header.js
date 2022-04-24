@@ -46,9 +46,9 @@ const Header = ({ bg, to, button, body, className }) => {
     <>
       <header
         className={className}
-        /* style={{
+        style={{
           backgroundImage: `url('${bg}')`,
-        }} */
+        }}
       >
         <div className='headerTop'>
           <Logo />

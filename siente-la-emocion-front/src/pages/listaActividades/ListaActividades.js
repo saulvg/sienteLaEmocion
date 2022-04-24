@@ -16,7 +16,6 @@ import { useSearchParams } from 'react-router-dom';
  */
 import useActivities from '../../hooks/useActivities';
 import useActivity from '../../hooks/useActivity';
-import useActivityPhotos from '../../hooks/useActivityPhotos';
 
 /**
  * ################
@@ -27,16 +26,19 @@ import ActividadLista from '../../components/ActividadLista/ActividadLista';
 import Header from '../../components/Header/Header';
 import BodyExperiencesList from '../../components/Header/MainHeader/BodyExperiencesList';
 import { useState } from 'react';
+import useActivityPhotosHeader from '../../hooks/useActivityPhotoHeader';
+import Error from '../../components/error/Error';
 //import { Calendar } from 'react-calendar';
 
 //Pagina que pinta la lista de todas las experiencias disponibles en la Web
 const ListaActividades = () => {
+  const { activity } = useActivity(2); /* ................. */
+
   const [filter, setFilter] = useState(false);
 
   const [category, setCategory] = useState('');
   const [price, setPrice] = useState('');
   const navigate = useNavigate();
-  //navigate(`${prueba}`);
   const [params] = useSearchParams();
   const termCategory = params.get('category');
   const termPrice1 = params.get('price1');
@@ -47,14 +49,18 @@ const ListaActividades = () => {
     termPrice1,
     termPrice2
   );
-  console.log('activities', activities);
 
-  /*   const idExperience = activities.map((id) => id.id);
-  const randomExperience = Math.floor(Math.random() * idExperience.length);
-  console.log('randomExperience', randomExperience);
-  const ranExper = activities[randomExperience];
-  console.log('randomeeeee', activities[randomExperience]);
-  console.log('activitiesIndex', activities[0]); */
+  //Recogemos todos los id de las experiencias que estan disponibles
+  const idExperiences = activities.map((id) => id.id);
+
+  //Generamos un numero aleatoria dentro del numero de id que hay
+  const randomIdExperience = Math.floor(Math.random() * idExperiences.length);
+  //Seleccionamos el id aleatorio para mas adelante pasarselo como prop a 'BodyExperienceList'
+  let randomExperience;
+  if (activities[randomIdExperience]?.id) {
+    randomExperience = activities[randomIdExperience].id;
+  }
+
   /* const today = new Date();
   console.log(today);
   const allActivies = activities.map(
@@ -64,17 +70,18 @@ const ListaActividades = () => {
   //const { photos, errorLoadPhoto } = useActivityPhotos(1);
   //console.log('photo', photos);
 
-  return (
+  //console.log(activity.experience.photoHeader);
+  return activity ? (
     <div id='listaActividades'>
       <Header
-        /* bg={
-          photos
-            ? `${process.env.REACT_APP_BACKEND}/uploads/${photos[0].path}`
-            : null
-        } */
-        to={`/experiences/${4}`} /* ................ */
+        bg={
+          activity.experience.photoHeader
+            ? `${process.env.REACT_APP_BACKEND}/uploads/${activity.experience.photoHeader}`
+            : 'https://images.pexels.com/photos/386009/pexels-photo-386009.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
+        }
+        to={`/experiences/${randomExperience}`}
         button={'Atrevete'}
-        body={<BodyExperiencesList randomActivity={4} />}
+        body={<BodyExperiencesList randomActivity={randomExperience} />}
       />
       <div className='container flex activity-content'>
         <div className='filter'>
@@ -482,6 +489,8 @@ const ListaActividades = () => {
         <ActividadLista activities={activities} error={error} />
       </div>
     </div>
+  ) : (
+    <Error>{error}</Error>
   );
 };
 export default ListaActividades;

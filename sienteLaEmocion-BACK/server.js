@@ -151,7 +151,6 @@ app.post(
     experienceVotes
 );
 
-
 //reservar una experiencia
 app.post('/experiences/:idExperience/booking', isAuth, newBooking);
 

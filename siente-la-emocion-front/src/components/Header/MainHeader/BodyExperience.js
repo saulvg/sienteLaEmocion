@@ -14,7 +14,7 @@ const BodyActivitis = () => {
       <div className='experience-texts'>
         <section className='queIncluye text-header'>
           <div className='experience-text-container'>
-            <div class='experience-description-content'>
+            <div className='experience-description-content'>
               <h3>¿Que incluye?</h3>
               <p>{activity.experience.text_1}</p>
             </div>
@@ -22,7 +22,7 @@ const BodyActivitis = () => {
         </section>
         <section className='queNecesitas text-header'>
           <div className='experience-text-container'>
-            <div class='experience-description-content'>
+            <div className='experience-description-content'>
               <h3>¿Que necesitas?</h3>
               <p>{activity.experience.text_2}</p>
             </div>
@@ -30,7 +30,7 @@ const BodyActivitis = () => {
         </section>
         <section className='cuantoDura text-header'>
           <div className='experience-text-container'>
-            <div class='experience-description-content'>
+            <div className='experience-description-content'>
               <h3>
                 Cuanto dura la experiencia?
                 <br />
@@ -42,7 +42,7 @@ const BodyActivitis = () => {
         </section>
         <section className='valoraciones text-header'>
           <button className='experience-text-container'>
-            <div class='experience-description-content'>
+            <div className='experience-description-content'>
               {
                 <h3>
                   <Link to={`/experiences/${idExperience}/reviews`}>

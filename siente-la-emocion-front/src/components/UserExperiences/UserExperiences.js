@@ -2,11 +2,14 @@ import './UserExperiences.css';
 
 import useBookings from '../../hooks/useBookings';
 import { Booking } from '../Review/Review';
+import Error from '../error/Error';
+import { useNavigate } from 'react-router-dom';
 
 const UserExperiences = () => {
   const { bookings, error } = useBookings();
+  const navigate = useNavigate();
 
-  if (error) return <p>Hubo un error cargando bookings</p>;
+  if (error) return <Error>Hubo un error cargando bookings</Error>;
   return (
     <>
       <ul>
@@ -25,9 +28,15 @@ const UserExperiences = () => {
             </div>
           </div>
         ) : (
-          <div>
-            ¿Todavía no has realizado ninguna experiencia? ¡Atrévete! boton
-          </div>
+          <Error>
+            ¿Todavía no has realizado ninguna experiencia?{' '}
+            <span
+              className='span-atrevete'
+              onClick={() => navigate('/allexperiences')}
+            >
+              ¡Atrévete!
+            </span>
+          </Error>
         )}
       </ul>
     </>

@@ -29,8 +29,8 @@ const BookingExperience = () => {
   //Estados de variables que necesitamos
   const [done, setDone] = useState('');
   const [error, setError] = useState('');
-  const [load, setLoad] = useState(false);
-  const [bodyLoad, setBodyLoad] = useState('');
+  const [load, setLoad] = useState('');
+  //const [bodyLoad, setBodyLoad] = useState('');
   const [message, setUserMessage] = useState('');
 
   //Funcion que sirve para ir una ventana hacia atras
@@ -62,8 +62,8 @@ const BookingExperience = () => {
         //Si todo a ido bien, informamos al usuario cambiamos un estado y mostramos una pantalla de carga, tras x segindos redirigimos al usuario
         console.log('reserva', message);
         setDone(true);
-        setBodyLoad(body.message);
-        setLoad(true);
+        //setBodyLoad(body.message);
+        setLoad(body.message);
         setTimeout(redirect, 5000);
       } else {
         //Si algo a fallado cambamos un estado para mostrar el error por pantalla
@@ -131,7 +131,7 @@ const BookingExperience = () => {
                             </div>
                           </>
                         ) : (
-                          <Loading>{bodyLoad}</Loading>
+                          <Loading>{load}</Loading>
                         )}
                       </>
                     ) : (

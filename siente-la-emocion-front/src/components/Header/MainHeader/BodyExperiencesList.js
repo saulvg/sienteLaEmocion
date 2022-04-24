@@ -1,9 +1,24 @@
-import SocialNetwork from '../../SocialNetwork/SocialNetwork';
-
+/**
+ * ###########
+ * ## Hooks ##
+ * ###########
+ */
 import useActivity from '../../../hooks/useActivity';
+
+/**
+ * ################
+ * ## Components ##
+ * ################
+ */
+import SocialNetwork from '../../SocialNetwork/SocialNetwork';
 import Error from '../../error/Error';
+
+//Componente que carga el cuerpo de la cabezera con una proxima experiencia aleatoria
+//Le pasamos como prop el id de una actividad proxima aleatoria
 const BodyExperiencesList = ({ randomActivity }) => {
+  //Le pasamos al Hook que carga una experiencia el id para que nos devuelva sus datos
   const { activity, error } = useActivity(randomActivity);
+  //Si todo va bien en el hook pintamso la actividad con sus datos, sino el mensaje de error
   return activity ? (
     <div className='activity-header-body'>
       <h1>Sientelo pronto...</h1>
