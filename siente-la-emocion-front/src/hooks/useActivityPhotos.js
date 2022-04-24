@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import useUser from './useUser';
 
 const useActivityPhotos = (id) => {
-  const [photos, setPhotos] = useState(null);
+  const [photo, setPhoto] = useState(null);
   const [errorLoadPhoto, setErrorLoadPhoto] = useState(null);
   const { token } = useUser();
 
@@ -22,12 +22,16 @@ const useActivityPhotos = (id) => {
 
         const json = await response.json();
 
+        console.log('photoJson', json);
+        const pH = json.data.experience.photoHeader;
+
         if (!response.ok) {
           setErrorLoadPhoto(json.message);
           return;
         }
 
-        setPhotos(json.data.photos);
+        setPhoto(json.data.experience.photoHeader);
+        console.log('photoHeader', pH);
       } catch (error) {
         setErrorLoadPhoto(error.message);
       }
@@ -36,7 +40,7 @@ const useActivityPhotos = (id) => {
     loadPhotosActivity();
   }, [id]);
 
-  return { photos, errorLoadPhoto };
+  return { photo, errorLoadPhoto };
 };
 
 export default useActivityPhotos;
