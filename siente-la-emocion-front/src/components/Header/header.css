@@ -10,7 +10,6 @@ header {
   position: relative;
 }
 
-
 .activity-description {
   background: rgba(65, 187, 255, 0.5);
   border-radius: 20px;
@@ -24,11 +23,23 @@ header {
 
 .headerTop {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
   padding: 0 100px;
-  align-items: center;
   height: 150px;
 }
+
+.headerTop .responsive-nav {
+}
+
+@media (min-width: 750px) {
+  .headerTop {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
 header .headerTop img {
   border-radius: 25%;
 }
@@ -217,6 +228,7 @@ header .headerButton button:hover {
     width: 100% !important;
   }
 }
+
 @media (max-width: 750px) {
   .mobile-nav {
     flex-direction: column;
