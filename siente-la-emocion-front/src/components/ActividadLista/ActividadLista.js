@@ -54,10 +54,14 @@ const ActividadLista = ({ activities, error }) => {
               to={`/experiences/${activity.id}`}
             >
               <CircleActivities
-                id={'idActividad'}
+                id={activity.id}
                 clas={'experience-list'}
                 children={activity.category}
-                image={`${process.env.REACT_APP_BACKEND}/uploads/${activity.photoHeader}` ??  'https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80'}
+                image={
+                  activity.photoHeader
+                    ? `${process.env.REACT_APP_BACKEND}/uploads/${activity.photoHeader}`
+                    : 'https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80'
+                }
               />
 
               <div className='description-activity'>

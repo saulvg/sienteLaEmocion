@@ -16,7 +16,6 @@ import { useSearchParams } from 'react-router-dom';
  */
 import useActivities from '../../hooks/useActivities';
 import useActivity from '../../hooks/useActivity';
-import useActivityPhotos from '../../hooks/useActivityPhotos';
 
 /**
  * ################
@@ -27,16 +26,21 @@ import ActividadLista from '../../components/ActividadLista/ActividadLista';
 import Header from '../../components/Header/Header';
 import BodyExperiencesList from '../../components/Header/MainHeader/BodyExperiencesList';
 import { useState } from 'react';
+import useActivityPhotosHeader from '../../hooks/useActivityPhotoHeader';
+import Error from '../../components/error/Error';
 //import { Calendar } from 'react-calendar';
 
 //Pagina que pinta la lista de todas las experiencias disponibles en la Web
 const ListaActividades = () => {
+  const { activity } = useActivity('random'); /* ................. */
+
   const [filter, setFilter] = useState(false);
 
   const [category, setCategory] = useState('');
   const [price, setPrice] = useState('');
+  const [votes, setVotes] = useState('');
+
   const navigate = useNavigate();
-  //navigate(`${prueba}`);
   const [params] = useSearchParams();
   const termCategory = params.get('category');
   const termPrice1 = params.get('price1');
@@ -47,14 +51,33 @@ const ListaActividades = () => {
     termPrice1,
     termPrice2
   );
-  console.log('activities', activities);
 
-  /*   const idExperience = activities.map((id) => id.id);
-  const randomExperience = Math.floor(Math.random() * idExperience.length);
-  console.log('randomExperience', randomExperience);
-  const ranExper = activities[randomExperience];
-  console.log('randomeeeee', activities[randomExperience]);
-  console.log('activitiesIndex', activities[0]); */
+  /*  //Recogemos todos los id de las experiencias que estan disponibles
+  const idExperiences = activities.map((id) => id.id);
+
+  //Generamos un numero aleatoria dentro del numero de id que hay
+  const randomIdExperience = Math.floor(Math.random() * idExperiences.length);
+  //Seleccionamos el id aleatorio para mas adelante pasarselo como prop a 'BodyExperienceList'
+  let randomExperience;
+  if (activities[randomIdExperience]?.id) {
+    randomExperience = activities[randomIdExperience].id;
+  } */
+
+  const handleFilter = (e) => {
+    e.preventDefault();
+
+    const params = {};
+    if (category) params.category = category;
+    if (price) {
+      params.price1 = price[0];
+      params.price2 = price[1];
+    }
+    if (votes) params.votes = votes;
+
+    const queryString = new URLSearchParams(params).toString();
+
+    navigate(`?${queryString}`);
+  };
   /* const today = new Date();
   console.log(today);
   const allActivies = activities.map(
@@ -64,17 +87,20 @@ const ListaActividades = () => {
   //const { photos, errorLoadPhoto } = useActivityPhotos(1);
   //console.log('photo', photos);
 
-  return (
+  //console.log(activity.experience.photoHeader);
+
+  console.log(activity);
+  return activity ? (
     <div id='listaActividades'>
       <Header
-        /* bg={
-          photos
-            ? `${process.env.REACT_APP_BACKEND}/uploads/${photos[0].path}`
-            : null
-        } */
-        to={`/experiences/${4}`} /* ................ */
+        bg={
+          activity.experience.photoHeader
+            ? `${process.env.REACT_APP_BACKEND}/uploads/${activity.experience.photoHeader}`
+            : 'https://images.pexels.com/photos/386009/pexels-photo-386009.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
+        }
+        to={`/experiences/${activity.experience.id}`}
         button={'Atrevete'}
-        body={<BodyExperiencesList randomActivity={4} />}
+        body={<BodyExperiencesList activity={activity} />}
       />
       <div className='container flex activity-content'>
         <div className='filter'>
@@ -94,18 +120,14 @@ const ListaActividades = () => {
                   <div
                     className='icon-filterStyle escalada'
                     onClick={() => {
-                      !category
-                        ? setCategory(`?category=escalada`)
-                        : setCategory('');
+                      !category ? setCategory(`escalada`) : setCategory('');
                     }}
                   ></div>
                   <div
                     className='icon-filterStyle ciclismo'
                     onClick={() => {
                       /* ${window.location.href} */
-                      !category
-                        ? setCategory(`?category=ciclismo`)
-                        : setCategory('');
+                      !category ? setCategory(`ciclismo`) : setCategory('');
                     }}
                   >
                     Ciclismo
@@ -114,9 +136,7 @@ const ListaActividades = () => {
                     className='icon-filterStyle paracaidismo'
                     onClick={() => {
                       /* ${window.location.href} */
-                      !category
-                        ? setCategory(`?category=paracaidismo`)
-                        : setCategory('');
+                      !category ? setCategory(`paracaidismo`) : setCategory('');
                     }}
                   >
                     Paracaidismo
@@ -125,9 +145,7 @@ const ListaActividades = () => {
                     className='icon-filterStyle esqui'
                     onClick={() => {
                       /* ${window.location.href} */
-                      !category
-                        ? setCategory(`?category=esqui`)
-                        : setCategory('');
+                      !category ? setCategory(`esqui`) : setCategory('');
                     }}
                   >
                     Esqui
@@ -136,9 +154,7 @@ const ListaActividades = () => {
                     className='icon-filterStyle buceo'
                     onClick={() => {
                       /* ${window.location.href} */
-                      !category
-                        ? setCategory(`?category=buceo`)
-                        : setCategory('');
+                      !category ? setCategory(`buceo`) : setCategory('');
                     }}
                   >
                     Buceo
@@ -147,9 +163,7 @@ const ListaActividades = () => {
                     className='icon-filterStyle piraguismo'
                     onClick={() => {
                       /* ${window.location.href} */
-                      !category
-                        ? setCategory(`?category=piraguismo`)
-                        : setCategory('');
+                      !category ? setCategory(`piraguismo`) : setCategory('');
                     }}
                   >
                     Piraguismo
@@ -158,9 +172,7 @@ const ListaActividades = () => {
                     className='icon-filterStyle yoga'
                     onClick={() => {
                       /* ${window.location.href} */
-                      !category
-                        ? setCategory(`?category=yoga`)
-                        : setCategory('');
+                      !category ? setCategory(`yoga`) : setCategory('');
                     }}
                   >
                     Yoga
@@ -169,9 +181,7 @@ const ListaActividades = () => {
                     className='icon-filterStyle motorBike'
                     onClick={() => {
                       /* ${window.location.href} */
-                      !category
-                        ? setCategory(`?category=motorBike`)
-                        : setCategory('');
+                      !category ? setCategory(`motorBike`) : setCategory('');
                     }}
                   >
                     MotorBike
@@ -180,182 +190,12 @@ const ListaActividades = () => {
                     className='icon-filterStyle espeleologia'
                     onClick={() => {
                       /* ${window.location.href} */
-                      !category
-                        ? setCategory(`?category=espeleologia`)
-                        : setCategory('');
+                      !category ? setCategory(`espeleologia`) : setCategory('');
                     }}
                   >
                     Esperiologio
                   </div>
                   {console.log('rutaCategory', category)}; Escalada
-                  {/* <svg
-                    className='svg-filter '
-                    fill='none'
-                    stroke='currentColor'
-                    viewBox='0 0 24 24'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth='2'
-                      d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
-                    ></path>
-                  </svg> */}
-                  {/* <svg
-                    className='svg-filter '
-                    fill='none'
-                    stroke='currentColor'
-                    viewBox='0 0 24 24'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth='2'
-                      d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
-                    ></path>
-                  </svg>
-                  <svg
-                    className='svg-filter '
-                    fill='none'
-                    stroke='currentColor'
-                    viewBox='0 0 24 24'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth='2'
-                      d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
-                    ></path>
-                  </svg>
-                  <svg
-                    className='svg-filter '
-                    fill='none'
-                    stroke='currentColor'
-                    viewBox='0 0 24 24'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth='2'
-                      d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
-                    ></path>
-                  </svg>
-                  <svg
-                    className='svg-filter '
-                    fill='none'
-                    stroke='currentColor'
-                    viewBox='0 0 24 24'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth='2'
-                      d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
-                    ></path>
-                  </svg>
-                  <svg
-                    className='svg-filter '
-                    fill='none'
-                    stroke='currentColor'
-                    viewBox='0 0 24 24'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth='2'
-                      d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
-                    ></path>
-                  </svg>
-                  <svg
-                    className='svg-filter '
-                    fill='none'
-                    stroke='currentColor'
-                    viewBox='0 0 24 24'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth='2'
-                      d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
-                    ></path>
-                  </svg>
-                  <svg
-                    className='svg-filter '
-                    fill='none'
-                    stroke='currentColor'
-                    viewBox='0 0 24 24'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth='2'
-                      d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
-                    ></path>
-                  </svg>
-                  <svg
-                    className='svg-filter '
-                    fill='none'
-                    stroke='currentColor'
-                    viewBox='0 0 24 24'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth='2'
-                      d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
-                    ></path>
-                  </svg>
-                  <svg
-                    className='svg-filter '
-                    fill='none'
-                    stroke='currentColor'
-                    viewBox='0 0 24 24'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth='2'
-                      d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
-                    ></path>
-                  </svg>
-                  <svg
-                    className='svg-filter '
-                    fill='none'
-                    stroke='currentColor'
-                    viewBox='0 0 24 24'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth='2'
-                      d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
-                    ></path>
-                  </svg>
-                  <svg
-                    className='svg-filter '
-                    fill='none'
-                    stroke='currentColor'
-                    viewBox='0 0 24 24'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth='2'
-                      d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
-                    ></path>
-                  </svg> */}
                 </div>
               </div>
               <div className='filter-section filter-map'>
@@ -377,6 +217,9 @@ const ListaActividades = () => {
                     stroke='gray'
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
+                    onClick={() => {
+                      setVotes(1);
+                    }}
                   >
                     <path
                       strokeLinecap='round'
@@ -391,6 +234,9 @@ const ListaActividades = () => {
                     stroke='gray'
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
+                    onClick={() => {
+                      setVotes(2);
+                    }}
                   >
                     <path
                       strokeLinecap='round'
@@ -405,6 +251,9 @@ const ListaActividades = () => {
                     stroke='gray'
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
+                    onClick={() => {
+                      setVotes(3);
+                    }}
                   >
                     <path
                       strokeLinecap='round'
@@ -419,6 +268,9 @@ const ListaActividades = () => {
                     stroke='gray'
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
+                    onClick={() => {
+                      setVotes(4);
+                    }}
                   >
                     <path
                       strokeLinecap='round'
@@ -427,12 +279,16 @@ const ListaActividades = () => {
                       d='M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z'
                     ></path>
                   </svg>
+
                   <svg
                     className='star-svg'
                     fill='gray'
                     stroke='gray'
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
+                    onClick={() => {
+                      setVotes(5);
+                    }}
                   >
                     <path
                       strokeLinecap='round'
@@ -448,33 +304,45 @@ const ListaActividades = () => {
                 <h3 className='filter-title'>precios</h3>
                 <div className='flex items-center filter-checkbox'>
                   <input
-                    name='0-20'
+                    name='price'
                     className='price-filter'
-                    type={'checkbox'}
-                    onClick={() => setPrice('?price1=0&price2=33')}
+                    type={'radio'}
+                    onClick={() => setPrice([0, 20])}
                   ></input>
                   <label for='0-20'>0 - 20 €</label>
                 </div>
                 <div className='flex items-center filter-checkbox'>
-                  <input className='price-filter' type={'checkbox'}></input>
+                  <input
+                    name='price'
+                    className='price-filter'
+                    type={'radio'}
+                    onClick={() => setPrice([20, 40])}
+                  ></input>
                   <label>20 - 40 €</label>
                 </div>
                 <div className='flex items-center filter-checkbox'>
-                  <input className='price-filter' type={'checkbox'}></input>
+                  <input
+                    name='price'
+                    className='price-filter'
+                    type={'radio'}
+                    onClick={() => setPrice([40, 60])}
+                  ></input>
                   <label>40 - 60 €</label>
                 </div>
-                <div className='flex items-center filter-checkbox'>
-                  <input className='price-filter' type={'checkbox'}></input>
+                {/*                 <div className='flex items-center filter-checkbox'>
+                  <input
+                    name='price'
+                    className='price-filter'
+                    type={'radio'}
+                  ></input>
                   <label> {'> 60 €'}</label>
-                </div>
+                </div> */}
                 {console.log('rutaPrice', price)}; Escalada
               </div>
               <div id='calendar' className='filter-section'>
                 <h3 className='filter-title'>Fechas</h3>
               </div>
-              <button onClick={() => navigate(category || price)}>
-                Filtrar
-              </button>
+              <button onClick={handleFilter}>Filtrar</button>
             </div>
           ) : null}
         </div>
@@ -482,6 +350,8 @@ const ListaActividades = () => {
         <ActividadLista activities={activities} error={error} />
       </div>
     </div>
+  ) : (
+    <Error>{error}</Error>
   );
 };
 export default ListaActividades;

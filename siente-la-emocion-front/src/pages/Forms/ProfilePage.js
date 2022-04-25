@@ -32,6 +32,9 @@ const ProfilePage = () => {
   return (
     <>
       <Header
+        bg={
+          'https://images.pexels.com/photos/3880059/pexels-photo-3880059.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
+        }
         to={''}
         button={''}
         body={<BodyHeaderHomePage />}

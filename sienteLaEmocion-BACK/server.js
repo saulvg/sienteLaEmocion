@@ -137,7 +137,7 @@ app.delete('/users/:id', isAuth, userExists, canEditUser, deleteUser);
 app.post('/experiences', isAdmin, newExperience);
 
 //Obtener una experiencia
-app.get('/experiences/:idExperience', experienceExist, getExperience);
+app.get('/experiences/:idExperience', getExperience);
 
 //Editar una experiencia
 app.put('/experiences/:idExperience', isAdmin, editExperience);
@@ -150,7 +150,6 @@ app.post(
     experienceExist,
     experienceVotes
 );
-
 
 //reservar una experiencia
 app.post('/experiences/:idExperience/booking', isAuth, newBooking);

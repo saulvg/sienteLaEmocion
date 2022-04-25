@@ -18,11 +18,7 @@ const HeaderButon = ({ to, children }) => {
 const Logo = () => {
   return (
     <Link to='/'>
-      <img
-        src='https://w7.pngwing.com/pngs/522/295/png-transparent-computer-icons-encapsulated-postscript-mountain-angle-photography-triangle.png'
-        alt='logo'
-        width={'80px'}
-      />
+      <img src='silueta/logo.png' alt='logo' width={'80px'} />
     </Link>
   );
 };
@@ -46,9 +42,9 @@ const Header = ({ bg, to, button, body, className }) => {
     <>
       <header
         className={className}
-        /* style={{
+        style={{
           backgroundImage: `url('${bg}')`,
-        }} */
+        }}
       >
         <div className='headerTop'>
           <Logo />

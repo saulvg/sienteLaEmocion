@@ -5,6 +5,15 @@
     flex-direction: column;
   }
 }
+.span-atrevete:hover{
+  cursor: pointer;
+
+}
+.span-atrevete{
+  text-decoration: underline;
+}
+
+
 
 /*.background-color-3 {
   background-color: #fff9f5;

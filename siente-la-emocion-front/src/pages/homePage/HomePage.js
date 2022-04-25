@@ -15,6 +15,9 @@ const HomePage = () => {
   return (
     <div className='App'>
       <Header
+        bg={
+          'https://images.pexels.com/photos/3880059/pexels-photo-3880059.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
+        }
         to={'/allexperiences'}
         button={'Atrevete'}
         body={<BodyHeaderHomePage />}

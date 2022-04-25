@@ -56,16 +56,6 @@ const RegisterForm = () => {
         <form onSubmit={register}>
           <div className='form-elements'>
             <InputElement
-              labelName='Nombre'
-              type='text'
-              id='text'
-              name='text'
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-            />
-            <InputElement
               labelName='Email'
               type='mail'
               id='email'

@@ -3,21 +3,33 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../App';
 import BlueButton from './BlueButton';
 import './Forms.css';
+import decode from 'jwt-decode';
+import Loading from '../loading/Loading';
 
 const DeleteAccount = () => {
   const { token, setToken } = useContext(AuthContext);
   const [done, setDone] = useState('');
   const navigate = useNavigate();
   const redirect = () => navigate('/');
+  let idUser;
+  if (token) {
+    idUser = decode(token);
+    console.log(idUser.id);
+  }
   const deleteUser = async (e) => {
     e.preventDefault();
 
-    const res = await fetch(`${process.env.REACT_APP_BACKEND}/users/7`, {
-      method: 'DELETE',
-      headers: {
-        Authorization: token,
-      },
-    });
+    const res = await fetch(
+      `${process.env.REACT_APP_BACKEND}/users/${idUser.id}`,
+      {
+        method: 'DELETE',
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
+
+    const body = await res.json();
 
     if (res.ok) {
       console.log('Usuario eliminado');
@@ -25,10 +37,10 @@ const DeleteAccount = () => {
       setTimeout(redirect, 5000);
       setToken(null);
     } else {
-      const error = await res.json();
+      console.log(body.message);
       console.log('error');
     }
-    console.log('eee');
+    console.log('ee');
   };
 
   return (
@@ -57,7 +69,9 @@ const DeleteAccount = () => {
                   </div>
                 </>
               ) : (
-                <p className='confirmation'>Tu cuenta ha sido eliminada</p>
+                <Loading className='confirmation'>
+                  Tu cuenta ha sido eliminada
+                </Loading>
               )}
             </div>
           </div>
