@@ -1,6 +1,6 @@
 const getDB = require('./getDB.js');
 const bcrypt = require('bcrypt');
-const faker = require('faker/locale/es'); //borrar
+const faker = require('faker/locale/es');
 
 const saltRounds = 10;
 
@@ -16,7 +16,6 @@ async function initDB() {
         connection = await getDB();
         await connection.query('DROP TABLE IF EXISTS votes');
         await connection.query('DROP TABLE IF EXISTS booking');
-        //await connection.query('DROP TABLE IF EXISTS my_experiences');
         await connection.query('DROP TABLE IF EXISTS experiences_photos');
         await connection.query('DROP TABLE IF EXISTS experiences');
         await connection.query('DROP TABLE IF EXISTS experiences_category');

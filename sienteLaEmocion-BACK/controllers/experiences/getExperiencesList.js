@@ -8,14 +8,14 @@ const getListEntry = async (req, res, next) => {
 
         // Obtenemos los posibles query params.
         //NOSOTROS NO VAMOS A DAR LA OPCION DE CAMBIAR EL ORDEN DEL FILTRO
-        const { category, price1, price2, date, createdAt, votes } = req.query;
+        const { category, price, date, createdAt, votes } = req.query;
 
         // Variable donde almacenaremos las entradas.
         let experiences;
 
         // Si alguno de los filtos esta activado.
 
-        if (category || (price1 && price2) || date || createdAt || votes) {
+        if (category || price || date || createdAt || votes) {
             [experiences] = await connection.query(
                 `
                 SELECT 
@@ -45,11 +45,12 @@ const getListEntry = async (req, res, next) => {
             LEFT JOIN votes ON (experiences.id = votes.id_experiences)
             WHERE 
                 experiences_category.name = ? OR
-                (experiences.price >= ? AND experiences.price <= ?) OR
+                experiences.price <= ? OR
+                votes.vote = ? OR
                 experiences.date LIKE ? 
             GROUP BY experiences_category.id, company.id, experiences.id;  
                     `,
-                [`${category}`, price1, price2, `%${date}%`, votes]
+                [`${category}`, price, votes, `%${date}%`]
             );
             /*                      booking.id AS booking,
                LEFT JOIN booking ON (experiences.id = booking.id_experiences)

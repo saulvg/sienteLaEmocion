@@ -69,7 +69,7 @@ async function savePhoto(img, type) {
         //Comprobamos que el directorio de la subida de imagen exista, y sino se crea uno (gracias a fs-extra)
         await ensureDir(uploadsDir);
 
-        //Concvertimos la imagen en un objeto tipo 'Sharp'
+        //Convertimos la imagen en un objeto tipo 'Sharp'
         const sharpImg = sharp(img.data);
 
         //Accedemos a los metadatos de la imagen para posteriormente comprobar el ancho y/o alto de la imagen

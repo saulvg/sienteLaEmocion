@@ -6,6 +6,9 @@
     gap: 2rem;
     padding: 2rem;
   }
+  .load-Page {
+    min-height: 100vh;
+  }
   #loading {
   background-color: rgba(0, 0, 0, 0.1);
   display: flex;

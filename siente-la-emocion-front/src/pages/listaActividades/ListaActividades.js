@@ -28,6 +28,8 @@ import BodyExperiencesList from '../../components/Header/MainHeader/BodyExperien
 import { useState } from 'react';
 import useActivityPhotosHeader from '../../hooks/useActivityPhotoHeader';
 import Error from '../../components/error/Error';
+import Loading from '../../components/loading/Loading';
+
 //import { Calendar } from 'react-calendar';
 
 //Pagina que pinta la lista de todas las experiencias disponibles en la Web
@@ -45,23 +47,9 @@ const ListaActividades = () => {
   const termCategory = params.get('category');
   const termPrice1 = params.get('price1');
   const termPrice2 = params.get('price2');
-
-  const { activities, error } = useActivities(
-    termCategory,
-    termPrice1,
-    termPrice2
-  );
-
-  /*  //Recogemos todos los id de las experiencias que estan disponibles
-  const idExperiences = activities.map((id) => id.id);
-
-  //Generamos un numero aleatoria dentro del numero de id que hay
-  const randomIdExperience = Math.floor(Math.random() * idExperiences.length);
-  //Seleccionamos el id aleatorio para mas adelante pasarselo como prop a 'BodyExperienceList'
-  let randomExperience;
-  if (activities[randomIdExperience]?.id) {
-    randomExperience = activities[randomIdExperience].id;
-  } */
+  const termVotes = params.get('votes');
+  const [queryString, setQueryString] = useState('');
+  const { activities, error } = useActivities(queryString);
 
   const handleFilter = (e) => {
     e.preventDefault();
@@ -69,34 +57,22 @@ const ListaActividades = () => {
     const params = {};
     if (category) params.category = category;
     if (price) {
-      params.price1 = price[0];
-      params.price2 = price[1];
+      params.price = price;
+      //params.price2 = price[1];
     }
     if (votes) params.votes = votes;
 
-    const queryString = new URLSearchParams(params).toString();
-
-    navigate(`?${queryString}`);
+    setQueryString(new URLSearchParams(params).toString());
+    //navigate(`?${queryString}`);
   };
-  /* const today = new Date();
-  console.log(today);
-  const allActivies = activities.map(
-    (activity) => activity.date === new Date()
-    );
-    console.log('filtradas', allActivies); */
-  //const { photos, errorLoadPhoto } = useActivityPhotos(1);
-  //console.log('photo', photos);
 
-  //console.log(activity.experience.photoHeader);
-
-  console.log(activity);
   return activity ? (
     <div id='listaActividades'>
       <Header
         bg={
           activity.experience.photoHeader
             ? `${process.env.REACT_APP_BACKEND}/uploads/${activity.experience.photoHeader}`
-            : 'https://images.pexels.com/photos/386009/pexels-photo-386009.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
+            : '/img/bus.jpg'
         }
         to={`/experiences/${activity.experience.id}`}
         button={'Atrevete'}
@@ -195,10 +171,9 @@ const ListaActividades = () => {
                   >
                     Esperiologio
                   </div>
-                  {console.log('rutaCategory', category)}; Escalada
                 </div>
               </div>
-              <div className='filter-section filter-map'>
+              {/* <div className='filter-section filter-map'>
                 <h3 className='filter-title'>map</h3>
                 <input
                   type={'search'}
@@ -207,7 +182,11 @@ const ListaActividades = () => {
                 ></input>
                 <button className='map-search'>Buscador</button>
                 <div className='w-full map'></div>
-              </div>
+              </div> */}
+
+              {/* .................................................................................................................... */}
+
+              {/* ................................................................................................................... */}
               <div id='ratings' className='filter-section'>
                 <h3 className='filter-title'>puntuación</h3>
                 <div className='ratings'>
@@ -218,7 +197,7 @@ const ListaActividades = () => {
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
                     onClick={() => {
-                      setVotes(1);
+                      !votes ? setVotes(1) : setVotes(0);
                     }}
                   >
                     <path
@@ -235,7 +214,7 @@ const ListaActividades = () => {
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
                     onClick={() => {
-                      setVotes(2);
+                      !votes ? setVotes(2) : setVotes(0);
                     }}
                   >
                     <path
@@ -252,7 +231,7 @@ const ListaActividades = () => {
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
                     onClick={() => {
-                      setVotes(3);
+                      !votes ? setVotes(3) : setVotes(0);
                     }}
                   >
                     <path
@@ -269,7 +248,7 @@ const ListaActividades = () => {
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
                     onClick={() => {
-                      setVotes(4);
+                      !votes ? setVotes(4) : setVotes(0);
                     }}
                   >
                     <path
@@ -287,7 +266,7 @@ const ListaActividades = () => {
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
                     onClick={() => {
-                      setVotes(5);
+                      !votes ? setVotes(5) : setVotes(0);
                     }}
                   >
                     <path
@@ -307,37 +286,46 @@ const ListaActividades = () => {
                     name='price'
                     className='price-filter'
                     type={'radio'}
-                    onClick={() => setPrice([0, 20])}
+                    onClick={() => setPrice(20)}
                   ></input>
-                  <label for='0-20'>0 - 20 €</label>
+                  <label>{'< 20 €'}</label>
                 </div>
                 <div className='flex items-center filter-checkbox'>
                   <input
                     name='price'
                     className='price-filter'
                     type={'radio'}
-                    onClick={() => setPrice([20, 40])}
+                    onClick={() => setPrice(40)}
                   ></input>
-                  <label>20 - 40 €</label>
+                  <label> {'< 40 €'}</label>
                 </div>
                 <div className='flex items-center filter-checkbox'>
+                  <input
+                    name='price'
+                    className='price-filter'
+                    type={'radio'}
+                    onClick={() => setPrice(60)}
+                  ></input>
+                  <label> {'< 60 €'}</label>
+                </div>
+                <div className='flex items-center filter-checkbox'>
+                  <input
+                    name='price'
+                    className='price-filter'
+                    type={'radio'}
+                    onClick={() => setPrice(1000)}
+                  ></input>
+                  <label> {'> 60 €'}</label>
+                </div>
+                {/* <div className='flex items-center filter-checkbox'>
                   <input
                     name='price'
                     className='price-filter'
                     type={'radio'}
                     onClick={() => setPrice([40, 60])}
                   ></input>
-                  <label>40 - 60 €</label>
-                </div>
-                {/*                 <div className='flex items-center filter-checkbox'>
-                  <input
-                    name='price'
-                    className='price-filter'
-                    type={'radio'}
-                  ></input>
-                  <label> {'> 60 €'}</label>
+                  <label> {'< 60 €'}</label>
                 </div> */}
-                {console.log('rutaPrice', price)}; Escalada
               </div>
               <div id='calendar' className='filter-section'>
                 <h3 className='filter-title'>Fechas</h3>
@@ -351,7 +339,7 @@ const ListaActividades = () => {
       </div>
     </div>
   ) : (
-    <Error>{error}</Error>
+    <Loading clas={'load-Page'}>{error}</Loading>
   );
 };
 export default ListaActividades;

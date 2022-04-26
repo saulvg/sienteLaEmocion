@@ -9,6 +9,7 @@ import BodyExperience from '../components/Header/MainHeader/BodyExperience';
 import Error from '../components/error/Error';
 import useUser from '../hooks/useUser';
 import '../components/Forms/activityForm.css';
+import Loading from '../components/loading/Loading';
 const Experience = () => {
   const { idExperience } = useParams();
   const { activity, error } = useActivity(idExperience);
@@ -20,7 +21,7 @@ const Experience = () => {
         bg={
           activity.experience.photoHeader
             ? `${process.env.REACT_APP_BACKEND}/uploads/${activity.experience.photoHeader}`
-            : 'https://images.pexels.com/photos/386009/pexels-photo-386009.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
+            : '/img/bus.jpg'
         }
         to={`/experiences/${idExperience}/booking`} /* ................ */
         button={'Reserva'}
@@ -96,7 +97,7 @@ const Experience = () => {
       )}
     </>
   ) : (
-    <Error>{error}</Error>
+    <Loading clas={'load-Page'}>{error}</Loading>
   );
 };
 
