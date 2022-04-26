@@ -17,6 +17,7 @@ import { ModalCircle } from '../../components/Forms/ModalCircle';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import EditAvatar from '../../components/EditAvatar/EditAvatar';
 
 const ProfilePage = () => {
   const { token, setToken, user } = useUser();
@@ -44,6 +45,7 @@ const ProfilePage = () => {
           {!deleteModal ? (
             <div className='align-modal'>
               <div className='modal-box'>
+                <EditAvatar />
                 <div className='avatar-div'></div>
                 <div className='form-titles'>
                   <div className='circle-content'>

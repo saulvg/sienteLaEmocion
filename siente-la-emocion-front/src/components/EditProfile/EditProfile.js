@@ -22,7 +22,6 @@ import Header from '../Header/Header';
 import { useParams } from 'react-router-dom';
 
 import './EditProfile.css';
-import { EditAvatar } from '../EditAvatar/EditAvatar';
 import { InputElement, TextareaElement } from '../Forms/InputElement';
 import BlueButton from '../Forms/BlueButton';
 import DeleteAccount from '../Forms/DeleteAccount';
@@ -78,132 +77,127 @@ const EditProfile = ({ placeholder }) => {
   return (
     <>
       {token && user ? (
-        <div className='background-color-1'>
-          <div className='background-color-2'>
-            <div className='avatar-profile'>
-              <EditAvatar />
-            </div>{' '}
-            <form onSubmit={edit} className='form-profile'>
-              <div>
-                <InputElement
-                  labelClassName='label-element'
-                  labelName='Nombre'
-                  inputClassName='input-element'
-                  type='text'
-                  id='name'
-                  name='name'
-                  pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}"
-                  title='Debe contener letra minúscula o mayúscula'
-                  placeholder={user.name}
-                  value={name}
-                  onChange={(e) => {
-                    setName(e.target.value);
-                  }}
-                />
-                <InputElement
-                  classLabel='label-profile'
-                  labelName='Username'
-                  inputClassName='input-element'
-                  type='text'
-                  id='username'
-                  name='username'
-                  pattern='^([a-z]+[0-9]{0,2}){5,12}$'
-                  title='Debe contener letra minúscula'
-                  placeholder={user.username}
-                  value={username}
-                  onChange={(e) => {
-                    setUsername(e.target.value);
-                  }}
-                />
+        <>
+          <form onSubmit={edit} className='form-profile'>
+            <div>
+              <InputElement
+                labelClassName='label-element'
+                labelName='Nombre'
+                inputClassName='input-element'
+                type='text'
+                id='name'
+                name='name'
+                pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}"
+                title='Debe contener letra minúscula o mayúscula'
+                placeholder={user.name}
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+              />
+              <InputElement
+                classLabel='label-profile'
+                labelName='Username'
+                inputClassName='input-element'
+                type='text'
+                id='username'
+                name='username'
+                pattern='^([a-z]+[0-9]{0,2}){5,12}$'
+                title='Debe contener letra minúscula'
+                placeholder={user.username}
+                value={username}
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                }}
+              />
 
-                <InputElement
-                  inputClassName='input-element'
-                  classLabel='label-profile'
-                  labelName='Email'
-                  type='email'
-                  id='email'
-                  pattern='^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$'
-                  name='email'
-                  placeholder={user.email}
-                  value={newEmail}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                />
-                <InputElement
-                  inputClassName='input-element'
-                  classLabel='label-profile'
-                  labelName='Teléfono'
-                  type='tel'
-                  id='tel'
-                  name='tel'
-                  pattern='[0-9]{9,15}'
-                  placeholder={user.phone}
-                  value={phone}
-                  onChange={(e) => {
-                    setPhone(e.target.value);
-                  }}
-                />
-                <InputElement
-                  inputClassName='input-element'
-                  labelName='Código Postal'
-                  classLabel='label-profile'
-                  type='number'
-                  id='postalCode'
-                  name='postalCode'
-                  pattern='[0-9]{9}'
-                  placeholder={user.postalCode}
-                  value={postalCode}
-                  onChange={(e) => {
-                    setPostalCode(e.target.value);
-                  }}
-                />
-                <InputElement
-                  inputClassName='input-element'
-                  classLabel='label-profile'
-                  labelName='DNI / NIE'
-                  type='text'
-                  id='dni_nie'
-                  name='dni_nie'
-                  pattern='[0-9]{8}[A-Za-z]{1}'
-                  title='Debe poner 8 números y una letra'
-                  placeholder={user.dni_nie}
-                  value={dni_nie}
-                  onChange={(e) => {
-                    setDni_nie(e.target.value);
-                  }}
-                />
-                <TextareaElement
-                  classLabel='label-profile'
-                  className='textarea-profile'
-                  labelName='Sobre mí'
-                  id='biography'
-                  name='biography'
-                  pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{0,255}"
-                  placeholder={user.biography}
-                  value={biography ? biography : user.biography}
-                  onChange={(e) => {
-                    setBiography(e.target.value);
-                  }}
-                />
-              </div>
-              <BlueButton
-                className='button-save'
-                name='Guardar cambios'
-                onClick={(e) => e.stopPropagation()}
-              >
-                <div
-                  name='entry_votes_input'
-                  onChange={(e, newValue) => {
-                    e.stopPropagation();
-                    edit(newValue);
-                  }}
-                />
-              </BlueButton>
-            </form>
-            {error ?? <div className='error-msg-profile'>{error}</div>}
-          </div>{' '}
-        </div>
+              <InputElement
+                inputClassName='input-element'
+                classLabel='label-profile'
+                labelName='Email'
+                type='email'
+                id='email'
+                pattern='^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$'
+                name='email'
+                placeholder={user.email}
+                value={newEmail}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
+              <InputElement
+                inputClassName='input-element'
+                classLabel='label-profile'
+                labelName='Teléfono'
+                type='tel'
+                id='tel'
+                name='tel'
+                pattern='[0-9]{9,15}'
+                placeholder={user.phone}
+                value={phone}
+                onChange={(e) => {
+                  setPhone(e.target.value);
+                }}
+              />
+              <InputElement
+                inputClassName='input-element'
+                labelName='Código Postal'
+                classLabel='label-profile'
+                type='number'
+                id='postalCode'
+                name='postalCode'
+                pattern='[0-9]{9}'
+                placeholder={user.postalCode}
+                value={postalCode}
+                onChange={(e) => {
+                  setPostalCode(e.target.value);
+                }}
+              />
+              <InputElement
+                inputClassName='input-element'
+                classLabel='label-profile'
+                labelName='DNI / NIE'
+                type='text'
+                id='dni_nie'
+                name='dni_nie'
+                pattern='[0-9]{8}[A-Za-z]{1}'
+                title='Debe poner 8 números y una letra'
+                placeholder={user.dni_nie}
+                value={dni_nie}
+                onChange={(e) => {
+                  setDni_nie(e.target.value);
+                }}
+              />
+              <TextareaElement
+                classLabel='label-profile'
+                className='textarea-profile'
+                labelName='Sobre mí'
+                id='biography'
+                name='biography'
+                pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{0,255}"
+                placeholder={user.biography}
+                value={biography ? biography : user.biography}
+                onChange={(e) => {
+                  setBiography(e.target.value);
+                }}
+              />
+            </div>
+            <BlueButton
+              className='button-save'
+              name='Guardar cambios'
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div
+                name='entry_votes_input'
+                onChange={(e, newValue) => {
+                  e.stopPropagation();
+                  edit(newValue);
+                }}
+              />
+            </BlueButton>
+          </form>
+          {error ?? <div className='error-msg-profile'>{error}</div>}
+        </>
       ) : (
         <>
           <div></div>

@@ -59,7 +59,6 @@ const EditProfile = ({ oldName, oldEmail }) => {
     <>
       {token && user ? (
         <>
-          <EditAvatar />
           <form onSubmit={edit}>
             <div className='profile-elements'>
               <InputElement

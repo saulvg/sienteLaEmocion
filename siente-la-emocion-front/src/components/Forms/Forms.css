@@ -138,6 +138,13 @@
   color: white;
 }
 
+/* CSS Avatar */
+.avatar-div {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .label-element {
   font-family: Montserrat;
   font-style: normal;

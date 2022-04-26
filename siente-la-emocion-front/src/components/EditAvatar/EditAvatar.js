@@ -1,156 +1,17 @@
-/*import { useRef, useState } from 'react';
-import useUser from '../../hooks/useUser';
-import BlueButton from '../Forms/BlueButton';
-
-import './EditAvatar.css';
-//aaaa
-export const EditAvatar = () => {
-  //const { users } = useUserProfile();
-  //const { user } = useUser();
-  const { user, error, token } = useUser();
-  const [avatar, setAvatar] = useState(''); /* 
-  const imageInputRef = useRef();
-  const [newAvatar, setNewAvatar] = useState(user.avatar);
-  const [didUserUpdateAvatar, setDidUserUpdateAvatar] = useState(false); */
-/* if (error) return <div>Hubo un error: {error}</div>;
-  const edit = async (e) => {
-    //e.preventDefault();
-
-    try {
-      let file = new FormData();
-      file.append('image', avatar);
-      const res = await fetch(
-        `${process.env.REACT_APP_BACKEND}/users/edit/avatar`,
-        {
-          method: 'PUT',
-          headers: {
-            Authorization: token,
-          },
-          body: file,
-        }
-      );
-
-      //....
-
-      const body = await res.json();
-      if (res.ok) {
-        console.log(body);
-      } else {
-        console.error('Error', body.message);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  const onFileChange = (event) => {
-    console.log('AVATAR SUBIDO', event.target.files[0]);
-    setAvatar(event.target.files[0]);
-  };
-  return user && token ? (
-    <form onSubmit={edit} className='avatar-profile'>
-      <label htmlFor='avatar'>
-        {' '}
-        <img
-          className='user-avatar'
-          src={'http://localhost:4000/uploads/' + user.avatar}
-          alt='sss'
-        />
-        <input
-          type='file'
-          id='avaar'
-          style={{ display: 'none' }}
-          accept='image/*'
-          onChange={onFileChange}
-        />
-      </label>
-      <button>Subir</button>
-      <input
-        type='file'
-        id='avatar'
-        style={{ display: 'none' }}
-        accept='image/*'
-        onChange={(e) => {
-          setAvatar(e.target.files[0]);
-        }}
-      />
-    </form>
-  ) : (
-    <div>sss</div>
-  );
-};
-
-<img
-  className='user-avatar'
-  src={'http://localhost:4000/uploads/' + user.avatar}
-  alt='aaaaa'
-<input
-          id='xCompany'
-          type={'file'}
-          onChange={valueCompanyPhotoHeader}
-          required
-        />
-      </label>
-/>; */
 import React from 'react';
 
 import './EditAvatar.css';
 import { useState } from 'react';
 import useUser from '../../hooks/useUser';
-const Avatar = ({ putAvatar, setPutAvatar, button }) => {
-  const { user } = useUser();
-
-  const editAvatar = (event) => {
-    setPutAvatar(event.target.files[0]);
-  };
-  return (
-    <div onSubmit={editAvatar} className='forem-profile'>
-      {!user.avatar ? (
-        <>
-          <label htmlFor='avaar'>
-            <img
-              className='user-avatar'
-              src={
-                'http://localhost:4000/uploads/3871b0f9-4f40-4c39-ba68-9860a73fe5a5.jpg'
-              }
-              alt='aaaaa'
-            />{' '}
-          </label>
-          <input
-            type='file'
-            id='avaar'
-            style={{ display: 'none' }}
-            accept='image/*'
-            onChange={editAvatar}
-            button={button}
-          />
-        </>
-      ) : (
-        <div>
-          {' '}
-          <label htmlFor='avaar'>
-            <img
-              className='user-avatar'
-              src={'http://localhost:4000/uploads/' + user.avatar}
-              alt='aaaaa'
-            />
-          </label>
-          <input
-            type='file'
-            id='avaar'
-            style={{ display: 'none' }}
-            accept='image/*'
-            onChange={editAvatar}
-            button={button}
-          />
-        </div>
-      )}{' '}
-    </div>
-  );
-};
 
 const EditAvatar = () => {
   const { token } = useUser();
   const [putAvatar, setPutAvatar] = useState('');
+  const { user } = useUser();
+
+  const newAvatar = (event) => {
+    setPutAvatar(event.target.files[0]);
+  };
 
   const editAvatar = async (event) => {
     event.preventDefault();
@@ -196,35 +57,57 @@ const EditAvatar = () => {
     return <div>No te has registrado</div>;
   }
 
-  function refreshPage() {
+  const refreshPage = () => {
     window.location.reload(false);
-  }
+  };
 
   return (
     <>
       <>
-        <div id='compm'>
+        <div id='compm' className='avatar-div'>
           <form onSubmit={editAvatar}>
-            {/* <Company
-                  companyName={companyName}
-                  setCompanyName={setCompanyName}
-                  placeholder={activity.company}
-                />
-                <ExperiencesCategory
-                  companyCategory={companyCategory}
-                  setCompanyCategory={setCompanyCategory}
-                  placeholder={activity.experiences_category}
-                /> 
-                
-                
-                
-                
-                
-                */}
-
-            <Avatar putAvatar={putAvatar} setPutAvatar={setPutAvatar}>
-              {' '}
-            </Avatar>
+            <div className='forem-profile'>
+              {!user.avatar ? (
+                <>
+                  <label htmlFor='avaar'>
+                    <img
+                      className='user-avatar'
+                      src={
+                        'http://localhost:4000/uploads/3871b0f9-4f40-4c39-ba68-9860a73fe5a5.jpg'
+                      }
+                      alt='aaaaa'
+                    />{' '}
+                  </label>
+                  <input
+                    type='file'
+                    id='avaar'
+                    style={{ display: 'none' }}
+                    accept='image/*'
+                    onChange={newAvatar}
+                    /* button={button} */
+                  />
+                </>
+              ) : (
+                <div>
+                  {' '}
+                  <label htmlFor='avaar'>
+                    <img
+                      className='user-avatar'
+                      src={'http://localhost:4000/uploads/' + user.avatar}
+                      alt='aaaaa'
+                    />
+                  </label>
+                  <input
+                    type='file'
+                    id='avaar'
+                    style={{ display: 'none' }}
+                    accept='image/*'
+                    onChange={newAvatar}
+                    /* button={button} */
+                  />
+                </div>
+              )}{' '}
+            </div>
             <div className='buttonForm'>
               <button type='submit' className='submit'>
                 Actualizar

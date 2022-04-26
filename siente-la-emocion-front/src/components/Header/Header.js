@@ -49,11 +49,11 @@ const Header = ({ bg, to, button, body, className }) => {
         <div className='headerTop'>
           <Logo />
           {formVisible ? <ModalSearch /> : null}
-          {screenWidth > 750 ? (
+          {toggleMenu || screenWidth > 750 ? (
             <div className='responsive-nav'>
               <menu>
                 <button
-                  className='toggle-button1'
+                  className='toggle-button'
                   onClick={() => setToggleMenu(false)}
                 >
                   <svg
@@ -86,25 +86,47 @@ const Header = ({ bg, to, button, body, className }) => {
                   <ModalContactanos />
                   {token ? (
                     <>
-                      <Link
-                        to='/perfil'
-                        id='myself'
-                        className='nav-element nav-button'
-                      >
-                        Perfil
-                      </Link>
+                      <button className=' nav-button'>
+                        <Link to='/perfil' id='myself'>
+                          Perfil
+                        </Link>
+                      </button>
                     </>
                   ) : (
-                    <Link to='/login' id='login' className='nav-element'>
+                    <Link to='/login' id='login'>
                       Inicia sesión
                     </Link>
                   )}
                 </nav>
               </menu>
             </div>
-          ) : null}
+          ) : (
+            <>
+              <button
+                className='toggle-button'
+                onClick={() => {
+                  setToggleMenu(true);
+                }}
+              >
+                <svg
+                  className='toggle-menu'
+                  fill='none'
+                  stroke='currentColor'
+                  viewBox='0 0 24 24'
+                  xmlns='http://www.w3.org/2000/svg'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth='2'
+                    d='M4 6h16M4 12h16M4 18h16'
+                  ></path>
+                </svg>
+              </button>
+            </>
+          )}
         </div>
-        {toggleMenu && screenWidth < 750 ? (
+        {/* {toggleMenu && screenWidth < 750 ? (
           <div className='mobile-nav'>
             <menu>
               <button
@@ -127,9 +149,9 @@ const Header = ({ bg, to, button, body, className }) => {
                 </svg>
               </button>
               <nav>
-                {/* <Link to='/search' id='search'>
+                <Link to='/search' id='search'>
     Buscador
-  </Link> */}
+  </Link> 
 
                 <button
                   className='nav-button'
@@ -179,7 +201,7 @@ const Header = ({ bg, to, button, body, className }) => {
               ></path>
             </svg>
           </button>
-        )}
+        )} */}
         {body}
         <div className='headerButton'>
           <HeaderButon to={to} children={button} />
