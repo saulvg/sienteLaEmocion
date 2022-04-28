@@ -64,7 +64,7 @@ async function initDB() {
             id INT PRIMARY KEY AUTO_INCREMENT,
             id_user INT NOT NULL,
             id_experiences_category INT NOT NULL,
-            id_company INT NOT NULL,
+            id_company INT NOT NULL,       
             photoHeader VARCHAR(150),
             capacity TINYINT NOT NULL,
             price DECIMAL NOT NULL,
@@ -101,12 +101,14 @@ async function initDB() {
         CREATE TABLE votes (
             id INT PRIMARY KEY AUTO_INCREMENT,
             id_experiences INT NOT NULL,
+            id_company INT NOT NULL,
             vote TINYINT,
             review VARCHAR(255),
             createdAt DATETIME NOT NULL,
             id_user INT NOT NULL,
             FOREIGN KEY(id_user) REFERENCES users(id),
-            FOREIGN KEY (id_experiences) REFERENCES experiences(id) ON DELETE CASCADE 
+            FOREIGN KEY (id_experiences) REFERENCES experiences(id) ON DELETE CASCADE,
+            FOREIGN KEY (id_company) REFERENCES company(id) 
             
         )
     `);

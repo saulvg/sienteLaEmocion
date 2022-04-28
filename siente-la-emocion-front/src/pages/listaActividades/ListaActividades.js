@@ -8,6 +8,7 @@ import './listaActividades.css';
  */
 import { useNavigate } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
+import { Calendar } from 'react-calendar';
 
 /**
  * ###########
@@ -30,8 +31,6 @@ import useActivityPhotosHeader from '../../hooks/useActivityPhotoHeader';
 import Error from '../../components/error/Error';
 import Loading from '../../components/loading/Loading';
 
-//import { Calendar } from 'react-calendar';
-
 //Pagina que pinta la lista de todas las experiencias disponibles en la Web
 const ListaActividades = () => {
   const { activity } = useActivity('random'); /* ................. */
@@ -41,15 +40,17 @@ const ListaActividades = () => {
   const [category, setCategory] = useState('');
   const [price, setPrice] = useState('');
   const [votes, setVotes] = useState('');
+  const [date, setDate] = useState('');
 
-  const navigate = useNavigate();
+  /* const navigate = useNavigate();
   const [params] = useSearchParams();
   const termCategory = params.get('category');
   const termPrice1 = params.get('price1');
   const termPrice2 = params.get('price2');
-  const termVotes = params.get('votes');
+  const termVotes = params.get('votes'); */
   const [queryString, setQueryString] = useState('');
   const { activities, error } = useActivities(queryString);
+  const [value, onChange] = useState(new Date());
 
   const handleFilter = (e) => {
     e.preventDefault();
@@ -61,11 +62,15 @@ const ListaActividades = () => {
       //params.price2 = price[1];
     }
     if (votes) params.votes = votes;
+    if (date) params.date = date;
 
     setQueryString(new URLSearchParams(params).toString());
-    //navigate(`?${queryString}`);
   };
 
+  const fecha = (value) => {
+    const complateDate = value.toISOString();
+    setDate(complateDate.slice(0, 10));
+  };
   return activity ? (
     <div id='listaActividades'>
       <Header
@@ -329,6 +334,9 @@ const ListaActividades = () => {
               </div>
               <div id='calendar' className='filter-section'>
                 <h3 className='filter-title'>Fechas</h3>
+                {/*                 <Calendar onChange={(e) => setDate(value)} />
+                 */}
+                <Calendar onChange={fecha} value={value} />
               </div>
               <button onClick={handleFilter}>Filtrar</button>
             </div>

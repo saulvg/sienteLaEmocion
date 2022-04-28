@@ -127,6 +127,7 @@ const EditExperience = () => {
     return (
       <>
         <Header
+          bg={'/img/principal.jpg'}
           to={''}
           button={''}
           body={<BodyHeaderHomePage />}
@@ -141,6 +142,7 @@ const EditExperience = () => {
   return (
     <>
       <Header
+        bg={'/img/principal.jpg'}
         to={''}
         button={''}
         body={<BodyHeaderHomePage />}

@@ -79,6 +79,7 @@ const BookingExperience = () => {
   return (
     <>
       <Header
+        bg={'/img/principal.jpg'}
         to={''}
         button={''}
         body={<BodyHeaderHomePage />}
