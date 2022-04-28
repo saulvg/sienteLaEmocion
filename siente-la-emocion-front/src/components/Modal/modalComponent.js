@@ -10,11 +10,6 @@ export const ModalComponent = ({ children, isOpen, closeModal }) => {
   return (
     <div className={`modal ${isOpen && 'open'}`} onClick={closeModal}>
       <div className='modal-container' onClick={handleModalClick}>
-        <div className='circle-back'>
-          <p className='modal-close' onClick={closeModal}>
-            --Volver
-          </p>
-        </div>
         {children}
       </div>
     </div>

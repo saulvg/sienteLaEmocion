@@ -11,19 +11,15 @@ const UserExperiences = () => {
     <>
       <ul>
         {bookings.length > 0 ? (
-          <div className='background-color-3'>
-            <div className='background-color-4'>
-              <div className='my-experiences'>
-                {bookings.map((book) => {
-                  return (
-                    <li key={book.id}>
-                      <Booking book={book} />
-                    </li>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
+          <ul className='my-experiences'>
+            {bookings.map((book) => {
+              return (
+                <li key={book.id} className='my-experience'>
+                  <Booking book={book} />
+                </li>
+              );
+            })}
+          </ul>
         ) : (
           <div>
             ¿Todavía no has realizado ninguna experiencia? ¡Atrévete! boton

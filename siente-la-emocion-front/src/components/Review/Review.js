@@ -38,9 +38,138 @@ export const Booking = ({ book }) => {
   };
   return token ? (
     <>
-      <h2>{book.company}</h2>
-      <h3>{book.category}</h3>
-      <p>{book.city}</p>
+      <div class='my-experience-img'></div>
+      <div className='flex flex-column justify-between my-experience-content'>
+        <h2>
+          {book.category} ({book.company})
+        </h2>
+        <div className='flex justify-between items-center'>
+          <span>{book.date}</span>
+          {new Date(book.date) < new Date() && !book.vote ? (
+            <Modal
+              buttonName='Añadir valoración'
+              buttonClass='add-review-button'
+              content={
+                <form onSubmit={createReview}>
+                  <div className='align-modal'>
+                    <div className='modal-box'>
+                      <div className='modal1'>
+                        <h2>Valoración</h2>
+                      </div>
+                      <div className='modal3'>
+                        <div className='circle-background2'></div>
+                      </div>
+                      <div className='modal4'>
+                        <div className='circle-background3'></div>
+                      </div>
+                      <TextareaElement
+                        labelName='Déjanos tu comentario de valoración'
+                        type='text'
+                        id='review'
+                        name='review'
+                        value={review}
+                        onChange={(e) => {
+                          setReview(e.target.value);
+                        }}
+                      />
+                      <div className='ranking'>
+                        <input
+                          className='stars'
+                          id='radio1'
+                          type='radio'
+                          name='estrellas'
+                          value={(vote = 5)}
+                          onChange={(e) => {
+                            setVote(e.target.value);
+                          }}
+                        />
+                        <label className='label-stars' htmlFor='radio1'>
+                          ★
+                        </label>
+
+                        <input
+                          className='stars'
+                          id='radio2'
+                          type='radio'
+                          name='estrellas'
+                          value={(vote = 4)}
+                          onChange={(e) => {
+                            setVote(e.target.value);
+                          }}
+                        />
+                        <label className='label-stars' htmlFor='radio2'>
+                          ★
+                        </label>
+                        <input
+                          className='stars'
+                          id='radio3'
+                          type='radio'
+                          name='estrellas'
+                          value={(vote = 3)}
+                          onChange={(e) => {
+                            setVote(e.target.value);
+                          }}
+                        />
+                        <label className='label-stars' htmlFor='radio3'>
+                          ★
+                        </label>
+
+                        <input
+                          className='stars'
+                          id='radio4'
+                          type='radio'
+                          name='estrellas'
+                          value={(vote = 2)}
+                          onChange={(e) => {
+                            setVote(e.target.value);
+                          }}
+                        />
+                        <label className='label-stars' htmlFor='radio4'>
+                          ★
+                        </label>
+                        <input
+                          className='stars'
+                          id='radio5'
+                          type='radio'
+                          name='estrellas'
+                          value={(vote = 1)}
+                          onChange={(e) => {
+                            setVote(e.target.value);
+                          }}
+                        />
+                        <label className='label-stars' htmlFor='radio5'>
+                          ★
+                        </label>
+                      </div>
+                    </div>
+                    <BlueButton
+                      name='aaaa'
+                      onClick={(e) =>
+                        e.stopPropagation(
+                          <Link to={`/experiences/${book.id}/reviews`}></Link>
+                        )
+                      }
+                    >
+                      {' '}
+                      <div
+                        name='entry_votes_input'
+                        onChange={(e, newValue) => {
+                          e.stopPropagation();
+                          createReview(newValue);
+                        }}
+                      />
+                    </BlueButton>
+                  </div>
+                </form>
+              }
+            />
+          ) : (
+            <div className='experience-error'>
+              <h1>la experiencia aun no pasó</h1>
+            </div>
+          )}
+        </div>
+      </div>
       <div>{console.log('A VER ESTO, VOTOS , 1 Y 0 DEBERIA SER', book)}</div>
 
       {book.vote === 5 ? (
@@ -55,119 +184,6 @@ export const Booking = ({ book }) => {
         <div>★</div>
       ) : (
         <div></div>
-      )}
-      {new Date(book.date) < new Date() && !book.vote ? (
-        <div className='modal-review'>
-          <Modal
-            buttonName='Añadir valoración'
-            content={
-              <form onSubmit={createReview}>
-                <div className='form-elements'>
-                  <TextareaElement
-                    labelName='Review'
-                    type='text'
-                    id='review'
-                    name='review'
-                    value={review}
-                    onChange={(e) => {
-                      setReview(e.target.value);
-                    }}
-                  />
-                  <div className='ranking'>
-                    <input
-                      className='stars'
-                      id='radio1'
-                      type='radio'
-                      name='estrellas'
-                      value={(vote = 5)}
-                      onChange={(e) => {
-                        setVote(e.target.value);
-                      }}
-                    />
-                    <label className='label-stars' htmlFor='radio1'>
-                      ★
-                    </label>
-
-                    <input
-                      className='stars'
-                      id='radio2'
-                      type='radio'
-                      name='estrellas'
-                      value={(vote = 4)}
-                      onChange={(e) => {
-                        setVote(e.target.value);
-                      }}
-                    />
-                    <label className='label-stars' htmlFor='radio2'>
-                      ★
-                    </label>
-                    <input
-                      className='stars'
-                      id='radio3'
-                      type='radio'
-                      name='estrellas'
-                      value={(vote = 3)}
-                      onChange={(e) => {
-                        setVote(e.target.value);
-                      }}
-                    />
-                    <label className='label-stars' htmlFor='radio3'>
-                      ★
-                    </label>
-
-                    <input
-                      className='stars'
-                      id='radio4'
-                      type='radio'
-                      name='estrellas'
-                      value={(vote = 2)}
-                      onChange={(e) => {
-                        setVote(e.target.value);
-                      }}
-                    />
-                    <label className='label-stars' htmlFor='radio4'>
-                      ★
-                    </label>
-                    <input
-                      className='stars'
-                      id='radio5'
-                      type='radio'
-                      name='estrellas'
-                      value={(vote = 1)}
-                      onChange={(e) => {
-                        setVote(e.target.value);
-                      }}
-                    />
-                    <label className='label-stars' htmlFor='radio5'>
-                      ★
-                    </label>
-                  </div>
-                </div>
-                <BlueButton
-                  name='aaaa'
-                  onClick={(e) =>
-                    e.stopPropagation(
-                      <Link to={`/experiences/${book.id}/reviews`}></Link>
-                    )
-                  }
-                >
-                  {' '}
-                  <div
-                    name='entry_votes_input'
-                    onChange={(e, newValue) => {
-                      e.stopPropagation();
-                      createReview(newValue);
-                    }}
-                  />
-                </BlueButton>
-              </form>
-            }
-          />
-        </div>
-      ) : (
-        <div>
-          <h1>la experiencia aun no pasó</h1>
-        </div>
       )}
     </>
   ) : (

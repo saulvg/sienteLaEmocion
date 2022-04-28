@@ -75,7 +75,8 @@
 .avatar-div {
   position: absolute;
   top: 50px;
-  right: 100px;
+  right: 50px;
+  z-index: 10;
 }
 
 .back-button {
@@ -94,8 +95,8 @@
 
 .user-avatar {
   border-radius: 50%;
-  width: 10rem;
-  height: 10rem;
+  width: 7.5rem;
+  height: 7.5rem;
 
   background-color: rgb(133, 90, 90);
 }
@@ -137,13 +138,40 @@
 .input-element::placeholder {
   color: white;
 }
+/* PERFIL */
+.my-experience {
+  display: flex;
+}
+.my-experience h2 {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.my-experience-img {
+  width: 70px;
+  height: 70px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  filter: drop-shadow(5px 5px 30px rgba(0, 0, 0, 0.2));
+  background-color: red;
+}
+.my-experiences > li + .my-experience > li {
+  margin-top: 20px;
+}
+
+.experience-error h1 {
+  font-size: 16px;
+}
+
+.my-experience-content {
+  margin-left: 10px;
+  width: 100%;
+}
 
 /* CSS Avatar */
-.avatar-div {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
 
 .label-element {
   font-family: Montserrat;

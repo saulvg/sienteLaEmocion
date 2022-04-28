@@ -29,6 +29,10 @@ code {
   width: 100%;
 }
 
+.flex-column {
+  flex-direction: column;
+}
+
 .width-50 {
   width: 50%;
 }

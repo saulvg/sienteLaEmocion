@@ -14,18 +14,11 @@ export const Modal = ({ buttonClass, id, buttonName, titleModal, content }) => {
   return (
     <>
       <div>
-        <BlueButton
-          name={buttonName}
-          buttonName={buttonClass}
-          onClick={openModal}
-        >
+        <button className={buttonClass} onClick={openModal}>
+          {buttonName}
           {id}
-        </BlueButton>
-        <ModalComponent
-          isOpen={isOpen}
-          closeModal={closeModal}
-          className='modal-container'
-        >
+        </button>
+        <ModalComponent isOpen={isOpen} closeModal={closeModal}>
           <h3 className='title-modal'>{titleModal}</h3>
           <div className='content'>{content}</div>
         </ModalComponent>
