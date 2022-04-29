@@ -1,23 +1,26 @@
 //Hook para coger datos de las actividades
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const useActivities = (termCategory, termPrice1, termPrice2) => {
+const useActivities = (queryString) => {
   const [activities, setActivities] = useState([]);
   const [error, setError] = useState(null);
-  console.log('escalada', termCategory);
+  const navigate = useNavigate();
+
+  console.log('queryString', queryString);
 
   useEffect(() => {
     const loadActivities = async () => {
       try {
-        const ruta = `${process.env.REACT_APP_BACKEND}/experiences`;
-        let response = await fetch(ruta);
-        if (termCategory) {
-          response = await fetch(`${ruta}?category=${termCategory}`);
-        }
-        if (termPrice1 && termPrice2) {
+        navigate('/allexperiences');
+        let response = await fetch(
+          `${process.env.REACT_APP_BACKEND}/experiences`
+        );
+        if (queryString) {
           response = await fetch(
-            `${ruta}?price1=${termPrice1}&price2=${termPrice1}`
+            `${process.env.REACT_APP_BACKEND}/experiences?${queryString}`
           );
+          navigate(`?${queryString}`);
         }
 
         const json = await response.json();
@@ -34,7 +37,7 @@ const useActivities = (termCategory, termPrice1, termPrice2) => {
     };
 
     loadActivities();
-  }, [termCategory, termPrice1, termPrice2]);
+  }, [queryString]);
 
   return { activities, error };
 };

@@ -18,7 +18,7 @@ const HeaderButon = ({ to, children }) => {
 const Logo = () => {
   return (
     <Link to='/'>
-      <img src='silueta/logo.png' alt='logo' width={'80px'} />
+      <img src='/silueta/logo.png' alt='logo' width={'80px'} />
     </Link>
   );
 };

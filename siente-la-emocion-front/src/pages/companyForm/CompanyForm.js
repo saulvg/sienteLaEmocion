@@ -138,6 +138,7 @@ function CompanyForm() {
     return (
       <>
         <Header
+          bg={'/img/principal.jpg'}
           to={''}
           button={''}
           body={<BodyHeaderHomePage />}
@@ -154,6 +155,7 @@ function CompanyForm() {
   return (
     <>
       <Header
+        bg={'/img/principal.jpg'}
         to={''}
         button={''}
         body={<BodyHeaderHomePage />}
