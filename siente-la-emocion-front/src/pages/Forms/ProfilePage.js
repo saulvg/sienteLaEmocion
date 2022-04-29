@@ -46,7 +46,6 @@ const ProfilePage = () => {
           {!deleteModal ? (
             <div className='align-modal'>
               <div className='modal-box'>
-                <EditAvatar />
                 <div className='avatar-div'></div>
                 <div className='form-titles'>
                   <div className='circle-content'>
