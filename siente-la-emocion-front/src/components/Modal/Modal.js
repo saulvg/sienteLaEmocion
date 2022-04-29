@@ -19,7 +19,6 @@ export const Modal = ({ buttonClass, id, buttonName, titleModal, content }) => {
           {id}
         </button>
         <ModalComponent isOpen={isOpen} closeModal={closeModal}>
-          <h3 className='title-modal'>{titleModal}</h3>
           <div className='content'>{content}</div>
         </ModalComponent>
       </div>

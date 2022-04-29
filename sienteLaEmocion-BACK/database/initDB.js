@@ -224,7 +224,7 @@ async function initDB() {
 
                 '2022-02-03 16:37:55'),
 
-                (1, 2, 2, 8, 32,'2023-02-03 16:37:55', 'Teruel', 'Albarracin N 23', 
+                (1, 2, 2, 8, 32,'2021-02-03 16:37:55', 'Teruel', 'Albarracin N 23', 
 
                 'Equipo: casco y avituallamiento.
                 Seguro de Responsabilidad Civil.

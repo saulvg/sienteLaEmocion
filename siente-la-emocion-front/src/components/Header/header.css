@@ -78,6 +78,7 @@ header .headerTop nav {
   gap: 1rem;
   padding: 0 1rem;
   flex-direction: row;
+  align-items: center;
 }
 header .headerTop menu nav a {
   text-decoration: none;
@@ -201,6 +202,10 @@ header .headerButton button:hover {
   }
 
   header .headerBody > h1 {
+    text-align: center;
+    font-size: 45px;
+  }
+  header .headerBody p {
     text-align: center;
   }
 }

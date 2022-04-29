@@ -93,9 +93,11 @@ const Header = ({ bg, to, button, body, className }) => {
                       </button>
                     </>
                   ) : (
-                    <Link to='/login' id='login'>
-                      Inicia sesión
-                    </Link>
+                    <button className=' nav-button'>
+                      <Link to='/login' id='login'>
+                        Inicia sesión
+                      </Link>
+                    </button>
                   )}
                 </nav>
               </menu>

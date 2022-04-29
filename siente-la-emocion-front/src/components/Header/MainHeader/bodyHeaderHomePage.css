@@ -5,7 +5,7 @@ header .headerBody p {
   text-align: end;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 720px) {
   header .headerBody p {
     text-align: center;
   }
