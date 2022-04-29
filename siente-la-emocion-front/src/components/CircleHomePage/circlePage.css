@@ -18,7 +18,12 @@
   color: white;
   display: flex;
   justify-content: center;
+  align-items: center;
+  
+}
+.route-content.experience-list{
   align-items: end;
+  padding-bottom: 2.5rem;
 }
 
 @media (max-width: 500px) {

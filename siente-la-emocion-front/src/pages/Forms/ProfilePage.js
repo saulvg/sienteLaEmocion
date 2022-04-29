@@ -33,6 +33,7 @@ const ProfilePage = () => {
   return (
     <>
       <Header
+        bg={'/img/principal.jpg'}
         to={''}
         button={''}
         body={<BodyHeaderHomePage />}

@@ -10,15 +10,47 @@ const getExperience = async (req, res, next) => {
         //ya hemos comprobado si existe anteriormente en un middleware asi que no lo comprobamos de nuevo
         const { idExperience } = req.params;
 
-        //Obtenemso la informacion de la experiencia que queremos
-        const [experiences] = await connection.query(
+        let experiences;
+
+        if (idExperience === 'random') {
+            [experiences] = await connection.query(
+                `
+            SELECT 
+                experiences.id,  
+                experiences.createdAt, 
+                experiences.id_user,
+                id_experiences_category,
+                experiences.id_company, 
+                experiences.capacity, 
+                experiences.price, 
+                experiences.date, 
+                experiences.city, 
+                experiences.direction, 
+                experiences.photoHeader,
+                experiences.text_1, 
+                experiences.text_2, 
+                experiences.text_3,
+                experiences.text_4,
+                experiences.text_5,
+                experiences.text_6,
+                AVG(IFNULL(votes.vote, 0)) AS votes_entry 
+            FROM experiences
+            LEFT JOIN votes ON (experiences.id = votes.id_experiences)
+            GROUP BY experiences.id, votes.id
+            ORDER BY RAND()
+            LIMIT 1
             `
+            );
+        } else {
+            //Obtenemso la informacion de la experiencia que queremos
+            [experiences] = await connection.query(
+                `
         SELECT 
             experiences.id,  
             experiences.createdAt, 
             experiences.id_user,
             id_experiences_category,
-            id_company, 
+            experiences.id_company, 
             experiences.capacity, 
             experiences.price, 
             experiences.date, 
@@ -35,15 +67,16 @@ const getExperience = async (req, res, next) => {
         FROM experiences
         LEFT JOIN votes ON (experiences.id = votes.id_experiences)
         WHERE experiences.id = ?`,
-            [idExperience]
-        );
+                [idExperience]
+            );
+        }
 
         // Fotos
         const [experiences_photos] = await connection.query(
             `
             SELECT * FROM experiences_photos WHERE id_experiences = ?
             `,
-            [idExperience]
+            [experiences[0].id]
         );
 
         // Company
@@ -74,7 +107,7 @@ const getExperience = async (req, res, next) => {
                 booking
             LEFT JOIN users ON (booking.id_user = users.id) 
             WHERE booking.id_experiences = ?`,
-            [idExperience]
+            [experiences[0].id]
         );
         //si el usuario esta logeado, podra ver el nombre de los participantes que han reservado esa actividad
         //sino solo la cantidad de usuarios que han reservado

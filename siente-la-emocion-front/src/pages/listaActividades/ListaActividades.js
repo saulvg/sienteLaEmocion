@@ -6,8 +6,9 @@ import './listaActividades.css';
  * ## React ##
  * ###########
  */
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
+import { Calendar } from 'react-calendar';
 
 /**
  * ###########
@@ -16,7 +17,6 @@ import { useSearchParams } from 'react-router-dom';
  */
 import useActivities from '../../hooks/useActivities';
 import useActivity from '../../hooks/useActivity';
-import useActivityPhotos from '../../hooks/useActivityPhotos';
 
 /**
  * ################
@@ -27,54 +27,61 @@ import ActividadLista from '../../components/ActividadLista/ActividadLista';
 import Header from '../../components/Header/Header';
 import BodyExperiencesList from '../../components/Header/MainHeader/BodyExperiencesList';
 import { useState } from 'react';
-//import { Calendar } from 'react-calendar';
+import useActivityPhotosHeader from '../../hooks/useActivityPhotoHeader';
+import Error from '../../components/error/Error';
+import Loading from '../../components/loading/Loading';
 
 //Pagina que pinta la lista de todas las experiencias disponibles en la Web
 const ListaActividades = () => {
+  const { activity } = useActivity('random'); /* ................. */
+
   const [filter, setFilter] = useState(false);
 
   const [category, setCategory] = useState('');
   const [price, setPrice] = useState('');
-  const navigate = useNavigate();
-  //navigate(`${prueba}`);
+  const [votes, setVotes] = useState('');
+  const [date, setDate] = useState('');
+
+  /* const navigate = useNavigate();
   const [params] = useSearchParams();
   const termCategory = params.get('category');
   const termPrice1 = params.get('price1');
   const termPrice2 = params.get('price2');
+  const termVotes = params.get('votes'); */
+  const [queryString, setQueryString] = useState('');
+  const { activities, error } = useActivities(queryString);
+  const [value, onChange] = useState(new Date());
 
-  const { activities, error } = useActivities(
-    termCategory,
-    termPrice1,
-    termPrice2
-  );
-  console.log('activities', activities);
+  const handleFilter = (e) => {
+    e.preventDefault();
 
-  /*   const idExperience = activities.map((id) => id.id);
-  const randomExperience = Math.floor(Math.random() * idExperience.length);
-  console.log('randomExperience', randomExperience);
-  const ranExper = activities[randomExperience];
-  console.log('randomeeeee', activities[randomExperience]);
-  console.log('activitiesIndex', activities[0]); */
-  /* const today = new Date();
-  console.log(today);
-  const allActivies = activities.map(
-    (activity) => activity.date === new Date()
-    );
-    console.log('filtradas', allActivies); */
-  //const { photos, errorLoadPhoto } = useActivityPhotos(1);
-  //console.log('photo', photos);
+    const params = {};
+    if (category) params.category = category;
+    if (price) {
+      params.price = price;
+      //params.price2 = price[1];
+    }
+    if (votes) params.votes = votes;
+    if (date) params.date = date;
 
-  return (
+    setQueryString(new URLSearchParams(params).toString());
+  };
+
+  const fecha = (value) => {
+    const complateDate = value.toISOString();
+    setDate(complateDate.slice(0, 10));
+  };
+  return activity ? (
     <div id='listaActividades'>
       <Header
-        /* bg={
-          photos
-            ? `${process.env.REACT_APP_BACKEND}/uploads/${photos[0].path}`
-            : null
-        } */
-        to={`/experiences/${4}`} /* ................ */
+        bg={
+          activity.experience.photoHeader
+            ? `${process.env.REACT_APP_BACKEND}/uploads/${activity.experience.photoHeader}`
+            : '/img/bus.jpg'
+        }
+        to={`/experiences/${activity.experience.id}`}
         button={'Atrevete'}
-        body={<BodyExperiencesList randomActivity={4} />}
+        body={<BodyExperiencesList activity={activity} />}
       />
       <div className='container flex activity-content'>
         <div className='filter'>
@@ -461,13 +468,15 @@ const ListaActividades = () => {
             <div id='calendar' className='filter-section'>
               <h3 className='filter-title'>Fechas</h3>
             </div>
-            <button onClick={() => navigate(category || price)}>Filtrar</button>
+            <button onClick={() => Navigate(category || price)}>Filtrar</button>
           </div>
         </div>
 
         <ActividadLista activities={activities} error={error} />
       </div>
     </div>
+  ) : (
+    <Loading clas={'load-Page'}>{error}</Loading>
   );
 };
 export default ListaActividades;

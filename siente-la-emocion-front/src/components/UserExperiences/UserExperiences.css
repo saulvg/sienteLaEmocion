@@ -1,1 +1,13 @@
-
+@media (min-width: 320px) {
+  .sections {
+    display: flex;
+    columns: 1;
+    flex-direction: column;
+  }
+}
+.span-atrevete:hover {
+  cursor: pointer;
+}
+.span-atrevete {
+  text-decoration: underline;
+}

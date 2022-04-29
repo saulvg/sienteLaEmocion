@@ -63,17 +63,31 @@ const voteEntry = async (req, res, next) => {
             throw error;
         }
 
+        //Obtenemos el id de la company que alberga dicha experiencia
+        const [company] = await connection.query(
+            `SELECT id_company FROM experiences WHERE id = ?`,
+            [idExperience]
+        );
+        console.log('comapny', company[0].id_company);
+
         // Añadimos el voto.
         await connection.query(
-            `INSERT INTO votes (vote, review, id_user, id_experiences, createdAt) VALUES (?, ?, ?, ?, ?)`,
-            [vote, review, idReqUser, idExperience, new Date()]
+            `INSERT INTO votes (vote, review, id_user, id_experiences, id_company, createdAt) VALUES (?, ?, ?, ?, ?, ?)`,
+            [
+                vote,
+                review,
+                idReqUser,
+                idExperience,
+                company[0].id_company,
+                new Date(),
+            ]
         );
 
-        await connection.query(
+        /*  await connection.query(
             `
             INSERT INTO booking (vote) VALUES (?)`,
             [vote, idExperiencesBooking]
-        );
+        ); */
 
         res.send({
             status: 'ok',

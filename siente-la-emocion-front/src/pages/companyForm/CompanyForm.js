@@ -74,19 +74,6 @@ function CompanyForm() {
   const [companyText_5, setCompanyText_5] = useState('');
   const [companyText_6, setCompanyText_6] = useState('');
   const [companyPhotoHeader, setCompanyPhotoHeader] = useState('');
-  console.log('category', companyCategory);
-  console.log('name', companyName);
-  console.log('city', companyCapacity);
-  console.log('price', companyPrice);
-  console.log('companyDate', companyDate);
-  console.log('companyCity', companyCity);
-  console.log('companyAddress', companyAddress);
-  console.log('companyText_1', companyText_1);
-  console.log('companyText_2', companyText_2);
-  console.log('companyText_3', companyText_3);
-  console.log('companyText_4', companyText_4);
-  console.log('companyText_5', companyText_5);
-  console.log('companyText_6', companyText_6);
 
   //Creamos una funcion manejadora del boton del formulario
   const sendForm = async (event) => {
@@ -151,6 +138,7 @@ function CompanyForm() {
     return (
       <>
         <Header
+          bg={'/img/principal.jpg'}
           to={''}
           button={''}
           body={<BodyHeaderHomePage />}
@@ -167,6 +155,7 @@ function CompanyForm() {
   return (
     <>
       <Header
+        bg={'/img/principal.jpg'}
         to={''}
         button={''}
         body={<BodyHeaderHomePage />}
@@ -293,6 +282,28 @@ function CompanyForm() {
                             setCompanyAddress(e.target.value);
                           }}
                         />
+                        <InputElement
+                          labelName='Instagram'
+                          type='text'
+                          id='instagram'
+                          name='instagram'
+                          value={companyInstagram}
+                          onChange={(e) => {
+                            setCompanyInstagram(e.target.value);
+                          }}
+                        />
+                        <InputElement
+                          labelName='Facebook'
+                          type='text'
+                          id='facebook'
+                          name='facebook'
+                          value={companyFacebook}
+                          onChange={(e) => {
+                            setCompanyFacebook(e.target.value);
+                          }}
+                        />
+                      </div>
+                      <div className='company-div'>
                         <TextareaElement
                           labelName='¿Qué incluye?'
                           type='Texto 1'
@@ -301,8 +312,6 @@ function CompanyForm() {
                           name=''
                           onChange={(e) => setCompanyText_1(e.target.value)}
                         />
-                      </div>
-                      <div className='company-div'>
                         <TextareaElement
                           labelName='¿Qué necesitas?'
                           type='Texto 2'

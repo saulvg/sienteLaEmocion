@@ -15,6 +15,7 @@ const HomePage = () => {
   return (
     <div className='App'>
       <Header
+        bg={'/img/principal.jpg'}
         to={'/allexperiences'}
         button={'Atrevete'}
         body={<BodyHeaderHomePage />}

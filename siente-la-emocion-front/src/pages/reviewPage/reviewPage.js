@@ -12,6 +12,8 @@ import { Link } from 'react-router-dom';
 import decode from 'jwt-decode';
 import { Modal } from '../../components/Modal/Modal';
 import useActivity from '../../hooks/useActivity';
+import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
+
 // COMPONENTE PARA REVIEW
 export const Review = ({ avatar, userName }) => {
   //const { users } = useUserProfile();
@@ -143,9 +145,11 @@ export const ReviewPage = () => {
   return activity ? (
     <>
       <Header
-        className='cabecera'
-        to={'/perfil'}
-        body='Tus comentarios cuentan'
+        bg={'/img/principal.jpg'}
+        to={''}
+        body={<BodyHeaderHomePage />}
+        button={''}
+        className={'simpleHeader'}
       />
 
       <main className='listaReviews'>

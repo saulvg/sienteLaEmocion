@@ -9,14 +9,20 @@ import BodyExperience from '../components/Header/MainHeader/BodyExperience';
 import Error from '../components/error/Error';
 import useUser from '../hooks/useUser';
 import '../components/Forms/activityForm.css';
+import Loading from '../components/loading/Loading';
 const Experience = () => {
   const { idExperience } = useParams();
   const { activity, error } = useActivity(idExperience);
   const { token } = useUser();
   console.log('activity', activity);
-  return (
+  return activity ? (
     <>
       <Header
+        bg={
+          activity.experience.photoHeader
+            ? `${process.env.REACT_APP_BACKEND}/uploads/${activity.experience.photoHeader}`
+            : '/img/bus.jpg'
+        }
         to={`/experiences/${idExperience}/booking`} /* ................ */
         button={'Reserva'}
         body={<BodyExperience />}
@@ -28,16 +34,41 @@ const Experience = () => {
               <div className='container experiencia'>
                 <div className='company-div'>
                   <h2>{activity.company}</h2>
+                  <span>
+                    Participantes:
+                    {token ? (
+                      <>
+                        <div>{`${activity.users_booking.length} / ${activity.experience.capacity}`}</div>
+                        {activity.users_booking.map((user) => {
+                          return (
+                            <div key={user.id}>
+                              <Link to='/'>{user.username}</Link>
+                            </div>
+                          );
+                        })}
+                      </>
+                    ) : (
+                      <div>{`${activity.users_booking} / ${activity.experience.capacity}`}</div>
+                    )}
+                  </span>
                 </div>
                 <ActivityText1
-                  image={`${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[0]?.path}`}
+                  image={
+                    activity.photos === 1
+                      ? `${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[0]?.path}`
+                      : 'https://images.pexels.com/photos/9035242/pexels-photo-9035242.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
+                  }
                   question={'¿En qué consiste este deporte?'}
                   answer={activity.experience.text_4}
                   questionBox={'question-box'}
                   answerBox={'answer-box'}
                 ></ActivityText1>
                 <ActivityText1
-                  image={`${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[1]?.path}`}
+                  image={
+                    activity.photos === 2
+                      ? `${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[1]?.path}`
+                      : 'https://images.pexels.com/photos/9035242/pexels-photo-9035242.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
+                  }
                   question={
                     '¿Qué niveles de dificultad hay? ¿Y si no tengo experiencia?'
                   }
@@ -46,7 +77,11 @@ const Experience = () => {
                   answerBox={'answer-box-right'}
                 ></ActivityText1>
                 <ActivityText1
-                  image={`${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[2]?.path}`}
+                  image={
+                    activity.photos === 3
+                      ? `${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[2]?.path}`
+                      : 'https://images.pexels.com/photos/9035242/pexels-photo-9035242.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
+                  }
                   question={'Si ya tienes experiencia...'}
                   answer={activity.experience.text_6}
                   questionBox={'question-box'}
@@ -56,28 +91,13 @@ const Experience = () => {
               </div>
             </li>
           </ul>
-          <span>
-            Participantes:
-            {token ? (
-              <>
-                <div>{`${activity.users_booking.length} / ${activity.experience.capacity}`}</div>
-                {activity.users_booking.map((user) => {
-                  return (
-                    <div key={user.id}>
-                      <Link to='/'>{user.username}</Link>
-                    </div>
-                  );
-                })}
-              </>
-            ) : (
-              <div>{`${activity.users_booking} / ${activity.experience.capacity}`}</div>
-            )}
-          </span>
         </>
       ) : (
         <Error>Error: {error}</Error>
       )}
     </>
+  ) : (
+    <Loading clas={'load-Page'}>{error}</Loading>
   );
 };
 

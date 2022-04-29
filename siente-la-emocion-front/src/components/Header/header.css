@@ -3,11 +3,12 @@ header {
   flex-direction: column;
   justify-content: space-between;
   font-family: 'Montserrat', sans-serif;
-  min-height: 100vh;
-  background-image: url('../../../public/img/imgHomePage.jpg');
+  min-height: 96vh;
+  /* background-image: url('../../../public/img/imgHomePage.jpg'); */
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  background-position: center;
 }
 
 .activity-description {
@@ -325,3 +326,4 @@ header .headerButton button:hover {
     text-align: center;
   }
 }
+

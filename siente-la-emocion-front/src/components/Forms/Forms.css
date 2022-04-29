@@ -100,6 +100,9 @@
 
   background-color: rgb(133, 90, 90);
 }
+.user-avatar:hover{
+  cursor: pointer;
+}
 
 .profile-options {
   font-family: 'Montserrat';

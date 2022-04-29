@@ -1,4 +1,4 @@
-//gracias a la dependecia dotenv y a requerirla aqui (en el fichero principal), puedo importar variables de entorno con el process.env, sin necesidad de requerirla en todos los ficheros que hacen referencia a este
+//Gracias a la dependecia dotenv y a requerirla aqui (en el fichero principal), puedo importar variables de entorno con el process.env, sin necesidad de requerirla en todos los ficheros que hacen referencia a este
 require('dotenv').config();
 const path = require('path');
 const express = require('express');
@@ -137,7 +137,7 @@ app.delete('/users/:id', isAuth, userExists, canEditUser, deleteUser);
 app.post('/experiences', isAdmin, newExperience);
 
 //Obtener una experiencia
-app.get('/experiences/:idExperience', experienceExist, getExperience);
+app.get('/experiences/:idExperience', getExperience);
 
 //Editar una experiencia
 app.put('/experiences/:idExperience', isAdmin, editExperience);
@@ -150,7 +150,6 @@ app.post(
     experienceExist,
     experienceVotes
 );
-
 
 //reservar una experiencia
 app.post('/experiences/:idExperience/booking', isAuth, newBooking);

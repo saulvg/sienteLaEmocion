@@ -58,23 +58,43 @@ const getReviews = async (req, res, next) => {
             FOREIGN KEY (id_experiences) REFERENCES experiences(id) ON DELETE CASCADE 
             
         )*/
+        //Obtenemos la company que alberga esta experiencia
+        const [company] = await connection.query(
+            `
+            SELECT 
+                experiences.id, 
+                experiences.createdAt, 
+                experiences.id_user, 
+                experiences.date, 
+                experiences.id_company
+            FROM experiences
+            WHERE id = ?
+            ORDER BY createdAt desc
+            `,
+            [idExperience]
+        );
+
         //obtenemso la informacion de la experiencia que queremos obtener haciendo un join con los datos de otras tablas que tambien necesitamos aqui
         const [review] = await connection.query(
             `
         SELECT 
-        votes.id,
-        votes.createdAt,
-        votes.id_user,
-        users.username AS username, 
-users.avatar AS avatar,
-users.biography AS biography,
-        id_experiences,
-        votes.review,
-        votes.vote
-       FROM votes
-       LEFT JOIN users ON (votes.id_user = users.id)
-        WHERE id_experiences = ?`,
-            [idExperience]
+            votes.id,
+            votes.createdAt,
+            votes.id_user,
+            users.username AS username, 
+            users.avatar AS avatar,
+            users.biography AS biography,
+            votes.id_experiences,
+            votes.id_company, 
+            votes.review,
+            votes.vote
+        FROM 
+            votes
+        LEFT JOIN users ON (votes.id_user = users.id)
+        WHERE id_company = ?
+        ORDER BY createdAt desc
+        `,
+            [company[0].id_company]
         );
         /* const [user] = await connection.query(
             `

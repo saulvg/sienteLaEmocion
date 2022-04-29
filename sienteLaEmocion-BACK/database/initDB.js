@@ -1,6 +1,6 @@
 const getDB = require('./getDB.js');
 const bcrypt = require('bcrypt');
-const faker = require('faker/locale/es'); //borrar
+const faker = require('faker/locale/es');
 
 const saltRounds = 10;
 
@@ -16,7 +16,6 @@ async function initDB() {
         connection = await getDB();
         await connection.query('DROP TABLE IF EXISTS votes');
         await connection.query('DROP TABLE IF EXISTS booking');
-        //await connection.query('DROP TABLE IF EXISTS my_experiences');
         await connection.query('DROP TABLE IF EXISTS experiences_photos');
         await connection.query('DROP TABLE IF EXISTS experiences');
         await connection.query('DROP TABLE IF EXISTS experiences_category');
@@ -28,7 +27,7 @@ async function initDB() {
             id INT PRIMARY KEY AUTO_INCREMENT,
             email VARCHAR(100) UNIQUE NOT NULL,
             password VARCHAR(100) NOT NULL,
-            username VARCHAR(50) NOT NULL,
+            username VARCHAR(50) UNIQUE NOT NULL,
             dni_nie VARCHAR(50) NOT NULL,
             avatar VARCHAR(50),
             role ENUM("admin", "normal") DEFAULT "normal" NOT NULL,
@@ -65,7 +64,7 @@ async function initDB() {
             id INT PRIMARY KEY AUTO_INCREMENT,
             id_user INT NOT NULL,
             id_experiences_category INT NOT NULL,
-            id_company INT NOT NULL,
+            id_company INT NOT NULL,       
             photoHeader VARCHAR(150),
             capacity TINYINT NOT NULL,
             price DECIMAL NOT NULL,
@@ -102,12 +101,14 @@ async function initDB() {
         CREATE TABLE votes (
             id INT PRIMARY KEY AUTO_INCREMENT,
             id_experiences INT NOT NULL,
+            id_company INT NOT NULL,
             vote TINYINT,
             review VARCHAR(255),
             createdAt DATETIME NOT NULL,
             id_user INT NOT NULL,
             FOREIGN KEY(id_user) REFERENCES users(id),
-            FOREIGN KEY (id_experiences) REFERENCES experiences(id) ON DELETE CASCADE 
+            FOREIGN KEY (id_experiences) REFERENCES experiences(id) ON DELETE CASCADE,
+            FOREIGN KEY (id_company) REFERENCES company(id) 
             
         )
     `);
