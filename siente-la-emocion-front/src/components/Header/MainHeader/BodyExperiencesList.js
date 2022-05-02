@@ -20,8 +20,14 @@ const BodyExperiencesList = ({ activity }) => {
   //Si todo va bien en el hook pintamso la actividad con sus datos, sino el mensaje de error
   return (
     <div className='activity-header-body'>
-      <h1>Sientelo pronto...</h1>
-      <div className='activity-description'>
+      <h1 data-aos='fade-right' data-aos-duration='3000'>
+        Sientelo pronto...
+      </h1>
+      <div
+        className='activity-description'
+        data-aos='fade-left'
+        data-aos-duration='2000'
+      >
         <h3>{activity.company}</h3>
         <p>{activity.experience.text_4}</p>
         <div className='social-networks flex flex-end'>

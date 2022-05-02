@@ -19,11 +19,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
-.route-content.experience-list{
-  align-items: end;
-  padding-bottom: 2.5rem;
+.route-content.experience-list {
+  font-family: Montserrat;
+  align-items: center;
+  font-size: 20px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.349);
+  font-weight: bold;
 }
 
 @media (max-width: 500px) {

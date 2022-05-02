@@ -12,9 +12,9 @@ const UserExperiences = () => {
   if (error) return <Error>Hubo un error cargando bookings</Error>;
   return (
     <>
-      <ul>
+      <ul className='my-experiences'>
         {bookings.length > 0 ? (
-          <ul className='my-experiences'>
+          <>
             {bookings.map((book) => {
               return (
                 <li key={book.id} className='my-experience'>
@@ -22,7 +22,7 @@ const UserExperiences = () => {
                 </li>
               );
             })}
-          </ul>
+          </>
         ) : (
           <Error>
             ¿Todavía no has realizado ninguna experiencia?{' '}

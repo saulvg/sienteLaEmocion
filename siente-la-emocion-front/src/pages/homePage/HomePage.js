@@ -47,7 +47,11 @@ const HomePage = () => {
             children={'Que te esta esperando'}
           />
         </section>
-        <section id='deQueVaEsto' className='textHPage background-img'>
+        <section
+          id='deQueVaEsto'
+          className='textHPage background-img'
+          data-aos='fade-up'
+        >
           <TextHomePage
             title={'De que va esto'}
             p1={
@@ -75,7 +79,11 @@ const HomePage = () => {
             children={'facebook'}
           />
         </section>
-        <section id='nuestrosPrincipios' className='textHPage background-img'>
+        <section
+          id='nuestrosPrincipios'
+          className='textHPage background-img'
+          data-aos='fade-up'
+        >
           <TextHomePage
             title={'Nuestros principios'}
             p1={
@@ -91,7 +99,11 @@ const HomePage = () => {
           <CircleHomePage id={'comment2'} children={'Comentario destacado 2'} />
           <CircleHomePage id={'comment3'} children={'Comentario destacado 3'} />
         </section>
-        <section id='queTeEstaEsperando' className='textHPage background-img'>
+        <section
+          id='queTeEstaEsperando'
+          className='textHPage background-img'
+          data-aos='fade-up'
+        >
           <TextHomePage
             title={'Que te esta esperando'}
             p1={

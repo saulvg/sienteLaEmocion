@@ -29,7 +29,7 @@ section.actividad {
 
 .texto {
   word-break: break-all;
-  height: 55px;
+  height: 60px;
   overflow: auto;
 }
 
