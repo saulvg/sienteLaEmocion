@@ -1,4 +1,4 @@
-//Hook para coger datos de las actividades
+//Hook para coger datos de las experiencias
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,8 +6,6 @@ const useActivities = (queryString) => {
   const [activities, setActivities] = useState([]);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-
-  console.log('queryString', queryString);
 
   useEffect(() => {
     const loadActivities = async () => {

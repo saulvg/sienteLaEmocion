@@ -7,10 +7,12 @@ import Header from '../Header/Header';
 import { useParams } from 'react-router-dom';
 
 import EditAvatar from '../../components/EditAvatar/EditAvatar';
+
 import { InputElement, TextareaElement } from './InputElement';
 import BlueButton from './BlueButton';
 import DeleteAccount from './DeleteAccount';
 import { Modal } from '../Modal/Modal';
+import EditAvatarS from '../../components/EditAvatar/EditAvatar';
 //username, newEmail, phone, biography, postalCode, dni_nie
 const EditProfile = ({ oldName, oldEmail }) => {
   const { token, user } = useUser();
@@ -59,7 +61,7 @@ const EditProfile = ({ oldName, oldEmail }) => {
     <>
       {token && user ? (
         <>
-          <EditAvatar />
+          <EditAvatarS />
           <form onSubmit={edit}>
             <div className='profile-elements'>
               <InputElement

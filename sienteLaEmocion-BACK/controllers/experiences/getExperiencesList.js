@@ -6,6 +6,13 @@ const getListEntry = async (req, res, next) => {
     try {
         connection = await getDB();
 
+        //Quey que nos devuleve las categorias existentes
+        const [categories] = await connection.query(
+            `
+            SELECT name FROM experiences_category
+            `
+        );
+
         // Obtenemos los posibles query params.
         //NOSOTROS NO VAMOS A DAR LA OPCION DE CAMBIAR EL ORDEN DEL FILTRO
         const { category, price, date, votes } = req.query;
@@ -48,19 +55,21 @@ const getListEntry = async (req, res, next) => {
                 experiences.price <= ? OR
                 votes.vote = ? OR
                 experiences.date LIKE ? 
-            GROUP BY experiences_category.id, company.id, experiences.id;  
+            GROUP BY experiences_category.id, company.id, experiences.id
+            ORDER BY experiences.date ASC
+            ;  
                     `,
                 [category, price, votes, `%${date}%`]
             );
 
-            if (category) {
+            /* if (category) {
                 console.log(
                     'category',
                     experiences.filter((cat, pric) => {
                         cat.category === category && pric.price <= price;
                     })
                 );
-            }
+            } */
 
             /*                      booking.id AS booking,
                LEFT JOIN booking ON (experiences.id = booking.id_experiences)
@@ -94,7 +103,7 @@ const getListEntry = async (req, res, next) => {
                 LEFT JOIN company ON (experiences.id_company= company.id)
                 LEFT JOIN votes ON (experiences.id = votes.id_experiences)
                 GROUP BY experiences_category.id, company.id, experiences.id
-                ORDER BY createdAt desc
+                ORDER BY experiences.date ASC
 
                     `
             );
@@ -120,6 +129,7 @@ const getListEntry = async (req, res, next) => {
             status: 'ok',
             data: {
                 experiences: experienceFuture,
+                categories,
                 /* users_booking: users_booking.length */
             },
         });

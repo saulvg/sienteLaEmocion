@@ -30,6 +30,7 @@ import { useState } from 'react';
 import useActivityPhotosHeader from '../../hooks/useActivityPhotoHeader';
 import Error from '../../components/error/Error';
 import Loading from '../../components/loading/Loading';
+import useCategories from '../../hooks/useCategories';
 
 //Pagina que pinta la lista de todas las experiencias disponibles en la Web
 const ListaActividades = () => {
@@ -50,6 +51,7 @@ const ListaActividades = () => {
   const termVotes = params.get('votes'); */
   const [queryString, setQueryString] = useState('');
   const { activities, error } = useActivities(queryString);
+  const { companyCategories, setErrorCategory } = useCategories('');
   const [value, onChange] = useState(new Date());
 
   const handleFilter = (e) => {
@@ -177,6 +179,25 @@ const ListaActividades = () => {
                     Esperiologio
                   </div>
                 </div>
+                {/* {console.log('soy activities', activities)}; */}
+                {/*                     setCategory(value) */}
+                <select
+                  onChange={(e) =>
+                    e.target.value !== 'allexperiences'
+                      ? setCategory(e.target.value)
+                      : setCategory('')
+                  }
+                >
+                  <option selected value={'allexperiences'}>
+                    {'Busaca por nombre (todas)'}
+                  </option>
+                  {console.log('soy', companyCategories)};
+                  {companyCategories.map((companyCategory) => (
+                    <option value={companyCategory.name}>
+                      {companyCategory.name}
+                    </option>
+                  ))}
+                </select>
               </div>
               {/* <div className='filter-section filter-map'>
                 <h3 className='filter-title'>map</h3>
@@ -347,7 +368,7 @@ const ListaActividades = () => {
       </div>
     </div>
   ) : (
-    <Loading clas={'load-Page'}>{error}</Loading>
+    <Loading clas={'load-Page'}>{error ? error : setErrorCategory}</Loading>
   );
 };
 export default ListaActividades;
