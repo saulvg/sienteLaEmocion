@@ -73,14 +73,7 @@ const EditExperience = () => {
   const editExperience = async (event) => {
     event.preventDefault();
     //intentamos actualizar los datos del formulario con la peticion tipo 'PUT'
-    //como contiene texto y archivos se hace con new Format, el bucle que recorra el objeto, etc.
     try {
-      /*  const payload = new FormData();
-      for (const [key, value] of Object.entries(activity)) {
-        payload.append(key, value);
-        console.log(payload);
-      } */
-
       const payload = {
         text_1: activity.experience.text_1,
         text_2: activity.experience.text_2,

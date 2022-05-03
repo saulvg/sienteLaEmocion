@@ -37,18 +37,20 @@ import {
   Text6Company,
   PhotoHeader,
 } from '../../components/InputsCompanyForm/InputsCompanyForm';
-/**
- * ###########
- * ## Hooks ##
- * ###########
- */
-import useUser from '../../hooks/useUser';
 import { ModalCircle } from '../../components/Forms/ModalCircle';
 import {
   InputElement,
   TextareaElement,
 } from '../../components/Forms/InputElement';
 import BlueButton from '../../components/Forms/BlueButton';
+
+/**
+ * ###########
+ * ## Hooks ##
+ * ###########
+ */
+import useUser from '../../hooks/useUser';
+import useCategories from '../../hooks/useCategories';
 
 //Pagina que pinta el formulario para que el admin pueda incluir una nueva experiencia
 function CompanyForm() {
@@ -59,6 +61,7 @@ function CompanyForm() {
   const [error, setError] = useState('');
   //Estados del formulario
   const [companyName, setCompanyName] = useState('');
+  const [companyCategoryExistente, setCompanyCategoryExistente] = useState('');
   const [companyCategory, setCompanyCategory] = useState('');
   const [companyCapacity, setCompanyCapacity] = useState('');
   const [companyPrice, setCompanyPrice] = useState('');
@@ -75,6 +78,8 @@ function CompanyForm() {
   const [companyText_6, setCompanyText_6] = useState('');
   const [companyPhotoHeader, setCompanyPhotoHeader] = useState('');
 
+  const { companyCategories, setErrorCategory } = useCategories('');
+
   //Creamos una funcion manejadora del boton del formulario
   const sendForm = async (event) => {
     event.preventDefault();
@@ -83,7 +88,9 @@ function CompanyForm() {
     try {
       const dataCompany = {
         companyName: companyName,
-        categoryName: companyCategory,
+        categoryName: companyCategoryExistente
+          ? companyCategoryExistente
+          : companyCategory,
         capacity: companyCapacity,
         price: companyPrice,
         date: companyDate,
@@ -216,13 +223,34 @@ function CompanyForm() {
                             setCompanyName(e.target.value);
                           }}
                         />
+                        <select
+                          id='select-category-form-company'
+                          onChange={(e) =>
+                            e.target.value !== 'allexperiences'
+                              ? setCompanyCategoryExistente(e.target.value)
+                              : setCompanyCategoryExistente('')
+                          }
+                        >
+                          <option selected value={'allexperiences'}>
+                            {'Busaca por nombre (todas)'}
+                          </option>
+                          {companyCategories.map((companyCategory) => (
+                            <option value={companyCategory.name}>
+                              {companyCategory.name}
+                            </option>
+                          ))}
+                        </select>
                         <InputElement
-                          labelName='Experiencia'
+                          labelName='Categoria'
                           type='text'
                           id='experience'
-                          required='required'
+                          required={companyCategoryExistente ? '' : 'required'}
                           name='experience'
-                          value={companyCategory}
+                          value={
+                            companyCategoryExistente
+                              ? companyCategoryExistente
+                              : companyCategory
+                          }
                           onChange={(e) => {
                             setCompanyCategory(e.target.value);
                           }}
@@ -360,6 +388,7 @@ function CompanyForm() {
                         />
                       </div>
                     </div>
+                    {error ? <Error>{error}</Error> : ''}
                     <BlueButton name='Enviar'></BlueButton>
                   </form>
                   <div className='circle-background'></div>

@@ -11,7 +11,6 @@ import useActivity from '../../../hooks/useActivity';
  * ################
  */
 import SocialNetwork from '../../SocialNetwork/SocialNetwork';
-import Error from '../../error/Error';
 
 //Componente que carga el cuerpo de la cabezera con una proxima experiencia aleatoria
 //Le pasamos como prop el id de una actividad proxima aleatoria

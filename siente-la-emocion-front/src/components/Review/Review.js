@@ -143,7 +143,7 @@ export const Booking = ({ book }) => {
                     </div>
                   </div>
                   <BlueButton
-                    name='aaaa'
+                    name='aaaba'
                     onClick={(e) =>
                       e.stopPropagation(
                         <Link to={`/experiences/${book.id}/reviews`}></Link>

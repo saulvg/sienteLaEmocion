@@ -89,10 +89,11 @@ const ExperiencePhoto = () => {
   };
 
   const dataPhoto3 = (event) => {
+    console.log('soy event photo experience', event.target);
     setPhotos3(event.target.files[0]);
   };
 
-  //Si ni tienes token no puedes llegar hasta aqui
+  //Si no tienes token no puedes llegar hasta aqui
   if (!token) {
     return (
       <>

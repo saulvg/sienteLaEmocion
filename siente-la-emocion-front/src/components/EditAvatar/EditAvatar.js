@@ -1,147 +1,128 @@
-import React from 'react';
-
+/* ## Style ## */
 import './EditAvatar.css';
-import { useState } from 'react';
+/**
+ * ###########
+ * ## Hooks ##
+ * ###########
+ */
 import useUser from '../../hooks/useUser';
-const Avatar = ({ putAvatar, setPutAvatar, button }) => {
-  const { user } = useUser();
+/**
+ * #################
+ * ## Componenets ##
+ * #################
+ */
 
-  const editAvatar = (event) => {
-    setPutAvatar(event.target.files[0]);
-  };
-  return (
-    <div onSubmit={editAvatar} className='forem-profile'>
-      {!user.avatar ? (
-        <>
-          <label htmlFor='avaar'>
-            <img
-              className='user-avatar'
-              src={
-                'http://localhost:4000/uploads/3871b0f9-4f40-4c39-ba68-9860a73fe5a5.jpg'
-              }
-              alt='aaaaa'
-            />{' '}
-          </label>
-          <input
-            type='file'
-            id='avaar'
-            style={{ display: 'none' }}
-            accept='image/*'
-            onChange={editAvatar}
-            button={button}
-          />
-        </>
-      ) : (
-        <div>
-          {' '}
-          <label htmlFor='avaar'>
-            <img
-              className='user-avatar'
-              src={'http://localhost:4000/uploads/' + user.avatar}
-              alt='aaaaa'
-            />
-          </label>
-          <input
-            type='file'
-            id='avaar'
-            style={{ display: 'none' }}
-            accept='image/*'
-            onChange={editAvatar}
-            button={button}
-          />
-        </div>
-      )}{' '}
-    </div>
-  );
-};
+import Error from '../error/Error';
+import Header from '../Header/Header';
+import BodyHeaderHomePage from '../Header/MainHeader/BodyHeaderHomePage';
 
-const EditAvatar = () => {
-  const { token } = useUser();
-  const [putAvatar, setPutAvatar] = useState('');
+/**
+ * ###########
+ * ## React ##
+ * ###########
+ */
+import React, { useEffect } from 'react';
+import { useState } from 'react';
 
-  const editAvatar = async (event) => {
-    event.preventDefault();
-    try {
-      const dataAvatar = {
-        avatar: putAvatar,
-      };
-      const payload = new FormData();
-      for (const [key, value] of Object.entries(dataAvatar)) {
-        payload.append(key, value);
-      }
+const EditAvatarS = () => {
+  const [av, setAv] = useState('');
+  const { user, token } = useUser();
+  const { error, setError } = useState('');
 
-      const response = await fetch(
-        `${process.env.REACT_APP_BACKEND}/users/edit/avatar`,
+  useEffect(() => {
+    //creamos una funcion manejadora del boton del formulario
+    const updateAvatar = async (e) => {
+      //Actualizamos la foto del avatar con una peticion de tipo 'PUT'
+      //Al ser de tipo archivo, segimos el proceso de new FormData(), append , etc.
+      //NO TE OLVIDES, EL BACK ESTA ESPERANDO POR EL MISMO NOMBRE, en este caso 'avatar'.
+      try {
+        if (av) {
+          let avatar = new FormData();
+          avatar.append('avatar', av);
 
-        {
-          method: 'PUT',
-          body: payload,
-          headers: {
-            Authorization: token,
-          },
+          //Actualizamos
+          const response = await fetch(
+            `${process.env.REACT_APP_BACKEND}/users/edit/avatar`,
+            {
+              method: 'PUT',
+              body: avatar,
+              headers: {
+                Authorization: token,
+              },
+            }
+          );
+          const body = await response.json();
+          if (response.ok) {
+            console.log(body.message);
+
+            //refrescamos la pagina si todo a ido bien para mostrar el avatar seleccionado por el usuario sin necesidad de un boton
+            window.location.reload(true);
+          } else {
+            console.error(body.message);
+            setError(body.message);
+          }
         }
-      );
-      const body = await response.json();
-      console.log('SIIIII', putAvatar);
-      /*  */
-
-      if (response.ok) {
-        console.log('correcto');
-        function refreshPage() {
-          window.location.reload(false);
-        }
-        refreshPage();
-      } else {
-        console.error('Error', body.message);
+      } catch (error) {
+        console.log(error);
       }
-      /*  */
-    } catch (error) {
-      console.error(error);
-    }
+    };
+    updateAvatar();
+  }, [av]);
+
+  //Creamos la funcion que va a controlar la imagen
+  const photoAvatar = (event) => {
+    setAv(event.target.files[0]);
   };
+
+  //si no tienes token no puedes editar perfil, por lo tanto no puedes llegar aqui
   if (!token) {
-    return <div>No te has registrado</div>;
+    return (
+      <>
+        <Header
+          bg={'/img/principal.jpg'}
+          to={''}
+          button={''}
+          body={<BodyHeaderHomePage />}
+          className={'simpleHeader'}
+        />
+        <Error>No te has registrado</Error>
+      </>
+    );
   }
 
-  function refreshPage() {
-    window.location.reload(false);
-  }
-
+  //Devolvemos lo que deseamos pintar si tienes token
   return (
     <>
-      <>
-        <div id='compm'>
-          <form onSubmit={editAvatar}>
-            {/* <Company
-                  companyName={companyName}
-                  setCompanyName={setCompanyName}
-                  placeholder={activity.company}
-                />
-                <ExperiencesCategory
-                  companyCategory={companyCategory}
-                  setCompanyCategory={setCompanyCategory}
-                  placeholder={activity.experiences_category}
-                /> 
-                
-                
-                
-                
-                
-                */}
-
-            <Avatar putAvatar={putAvatar} setPutAvatar={setPutAvatar}>
-              {' '}
-            </Avatar>
-            <div className='buttonForm'>
-              <button type='submit' className='submit'>
-                Actualizar
-              </button>
-            </div>
-          </form>
+      <form className='forem-profile'>
+        <div>
+          <label>
+            <input
+              type='file'
+              id='avaar'
+              style={{ display: 'none' }}
+              onChange={photoAvatar}
+            />
+            <img
+              className='user-avatar'
+              /* porque no funciona? 
+            src={
+                user.avatar
+                  ? `${process.env.REACT_APP_BACKEND}/uploads/${user.avatar}}`
+                  : 'https://images.pexels.com/photos/9035242/pexels-photo-9035242.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
+              } */
+              /* src={'http://localhost:4000/uploads/' + user.avatar} */
+              src={
+                user.avatar
+                  ? 'http://localhost:4000/uploads/' + user.avatar
+                  : 'https://affinitaslegal.com/wp-content/uploads/2020/08/imagen-perfil-sin-foto.jpg'
+              }
+              alt='Avatar'
+            />
+          </label>
         </div>
-      </>
+      </form>
+      {error ? <Error>{error}</Error> : null}
     </>
   );
 };
-
-export default EditAvatar;
+export default EditAvatarS;
