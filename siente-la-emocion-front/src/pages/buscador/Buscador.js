@@ -46,7 +46,9 @@ function Buscador() {
         body={<BodyExperiencesList activity={activity} />}
       />
       {!error ? (
-        <ActividadLista activities={activities} error={error} />
+        <div className='container'>
+          <ActividadLista activities={activities} error={error} />
+        </div>
       ) : (
         <Error>{error}</Error>
       )}

@@ -118,6 +118,8 @@
   font-size: 15px;
   line-height: 18px;
   margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
 }
 
 .contact-social-media img {

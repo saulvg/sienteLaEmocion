@@ -65,7 +65,7 @@
 }
 
 #deQueVaEsto {
-  background-image: url('../../../public/img/deQueVaEsto3.jpg');
+  background-image: url('../../../public/img/deQueVaEsto2.jpg');
 
   justify-content: right;
 }
@@ -135,6 +135,18 @@ div .textHomePag p {
   .background-img {
     height: auto;
   }
+
+  #deQueVaEsto {
+    background-image: none;
+  }
+
+  #nuestrosPrincipios {
+    background-image: none;
+  }
+
+  #queTeEstaEsperando {
+    background-image: none;
+  }
 }
 
 @media (max-width: 964px) {
@@ -165,12 +177,6 @@ div .textHomePag p {
 
   .socialMedia {
     min-height: 0;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 964px) {
-  #deQueVaEsto {
     justify-content: center;
   }
 }

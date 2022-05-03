@@ -204,7 +204,7 @@ function CompanyForm() {
                 <div className='modal2'>
                   <form onSubmit={sendForm}>
                     <div className='flex company-form'>
-                      <div className='company-div'>
+                      <div className='company-form-div'>
                         <InputElement
                           labelName='Empresa'
                           type='text'
@@ -303,7 +303,7 @@ function CompanyForm() {
                           }}
                         />
                       </div>
-                      <div className='company-div'>
+                      <div className='company-form-div'>
                         <TextareaElement
                           labelName='¿Qué incluye?'
                           type='Texto 1'

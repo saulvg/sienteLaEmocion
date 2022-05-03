@@ -137,10 +137,8 @@ const EditPassword = () => {
                   {error ? (
                     <Error /* className='error-msg' */>{error}</Error>
                   ) : null}
-                  <div className='delete-buttons'>
-                    <BlueButton name='Cambiar' type='submit' />
-                    <BlueButton name='Cancelar' />
-                  </div>
+                  <BlueButton name='Cambiar' type='submit' />
+                  <BlueButton name='Cancelar' />
                 </>
               ) : (
                 <Loading /* className='confirmation' */>

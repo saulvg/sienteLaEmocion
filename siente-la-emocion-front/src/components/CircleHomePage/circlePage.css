@@ -19,6 +19,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  font-weight: 400;
 }
 .route-content.experience-list {
   font-family: Montserrat;

@@ -9,6 +9,6 @@
   width: 50%;
 }
 
-.company-div + .company-div {
+.company-form-div + .company-form-div {
   border-left: 1px solid black;
 }

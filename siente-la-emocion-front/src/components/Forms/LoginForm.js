@@ -50,15 +50,13 @@ const LoginForm = () => {
               setEmail(e.target.value);
             }}
           />
-          <div className='flex'>
-            <InputPassword
-              labelName='Contraseña'
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
-          </div>
+          <InputPassword
+            labelName='Contraseña'
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
         </div>
         {error ? <Error className='error-msg'>{error}</Error> : null}
         <BlueButton name='Iniciar sesión' />

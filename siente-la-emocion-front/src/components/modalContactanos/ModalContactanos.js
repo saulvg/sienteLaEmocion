@@ -1,5 +1,6 @@
 import { useModal } from '../../hooks/useModal';
 import { Modal } from '../Modal/Modal';
+import SocialNetwork from '../SocialNetwork/SocialNetwork';
 import './contacto.css';
 const ModalContactanos = () => {
   return (
@@ -34,7 +35,12 @@ const ModalContactanos = () => {
                     </div>
                   </div>
                   <div class='contact-social-media'>
-                    <img src='https://w7.pngwing.com/pngs/101/661/png-transparent-logo-computer-icons-youtube-organization-youtube-logo-linkedin-symbol.png'></img>
+                    <SocialNetwork id={'miniInstagram'} className={'mini'} />
+                    <SocialNetwork
+                      id={'miniFacebook'}
+                      href={'https:/es-es.facebook.com/'}
+                      className={'mini'}
+                    />
                   </div>
                 </div>
               </section>

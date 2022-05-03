@@ -52,42 +52,52 @@ const Experience = () => {
                     )}
                   </span>
                 </div>
-                <ActivityText1
-                  image={
-                    activity.photos === 1
-                      ? `${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[0]?.path}`
-                      : 'https://images.pexels.com/photos/9035242/pexels-photo-9035242.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
-                  }
-                  question={'¿En qué consiste este deporte?'}
-                  answer={activity.experience.text_4}
-                  questionBox={'question-box'}
-                  answerBox={'answer-box'}
-                ></ActivityText1>
-                <ActivityText1
-                  image={
-                    activity.photos === 2
-                      ? `${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[1]?.path}`
-                      : 'https://images.pexels.com/photos/9035242/pexels-photo-9035242.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
-                  }
-                  question={
-                    '¿Qué niveles de dificultad hay? ¿Y si no tengo experiencia?'
-                  }
-                  answer={activity.experience.text_5}
-                  questionBox={'question-box-right'}
-                  answerBox={'answer-box-right'}
-                ></ActivityText1>
-                <ActivityText1
-                  image={
-                    activity.photos === 3
-                      ? `${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[2]?.path}`
-                      : 'https://images.pexels.com/photos/9035242/pexels-photo-9035242.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
-                  }
-                  question={'Si ya tienes experiencia...'}
-                  answer={activity.experience.text_6}
-                  questionBox={'question-box'}
-                  answerBox={'answer-box'}
-                ></ActivityText1>
-                <Outlet />
+                <div className='activities-content'>
+                  <div className='element'>
+                    <ActivityText1
+                      image={
+                        activity.photos === 1
+                          ? `${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[0]?.path}`
+                          : 'https://images.pexels.com/photos/9035242/pexels-photo-9035242.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
+                      }
+                      question={'¿En qué consiste este deporte?'}
+                      answer={activity.experience.text_4}
+                      questionBox={'question-box'}
+                      answerBox={'answer-box'}
+                      activityClass='activity'
+                    ></ActivityText1>
+                  </div>
+                  <div className='activity-odd element'>
+                    <ActivityText1
+                      image={
+                        activity.photos === 2
+                          ? `${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[1]?.path}`
+                          : 'https://images.pexels.com/photos/9035242/pexels-photo-9035242.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
+                      }
+                      question={
+                        '¿Qué niveles de dificultad hay? ¿Y si no tengo experiencia?'
+                      }
+                      answer={activity.experience.text_5}
+                      questionBox={'question-box-right'}
+                      answerBox={'answer-box-right'}
+                      activityClass='activity'
+                    ></ActivityText1>
+                  </div>
+                  <div className='element'>
+                    <ActivityText1
+                      image={
+                        activity.photos === 3
+                          ? `${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[2]?.path}`
+                          : 'https://images.pexels.com/photos/9035242/pexels-photo-9035242.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
+                      }
+                      question={'Si ya tienes experiencia...'}
+                      answer={activity.experience.text_6}
+                      questionBox={'question-box'}
+                      answerBox={'answer-box'}
+                      activityClass='activity'
+                    ></ActivityText1>
+                  </div>
+                </div>
               </div>
             </li>
           </ul>

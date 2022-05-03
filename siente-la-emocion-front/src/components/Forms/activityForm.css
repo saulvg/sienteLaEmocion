@@ -28,6 +28,7 @@
   padding: 20px;
   position: absolute;
   top: 36px;
+  left: 100px;
   height: 150px;
   z-index: 10;
   text-align: center;
@@ -54,6 +55,9 @@
   border-radius: 20px;
   padding: 60px 30px;
   position: absolute;
+  height: auto;
+  max-height: 40rem;
+  overflow: auto;
   top: 144px;
   right: 0;
 }
@@ -66,7 +70,8 @@
   padding: 60px 30px;
   position: absolute;
   top: 144px;
-  left: 110px;
+  overflow: auto;
+  left: 50px;
   text-align: left;
 }
 
@@ -76,6 +81,7 @@
   font-weight: bold;
   font-size: 24px;
   line-height: 27px;
+  max-height: 25rem;
   color: white;
 }
 
@@ -86,23 +92,29 @@
 .activity {
   width: 80%;
   position: relative;
-  margin: auto;
 }
 
-.activity:nth-child(odd) {
+.activity-odd {
+  justify-content: end;
   text-align: end;
+  display: flex;
 }
 
 .activity-img {
-  width: 70%;
-  height: 70%;
+  width: 43rem;
+  height: 43rem;
   border-radius: 50%;
   filter: drop-shadow(6px 6px 23px rgba(0, 0, 0, 0.25));
+  object-fit: cover;
 }
 
-.activity + .activity {
-  margin-top: 90px;
-  padding-top: 90px;
+.company-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.element + .element {
+  margin-top: 10rem;
 }
 
 @media (max-width: 1440px) {
@@ -117,16 +129,14 @@
     text-align: center;
   }
 
-  .activity-img {
-    width: 600px;
-  }
-
   .question-box {
     position: initial;
+    width: 60%;
   }
 
   .question-box-right {
     position: initial;
+    width: 60%;
   }
 
   .question-box:nth-child(even) {
@@ -142,37 +152,35 @@
   .answer-box {
     position: initial;
     margin: auto;
+    width: 60%;
   }
 
   .answer-box-right {
     position: initial;
     margin: auto;
+    width: 60%;
   }
 }
 
 @media (max-width: 1030px) {
-  .activity-img {
-    width: 400px;
-  }
-
   .activity {
     width: 100%;
   }
 
   .question-box:nth-child(even) {
-    width: 350px;
+    width: 90%;
   }
 
   .answer-box {
-    width: 330px;
+    width: 90%;
   }
 
   .question-box-right:nth-child(even) {
-    width: 350px;
+    width: 90%;
   }
 
   .answer-box-right {
-    width: 330px;
+    width: 90%;
   }
 }
 
@@ -199,11 +207,6 @@
     border-radius: 0;
   }
 
-  .activity-img {
-    width: 100%;
-    border-radius: 0;
-  }
-
   .company-div h2 {
     text-align: center;
     margin-bottom: 40px;
@@ -213,5 +216,12 @@
     border-top: 0;
     margin-top: 30px;
     padding-top: 30px;
+  }
+}
+
+@media (max-width: 720px) {
+  .activity-img {
+    width: 100%;
+    border-radius: 0;
   }
 }

@@ -303,7 +303,7 @@
   color: #ffffff;
   border: 0;
   cursor: pointer;
-  margin: 40px auto;
+  margin-top: 40px;
 }
 .blue-button:hover {
   background-color: rgba(127, 205, 250, 0.79);
@@ -488,7 +488,6 @@ div > .error-msg {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 65px;
   padding: 0 10px;
 }
 
@@ -647,8 +646,7 @@ div > .error-msg {
     margin: 20px auto;
   }
   .blue-button + .blue-button {
-    margin-left: 0;
-    margin-top: 20px;
+    margin: auto;
   }
 }
 
