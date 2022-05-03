@@ -83,87 +83,97 @@ const ListaActividades = () => {
       />
       <div className='container flex activity-content'>
         <div className='filter'>
-          <div className='filter-content filter-section' data-aos='fade-right'>
-            <div id='aventura'>
-              <h3 className='filter-title'>aventura</h3>
-              <div className='icon-filterStyle adventure-grid '>
-                <div
-                  className='icon-filterStyle escalada'
-                  onClick={() => {
-                    !category ? setCategory(`escalada`) : setCategory('');
-                  }}
-                ></div>
-                <div
-                  className='icon-filterStyle ciclismo'
-                  onClick={() => {
-                    /* ${window.location.href} */
-                    !category ? setCategory(`ciclismo`) : setCategory('');
-                  }}
-                >
-                  Ciclismo
-                </div>
-                <div
-                  className='icon-filterStyle paracaidismo'
-                  onClick={() => {
-                    /* ${window.location.href} */
-                    !category ? setCategory(`paracaidismo`) : setCategory('');
-                  }}
-                >
-                  Paracaidismo
-                </div>
-                <div
-                  className='icon-filterStyle esqui'
-                  onClick={() => {
-                    /* ${window.location.href} */
-                    !category ? setCategory(`esqui`) : setCategory('');
-                  }}
-                >
-                  Esqui
-                </div>
-                <div
-                  className='icon-filterStyle buceo'
-                  onClick={() => {
-                    /* ${window.location.href} */
-                    !category ? setCategory(`buceo`) : setCategory('');
-                  }}
-                >
-                  Buceo
-                </div>
-                <div
-                  className='icon-filterStyle piraguismo'
-                  onClick={() => {
-                    /* ${window.location.href} */
-                    !category ? setCategory(`piraguismo`) : setCategory('');
-                  }}
-                >
-                  Piraguismo
-                </div>
-                <div
-                  className='icon-filterStyle yoga'
-                  onClick={() => {
-                    /* ${window.location.href} */
-                    !category ? setCategory(`yoga`) : setCategory('');
-                  }}
-                >
-                  Yoga
-                </div>
-                <div
-                  className='icon-filterStyle motorBike'
-                  onClick={() => {
-                    /* ${window.location.href} */
-                    !category ? setCategory(`motorBike`) : setCategory('');
-                  }}
-                >
-                  MotorBike
-                </div>
-                <div
-                  className='icon-filterStyle espeleologia'
-                  onClick={() => {
-                    /* ${window.location.href} */
-                    !category ? setCategory(`espeleologia`) : setCategory('');
-                  }}
-                >
-                  Esperiologio
+          <button
+            className='filter-by'
+            onClick={() => {
+              setFilter(!filter);
+            }}
+          >
+            Filtrar por ↧
+          </button>
+          {filter ? (
+            <div className='filter-content filter-section'>
+              <div id='aventura'>
+                <h3 className='filter-title'>aventura</h3>
+                <div className='icon-filterStyle adventure-grid '>
+                  <div
+                    className='icon-filterStyle escalada'
+                    onClick={() => {
+                      !category ? setCategory(`escalada`) : setCategory('');
+                    }}
+                  ></div>
+                  <div
+                    className='icon-filterStyle ciclismo'
+                    onClick={() => {
+                      /* ${window.location.href} */
+                      !category ? setCategory(`ciclismo`) : setCategory('');
+                    }}
+                  >
+                    Ciclismo
+                  </div>
+                  <div
+                    className='icon-filterStyle paracaidismo'
+                    onClick={() => {
+                      /* ${window.location.href} */
+                      !category ? setCategory(`paracaidismo`) : setCategory('');
+                    }}
+                  >
+                    Paracaidismo
+                  </div>
+                  <div
+                    className='icon-filterStyle esqui'
+                    onClick={() => {
+                      /* ${window.location.href} */
+                      !category ? setCategory(`esqui`) : setCategory('');
+                    }}
+                  >
+                    Esqui
+                  </div>
+                  <div
+                    className='icon-filterStyle buceo'
+                    onClick={() => {
+                      /* ${window.location.href} */
+                      !category ? setCategory(`buceo`) : setCategory('');
+                    }}
+                  >
+                    Buceo
+                  </div>
+                  <div
+                    className='icon-filterStyle piraguismo'
+                    onClick={() => {
+                      /* ${window.location.href} */
+                      !category ? setCategory(`piraguismo`) : setCategory('');
+                    }}
+                  >
+                    Piraguismo
+                  </div>
+                  <div
+                    className='icon-filterStyle yoga'
+                    onClick={() => {
+                      /* ${window.location.href} */
+                      !category ? setCategory(`yoga`) : setCategory('');
+                    }}
+                  >
+                    Yoga
+                  </div>
+                  <div
+                    className='icon-filterStyle motorBike'
+                    onClick={() => {
+                      /* ${window.location.href} */
+                      !category ? setCategory(`motorBike`) : setCategory('');
+                    }}
+                  >
+                    MotorBike
+                  </div>
+                  <div
+                    className='icon-filterStyle espeleologia'
+                    onClick={() => {
+                      /* ${window.location.href} */
+                      !category ? setCategory(`espeleologia`) : setCategory('');
+                    }}
+                  >
+                    Esperiologio
+                  </div>
                 </div>
                 {/* {console.log('soy activities', activities)}; */}
                 {/*                     setCategory(value) */}
@@ -184,7 +194,20 @@ const ListaActividades = () => {
                   ))}
                 </select>
               </div>
-            </div>
+              {/* <div className='filter-section filter-map'>
+                <h3 className='filter-title'>map</h3>
+                <input
+                  type={'search'}
+                  placeholder='Busca aquí...'
+                  className='map-input'
+                ></input>
+                <button className='map-search'>Buscador</button>
+                <div className='w-full map'></div>
+              </div> */}
+
+              {/* .................................................................................................................... */}
+
+              {/* ................................................................................................................... */}
               <div id='ratings' className='filter-section'>
                 <h3 className='filter-title'>puntuación</h3>
                 <div className='ratings'>
@@ -276,46 +299,46 @@ const ListaActividades = () => {
                   </svg>
                 </div>
               </div>
-            </div>
-            <div id='precios' className='filter-section'>
-              <h3 className='filter-title'>precios</h3>
-              <div className='flex items-center filter-checkbox'>
-                <input
-                  name='price'
-                  className='price-filter'
-                  type={'radio'}
-                  onClick={() => setPrice(20)}
-                ></input>
-                <label>{'< 20 €'}</label>
-              </div>
-              <div className='flex items-center filter-checkbox'>
-                <input
-                  name='price'
-                  className='price-filter'
-                  type={'radio'}
-                  onClick={() => setPrice(40)}
-                ></input>
-                <label> {'< 40 €'}</label>
-              </div>
-              <div className='flex items-center filter-checkbox'>
-                <input
-                  name='price'
-                  className='price-filter'
-                  type={'radio'}
-                  onClick={() => setPrice(60)}
-                ></input>
-                <label> {'< 60 €'}</label>
-              </div>
-              <div className='flex items-center filter-checkbox'>
-                <input
-                  name='price'
-                  className='price-filter'
-                  type={'radio'}
-                  onClick={() => setPrice(1000)}
-                ></input>
-                <label> {'> 60 €'}</label>
-              </div>
-              {/* <div className='flex items-center filter-checkbox'>
+              {/* .... */}
+              <div id='precios' className='filter-section'>
+                <h3 className='filter-title'>precios</h3>
+                <div className='flex items-center filter-checkbox'>
+                  <input
+                    name='price'
+                    className='price-filter'
+                    type={'radio'}
+                    onClick={() => setPrice(20)}
+                  ></input>
+                  <label>{'< 20 €'}</label>
+                </div>
+                <div className='flex items-center filter-checkbox'>
+                  <input
+                    name='price'
+                    className='price-filter'
+                    type={'radio'}
+                    onClick={() => setPrice(40)}
+                  ></input>
+                  <label> {'< 40 €'}</label>
+                </div>
+                <div className='flex items-center filter-checkbox'>
+                  <input
+                    name='price'
+                    className='price-filter'
+                    type={'radio'}
+                    onClick={() => setPrice(60)}
+                  ></input>
+                  <label> {'< 60 €'}</label>
+                </div>
+                <div className='flex items-center filter-checkbox'>
+                  <input
+                    name='price'
+                    className='price-filter'
+                    type={'radio'}
+                    onClick={() => setPrice(1000)}
+                  ></input>
+                  <label> {'> 60 €'}</label>
+                </div>
+                {/* <div className='flex items-center filter-checkbox'>
                   <input
                     name='price'
                     className='price-filter'
@@ -334,20 +357,12 @@ const ListaActividades = () => {
               </div>
               <button onClick={handleFilter}>Filtrar</button>
             </div>
-            <div id='calendar' className='filter-section'>
-              <h3 className='filter-title'>Fechas</h3>
-              {/*                 <Calendar onChange={(e) => setDate(value)} />
-               */}
-              <Calendar onChange={fecha} value={value} />
-            </div>
-            <button onClick={handleFilter}>Filtrar</button>
-          </div>
+          ) : null}
         </div>
 
         <ActividadLista activities={activities} error={error} />
       </div>
     </div>
-    </>
   ) : (
     <Loading clas={'load-Page'}>{error ? error : setErrorCategory}</Loading>
   );
