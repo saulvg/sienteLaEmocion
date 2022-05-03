@@ -1,3 +1,4 @@
+
 #listaActividades {
   background-color: #fff9f5;
 }
@@ -56,9 +57,10 @@
   margin-left: 5px;
 }
 
-.star-svg:hover {
-  color: black;
-}
+ .star-svg:hover {
+  fill: yellow;
+} 
+
 
 .filter-checkbox + .filter-checkbox {
   margin-top: 10px;
@@ -253,3 +255,4 @@
 .espeleologia {
   background-image: url('../../../public/silueta/espeleologia.png');
 }
+

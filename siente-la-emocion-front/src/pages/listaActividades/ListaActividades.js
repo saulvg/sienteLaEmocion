@@ -9,6 +9,8 @@ import './listaActividades.css';
 import { useNavigate } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
 import { Calendar } from 'react-calendar';
+import DatePiker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 /**
  * ###########
@@ -34,7 +36,7 @@ import useCategories from '../../hooks/useCategories';
 
 //Pagina que pinta la lista de todas las experiencias disponibles en la Web
 const ListaActividades = () => {
-  const { activity } = useActivity('random'); /* ................. */
+  const { activity } = useActivity('random');
 
   const [filter, setFilter] = useState(false);
 
@@ -43,12 +45,6 @@ const ListaActividades = () => {
   const [votes, setVotes] = useState('');
   const [date, setDate] = useState('');
 
-  /* const navigate = useNavigate();
-  const [params] = useSearchParams();
-  const termCategory = params.get('category');
-  const termPrice1 = params.get('price1');
-  const termPrice2 = params.get('price2');
-  const termVotes = params.get('votes'); */
   const [queryString, setQueryString] = useState('');
   const { activities, error } = useActivities(queryString);
   const { companyCategories, setErrorCategory } = useCategories('');
@@ -191,7 +187,6 @@ const ListaActividades = () => {
                   <option selected value={'allexperiences'}>
                     {'Busaca por nombre (todas)'}
                   </option>
-                  {console.log('soy', companyCategories)};
                   {companyCategories.map((companyCategory) => (
                     <option value={companyCategory.name}>
                       {companyCategory.name}
@@ -218,7 +213,7 @@ const ListaActividades = () => {
                 <div className='ratings'>
                   <svg
                     className='star-svg'
-                    fill='gray'
+                    fill={votes >= 1 ? 'yellow' : 'grey'}
                     stroke='gray'
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
@@ -234,8 +229,8 @@ const ListaActividades = () => {
                     ></path>
                   </svg>
                   <svg
-                    className='star-svg'
-                    fill='gray'
+                    className={'star-svg'}
+                    fill={votes >= 2 ? 'yellow' : 'grey'}
                     stroke='gray'
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
@@ -251,8 +246,8 @@ const ListaActividades = () => {
                     ></path>
                   </svg>
                   <svg
-                    className='star-svg'
-                    fill='gray'
+                    className={'star-svg'}
+                    fill={votes >= 3 ? 'yellow' : 'grey'}
                     stroke='gray'
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
@@ -269,7 +264,7 @@ const ListaActividades = () => {
                   </svg>
                   <svg
                     className='star-svg'
-                    fill='gray'
+                    fill={votes >= 4 ? 'yellow' : 'grey'}
                     stroke='gray'
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
@@ -287,7 +282,7 @@ const ListaActividades = () => {
 
                   <svg
                     className='star-svg'
-                    fill='gray'
+                    fill={votes >= 5 ? 'yellow' : 'grey'}
                     stroke='gray'
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
@@ -357,7 +352,8 @@ const ListaActividades = () => {
                 <h3 className='filter-title'>Fechas</h3>
                 {/*                 <Calendar onChange={(e) => setDate(value)} />
                  */}
-                <Calendar onChange={fecha} value={value} />
+                {/* <Calendar onChange={fecha} value={value} /> */}
+                <DatePiker startOpen={true}></DatePiker>
               </div>
               <button onClick={handleFilter}>Filtrar</button>
             </div>
