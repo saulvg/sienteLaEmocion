@@ -11,6 +11,7 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { useLocalStorage } from './hooks/useSessionStorage';
 
+
 /**
  * ################
  * ## Components ##
@@ -29,7 +30,7 @@ import HomePage from './pages/homePage/HomePage';
 import Register from './pages/Forms/Register';
 import Experience from './pages/Experience';
 import ListaActividades from './pages/listaActividades/ListaActividades';
-import { ReviewPage } from './pages/reviewPage/reviewPage';
+import ReviewPage  from './pages/reviewPage/reviewPage';
 import ProfilePage from './pages/Forms/ProfilePage';
 import Login from './pages/Forms/Login';
 import DeleteAccount from './components/Forms/DeleteAccount';
@@ -40,7 +41,6 @@ import Buscador from './pages/buscador/Buscador';
 import LoginPage from './pages/Forms/Login';
 
 import ModalContactanos from './components/modalContactanos/ModalContactanos';
-import Review, { Booking } from './components/Review/Review';
 import UserExperiences from './components/UserExperiences/UserExperiences';
 /* import ModalContactanos from './components/modalContactanos/ModalContactanos';
  */
@@ -88,10 +88,7 @@ function App() {
               path='/experiences/:idExperience/reviews'
               element={<ReviewPage />}
             />
-            <Route
-              path='/experiences/:idExperiencesBooking/votes'
-              element={<Booking />}
-            />
+            
             <Route
               path='/experiences/:idExperience/booking'
               element={<BookingExperience />}

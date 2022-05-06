@@ -12,29 +12,29 @@ const ModalContactanos = () => {
         content={
           <>
             <div className='contacta-bg'>
-              <section class='contacta-section'>
+              <section className='contacta-section'>
                 <div>
                   <h2>¿Quieres formar parte de nosotros?</h2>
                 </div>
               </section>
-              <section class='contacta-section'>
+              <section className='contacta-section'>
                 <div>
                   <h2>Contacta con nosotros</h2>
-                  <div class='contact-flex-data'>
-                    <div class='contact-data'>
+                  <div className='contact-flex-data'>
+                    <div className='contact-data'>
                       <h3>Llámanos</h3>
                       <p>123 456 789</p>
                     </div>
-                    <div class='contact-data'>
+                    <div className='contact-data'>
                       <h3>Escríbenos</h3>
                       <p>emoción@gmail.com</p>
                     </div>
-                    <div class='contact-data'>
+                    <div className='contact-data'>
                       <h3>Visítanos</h3>
                       <p>Calle XXX</p>
                     </div>
                   </div>
-                  <div class='contact-social-media'>
+                  <div className='contact-social-media'>
                     <SocialNetwork id={'miniInstagram'} className={'mini'} />
                     <SocialNetwork
                       id={'miniFacebook'}
@@ -45,8 +45,8 @@ const ModalContactanos = () => {
                 </div>
               </section>
             </div>
-            <div class='contacta-bg2'></div>
-            <div class='contacta-bg3'></div>
+            <div className='contacta-bg2'></div>
+            <div className='contacta-bg3'></div>
           </>
         }
       />

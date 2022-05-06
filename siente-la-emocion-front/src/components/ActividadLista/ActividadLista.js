@@ -45,8 +45,8 @@ const ActividadLista = ({ activities, error }) => {
   //si no ha habido ningun error pero no hay actividades pintamos que no las hay y sino las avtividades con todos sus datos
   return activities.length > 0 ? (
     <ul className='w-full activities '>
-      {/* Cada actividadad es un li dentro de un ul con su Link, etc, si eres admin puedes editarlas desde aqui, sino no */}
       {activities.map((activity) => {
+      // Cada actividadad es un li dentro de un ul con su Link, etc, si eres admin puedes editarlas desde aqui, sino no 
         return (
           <li
             key={activity.id}
@@ -85,7 +85,6 @@ const ActividadLista = ({ activities, error }) => {
                   <div className='lapiz'>Lapiz</div>
                 </Link>
               ) : (
-                /* ..................... */
                 <div className='social-networks'>
                   {activity.companyInstagram ? (
                     <SocialNetwork
@@ -104,7 +103,6 @@ const ActividadLista = ({ activities, error }) => {
                     />
                   ) : null}
                 </div>
-                /* ............. */
               )}
             </div>
           </li>

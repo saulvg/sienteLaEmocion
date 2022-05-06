@@ -37,7 +37,10 @@ const getUserExperiences = async (req, res, next) => {
         )*/
         //obtenemso la informacion de la experiencia que queremos obtener haciendo un join con los datos de otras tablas que tambien necesitamos aqui
         //Obtenemos los datos del historial de actividades reservadas por el usuario con el id propietario del perfil
-        const [experiences] = await connection.query(
+     
+             /* ...................... */
+
+        /*    const [experiences] = await connection.query(
             `
     SELECT 
         id,
@@ -78,11 +81,55 @@ const getUserExperiences = async (req, res, next) => {
                 [idExperienceBooking]
             );
             userExperiences.push(experience[0]);
+        } */
+
+        /* ...................... */
+
+        /* ...........Saul................ */
+        const [bookings] = await connection.query(
+            `
+            SELECT 
+                id,
+                id_experiences
+            FROM 
+                booking
+            WHERE  
+                id_user = ?
+            `, [idReqUser]
+        )
+        console.log('bookings user', bookings);
+        const userExperiencesBooking = [];
+        for (const booking of bookings){
+        const [experiences] = await connection.query(
+            `
+            SELECT 
+            experiences.id,
+            experiences.photoHeader, 
+            experiences.id_company,
+            experiences.id_experiences_category,
+            experiences.date,
+            company.name AS company,
+            experiences_category.name AS category,
+            votes.vote AS votes_entry
+            FROM 
+                experiences
+            LEFT JOIN company ON (experiences.id_company = company.id)
+            LEFT JOIN experiences_category ON (experiences.id_experiences_category = experiences_category.id)
+            LEFT JOIN votes ON (experiences.id = votes.id_experiences)
+            WHERE  
+            experiences.id = ?
+            `, [booking.id_experiences]
+        )
+        userExperiencesBooking.push(experiences[0])
         }
+       
+       
 
         res.send({
             status: 'ok',
-            data: { userExperiences },
+            data: { 
+                userExperiencesBooking,
+         },
             /* 
         esxperiemces: experiences, */
             /* prueba: experiences.map((idExp) => idExp.id_experiences), */

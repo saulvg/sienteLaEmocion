@@ -1,4 +1,6 @@
+// ## Style ##
 import './error.css';
+//Componente para pintar errores o mensajes de alerta 
 const Error = ({ children }) => {
   return (
     <div className='bodyError'>

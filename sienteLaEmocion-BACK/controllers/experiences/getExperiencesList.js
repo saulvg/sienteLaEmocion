@@ -62,18 +62,7 @@ const getListEntry = async (req, res, next) => {
                 [category, price, votes, `%${date}%`]
             );
 
-            /* if (category) {
-                console.log(
-                    'category',
-                    experiences.filter((cat, pric) => {
-                        cat.category === category && pric.price <= price;
-                    })
-                );
-            } */
-
-            /*                      booking.id AS booking,
-               LEFT JOIN booking ON (experiences.id = booking.id_experiences)
- */
+            
         } else {
             [experiences] = await connection.query(
                 `

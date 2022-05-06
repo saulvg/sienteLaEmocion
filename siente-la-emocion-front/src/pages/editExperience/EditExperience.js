@@ -21,7 +21,6 @@ import useActivity from '../../hooks/useActivity';
  * ## Components ##
  * ################
  */
-
 import Error from '../../components/error/Error';
 import {
   CapacityCompany,
@@ -40,7 +39,6 @@ import Header from '../../components/Header/Header';
 import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
 import DeleteExperience from '../../components/DeleteExperience/DeleteExperience';
 import Loading from '../../components/loading/Loading';
-import BlueButton from '../../components/Forms/BlueButton';
 import { ModalCircle } from '../../components/Forms/ModalCircle';
 
 //Pagina que pinta el formulario para que el admin pueda editar casi todos los campos de una experiencia
