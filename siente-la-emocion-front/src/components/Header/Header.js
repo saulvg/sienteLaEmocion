@@ -54,7 +54,10 @@ const Header = ({ bg, to, button, body, className }) => {
               <menu>
                 <button
                   className='toggle-button'
-                  onClick={() => setToggleMenu(false)}
+                  onClick={() => {
+                    setToggleMenu(false);
+                    setFormVisible(false);
+                  }}
                 >
                   <svg
                     className='close-nav'

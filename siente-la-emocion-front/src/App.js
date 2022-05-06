@@ -1,12 +1,14 @@
 // ## Style ##
 import './App.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 /**
  * ###########
  * ## React ##
  * ###########
  */
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocalStorage } from './hooks/useSessionStorage';
 
 /**
@@ -59,6 +61,10 @@ const AuthProvider = (props) => {
 };
 
 function App() {
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   return (
     <>
       <AuthProvider>

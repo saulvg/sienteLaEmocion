@@ -43,7 +43,7 @@ header .headerTop img {
 }
 
 #inputSearch {
-  width: 20%;
+  width: 30%;
 
   margin: auto;
 }
@@ -236,7 +236,7 @@ header .headerButton button:hover {
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 749px) {
   .mobile-nav {
     flex-direction: column;
     justify-content: flex-start;
@@ -297,6 +297,9 @@ header .headerButton button:hover {
     width: 30px;
     height: 30px;
   }
+  #inputSearch {
+    width: 80%;
+  }
 
   header .headerTop menu {
     border: none;
@@ -322,8 +325,11 @@ header .headerButton button:hover {
     margin: 30px auto;
   }
 
+  header {
+    min-height: 80vh;
+  }
+
   .activity-description h3 {
     text-align: center;
   }
 }
-

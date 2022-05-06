@@ -6,9 +6,10 @@ export const ActivityText1 = ({
   question,
   questionBox,
   answerBox,
+  activityClass,
 }) => {
   return (
-    <div className='activity'>
+    <div className={activityClass}>
       <img className='activity-img' src={image} alt='logo' />
       <div className={questionBox}>
         <p className='question'>{question}</p>

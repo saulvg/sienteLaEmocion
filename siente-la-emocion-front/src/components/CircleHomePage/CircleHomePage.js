@@ -1,8 +1,8 @@
 import './circlePage.css';
 const CircleHomePage = ({ id, clas, href, children }) => {
   return (
-    <a href={href} id={id} className={`route ${clas}`}>
-      <div className='route-content'>{children}</div>
+    <a href={href} id={id} className={`route ${clas}`} data-aos='flip-left'>
+      <span className='route-content'>{children}</span>
     </a>
   );
 };

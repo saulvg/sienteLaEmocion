@@ -97,10 +97,10 @@
   border-radius: 50%;
   width: 7.5rem;
   height: 7.5rem;
-
+  object-fit: cover;
   background-color: rgb(133, 90, 90);
 }
-.user-avatar:hover{
+.user-avatar:hover {
   cursor: pointer;
 }
 
@@ -189,7 +189,7 @@
 }
 
 .label-element + .label-element {
-  margin: 46px;
+  margin-top: 46px;
 }
 
 .profile-label-element {
@@ -303,6 +303,7 @@
   color: #ffffff;
   border: 0;
   cursor: pointer;
+  margin-top: 40px;
 }
 .blue-button:hover {
   background-color: rgba(127, 205, 250, 0.79);
@@ -487,7 +488,6 @@ div > .error-msg {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 65px;
   padding: 0 10px;
 }
 
@@ -528,6 +528,11 @@ div > .error-msg {
 
   .profile {
     width: 100%;
+  }
+
+  .my-experiences {
+    width: 70%;
+    margin: 40px auto;
   }
 
   .profile + .profile {
@@ -638,10 +643,33 @@ div > .error-msg {
 @media (max-width: 550px) {
   .blue-button {
     display: block;
-    margin: auto;
+    margin: 20px auto;
   }
   .blue-button + .blue-button {
-    margin-left: 0;
+    margin: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .my-experience {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .my-experience-img {
+    margin: 10px auto;
+  }
+
+  .my-experiences {
     margin-top: 20px;
+  }
+
+  .my-experience-content div {
+    flex-direction: column;
+    margin-top: 15px;
+  }
+
+  .my-experience-content {
+    margin-left: 0;
   }
 }

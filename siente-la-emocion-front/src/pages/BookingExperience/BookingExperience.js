@@ -106,29 +106,25 @@ const BookingExperience = () => {
                       <>
                         {!load ? (
                           <>
-                            <div className='flex w-full items-center justify-between bookings'>
+                            <div className='bookings'>
                               <div className=' divide'>
-                                <label className='label-element'>
-                                  Si tienes un mensaje para nosotros:
-                                  <TextareaElement
-                                    type={'text'}
-                                    value={message}
-                                    onChange={(e) => {
-                                      setUserMessage(e.target.value);
-                                      console.log(message);
-                                    }}
-                                  />
-                                </label>
+                                <TextareaElement
+                                  labelName='Si tienes un mensaje para nosotros'
+                                  type={'text'}
+                                  value={message}
+                                  onChange={(e) => {
+                                    setUserMessage(e.target.value);
+                                    console.log(message);
+                                  }}
+                                />
                               </div>
-                              <div>
-                                <BlueButton
-                                  type='submit'
-                                  name={'Reservar'}
-                                ></BlueButton>
-                                <BlueButton name='Cancelar' onClick={comeBack}>
-                                  Cancelar
-                                </BlueButton>
-                              </div>
+                              <BlueButton
+                                type='submit'
+                                name={'Reservar'}
+                              ></BlueButton>
+                              <BlueButton name='Cancelar' onClick={comeBack}>
+                                Cancelar
+                              </BlueButton>
                             </div>
                           </>
                         ) : (

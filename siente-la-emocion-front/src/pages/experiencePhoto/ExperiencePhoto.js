@@ -27,6 +27,7 @@ import Loading from '../../components/loading/Loading';
  */
 import useUser from '../../hooks/useUser';
 import ButtonForm from '../../components/ButtonForm/ButtonForm';
+import BlueButton from '../../components/Forms/BlueButton';
 
 //Pagina que pinta el formulario para que el admin pueda incluir 3 fotos de una experiencia
 const ExperiencePhoto = () => {
@@ -125,23 +126,41 @@ const ExperiencePhoto = () => {
           {!load ? (
             <>
               {!errorMessage ? (
-                <div className='upFiles'>
+                <div className='photos-form container'>
                   <form onSubmit={uploadFiles}>
-                    <div className='flexFormPhotos'>
-                      <label>
+                    <h2 className='photo-form-title'>
+                      Añade el resto de fotos
+                    </h2>
+                    <div className='flex-form-photos'>
+                      <label className='label-element'>
                         Selecciona foto 1
-                        <input type={'file'} onChange={dataPhoto1} required />
+                        <input
+                          type={'file'}
+                          className='w-full'
+                          onChange={dataPhoto1}
+                          required
+                        />
                       </label>
-                      <label>
+                      <label className='label-element'>
                         Selecciona foto 2
-                        <input type={'file'} onChange={dataPhoto2} required />
+                        <input
+                          type={'file'}
+                          className='w-full'
+                          onChange={dataPhoto2}
+                          required
+                        />
                       </label>
-                      <label>
+                      <label className='label-element'>
                         Selecciona foto 3
-                        <input type={'file'} onChange={dataPhoto3} required />
+                        <input
+                          type={'file'}
+                          className='w-full'
+                          onChange={dataPhoto3}
+                          required
+                        />
                       </label>
                     </div>
-                    <ButtonForm>Subir</ButtonForm>
+                    <BlueButton name='Subir'></BlueButton>
                   </form>
                 </div>
               ) : (

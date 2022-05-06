@@ -13,6 +13,7 @@ import ActividadLista from '../../components/ActividadLista/ActividadLista';
 import Header from '../../components/Header/Header';
 import BodyExperiencesList from '../../components/Header/MainHeader/BodyExperiencesList';
 import Error from '../../components/error/Error';
+import '../Forms/formsPages.css';
 /**
  * ###########
  * ## Hooks ##
@@ -46,7 +47,9 @@ function Buscador() {
         body={<BodyExperiencesList activity={activity} />}
       />
       {!error ? (
-        <ActividadLista activities={activities} error={error} />
+        <div className='container search-activity'>
+          <ActividadLista activities={activities} error={error} />
+        </div>
       ) : (
         <Error>{error}</Error>
       )}

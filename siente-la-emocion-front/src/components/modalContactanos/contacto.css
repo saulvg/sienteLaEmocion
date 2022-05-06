@@ -35,12 +35,14 @@
   background: #f4d4c1;
   z-index: 3;
   display: flex;
+  align-items: center;
 }
 
 .contacta-bg2 {
   position: absolute;
   bottom: 0;
   width: 100%;
+  left: 0;
   height: 90%;
   background: #f8efef;
   z-index: 2;
@@ -50,6 +52,7 @@
   position: absolute;
   bottom: 0;
   width: 100%;
+  left: 0;
   height: 100%;
   background: #fff9f5;
   z-index: 1;
@@ -115,6 +118,8 @@
   font-size: 15px;
   line-height: 18px;
   margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
 }
 
 .contact-social-media img {
@@ -126,6 +131,19 @@
   .modal-fg {
     width: 100%;
     border-radius: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .contact-flex-data {
+    display: flex;
+    flex-direction: column;
+  }
+  .contact-flex-data p {
+    margin-top: 10px;
+  }
+  .contact-flex-data div {
+    margin-bottom: 20px;
   }
 }
 
