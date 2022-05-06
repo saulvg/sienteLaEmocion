@@ -1,13 +1,31 @@
+// ## Style ##
 import './bodyExperience.css';
+/**
+ * ###########
+ * ## Hooks ##
+ * ###########
+ */
 import useActivity from '../../../hooks/useActivity';
+/**
+ * ###########
+ * ## React ##
+ * ###########
+ */
 import { Link, useParams } from 'react-router-dom';
 import { useState } from 'react';
 
+//Componente que pinta la cabezera cuando entramos en una actividad en concreto
 const BodyActivitis = () => {
+  //parametro de la ruta para saber a que id de experiencia hacemos referencia
   const { idExperience } = useParams();
+  //le pasamso al Hook de 'useActivity el valor del id para que nos devuelva los datos de esa experiencia
   const { activity, error } = useActivity(idExperience);
-  const [text, setText] = useState(false);
 
+  //Formateamos la fecha para que el usuario la lea lo mas comodamente posible
+  const experienceDate = new Date(activity?.experience.date);
+  const formatDate = experienceDate.toLocaleString();
+
+  //Devolvemos todos los compnenetes que deseamos pintar si se cumplen las condiciones (activity  ?), sino devolvemos el correspondiente error en Front
   return activity ? (
     <div className='header-body bodyExperience container'>
       <h1>{activity.experiences_category}</h1>
@@ -34,9 +52,12 @@ const BodyActivitis = () => {
               <h3>
                 Cuanto dura la experiencia?
                 <br />
-                ¿Cuando se realiza?
+                ¿Cuando y donde se realiza?
               </h3>
-              <p>{activity.experience.text_3}</p>
+              <p>
+                {activity.experience.text_3} <br />
+                El {formatDate} en {activity.experience.city}
+              </p>
             </div>
           </div>
         </section>
@@ -44,16 +65,28 @@ const BodyActivitis = () => {
           <button className='experience-text-container'>
             <div className='experience-description-content'>
               {
-                <h3>
-                  <Link to={`/experiences/${idExperience}/reviews`}>
-                    Valoraciones
-                  </Link>
-                </h3>
+                <Link to={`/experiences/${idExperience}/reviews`}>
+                  <h3>Valoraciones</h3>
+                  <p>
+                    Si quieres saber que comentarios tiene esta empresa puedes
+                    mirarlo aqui <br />
+                    Media:
+                    {activity.experience.votes_entry === '5.0000' ? (
+                      <span>★★★★★ </span>
+                    ) : activity.experience.votes_entry === '4.0000' ? (
+                      <span>★★★★</span>
+                    ) : activity.experience.votes_entry === '3.0000' ? (
+                      <span>★★★</span>
+                    ) : activity.experience.votes_entry === '2.0000' ? (
+                      <span>★★</span>
+                    ) : activity.experience.votes_entry === '1.0000' ? (
+                      <span>★</span>
+                    ) : (
+                      <span>Sin votos</span>
+                    )}
+                  </p>
+                </Link>
               }
-              <p>
-                Si quieres saber que valoraciones tiene esta empresa haz click
-                aqui
-              </p>
             </div>
           </button>
         </section>

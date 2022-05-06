@@ -119,7 +119,6 @@ async function initDB() {
             id_experiences INT NOT NULL,
             id_user INT NOT NULL,
             userMessage VARCHAR(255),
-            vote TINYINT,
             createdAt DATETIME NOT NULL,
             FOREIGN KEY (id_experiences) REFERENCES experiences(id) ON DELETE CASCADE,
             FOREIGN KEY (id_user) REFERENCES users(id)

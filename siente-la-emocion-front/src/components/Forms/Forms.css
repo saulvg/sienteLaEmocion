@@ -158,7 +158,9 @@
   height: 70px;
   flex-shrink: 0;
   border-radius: 50%;
-  background-color: red;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 .my-experiences > li + .my-experience > li {
   margin-top: 20px;

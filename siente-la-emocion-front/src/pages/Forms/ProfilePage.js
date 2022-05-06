@@ -4,7 +4,6 @@ import { Navigate, useParams } from 'react-router';
 import EditProfile from '../../components/Forms/EditProfile';
 import useActivities from '../../hooks/useActivities';
 import { Modal } from '../../components/Modal/Modal';
-import Review from '../../components/Review/Review';
 import Header from '../../components/Header/Header';
 import DeleteAccount from '../../components/Forms/DeleteAccount';
 import UserExperiences from '../../components/UserExperiences/UserExperiences';
