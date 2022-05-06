@@ -9,21 +9,6 @@ const getReviews = async (req, res, next) => {
         //Obtenemso el id de la exeriencia que queremso obtener
         //ya hemos comprobado si existe anteriormente en un middleware asi que no lo comprobamos de nuevo
         const { idExperience } = req.params;
-        //Obtenemos la company que alberga esta experiencia
-        const [company] = await connection.query(
-            `
-            SELECT 
-                experiences.id, 
-                experiences.createdAt, 
-                experiences.id_user, 
-                experiences.date, 
-                experiences.id_company
-            FROM experiences
-            WHERE id = ?
-            ORDER BY createdAt desc
-            `,
-            [idExperience]
-        );
 
         //obtenemso la informacion de la experiencia que queremos obtener haciendo un join con los datos de otras tablas que tambien necesitamos aqui
         const [review] = await connection.query(
@@ -32,6 +17,7 @@ const getReviews = async (req, res, next) => {
             votes.id,
             votes.createdAt,
             votes.id_user,
+            votes.id_experiences,
             users.username AS username, 
             users.avatar AS avatar,
             users.biography AS biography,
@@ -43,17 +29,12 @@ const getReviews = async (req, res, next) => {
         FROM 
             votes
         LEFT JOIN users ON (votes.id_user = users.id)
-        WHERE id_company = ?
+        WHERE id_experiences= ?
         ORDER BY createdAt desc
         `,
-            [company[0].id_company]
+            [idExperience]
         );
-        /* const [user] = await connection.query(
-            `
-        SELECT username FROM users WHERE id = ?`,
-            [review[0].id_user]
-        );
-*/
+
         res.send({
             status: 'ok',
             data: {
