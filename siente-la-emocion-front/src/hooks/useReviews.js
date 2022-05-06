@@ -1,15 +1,12 @@
-//Hook para coger datos de las actividades
+//Hook para coger datos de las reviews
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import useActivity from './useActivity';
 
-const useReviews = (id) => {
+const useReviews = () => {
   const { idExperience } = useParams();
-  const { activity, error } = useActivity(idExperience);
   const [reviews, setReviews] = useState([]);
-  const [err, setError] = useState(null);
-  //id experience
-  //const [book, setBook] = useState([]);
+  const [error, setError] = useState(null);
+  
 
   useEffect(() => {
     const loadReviews = async () => {
@@ -31,20 +28,10 @@ const useReviews = (id) => {
         setError(error.message);
       }
     };
-
-    /*    const loadBook = async () => {
-      try {
-        HACER USE HOOK DE AVATAR COMPONENTE USERS/3  PARA COGER EL AVATAAAAAAAR
-        const response = await fetch(`${process.env.REACT_APP_BACKEND}/`)
-      } catch (error) {
-        setError(error.message);
-      }
-    }; */
-
     loadReviews();
-  }, [id]);
+  }, [idExperience]);
 
-  return { reviews, activity, error };
+  return { reviews, error };
 };
 
 export default useReviews;

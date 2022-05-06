@@ -10,11 +10,12 @@ import Error from '../components/error/Error';
 import useUser from '../hooks/useUser';
 import '../components/Forms/activityForm.css';
 import Loading from '../components/loading/Loading';
+import { Modal } from '../components/Modal/Modal';
+
 const Experience = () => {
   const { idExperience } = useParams();
   const { activity, error } = useActivity(idExperience);
   const { token } = useUser();
-  console.log('activity', activity);
   return activity ? (
     <>
       <Header
@@ -42,7 +43,12 @@ const Experience = () => {
                         {activity.users_booking.map((user) => {
                           return (
                             <div key={user.id}>
-                              <Link to='/'>{user.username}</Link>
+                              <Modal
+                              buttonClass='username-modal'
+                              buttonName={user.username}
+                              titleModal={user.username}
+                              content={user.biography ? 'Biografia:'+user.biography : 'Biografia: Sin informacion'}
+                            ></Modal>
                             </div>
                           );
                         })}

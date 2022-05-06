@@ -5,11 +5,10 @@ import useUser from './useUser';
 const useBookings = () => {
   const { token } = useUser();
 
-  const [bookings, setBookings] = useState([]);
+  const [bookings, setBookings] = useState('');
 
   const [error, setError] = useState(null);
-  //id experience
-  //const [book, setBook] = useState([]);
+ 
 
   useEffect(() => {
     const loadReviews = async () => {
@@ -24,17 +23,17 @@ const useBookings = () => {
           }
         );
 
-        const json = await response.json();
+        const body = await response.json();
 
-        if (!response.ok) {
-          setError('HOLAAA', json.message);
-          return;
+        if (response.ok) {
+          setBookings(body.data.userExperiencesBooking);
+        }else{
+          setError(body.message)
         }
 
-        setBookings(json.data.userExperiences);
-        console.log('VER DATOS', json.data.userExperiences);
       } catch (error) {
         setError('ERROR ', error.message);
+        console.log('ENTROOOOOOOOO');
       }
     };
 
