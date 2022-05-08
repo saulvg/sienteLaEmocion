@@ -108,11 +108,6 @@
   object-fit: cover;
 }
 
-.company-div {
-  display: flex;
-  justify-content: space-between;
-}
-
 .element + .element {
   margin-top: 10rem;
 }
@@ -123,6 +118,9 @@
     position: initial;
     margin: auto;
     text-align: center;
+  }
+  .element + .element {
+    margin-top: 5rem;
   }
 
   .activity:nth-child(odd) {
@@ -205,6 +203,10 @@
   .answer-box-right {
     width: 100%;
     border-radius: 0;
+  }
+
+  .activity-img {
+    height: 25rem;
   }
 
   .company-div h2 {

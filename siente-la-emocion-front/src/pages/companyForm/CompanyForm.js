@@ -313,7 +313,6 @@ function CompanyForm() {
                         <InputElement
                           labelName='Instagram'
                           type='text'
-                          id='instagram'
                           name='instagram'
                           value={companyInstagram}
                           onChange={(e) => {
@@ -323,7 +322,6 @@ function CompanyForm() {
                         <InputElement
                           labelName='Facebook'
                           type='text'
-                          id='facebook'
                           name='facebook'
                           value={companyFacebook}
                           onChange={(e) => {

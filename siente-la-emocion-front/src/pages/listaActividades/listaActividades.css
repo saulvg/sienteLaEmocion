@@ -1,4 +1,3 @@
-
 #listaActividades {
   background-color: #fff9f5;
 }
@@ -11,6 +10,9 @@
   padding: 17px 23px;
 }
 
+.filter-content select {
+  margin-top: 20px;
+}
 .filter-title {
   font-family: 'Bebas Neue';
   font-style: normal;
@@ -45,6 +47,7 @@
 .star-svg {
   height: 30px;
   width: auto;
+  cursor: pointer;
 }
 
 .filter-by {
@@ -57,10 +60,9 @@
   margin-left: 5px;
 }
 
- .star-svg:hover {
+.star-svg:hover {
   fill: yellow;
-} 
-
+}
 
 .filter-checkbox + .filter-checkbox {
   margin-top: 10px;
@@ -133,7 +135,7 @@
 }
 
 .activities {
-  padding: 0 10px;
+  margin-left: 2rem;
 }
 
 @media (max-width: 1200px) {
@@ -141,42 +143,28 @@
     display: block;
   }
 
+  .activities {
+    margin-top: 50px;
+    margin-left: 0;
+  }
+
   .filter-content {
     width: 100%;
     display: flex;
+    align-items: center;
     justify-content: space-between;
   }
 
   .filter-section + .filter-section {
-    margin-left: 0px;
+    margin-left: 20px;
     margin-top: 0;
   }
   .filter-section {
     text-align: center;
   }
 
-  #aventura {
-    width: 18%;
-  }
-
-  .filter-map {
-    width: 18%;
-    text-align: center;
-  }
-
   .map {
     height: 150px;
-  }
-
-  #ratings {
-    width: 18%;
-  }
-
-  #precios {
-    width: 18%;
-  }
-  #calendar {
-    width: 18%;
   }
 
   .filter-title {
@@ -222,11 +210,12 @@
 }
 
 /* ............. */
-.icon-filterStyle {
+.icon-filter-style {
   height: 2rem;
   width: 2rem;
   background-size: contain;
   font-size: 0;
+  cursor: pointer;
 }
 .escalada {
   background-image: url('../../../public/silueta/escalada.png');
@@ -256,3 +245,25 @@
   background-image: url('../../../public/silueta/espeleologia.png');
 }
 
+.adventure-grid select {
+  margin-top: 10px;
+}
+
+@media (max-width: 800px) {
+  .filter-content {
+    width: 80%;
+    flex-direction: column;
+    margin: auto;
+  }
+
+  .filter-section + .filter-section {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .filter-content {
+    width: 100%;
+  }
+}

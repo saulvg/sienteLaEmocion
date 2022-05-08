@@ -6,11 +6,19 @@
 .App {
   --interseccionColor: rgb(255, 249, 245);
 }
+
+.experience-detail {
+  height: 12rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
 .interseccion {
   background-color: var(--interseccionColor);
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 4rem;
   justify-content: center;
   align-items: center;
   padding: 30px 10px;

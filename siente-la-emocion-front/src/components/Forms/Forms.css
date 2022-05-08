@@ -49,6 +49,7 @@
 
 .circle-content button {
   border: 0;
+  cursor: pointer;
 }
 .add-review-button:hover {
   background-color: rgba(127, 205, 250, 0.79);
@@ -144,6 +145,9 @@
 /* PERFIL */
 .my-experience {
   display: flex;
+  height: 6rem;
+  align-items: center;
+  justify-content: space-between;
 }
 .my-experience h2 {
   font-family: 'Montserrat';
@@ -154,8 +158,8 @@
 }
 
 .my-experience-img {
-  width: 70px;
-  height: 70px;
+  width: 5rem;
+  height: 5rem;
   flex-shrink: 0;
   border-radius: 50%;
   background-repeat: no-repeat;
@@ -172,7 +176,11 @@
 
 .my-experience-content {
   margin-left: 10px;
-  width: 100%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
 }
 
 /* CSS Avatar */
@@ -185,13 +193,9 @@
   line-height: 24px;
   display: block;
   text-align: left;
-  width: 400px;
-  margin: auto;
+  width: 70%;
+  margin: 20px auto;
   padding: 0 10px;
-}
-
-.label-element + .label-element {
-  margin-top: 46px;
 }
 
 .profile-label-element {
@@ -290,8 +294,7 @@
 }
 
 .blue-button {
-  width: 200px;
-  height: 61px;
+  padding: 1rem 1.5rem;
   background: rgba(0, 163, 255, 0.79);
   border-radius: 40px;
   display: inline-flex;
@@ -306,6 +309,9 @@
   border: 0;
   cursor: pointer;
   margin-top: 40px;
+  margin-bottom: 40px;
+  white-space: nowrap;
+  min-width: 200px;
 }
 .blue-button:hover {
   background-color: rgba(127, 205, 250, 0.79);
@@ -650,12 +656,17 @@ div > .error-msg {
   .blue-button + .blue-button {
     margin: auto;
   }
+
+  .my-experiences {
+    width: 100%;
+  }
 }
 
 @media (max-width: 720px) {
   .my-experience {
     flex-direction: column;
     justify-content: center;
+    height: auto;
   }
 
   .my-experience-img {
@@ -663,6 +674,10 @@ div > .error-msg {
   }
 
   .my-experiences {
+    margin-top: 20px;
+  }
+
+  .add-review-button {
     margin-top: 20px;
   }
 
