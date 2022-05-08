@@ -18,7 +18,7 @@ const HomePage = () => {
       <Header
         bg={'/img/principal.jpg'}
         to={'/allexperiences'}
-        button={'Atrevete'}
+        button={'Atrévete'}
         body={<BodyHeaderHomePage />}
       />
       <main>

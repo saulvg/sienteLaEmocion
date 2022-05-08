@@ -73,7 +73,7 @@ const ListaActividades = () => {
             : '/img/bus.jpg'
         }
         to={`/experiences/${activity.experience.id}`}
-        button={'Atrevete'}
+        button={'Atrévete'}
         body={<BodyExperiencesList activity={activity} />}
       />
       <div className='container flex activity-content'>
