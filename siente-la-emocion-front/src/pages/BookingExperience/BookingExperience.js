@@ -27,7 +27,6 @@ const BookingExperience = () => {
   const { idExperience } = useParams();
   const navigate = useNavigate();
   //Estados de variables que necesitamos
-  const [done, setDone] = useState('');
   const [error, setError] = useState('');
   const [load, setLoad] = useState('');
   //const [bodyLoad, setBodyLoad] = useState('');
@@ -60,9 +59,6 @@ const BookingExperience = () => {
       const redirect = () => navigate('/');
       if (response.ok) {
         //Si todo a ido bien, informamos al usuario cambiamos un estado y mostramos una pantalla de carga, tras x segindos redirigimos al usuario
-        console.log('reserva', message);
-        setDone(true);
-        //setBodyLoad(body.message);
         setLoad(body.message);
         setTimeout(redirect, 5000);
       } else {
@@ -127,7 +123,9 @@ const BookingExperience = () => {
                             </div>
                           </>
                         ) : (
-                          <Loading>{load}</Loading>
+                          <Loading>
+                            {load}, recibiras un correo con la confirmacion
+                          </Loading>
                         )}
                       </>
                     ) : (
