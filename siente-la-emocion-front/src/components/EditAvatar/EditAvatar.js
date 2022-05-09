@@ -1,5 +1,3 @@
-/* ## Style ## */
-import './EditAvatar.css';
 /**
  * ###########
  * ## Hooks ##
@@ -24,7 +22,7 @@ import BodyHeaderHomePage from '../Header/MainHeader/BodyHeaderHomePage';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 
-const EditAvatarS = () => {
+const EditAvatar = () => {
   const [av, setAv] = useState('');
   const { user, token } = useUser();
   const { error, setError } = useState('');
@@ -125,4 +123,4 @@ const EditAvatarS = () => {
     </>
   );
 };
-export default EditAvatarS;
+export default EditAvatar;

@@ -19,7 +19,7 @@ import useUser from '../../hooks/useUser';
  */
 import { InputElement, TextareaElement } from './InputElement';
 import BlueButton from './BlueButton';
-import EditAvatarS from '../../components/EditAvatar/EditAvatar';
+import EditAvatar from '../../components/EditAvatar/EditAvatar';
 import Loading from '../Loading/Loading';
 
 //Pagina que pinta el formulario para editar el perfil de usuario
@@ -79,7 +79,7 @@ const EditProfile = () => {
         <>
           {!load ? (
             <>
-              <EditAvatarS />
+              <EditAvatar />
               <form onSubmit={edit}>
                 <div className='profile-elements'>
                   <InputElement
