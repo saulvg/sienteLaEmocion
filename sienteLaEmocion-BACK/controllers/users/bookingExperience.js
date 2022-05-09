@@ -95,7 +95,7 @@ const newBooking = async (req, res, next) => {
 
         if (doubleBooking.length > 0) {
             const error = new Error(
-                'Ya has reservado esta experiencia, porfavor comprueba tu bandeja de entrada, sino es asi ponte en contacto con nosotros,'
+                'Ya has reservado esta experiencia, porfavor comprueba tu bandeja de entrada, sino es así, ponte en contacto con nosotros,'
             );
             error.httpStatus = 405;
             throw error;

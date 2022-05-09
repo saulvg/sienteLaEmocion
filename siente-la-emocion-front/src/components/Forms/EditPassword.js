@@ -137,15 +137,13 @@ const EditPassword = () => {
                   {error ? (
                     <Error /* className='error-msg' */>{error}</Error>
                   ) : null}
-                  <div className='delete-buttons'>
-                    <BlueButton name='Cambiar' type='submit' />
-                    <BlueButton
-                      name='Cancelar'
-                      onClick={() => {
-                        window.history.go(-1);
-                      }}
-                    />
-                  </div>
+                  <BlueButton name='Cambiar' type='submit' />
+                  <BlueButton
+                    name='Cancelar'
+                    onClick={() => {
+                      window.history.go(-1);
+                    }}
+                  />
                 </>
               ) : (
                 <Loading /* className='confirmation' */>
