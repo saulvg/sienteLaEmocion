@@ -32,7 +32,10 @@ const BodyActivitis = () => {
       <div className='experience-texts'>
         <section className='queIncluye text-header'>
           <div className='experience-text-container'>
-            <div className='experience-description-content'>
+            <div
+              className='experience-description-content'
+              data-aos='fade-up-right'
+            >
               <h3>¿Que incluye?</h3>
               <p>{activity.experience.text_1}</p>
             </div>
@@ -40,7 +43,10 @@ const BodyActivitis = () => {
         </section>
         <section className='queNecesitas text-header'>
           <div className='experience-text-container'>
-            <div className='experience-description-content'>
+            <div
+              className='experience-description-content '
+              data-aos='fade-up-left'
+            >
               <h3>¿Que necesitas?</h3>
               <p>{activity.experience.text_2}</p>
             </div>
@@ -48,7 +54,10 @@ const BodyActivitis = () => {
         </section>
         <section className='cuantoDura text-header'>
           <div className='experience-text-container'>
-            <div className='experience-description-content'>
+            <div
+              className='experience-description-content'
+              data-aos='fade-up-right'
+            >
               <h3>
                 Cuanto dura la experiencia?
                 <br />
@@ -63,7 +72,10 @@ const BodyActivitis = () => {
         </section>
         <section className='valoraciones text-header'>
           <button className='experience-text-container'>
-            <div className='experience-description-content'>
+            <div
+              className='experience-description-content'
+              data-aos='fade-up-left'
+            >
               {
                 <Link to={`/experiences/${idExperience}/reviews`}>
                   <h3>Valoraciones</h3>

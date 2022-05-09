@@ -6,7 +6,7 @@ import './listaActividades.css';
  * ## React ##
  * ###########
  */
-import {DatePicker} from '@material-ui/pickers'
+import { DatePicker } from '@material-ui/pickers';
 import { useState } from 'react';
 
 /**
@@ -30,7 +30,7 @@ import Loading from '../../components/loading/Loading';
 
 //Pagina que pinta la lista de todas las experiencias disponibles en la Web
 const ListaActividades = () => {
-  //Para cargar una actividad random en la cabezera de la lista de actividades 
+  //Para cargar una actividad random en la cabezera de la lista de actividades
   const { activity } = useActivity('random');
   //Parametros para crear el 'queryString' que tendra el valor de la ruta que le pasaremos a activities
   const [category, setCategory] = useState('');
@@ -40,7 +40,7 @@ const ListaActividades = () => {
   const [date, setDate] = useState('');
   const [queryString, setQueryString] = useState('');
   //Estados que usamos con 'DatePicker'
-  const [selectDate, setSelectDate] = useState(new Date())
+  const [selectDate, setSelectDate] = useState(new Date());
 
   //si le pasamso un valor a 'queryString' nos devuleve unos valores filtrados, sino todas las experiencias
   const { activities, error } = useActivities(queryString);
@@ -54,12 +54,12 @@ const ListaActividades = () => {
     if (price) params.price = price;
     if (votes) params.votes = votes;
     if (date) params.date = date;
-    //usando el querystring, creamos un objeto del tipo URLSearchParams que transformamos en String y el pasamos a 'useActivities' 
+    //usando el querystring, creamos un objeto del tipo URLSearchParams que transformamos en String y el pasamos a 'useActivities'
     setQueryString(new URLSearchParams(params).toString());
   };
   //Funcion encargada de cambiar el estado de 'date' para  'queryString' y marcar la fecha seleccionada en el input de 'DatePicker'
   const fecha = (selectDate) => {
-    setSelectDate(selectDate)
+    setSelectDate(selectDate);
     setDate(selectDate.toISOString().slice(0, 10));
   };
 
@@ -73,24 +73,24 @@ const ListaActividades = () => {
             : '/img/bus.jpg'
         }
         to={`/experiences/${activity.experience.id}`}
-        button={'Atrevete'}
+        button={'Atrévete'}
         body={<BodyExperiencesList activity={activity} />}
       />
       <div className='container flex activity-content'>
         <div className='filter'>
           {/* ........Filtro por categorias........ */}
-          <div className='filter-content filter-section'>
-            <div id='aventura'>
+          <div className='filter-content '>
+            <div id='aventura' className='filter-section'>
               <h3 className='filter-title'>aventura</h3>
-              <div className='icon-filterStyle adventure-grid '>
+              <div className='adventure-grid '>
                 <div
-                  className='icon-filterStyle escalada'
+                  className='icon-filter-style escalada'
                   onClick={() => {
                     !category ? setCategory(`escalada`) : setCategory('');
                   }}
                 ></div>
                 <div
-                  className='icon-filterStyle ciclismo'
+                  className='icon-filter-style ciclismo'
                   onClick={() => {
                     !category ? setCategory(`ciclismo`) : setCategory('');
                   }}
@@ -98,7 +98,7 @@ const ListaActividades = () => {
                   Ciclismo
                 </div>
                 <div
-                  className='icon-filterStyle paracaidismo'
+                  className='icon-filter-style paracaidismo'
                   onClick={() => {
                     !category ? setCategory(`paracaidismo`) : setCategory('');
                   }}
@@ -106,7 +106,7 @@ const ListaActividades = () => {
                   Paracaidismo
                 </div>
                 <div
-                  className='icon-filterStyle esqui'
+                  className='icon-filter-style esqui'
                   onClick={() => {
                     !category ? setCategory(`esqui`) : setCategory('');
                   }}
@@ -114,7 +114,7 @@ const ListaActividades = () => {
                   Esqui
                 </div>
                 <div
-                  className='icon-filterStyle buceo'
+                  className='icon-filter-style buceo'
                   onClick={() => {
                     !category ? setCategory(`buceo`) : setCategory('');
                   }}
@@ -122,7 +122,7 @@ const ListaActividades = () => {
                   Buceo
                 </div>
                 <div
-                  className='icon-filterStyle piraguismo'
+                  className='icon-filter-style piraguismo'
                   onClick={() => {
                     !category ? setCategory(`piraguismo`) : setCategory('');
                   }}
@@ -130,7 +130,7 @@ const ListaActividades = () => {
                   Piraguismo
                 </div>
                 <div
-                  className='icon-filterStyle yoga'
+                  className='icon-filter-style yoga'
                   onClick={() => {
                     !category ? setCategory(`yoga`) : setCategory('');
                   }}
@@ -138,7 +138,7 @@ const ListaActividades = () => {
                   Yoga
                 </div>
                 <div
-                  className='icon-filterStyle motorBike'
+                  className='icon-filter-style motorBike'
                   onClick={() => {
                     !category ? setCategory(`motorBike`) : setCategory('');
                   }}
@@ -146,7 +146,7 @@ const ListaActividades = () => {
                   MotorBike
                 </div>
                 <div
-                  className='icon-filterStyle espeleologia'
+                  className='icon-filter-style espeleologia'
                   onClick={() => {
                     !category ? setCategory(`espeleologia`) : setCategory('');
                   }}
@@ -302,13 +302,12 @@ const ListaActividades = () => {
                 ></input>
                 <label> {'> 60 €'}</label>
               </div>
-              
             </div>
             {/* ........Filtro por fechas........ */}
             <div id='calendar' className='filter-section'>
-              <h3 className='filter-title'>Fechas</h3>            
-              <DatePicker value={selectDate} onChange={fecha}/>
-              <button onClick={()=> setDate('')}>Limpiar fecha</button>
+              <h3 className='filter-title'>Fechas</h3>
+              <DatePicker value={selectDate} onChange={fecha} />
+              <button onClick={() => setDate('')}>Limpiar fecha</button>
             </div>
             <button onClick={handleFilter}>Filtrar</button>
           </div>

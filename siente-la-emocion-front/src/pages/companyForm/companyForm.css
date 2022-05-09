@@ -12,3 +12,22 @@
 .company-form-div + .company-form-div {
   border-left: 1px solid black;
 }
+
+@media (max-width: 1270px) {
+  .company-form {
+    display: block;
+  }
+
+  .company-form-div {
+    width: 80% !important;
+    margin: auto;
+  }
+
+  .company-form div {
+    width: 100%;
+  }
+
+  .company-form-div + .company-form-div {
+    border-left: none;
+  }
+}

@@ -16,6 +16,10 @@ code {
   display: flex;
 }
 
+a {
+  cursor: pointer;
+}
+
 .flex-end {
   justify-content: end;
 }
