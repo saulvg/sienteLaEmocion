@@ -1,5 +1,5 @@
 // ## Style ##
-import './actividadLista.css';
+import './experienceList.css';
 
 /**
  * ###########
@@ -14,19 +14,19 @@ import decode from 'jwt-decode';
  * ## Components ##
  * ################
  */
-import { CircleActivities } from '../CircleHomePage/CircleHomePage';
-import SocialNetwork from '../SocialNetwork/SocialNetwork';
-import Error from '../error/Error';
+import { CircleActivities } from '../../CircleHomePage/CircleHomePage';
+import SocialNetwork from '../../SocialNetwork/SocialNetwork';
+import Error from '../../error/Error';
 
 /**
  * ###########
  * ## Hooks ##
  * ###########
  */
-import useUser from '../../hooks/useUser';
+import useUser from '../../../hooks/useUser';
 
 //Componente que utilizamos para pintar todas las actividades disponibles de nuestra web
-const ActividadLista = ({ activities, error }) => {
+const ExperienceList = ({ activities, error }) => {
   const { token } = useUser();
   let decod = 'normal';
 
@@ -46,7 +46,7 @@ const ActividadLista = ({ activities, error }) => {
   return activities.length > 0 ? (
     <ul className='w-full activities '>
       {activities.map((activity) => {
-      // Cada actividadad es un li dentro de un ul con su Link, etc, si eres admin puedes editarlas desde aqui, sino no 
+        // Cada actividadad es un li dentro de un ul con su Link, etc, si eres admin puedes editarlas desde aqui, sino no
         return (
           <li
             key={activity.id}
@@ -113,4 +113,4 @@ const ActividadLista = ({ activities, error }) => {
     <Error>No se han encontrado experiencias</Error>
   );
 };
-export default ActividadLista;
+export default ExperienceList;

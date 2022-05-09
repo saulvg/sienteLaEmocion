@@ -1,4 +1,4 @@
-import { AuthContext } from '../../App';
+import { AuthContext } from '../../../App';
 
 /*
  * ###########
@@ -14,9 +14,9 @@ import { useNavigate } from 'react-router-dom';
  * ## Component ##
  * ###############
  */
-import BlueButton from '../Forms/BlueButton';
-import Error from '../error/Error';
-import Loading from '../Loading/Loading';
+import BlueButton from '../../Forms/BlueButton';
+import Error from '../../error/Error';
+import Loading from '../../Loading/Loading';
 
 const DeleteExperience = () => {
   const { token } = useContext(AuthContext);

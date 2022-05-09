@@ -1,6 +1,6 @@
-import './Forms/activityForm.css';
+import '../Forms/activityForm.css';
 
-export const ActivityText1 = ({
+export const ActivityText = ({
   image,
   answer,
   question,

@@ -1,6 +1,6 @@
-import { useModal } from '../../hooks/useModal';
-import { Modal } from '../Modal/Modal';
-import SocialNetwork from '../SocialNetwork/SocialNetwork';
+import { useModal } from '../../../hooks/useModal';
+import { Modal } from '../Modal';
+import SocialNetwork from '../../SocialNetwork/SocialNetwork';
 import './contacto.css';
 const ModalContactanos = () => {
   return (

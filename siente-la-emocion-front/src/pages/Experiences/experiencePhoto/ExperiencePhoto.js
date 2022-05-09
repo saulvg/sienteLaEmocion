@@ -15,19 +15,18 @@ import decode from 'jwt-decode';
  * ## Components ##
  * ################
  */
-import Header from '../../components/Header/Header';
-import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
-import Error from '../../components/error/Error';
-import Loading from '../../components/Loading/Loading';
+import Header from '../../../components/Header/Header';
+import BodyHeaderHomePage from '../../../components/Header/MainHeader/BodyHeaderHomePage';
+import Error from '../../../components/error/Error';
+import Loading from '../../../components/Loading/Loading';
 
 /**
  * ###########
  * ## Hooks ##
  * ###########
  */
-import useUser from '../../hooks/useUser';
-import ButtonForm from '../../components/ButtonForm/ButtonForm';
-import BlueButton from '../../components/Forms/BlueButton';
+import useUser from '../../../hooks/useUser';
+import BlueButton from '../../../components/Forms/BlueButton';
 
 //Pagina que pinta el formulario para que el admin pueda incluir 3 fotos de una experiencia
 const ExperiencePhoto = () => {

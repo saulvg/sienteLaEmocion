@@ -10,7 +10,7 @@ import Header from '../../components/Header/Header';
 import SocialNetwork from '../../components/SocialNetwork/SocialNetwork';
 import TextHomePage from '../../components/TextHomePage/TextHomePage';
 import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
-import { ExperienceDetail } from '../../components/Experience-detail/Experience-detail';
+import { ExperienceDetail } from '../../components/Experiences/Experience-detail';
 
 const HomePage = () => {
   return (

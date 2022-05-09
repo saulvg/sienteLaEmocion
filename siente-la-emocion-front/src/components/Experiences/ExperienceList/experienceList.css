@@ -44,7 +44,7 @@ section.actividad {
   width: 1.5rem;
   height: 1.5rem;
   font-size: 0;
-  background-image: url('../../../public/silueta/editar.png');
+  background-image: url('../../../../public/silueta/editar.png');
 }
 
 .social-networks {
@@ -62,13 +62,13 @@ section.actividad {
   padding: 1rem;
 }
 #miniInstagram {
-  background-image: url('../../../public/silueta/instagram.png');
+  background-image: url('../../../../public/silueta/instagram.png');
   width: 3rem;
   height: 3rem;
 }
 
 #miniFacebook {
-  background-image: url('../../../public/silueta/facebook.png');
+  background-image: url('../../../../public/silueta/facebook.png');
   width: 3rem;
   height: 3rem;
 }

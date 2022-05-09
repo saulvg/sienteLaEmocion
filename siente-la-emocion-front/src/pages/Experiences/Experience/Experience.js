@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import { ActivityText1 } from '../components/ActivityAll';
-import Header from '../components/Header/Header';
-import useActivity from '../hooks/useActivity';
+import { ActivityText } from '../../../components/Experiences/ActivityText';
+import Header from '../../../components/Header/Header';
+import useActivity from '../../../hooks/useActivity';
 import { useParams } from 'react-router-dom';
 import './experience.css';
-import BodyExperience from '../components/Header/MainHeader/BodyExperience';
-import Error from '../components/error/Error';
-import useUser from '../hooks/useUser';
-import '../components/Forms/activityForm.css';
-import Loading from '../components/Loading/Loading';
-import { Modal } from '../components/Modal/Modal';
+import BodyExperience from '../../../components/Header/MainHeader/BodyExperience';
+import Error from '../../../components/error/Error';
+import useUser from '../../../hooks/useUser';
+import '../../../components/Forms/activityForm.css';
+import Loading from '../../../components/Loading/Loading';
+import { Modal } from '../../../components/Modals/Modal';
 
 const Experience = () => {
   const { idExperience } = useParams();
@@ -64,7 +64,7 @@ const Experience = () => {
                 </div>
                 <div className='activities-content'>
                   <div className='element'>
-                    <ActivityText1
+                    <ActivityText
                       image={
                         activity.photos === 1
                           ? `${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[0]?.path}`
@@ -75,10 +75,10 @@ const Experience = () => {
                       questionBox={'question-box'}
                       answerBox={'answer-box'}
                       activityClass='activity'
-                    ></ActivityText1>
+                    ></ActivityText>
                   </div>
                   <div className='activity-odd element'>
-                    <ActivityText1
+                    <ActivityText
                       image={
                         activity.photos === 2
                           ? `${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[1]?.path}`
@@ -91,10 +91,10 @@ const Experience = () => {
                       questionBox={'question-box-right'}
                       answerBox={'answer-box-right'}
                       activityClass='activity'
-                    ></ActivityText1>
+                    ></ActivityText>
                   </div>
                   <div className='element'>
-                    <ActivityText1
+                    <ActivityText
                       image={
                         activity.photos === 3
                           ? `${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[2]?.path}`
@@ -105,7 +105,7 @@ const Experience = () => {
                       questionBox={'question-box'}
                       answerBox={'answer-box'}
                       activityClass='activity'
-                    ></ActivityText1>
+                    ></ActivityText>
                   </div>
                 </div>
               </div>

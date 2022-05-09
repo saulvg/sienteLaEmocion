@@ -2,8 +2,8 @@ import './header.css';
 
 import { Link } from 'react-router-dom';
 import useUser from '../../hooks/useUser';
-import ModalContactanos from '../modalContactanos/ModalContactanos';
-import ModalSearch from '../ModalSearch/ModalSearch';
+import ModalContactanos from '../Modals/modalContactanos/ModalContactanos';
+import ModalSearch from '../Modals/ModalSearch';
 import { useEffect, useState } from 'react';
 import UpDownPage from '../UpDownPage/UpDownPage';
 

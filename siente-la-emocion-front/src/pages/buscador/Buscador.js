@@ -9,7 +9,7 @@ import { useSearchParams } from 'react-router-dom';
  * ## Components ##
  * ################
  */
-import ActividadLista from '../../components/ActividadLista/ActividadLista';
+import ExperienceList from '../../components/Experiences/ExperienceList/ExperienceList';
 import Header from '../../components/Header/Header';
 import BodyExperiencesList from '../../components/Header/MainHeader/BodyExperiencesList';
 import Error from '../../components/error/Error';
@@ -49,7 +49,7 @@ function Buscador() {
       />
       {!error ? (
         <div className='container search-activity'>
-          <ActividadLista activities={activities} error={error} />
+          <ExperienceList activities={activities} error={error} />
         </div>
       ) : (
         <Error>{error}</Error>

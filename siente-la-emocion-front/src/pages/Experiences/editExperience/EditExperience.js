@@ -14,14 +14,14 @@ import decode from 'jwt-decode';
  * ## Hooks ##
  * ################
  */
-import useUser from '../../hooks/useUser';
-import useActivity from '../../hooks/useActivity';
+import useUser from '../../../hooks/useUser';
+import useActivity from '../../../hooks/useActivity';
 /**
  * ################
  * ## Components ##
  * ################
  */
-import Error from '../../components/error/Error';
+import Error from '../../../components/error/Error';
 import {
   CapacityCompany,
   PriceCompany,
@@ -34,13 +34,13 @@ import {
   Text4Company,
   Text5Company,
   Text6Company,
-} from '../../components/InputsCompanyForm/InputsCompanyForm';
-import Header from '../../components/Header/Header';
-import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
-import DeleteExperience from '../../components/DeleteExperience/DeleteExperience';
-import Loading from '../../components/Loading/Loading';
-import { ModalCircle } from '../../components/Forms/ModalCircle';
-import BlueButton from '../../components/Forms/BlueButton';
+} from '../../../components/InputsCompanyForm/InputsCompanyForm';
+import Header from '../../../components/Header/Header';
+import BodyHeaderHomePage from '../../../components/Header/MainHeader/BodyHeaderHomePage';
+import DeleteExperience from '../../../components/Experiences/DeleteExperience/DeleteExperience';
+import Loading from '../../../components/Loading/Loading';
+import { ModalCircle } from '../../../components/Forms/ModalCircle';
+import BlueButton from '../../../components/Forms/BlueButton';
 
 //Pagina que pinta el formulario para que el admin pueda editar casi todos los campos de una experiencia
 const EditExperience = () => {

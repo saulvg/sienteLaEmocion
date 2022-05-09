@@ -1,5 +1,5 @@
 // ## Style ##
-import './listaActividades.css';
+import './experiencesList.css';
 
 /**
  * ###########
@@ -14,19 +14,19 @@ import { useState } from 'react';
  * ## Hooks ##
  * ###########
  */
-import useActivities from '../../hooks/useActivities';
-import useActivity from '../../hooks/useActivity';
-import useCategories from '../../hooks/useCategories';
+import useActivities from '../../../hooks/useActivities';
+import useActivity from '../../../hooks/useActivity';
+import useCategories from '../../../hooks/useCategories';
 
 /**
  * ################
  * ## Components ##
  * ################
  */
-import ActividadLista from '../../components/ActividadLista/ActividadLista';
-import Header from '../../components/Header/Header';
-import BodyExperiencesList from '../../components/Header/MainHeader/BodyExperiencesList';
-import Loading from '../../components/Loading/Loading';
+import ExperienceList from '../../../components/Experiences/ExperienceList/ExperienceList';
+import Header from '../../../components/Header/Header';
+import BodyExperiencesList from '../../../components/Header/MainHeader/BodyExperiencesList';
+import Loading from '../../../components/Loading/Loading';
 
 //Pagina que pinta la lista de todas las experiencias disponibles en la Web
 const ListaActividades = () => {
@@ -316,7 +316,7 @@ const ListaActividades = () => {
           </div>
         </div>
 
-        <ActividadLista activities={activities} error={error} />
+        <ExperienceList activities={activities} error={error} />
       </div>
     </div>
   ) : (
