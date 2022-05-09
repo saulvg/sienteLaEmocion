@@ -87,6 +87,7 @@
 @media (min-width: 768px) {
   .single-review {
     margin-left: 5%;
+    margin-top: 3rem;
   }
   .reviews ul li:nth-child(even) {
     box-shadow: rgba(153, 165, 185, 0.274) 5px 5px;

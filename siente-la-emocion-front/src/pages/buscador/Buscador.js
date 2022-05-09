@@ -44,7 +44,7 @@ function Buscador() {
             : '/img/bus.jpg'
         }
         to={`/experiences/${activity.experience.id}`}
-        button={'Atrevete'}
+        button={'Atrévete'}
         body={<BodyExperiencesList activity={activity} />}
       />
       {!error ? (
