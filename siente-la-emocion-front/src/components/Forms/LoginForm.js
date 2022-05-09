@@ -6,7 +6,6 @@ import { AuthContext } from '../../App';
 import Error from '../error/Error';
 
 const LoginForm = () => {
-  const [togglePassword, setTogglePassword] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { token, setToken } = useContext(AuthContext);
@@ -26,7 +25,6 @@ const LoginForm = () => {
       const body = await res.json();
       if (res.ok) {
         setToken(body.data.token);
-        console.log('iniciado');
       } else {
         setError(body.message);
       }

@@ -4,7 +4,7 @@ import { AuthContext } from '../../App';
 import BlueButton from './BlueButton';
 import './Forms.css';
 import decode from 'jwt-decode';
-import Loading from '../loading/Loading';
+import Loading from '../Loading/Loading';
 
 const DeleteAccount = () => {
   const { token, setToken } = useContext(AuthContext);

@@ -15,28 +15,11 @@ import decode from 'jwt-decode';
  * ## Components ##
  * ################
  */
-import Loading from '../../components/loading/Loading';
 import Header from '../../components/Header/Header';
+import Loading from '../../components/Loading/Loading';
 import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
 import Error from '../../components/error/Error';
-import {
-  Company,
-  ExperiencesCategory,
-  CapacityCompany,
-  PriceCompany,
-  DateCompany,
-  CityCompany,
-  AdresssCompany,
-  CompanyInstagram,
-  CompanyFacebook,
-  Text1Company,
-  Text2Company,
-  Text3Company,
-  Text4Company,
-  Text5Company,
-  Text6Company,
-  PhotoHeader,
-} from '../../components/InputsCompanyForm/InputsCompanyForm';
+import { PhotoHeader } from '../../components/InputsCompanyForm/InputsCompanyForm';
 import { ModalCircle } from '../../components/Forms/ModalCircle';
 import {
   InputElement,
@@ -78,7 +61,7 @@ function CompanyForm() {
   const [companyText_6, setCompanyText_6] = useState('');
   const [companyPhotoHeader, setCompanyPhotoHeader] = useState('');
 
-  const { companyCategories, setErrorCategory } = useCategories('');
+  const { companyCategories } = useCategories('');
 
   //Creamos una funcion manejadora del boton del formulario
   const sendForm = async (event) => {
@@ -231,11 +214,14 @@ function CompanyForm() {
                               : setCompanyCategoryExistente('')
                           }
                         >
-                          <option selected value={'allexperiences'}>
+                          <option value={'allexperiences'}>
                             {'Busaca por nombre (todas)'}
                           </option>
                           {companyCategories.map((companyCategory) => (
-                            <option value={companyCategory.name}>
+                            <option
+                              value={companyCategory.name}
+                              key={companyCategory.name}
+                            >
                               {companyCategory.name}
                             </option>
                           ))}

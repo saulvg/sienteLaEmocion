@@ -12,7 +12,6 @@ import useActivity from '../../../hooks/useActivity';
  * ###########
  */
 import { Link, useParams } from 'react-router-dom';
-import { useState } from 'react';
 
 //Componente que pinta la cabezera cuando entramos en una actividad en concreto
 const BodyActivitis = () => {
@@ -77,8 +76,11 @@ const BodyActivitis = () => {
               data-aos='fade-up-left'
             >
               {
-                <Link to={`/experiences/${idExperience}/reviews`}>
-                  <h3>Valoraciones</h3>
+                <Link
+                  to={`/experiences/${idExperience}/reviews`}
+                  className='prueba'
+                >
+                  <h3 className='comments'>Valoraciones</h3>
                   <p>
                     Si quieres saber que comentarios tiene esta empresa puedes
                     mirarlo aqui <br />

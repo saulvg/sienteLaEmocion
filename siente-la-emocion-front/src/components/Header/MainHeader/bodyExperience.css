@@ -36,6 +36,8 @@
   font-size: 20px;
   position: relative;
   z-index: 2;
+  text-decoration: none;
+  color: white;
 }
 
 .experience-description-content h3 {
@@ -48,7 +50,7 @@
   text-decoration: none;
 }
 
-.experience-description-content h3 a {
+.prueba {
   text-decoration: none;
   color: white;
 }
@@ -69,25 +71,6 @@
   border: 0;
 }
 
-/* #loading {
-  background-color: rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  padding: 1rem;
-}
-.loading {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  border-left-color: #09f;
-
-  animation: spin 1s ease infinite;
-
-  font-size: 0;
-} */
 @keyframes spin {
   0% {
     transform: rotate(0deg);

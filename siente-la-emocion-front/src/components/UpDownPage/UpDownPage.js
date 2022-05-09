@@ -2,10 +2,8 @@ import { useState } from 'react';
 import './upDownPage.css';
 const UpDownPage = () => {
   const [upORdown, setUpORdown] = useState('');
-  const [upPage, setUpPage] = useState(false);
 
   window.onscroll = () => {
-    //console.log(window.innerHeight);
     if (document.documentElement.scrollTop > 100) {
       setUpORdown(true);
     } else {
