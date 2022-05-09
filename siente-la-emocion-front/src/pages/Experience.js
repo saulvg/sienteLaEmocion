@@ -33,7 +33,7 @@ const Experience = () => {
           <ul>
             <li>
               <div className='container experiencia'>
-                <div className='company-div'>
+                <div className='company-div-capacity'>
                   <h2>{activity.company}</h2>
                   <span>
                     Participantes:
@@ -44,11 +44,15 @@ const Experience = () => {
                           return (
                             <div key={user.id}>
                               <Modal
-                              buttonClass='username-modal'
-                              buttonName={user.username}
-                              titleModal={user.username}
-                              content={user.biography ? 'Biografia:'+user.biography : 'Biografia: Sin informacion'}
-                            ></Modal>
+                                buttonClass='username-modal'
+                                buttonName={user.username}
+                                titleModal={user.username}
+                                content={
+                                  user.biography
+                                    ? 'Biografia:' + user.biography
+                                    : 'Biografia: Sin informacion'
+                                }
+                              ></Modal>
                             </div>
                           );
                         })}

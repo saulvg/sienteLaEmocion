@@ -10,6 +10,7 @@ import Header from '../../components/Header/Header';
 import SocialNetwork from '../../components/SocialNetwork/SocialNetwork';
 import TextHomePage from '../../components/TextHomePage/TextHomePage';
 import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
+import { ExperienceDetail } from '../../components/Experience-detail/Experience-detail';
 
 const HomePage = () => {
   return (
@@ -17,7 +18,7 @@ const HomePage = () => {
       <Header
         bg={'/img/principal.jpg'}
         to={'/allexperiences'}
-        button={'Atrevete'}
+        button={'Atrévete'}
         body={<BodyHeaderHomePage />}
       />
       <main>
@@ -26,7 +27,7 @@ const HomePage = () => {
             id={'routeDeQueVaEsto'}
             clas={'homePage'}
             href={'#deQueVaEsto'}
-            children={'De que trata esto'}
+            children={'De qué trata esto'}
           />
           <CircleHomePage
             id={'routeComents'}
@@ -44,12 +45,12 @@ const HomePage = () => {
             id={'routeQueTeEstaEsperando'}
             clas={'homePage'}
             href={'#queTeEstaEsperando'}
-            children={'Que te esta esperando'}
+            children={'Qué te está esperando'}
           />
         </section>
         <section id='deQueVaEsto' className='textHPage background-img'>
           <TextHomePage
-            title={'De que va esto'}
+            title={'De qué va esto'}
             p1={
               'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.'
             }
@@ -87,13 +88,25 @@ const HomePage = () => {
           />
         </section>
         <section id='coments' className='interseccion'>
-          <CircleHomePage id={'comment1'} children={'Comentario destacado 1'} />
+          {/* <CircleHomePage id={'comment1'} children={'Comentario destacado 1'} />
           <CircleHomePage id={'comment2'} children={'Comentario destacado 2'} />
-          <CircleHomePage id={'comment3'} children={'Comentario destacado 3'} />
+          <CircleHomePage id={'comment3'} children={'Comentario destacado 3'} /> */}
+          <ExperienceDetail
+            experienceImg='/img/1.svg'
+            description='Seguridad garantizada'
+          />
+          <ExperienceDetail
+            experienceImg='/img/2.svg'
+            description='Diversión ante todo'
+          />
+          <ExperienceDetail
+            experienceImg='/img/3.svg'
+            description='Cuidamos de la naturaleza'
+          />
         </section>
         <section id='queTeEstaEsperando' className='textHPage background-img'>
           <TextHomePage
-            title={'Que te esta esperando'}
+            title={'Qué te está esperando'}
             p1={
               'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.'
             }

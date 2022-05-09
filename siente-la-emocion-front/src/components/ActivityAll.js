@@ -10,11 +10,11 @@ export const ActivityText1 = ({
 }) => {
   return (
     <div className={activityClass}>
-      <img className='activity-img' src={image} alt='logo' />
-      <div className={questionBox}>
+      <img className='activity-img' data-aos='zoom-in' src={image} alt='logo' />
+      <div className={questionBox} data-aos='fade-up-left'>
         <p className='question'>{question}</p>
       </div>
-      <div className={answerBox}>
+      <div className={answerBox} data-aos='fade-up-left'>
         <p className='answer'>{answer}</p>
       </div>
     </div>

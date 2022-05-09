@@ -3,7 +3,7 @@ const BodyHeaderHomePage = () => {
   return (
     <div className='headerBody bodyHeaderHomePage'>
       <h1 data-aos='fade-right' data-aos-duration='2000'>
-        Siente la emocion
+        Siente la emoción
       </h1>
       <p data-aos='fade-left' data-aos-duration='2000'>
         Disfruta el momento

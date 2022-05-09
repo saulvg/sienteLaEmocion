@@ -40,6 +40,7 @@ import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHom
 import DeleteExperience from '../../components/DeleteExperience/DeleteExperience';
 import Loading from '../../components/loading/Loading';
 import { ModalCircle } from '../../components/Forms/ModalCircle';
+import BlueButton from '../../components/Forms/BlueButton';
 
 //Pagina que pinta el formulario para que el admin pueda editar casi todos los campos de una experiencia
 const EditExperience = () => {
@@ -246,12 +247,14 @@ const EditExperience = () => {
                                 {error ? <Error>{error}</Error> : null}
                               </div>
                             </div>
-                            <div className='buttonForm'>
-                              <button type='submit'>Actualizar</button>
-                              <span onClick={() => setDeleteModal(true)}>
-                                Eliminar experiencia{' '}
-                              </span>
-                            </div>
+                            <BlueButton
+                              name='Actualizar'
+                              type='submit'
+                            ></BlueButton>
+                            <BlueButton
+                              name='Eliminar experiencia'
+                              onClick={() => setDeleteModal(true)}
+                            ></BlueButton>
                           </form>
                           <div className='circle-background'></div>
                         </div>

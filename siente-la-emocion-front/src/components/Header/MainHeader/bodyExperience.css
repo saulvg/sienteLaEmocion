@@ -45,6 +45,12 @@
   padding: 1rem;
   margin-bottom: -20px;
   margin-left: 20px;
+  text-decoration: none;
+}
+
+.experience-description-content h3 a {
+  text-decoration: none;
+  color: white;
 }
 
 .experience-description-content p {

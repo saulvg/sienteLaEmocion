@@ -3,6 +3,17 @@
   font-size: large;
   border: none;
   background-color: transparent;
+  width: 100%;
+  font-size: 24px;
+}
+
+.review-text {
+  height: 80%;
+  overflow: auto;
+  background-color: rgb(0, 208, 245);
+  padding: 10px;
+  border-radius: 20px;
+  word-break: break-all;
 }
 .empresa {
   padding-top: 1rem;
@@ -13,7 +24,17 @@
 }
 .voto {
   font-weight: bold;
-  margin-top: 2rem;
+}
+
+.user {
+  width: 100%;
+  position: relative;
+  padding: 20px;
+}
+
+.reviews ul li {
+  background-color: cornflowerblue;
+  border-radius: 7px;
 }
 
 @media (min-width: 320px) {
@@ -23,51 +44,29 @@
     display: flex;
     flex-direction: column;
   }
-  .reviews ul li:nth-child(even) {
-    background-color: rgb(152, 182, 236);
-  }
-  .reviews ul li {
-    background-color: cornflowerblue;
-    border-radius: 7px;
-    display: flex;
-    min-height: 20rem;
 
-    margin: 2rem;
-    display: flex;
-    padding-right: 3rem;
-  }
   .review .avatar {
     border-radius: 50%;
     border: 3px solid pink;
-    margin: 1rem;
     background-color: rgb(133, 90, 90);
     width: 5rem;
     height: 5rem;
     display: flex;
+    margin: auto;
+  }
+  .username {
+    display: flex;
+    align-items: center;
+    height: 4rem;
+    justify-content: center;
   }
 
-  .username {
-    margin: 2rem 0 0 1rem;
-    border-top: 1px solid white;
-  }
-  .user {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
   .list-reviews {
     width: 100%;
-  }
-  .texto-review {
-    min-width: 85%;
-
-    display: flex;
   }
   .review .texto-review {
     border-radius: 7px;
     background-color: rgba(191, 210, 245, 0.575);
-    margin-left: 3rem;
-    margin-right: 3rem;
     display: flex;
     flex-direction: column;
     font-style: italic;
@@ -75,6 +74,7 @@
     min-height: 15rem;
     display: flex;
     justify-content: space-between;
+    width: 100%;
   }
   .review .voto {
     font-weight: bold;
@@ -92,9 +92,7 @@
     box-shadow: rgba(153, 165, 185, 0.274) 5px 5px;
     width: 75%;
     min-height: 20rem;
-    margin-left: 10rem;
     position: relative;
-    margin-bottom: 70px;
     display: flex;
   }
 
@@ -107,6 +105,21 @@
 
     min-height: 20rem;
     display: flex;
+  }
+
+  .user {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+  }
+  .username {
+    display: flex;
+    align-items: center;
+    width: 20%;
+    justify-content: center;
+    margin-top: 20px;
   }
 
   /* AVATARES USUARIO */
@@ -129,17 +142,10 @@
     width: 8rem;
     height: 8rem;
     display: flex;
-    top: 10px;
-    right: -90px;
+    top: 2rem;
+    right: -4rem;
   }
   /* NOMBRES DE USUARIO + MODAL */
-
-  .username {
-    margin: 1rem 0 0 1rem;
-    width: 100%;
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
-  }
 
   .review:nth-child(even) .username {
     display: flex;

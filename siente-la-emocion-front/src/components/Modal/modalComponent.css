@@ -26,7 +26,10 @@
   align-items: center;
   overflow: hidden;
   min-height: 20rem;
-  padding: 10px;
+}
+
+.modal-container form {
+  width: 100%;
 }
 .modal-close:hover {
   cursor: pointer;
@@ -47,13 +50,6 @@
   .modal-container {
     height: 80%;
     min-width: 0;
-  }
-}
-
-@media (max-width: 600px) {
-  .modal-container {
-    width: 100%;
-    border-radius: 0;
   }
 }
 
