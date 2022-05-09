@@ -3,8 +3,7 @@ import useUser from './useUser';
 
 const useUploadAvatar = (av) => {
   /* const [av, setAv] = useState(''); */
-  const { user, token } = useUser();
-  console.log('soy av', av);
+  const { token } = useUser();
 
   //creamos una funcion manejadora del boton del formulario
 
@@ -40,12 +39,6 @@ const useUploadAvatar = (av) => {
     }
   };
 
-  useEffect(() => {
-    const timer = setInterval(updateAvatar, 1000);
-    return () => clearInterval(timer);
-  }, []);
-  /* useEffect(() => {
-    updateAvatar();
-  }, [av]); */
+  updateAvatar();
 };
 export default useUploadAvatar;

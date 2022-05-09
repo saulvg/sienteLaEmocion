@@ -6,7 +6,7 @@ import './listaActividades.css';
  * ## React ##
  * ###########
  */
-import {DatePicker} from '@material-ui/pickers'
+import { DatePicker } from '@material-ui/pickers';
 import { useState } from 'react';
 
 /**
@@ -30,7 +30,7 @@ import Loading from '../../components/loading/Loading';
 
 //Pagina que pinta la lista de todas las experiencias disponibles en la Web
 const ListaActividades = () => {
-  //Para cargar una actividad random en la cabezera de la lista de actividades 
+  //Para cargar una actividad random en la cabezera de la lista de actividades
   const { activity } = useActivity('random');
   //Parametros para crear el 'queryString' que tendra el valor de la ruta que le pasaremos a activities
   const [category, setCategory] = useState('');
@@ -40,7 +40,7 @@ const ListaActividades = () => {
   const [date, setDate] = useState('');
   const [queryString, setQueryString] = useState('');
   //Estados que usamos con 'DatePicker'
-  const [selectDate, setSelectDate] = useState(new Date())
+  const [selectDate, setSelectDate] = useState(new Date());
 
   //si le pasamso un valor a 'queryString' nos devuleve unos valores filtrados, sino todas las experiencias
   const { activities, error } = useActivities(queryString);
@@ -54,12 +54,12 @@ const ListaActividades = () => {
     if (price) params.price = price;
     if (votes) params.votes = votes;
     if (date) params.date = date;
-    //usando el querystring, creamos un objeto del tipo URLSearchParams que transformamos en String y el pasamos a 'useActivities' 
+    //usando el querystring, creamos un objeto del tipo URLSearchParams que transformamos en String y el pasamos a 'useActivities'
     setQueryString(new URLSearchParams(params).toString());
   };
   //Funcion encargada de cambiar el estado de 'date' para  'queryString' y marcar la fecha seleccionada en el input de 'DatePicker'
   const fecha = (selectDate) => {
-    setSelectDate(selectDate)
+    setSelectDate(selectDate);
     setDate(selectDate.toISOString().slice(0, 10));
   };
 
@@ -165,7 +165,10 @@ const ListaActividades = () => {
                   {'Busaca por nombre (todas)'}
                 </option>
                 {companyCategories.map((companyCategory) => (
-                  <option value={companyCategory.name}>
+                  <option
+                    value={companyCategory.name}
+                    key={companyCategory.name}
+                  >
                     {companyCategory.name}
                   </option>
                 ))}
@@ -302,13 +305,12 @@ const ListaActividades = () => {
                 ></input>
                 <label> {'> 60 €'}</label>
               </div>
-              
             </div>
             {/* ........Filtro por fechas........ */}
             <div id='calendar' className='filter-section'>
-              <h3 className='filter-title'>Fechas</h3>            
-              <DatePicker value={selectDate} onChange={fecha}/>
-              <button onClick={()=> setDate('')}>Limpiar fecha</button>
+              <h3 className='filter-title'>Fechas</h3>
+              <DatePicker value={selectDate} onChange={fecha} />
+              <button onClick={() => setDate('')}>Limpiar fecha</button>
             </div>
             <button onClick={handleFilter}>Filtrar</button>
           </div>

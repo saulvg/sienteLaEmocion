@@ -114,7 +114,6 @@ const BookingExperience = () => {
                                   value={message}
                                   onChange={(e) => {
                                     setUserMessage(e.target.value);
-                                    console.log(message);
                                   }}
                                 />
                               </div>

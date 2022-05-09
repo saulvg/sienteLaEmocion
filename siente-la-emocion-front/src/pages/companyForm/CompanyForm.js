@@ -231,11 +231,14 @@ function CompanyForm() {
                               : setCompanyCategoryExistente('')
                           }
                         >
-                          <option selected value={'allexperiences'}>
+                          <option value={'allexperiences'}>
                             {'Busaca por nombre (todas)'}
                           </option>
                           {companyCategories.map((companyCategory) => (
-                            <option value={companyCategory.name}>
+                            <option
+                              value={companyCategory.name}
+                              key={companyCategory.name}
+                            >
                               {companyCategory.name}
                             </option>
                           ))}
@@ -313,7 +316,6 @@ function CompanyForm() {
                         <InputElement
                           labelName='Instagram'
                           type='text'
-                          id='instagram'
                           name='instagram'
                           value={companyInstagram}
                           onChange={(e) => {
@@ -323,7 +325,6 @@ function CompanyForm() {
                         <InputElement
                           labelName='Facebook'
                           type='text'
-                          id='facebook'
                           name='facebook'
                           value={companyFacebook}
                           onChange={(e) => {

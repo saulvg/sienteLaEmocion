@@ -8,7 +8,6 @@ import Header from '../../components/Header/Header';
 import DeleteAccount from '../../components/Forms/DeleteAccount';
 import UserExperiences from '../../components/UserExperiences/UserExperiences';
 import decode from 'jwt-decode';
-import useUserProfile from '../../hooks/useUserProfile';
 import Error from '../../components/error/Error';
 import PerfilAdmin from '../../components/PerfilAdmin/PerfilAdmin';
 import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
