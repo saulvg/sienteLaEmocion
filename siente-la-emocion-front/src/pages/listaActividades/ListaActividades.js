@@ -26,7 +26,7 @@ import useCategories from '../../hooks/useCategories';
 import ActividadLista from '../../components/ActividadLista/ActividadLista';
 import Header from '../../components/Header/Header';
 import BodyExperiencesList from '../../components/Header/MainHeader/BodyExperiencesList';
-import Loading from '../../components/loading/Loading';
+import Loading from '../../components/Loading/Loading';
 
 //Pagina que pinta la lista de todas las experiencias disponibles en la Web
 const ListaActividades = () => {

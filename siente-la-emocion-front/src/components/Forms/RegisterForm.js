@@ -1,19 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { InputElement, InputPassword } from './InputElement';
 import BlueButton from './BlueButton';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Error from '../error/Error';
-import Loading from '../loading/Loading';
+import Loading from '../Loading/Loading';
 
 const RegisterForm = () => {
-  const [togglePassword, setTogglePassword] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [phone, setPhone] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [dni_nie, setDni_nie] = useState('');
   const [username, setUsername] = useState('');
-  const [name, setName] = useState('');
   const [done, setDone] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();

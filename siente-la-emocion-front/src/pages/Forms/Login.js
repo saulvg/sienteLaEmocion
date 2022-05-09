@@ -1,8 +1,6 @@
 import LoginForm from '../../components/Forms/LoginForm';
 import { Link, Outlet } from 'react-router-dom';
 import { ModalCircle } from '../../components/Forms/ModalCircle';
-import { useContext } from 'react';
-import { AuthContext } from '../../App';
 import '../../components/Forms/Forms.css';
 
 const LoginPage = () => {

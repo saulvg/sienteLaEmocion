@@ -9,7 +9,7 @@ import BodyExperience from '../components/Header/MainHeader/BodyExperience';
 import Error from '../components/error/Error';
 import useUser from '../hooks/useUser';
 import '../components/Forms/activityForm.css';
-import Loading from '../components/loading/Loading';
+import Loading from '../components/Loading/Loading';
 import { Modal } from '../components/Modal/Modal';
 
 const Experience = () => {
@@ -44,11 +44,15 @@ const Experience = () => {
                           return (
                             <div key={user.id}>
                               <Modal
-                              buttonClass='username-modal'
-                              buttonName={user.username}
-                              titleModal={user.username}
-                              content={user.biography ? 'Biografia:'+user.biography : 'Biografia: Sin informacion'}
-                            ></Modal>
+                                buttonClass='username-modal'
+                                buttonName={user.username}
+                                titleModal={user.username}
+                                content={
+                                  user.biography
+                                    ? 'Biografia:' + user.biography
+                                    : 'Biografia: Sin informacion'
+                                }
+                              ></Modal>
                             </div>
                           );
                         })}

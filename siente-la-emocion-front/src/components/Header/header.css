@@ -4,7 +4,6 @@ header {
   justify-content: space-between;
   font-family: 'Montserrat', sans-serif;
   min-height: 96vh;
-  /* background-image: url('../../../public/img/imgHomePage.jpg'); */
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;

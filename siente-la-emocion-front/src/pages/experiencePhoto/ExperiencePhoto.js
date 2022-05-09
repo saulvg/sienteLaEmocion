@@ -18,7 +18,7 @@ import decode from 'jwt-decode';
 import Header from '../../components/Header/Header';
 import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
 import Error from '../../components/error/Error';
-import Loading from '../../components/loading/Loading';
+import Loading from '../../components/Loading/Loading';
 
 /**
  * ###########

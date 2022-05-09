@@ -9,8 +9,13 @@ import 'aos/dist/aos.css';
  */
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import { useLocalStorage } from './hooks/useSessionStorage';
 
+/**
+ * ###########
+ * ## Hooks ##
+ * ###########
+ */
+import { useLocalStorage } from './hooks/useSessionStorage';
 
 /**
  * ################
@@ -19,6 +24,7 @@ import { useLocalStorage } from './hooks/useSessionStorage';
  */
 import Footer from './components/Footer/Footer';
 import EditPassword from './components/Forms/EditPassword';
+import ModalContactanos from './components/modalContactanos/ModalContactanos';
 
 /**
  * ###########
@@ -30,20 +36,14 @@ import HomePage from './pages/homePage/HomePage';
 import Register from './pages/Forms/Register';
 import Experience from './pages/Experience';
 import ListaActividades from './pages/listaActividades/ListaActividades';
-import ReviewPage  from './pages/reviewPage/reviewPage';
+import ReviewPage from './pages/reviewPage/reviewPage';
 import ProfilePage from './pages/Forms/ProfilePage';
-import Login from './pages/Forms/Login';
-import DeleteAccount from './components/Forms/DeleteAccount';
 import BookingExperience from './pages/BookingExperience/BookingExperience';
 import ExperiencePhoto from './pages/experiencePhoto/ExperiencePhoto';
 import EditExperience from './pages/editExperience/EditExperience';
 import Buscador from './pages/buscador/Buscador';
 import LoginPage from './pages/Forms/Login';
 
-import ModalContactanos from './components/modalContactanos/ModalContactanos';
-import UserExperiences from './components/UserExperiences/UserExperiences';
-/* import ModalContactanos from './components/modalContactanos/ModalContactanos';
- */
 //Componente para envolver a toda la aplicacion con un contexto para que este dispnible en toda la aplicacion de manera implicita el valro de token
 export const AuthContext = React.createContext();
 
@@ -88,7 +88,7 @@ function App() {
               path='/experiences/:idExperience/reviews'
               element={<ReviewPage />}
             />
-            
+
             <Route
               path='/experiences/:idExperience/booking'
               element={<BookingExperience />}

@@ -21,7 +21,7 @@ import '../Forms/formsPages.css';
  */
 import useFilterActivities from '../../hooks/useFilterActivities';
 import useActivity from '../../hooks/useActivity';
-import Loading from '../../components/loading/Loading';
+import Loading from '../../components/Loading/Loading';
 
 //Pagina que pinta todas las expereincias que conincidan con nuestros parametros de busqueda
 function Buscador() {
