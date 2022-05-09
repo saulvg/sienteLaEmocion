@@ -12,7 +12,6 @@ import useActivity from '../../../hooks/useActivity';
  * ###########
  */
 import { Link, useParams } from 'react-router-dom';
-import { useState } from 'react';
 
 //Componente que pinta la cabezera cuando entramos en una actividad en concreto
 const BodyActivitis = () => {

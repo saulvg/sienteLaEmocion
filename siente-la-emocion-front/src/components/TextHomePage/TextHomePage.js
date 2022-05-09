@@ -1,4 +1,3 @@
-import './textHomePage.css';
 const TextHomePage = ({ title, p1, p2 }) => {
   return (
     <div className='textHomePag' data-aos='fade-up'>

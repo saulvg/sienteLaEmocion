@@ -5,7 +5,7 @@ import { ModalCircle } from './ModalCircle';
 import BlueButton from './BlueButton';
 import { AuthContext } from '../../App';
 import { useNavigate } from 'react-router-dom';
-import Loading from '../loading/Loading';
+import Loading from '../Loading/Loading';
 import Error from '../error/Error';
 
 const EditPassword = () => {
@@ -137,8 +137,15 @@ const EditPassword = () => {
                   {error ? (
                     <Error /* className='error-msg' */>{error}</Error>
                   ) : null}
-                  <BlueButton name='Cambiar' type='submit' />
-                  <BlueButton name='Cancelar' />
+                  <div className='delete-buttons'>
+                    <BlueButton name='Cambiar' type='submit' />
+                    <BlueButton
+                      name='Cancelar'
+                      onClick={() => {
+                        window.history.go(-1);
+                      }}
+                    />
+                  </div>
                 </>
               ) : (
                 <Loading /* className='confirmation' */>

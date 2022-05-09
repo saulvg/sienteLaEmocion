@@ -38,7 +38,7 @@ import {
 import Header from '../../components/Header/Header';
 import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
 import DeleteExperience from '../../components/DeleteExperience/DeleteExperience';
-import Loading from '../../components/loading/Loading';
+import Loading from '../../components/Loading/Loading';
 import { ModalCircle } from '../../components/Forms/ModalCircle';
 import BlueButton from '../../components/Forms/BlueButton';
 

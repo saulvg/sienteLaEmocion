@@ -6,7 +6,6 @@ textarea:required:invalid {
   background-color: rgba(128, 128, 127, 0.493);
 }
 .companyForm {
-  /* background-color: aqua; */
   margin: 2rem 5rem;
 }
 .companyPhotoHeader {
@@ -21,7 +20,6 @@ textarea:required:invalid {
   outline: none;
 
   font-family: Montserrat;
-  /* border: transparent; */
   border: solid thin black;
   border-radius: 25px;
 

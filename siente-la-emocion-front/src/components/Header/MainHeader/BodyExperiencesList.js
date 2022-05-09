@@ -1,11 +1,4 @@
 /**
- * ###########
- * ## Hooks ##
- * ###########
- */
-import useActivity from '../../../hooks/useActivity';
-
-/**
  * ################
  * ## Components ##
  * ################
