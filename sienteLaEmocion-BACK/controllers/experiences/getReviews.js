@@ -6,11 +6,11 @@ const getReviews = async (req, res, next) => {
     try {
         connection = await getDB();
 
-        //Obtenemso el id de la exeriencia que queremso obtener
-        //ya hemos comprobado si existe anteriormente en un middleware asi que no lo comprobamos de nuevo
+        // Obtenemos el id de la exeriencia de la que queremos ver las reviews
+        // Ya hemos comprobado si existe anteriormente en un middleware asi que no lo comprobamos de nuevo
         const { idExperience } = req.params;
 
-        //obtenemso la informacion de la experiencia que queremos obtener haciendo un join con los datos de otras tablas que tambien necesitamos aqui
+        // Obtenemos la informacion de la review haciendo un join con los datos de otras tablas que necesitamos
         const [review] = await connection.query(
             `
         SELECT 
@@ -39,7 +39,7 @@ const getReviews = async (req, res, next) => {
             status: 'ok',
             data: {
                 review,
-                //idExperience,
+                
             },
         });
     } catch (error) {
