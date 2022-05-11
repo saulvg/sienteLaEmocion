@@ -9,7 +9,7 @@ import { useSearchParams } from 'react-router-dom';
  * ## Components ##
  * ################
  */
-import ActividadLista from '../../components/ActividadLista/ActividadLista';
+import ExperienceList from '../../components/Experiences/ExperienceList/ExperienceList';
 import Header from '../../components/Header/Header';
 import BodyExperiencesList from '../../components/Header/MainHeader/BodyExperiencesList';
 import Error from '../../components/error/Error';
@@ -27,7 +27,6 @@ import Loading from '../../components/Loading/Loading';
 function Buscador() {
   const [params] = useSearchParams();
   const { activity } = useActivity('random');
-  console.log('Buscador', activity);
 
   //Recoge todos los parametros de busqueda de search
   const term = params.get('search');
@@ -49,7 +48,7 @@ function Buscador() {
       />
       {!error ? (
         <div className='container search-activity'>
-          <ActividadLista activities={activities} error={error} />
+          <ExperienceList activities={activities} error={error} />
         </div>
       ) : (
         <Error>{error}</Error>

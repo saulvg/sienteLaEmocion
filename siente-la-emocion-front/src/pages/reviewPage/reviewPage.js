@@ -15,7 +15,7 @@ import { useParams } from 'react-router';
  */
 import Error from '../../components/error/Error';
 import Header from '../../components/Header/Header';
-import { Modal } from '../../components/Modal/Modal';
+import { Modal } from '../../components/Modals/Modal';
 import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
 import Loading from '../../components/Loading/Loading';
 /**

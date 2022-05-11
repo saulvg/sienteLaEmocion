@@ -10,7 +10,6 @@ const getUserExperiences = async (req, res, next) => {
         //ya hemos comprobado si existe anteriormente en un middleware asi que no lo comprobamos de nuevo
         const idReqUser = req.userAuth.id;
 
-        /* ...........Saul................ */
         const [bookings] = await connection.query(
             `
             SELECT 

@@ -1,5 +1,14 @@
-import { useState } from 'react';
+// ## Style ##
 import './upDownPage.css';
+
+/**
+ * ###########
+ * ## React ##
+ * ###########
+ */
+import { useState } from 'react';
+
+//Componente que utilizamos para pintar y dar funcionalidad a un boton que suba y baje la ventana de la web para ir al header o al main
 const UpDownPage = () => {
   const [upORdown, setUpORdown] = useState('');
 

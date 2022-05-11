@@ -1,4 +1,8 @@
+// ## Style ##
 import './circlePage.css';
+
+//Componente que utilizamos para pintar los cirulos 'links', de la 'HomePage'
+//Recibe como props un id, una clase (para la hora de maquetar), un href (para saber a donde redirigir), un children(con el mendaje que ira dentro)
 const CircleHomePage = ({ id, clas, href, children }) => {
   return (
     <a href={href} id={id} className={`route ${clas}`} data-aos='flip-left'>
@@ -8,6 +12,8 @@ const CircleHomePage = ({ id, clas, href, children }) => {
 };
 export default CircleHomePage;
 
+//Componente que utilizamos para pintar los cirulos 'links', de 'ExperienceList'
+//Recibe como props un id, una clase (para la hora de maquetar), un image (para saber que imagen de backgrund tendra), un children(con el mendaje que ira dentro)
 export const CircleActivities = ({ id, clas, children, image }) => {
   return (
     <div
@@ -16,9 +22,6 @@ export const CircleActivities = ({ id, clas, children, image }) => {
       style={{ backgroundImage: `url('${image}')` }}
     >
       {children}
-      {/* <div className='img-header'>
-        <img src={image} alt='fotoExperiencia' />
-      </div> */}
     </div>
   );
 };

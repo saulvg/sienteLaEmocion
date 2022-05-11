@@ -1,3 +1,4 @@
+// ## Style ##
 import './homePage.css';
 import '../../components/Header/header.css';
 /**
@@ -10,9 +11,11 @@ import Header from '../../components/Header/Header';
 import SocialNetwork from '../../components/SocialNetwork/SocialNetwork';
 import TextHomePage from '../../components/TextHomePage/TextHomePage';
 import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
-import { ExperienceDetail } from '../../components/Experience-detail/Experience-detail';
+import { ExperienceDetail } from '../../components/Experiences/Experience-detail';
 
+//Pagina que pinta la entrada a la web
 const HomePage = () => {
+  //Devolvemos todos los componentes que deseamos pintar
   return (
     <div className='App'>
       <Header
@@ -88,9 +91,6 @@ const HomePage = () => {
           />
         </section>
         <section id='coments' className='interseccion'>
-          {/* <CircleHomePage id={'comment1'} children={'Comentario destacado 1'} />
-          <CircleHomePage id={'comment2'} children={'Comentario destacado 2'} />
-          <CircleHomePage id={'comment3'} children={'Comentario destacado 3'} /> */}
           <ExperienceDetail
             experienceImg='/img/1.svg'
             description='Seguridad garantizada'

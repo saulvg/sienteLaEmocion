@@ -19,8 +19,9 @@ import useUser from '../../hooks/useUser';
  */
 import { InputElement, TextareaElement } from './InputElement';
 import BlueButton from './BlueButton';
-import EditAvatarS from '../../components/EditAvatar/EditAvatar';
+import EditAvatar from '../../components/EditAvatar/EditAvatar';
 import Loading from '../Loading/Loading';
+import Error from '../error/Error';
 
 //Pagina que pinta el formulario para editar el perfil de usuario
 const EditProfile = () => {
@@ -61,10 +62,8 @@ const EditProfile = () => {
       const body = await res.json();
 
       if (res.ok) {
-        console.log(body);
         setLoad(body.message);
       } else {
-        console.error('Error', body.message);
         setError(body.message);
       }
     } catch (error) {
@@ -79,7 +78,7 @@ const EditProfile = () => {
         <>
           {!load ? (
             <>
-              <EditAvatarS />
+              <EditAvatar />
               <form onSubmit={edit}>
                 <div className='profile-elements'>
                   <InputElement
@@ -162,6 +161,7 @@ const EditProfile = () => {
                   />
                 </BlueButton>
               </form>
+              {error ? <Error>{error}</Error> : null}
             </>
           ) : (
             <div>

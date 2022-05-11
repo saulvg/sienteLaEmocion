@@ -24,7 +24,7 @@ import { useLocalStorage } from './hooks/useSessionStorage';
  */
 import Footer from './components/Footer/Footer';
 import EditPassword from './components/Forms/EditPassword';
-import ModalContactanos from './components/modalContactanos/ModalContactanos';
+import ModalContactanos from './components/Modals/modalContactanos/ModalContactanos';
 
 /**
  * ###########
@@ -34,15 +34,15 @@ import ModalContactanos from './components/modalContactanos/ModalContactanos';
 import CompanyForm from './pages/companyForm/CompanyForm';
 import HomePage from './pages/homePage/HomePage';
 import Register from './pages/Forms/Register';
-import Experience from './pages/Experience';
-import ListaActividades from './pages/listaActividades/ListaActividades';
+import Experience from './pages/Experiences/Experience/Experience';
+import ExperiencesList from './pages/Experiences/ExperiencesList/ExperiencesList';
 import ReviewPage from './pages/reviewPage/reviewPage';
 import ProfilePage from './pages/Forms/ProfilePage';
-import BookingExperience from './pages/BookingExperience/BookingExperience';
-import ExperiencePhoto from './pages/experiencePhoto/ExperiencePhoto';
-import EditExperience from './pages/editExperience/EditExperience';
+import BookingExperience from './pages/Experiences/BookingExperience';
+import ExperiencePhoto from './pages/Experiences/experiencePhoto/ExperiencePhoto';
 import Buscador from './pages/buscador/Buscador';
-import LoginPage from './pages/Forms/Login';
+import EditExperience from './pages/Experiences/editExperience/EditExperience';
+import LoginPage from './pages/Forms/LoginPage';
 
 //Componente para envolver a toda la aplicacion con un contexto para que este dispnible en toda la aplicacion de manera implicita el valro de token
 export const AuthContext = React.createContext();
@@ -93,7 +93,7 @@ function App() {
               path='/experiences/:idExperience/booking'
               element={<BookingExperience />}
             />
-            <Route path='/allexperiences' element={<ListaActividades />} />
+            <Route path='/allexperiences' element={<ExperiencesList />} />
 
             {/**
              * ############

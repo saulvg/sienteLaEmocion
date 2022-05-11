@@ -1,12 +1,31 @@
+// ## Style ##
 import './header.css';
 
+/**
+ * ###########
+ * ## React ##
+ * ###########
+ */
 import { Link } from 'react-router-dom';
-import useUser from '../../hooks/useUser';
-import ModalContactanos from '../modalContactanos/ModalContactanos';
-import ModalSearch from '../ModalSearch/ModalSearch';
 import { useEffect, useState } from 'react';
+
+/**
+ * ###########
+ * ## Hooks ##
+ * ###########
+ */
+import useUser from '../../hooks/useUser';
+
+/**
+ * ################
+ * ## Components ##
+ * ################
+ */
+import ModalContactanos from '../Modals/modalContactanos/ModalContactanos';
+import ModalSearch from '../Modals/ModalSearch';
 import UpDownPage from '../UpDownPage/UpDownPage';
 
+//Componente que pinta un botton en el header de la pagina (redirige depende a donde le indiquemos en el prop de 'to')
 const HeaderButon = ({ to, children }) => {
   return (
     <Link to={to}>
@@ -14,6 +33,7 @@ const HeaderButon = ({ to, children }) => {
     </Link>
   );
 };
+//Componente que pinta el logo en el header de la pagina (siempre redirige la 'HomePage')
 const Logo = () => {
   return (
     <Link to='/'>
@@ -22,6 +42,7 @@ const Logo = () => {
   );
 };
 
+//Componente que pinta el Header de la pagina, tiene diferentes props, bg (el fondo del header), to(prop que le pasa al un componente hijo 'HeaderButton'), button(texto dentro del button), body(contenido del header), className(clase que le podemos pasar para darle diferentes estilos)
 const Header = ({ bg, to, button, body, className }) => {
   const { token } = useUser();
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -37,6 +58,7 @@ const Header = ({ bg, to, button, body, className }) => {
     window.addEventListener('resize', changeWidth);
   }, []);
 
+  //Pintamos todo lo que deseamos mostrar dependendiendo de los estados
   return (
     <>
       <header

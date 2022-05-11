@@ -1,27 +1,30 @@
+// ## Style ##
+import '../../components/Forms/Forms.css';
+
 /**
  * ###########
  * ## React ##
  * ###########
  */
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
+
 /**
  * ################
  * ## Components ##
  * ################
  */
+import LoginForm from '../../components/Forms/LoginForm';
 import { ModalCircle } from '../../components/Forms/ModalCircle';
-import RegisterForm from '../../components/Forms/RegisterForm';
 
-//Pagina que pinta el formulario de Register
-const Register = () => {
+//Pagina que pinta el formulario de Login
+const LoginPage = () => {
   return (
     <div className='align-modal'>
       <div className='modal-box'>
         <div className='form-titles'>
           <div className='circle-content'>
             <button
-              className='flex back-button'
+              className='flex'
               onClick={() => {
                 window.history.go(-1);
               }}
@@ -42,10 +45,10 @@ const Register = () => {
               </svg>
               <p className='goback'>Volver</p>
             </button>
-            <p className='circle-name'>Registro</p>
+            <p className='circle-name'>Inicio de sesión</p>
           </div>
         </div>
-        <ModalCircle name='Registro'></ModalCircle>
+        <ModalCircle name='Inicio de sesión'></ModalCircle>
         <div className='modal1'></div>
         <div className='modal3'>
           <div className='circle-background2'></div>
@@ -54,8 +57,12 @@ const Register = () => {
           <div className='circle-background3'></div>
         </div>
         <div className='modal2'>
-          <RegisterForm />
+          <LoginForm />
           <div className='circle-background'></div>
+          <p className='login-register'>
+            ¿No tienes cuenta?
+            <Link to='/register'>¡Regístrate!</Link>
+          </p>
         </div>
         <Outlet />
       </div>
@@ -63,4 +70,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default LoginPage;
