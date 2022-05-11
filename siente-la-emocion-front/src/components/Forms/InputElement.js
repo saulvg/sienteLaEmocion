@@ -1,6 +1,14 @@
-import { useState } from 'react';
+// ## Style ##
 import './Forms.css';
 
+/**
+ * ###########
+ * ## React ##
+ * ###########
+ */
+import { useState } from 'react';
+
+//Componente input noraml, input para passwords y textArea que utilizaremso de forma generica para pintarlo por la app
 export const InputElement = ({
   type,
   labelName,

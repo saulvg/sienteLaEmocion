@@ -1,4 +1,6 @@
+// ## Style ##
 import './bodyHeaderHomePage.css';
+//Componente que pinta el header la vista lista de actividades
 const BodyHeaderHomePage = () => {
   return (
     <div className='headerBody bodyHeaderHomePage'>

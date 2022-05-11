@@ -1,0 +1,123 @@
+li a {
+  text-decoration: none;
+  color: black;
+}
+
+section.actividad {
+  display: flex;
+  gap: 2rem;
+  /*  justify-content: center; */
+  justify-content: start;
+}
+.description-activity {
+  width: 100%;
+  justify-content: space-around;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.MuiTextField-root {
+  display: block;
+  width: 100%;
+}
+
+.experience-list {
+  flex-shrink: 0;
+}
+.experience-date {
+  display: flex;
+  min-width: 10rem;
+  justify-content: space-between;
+  padding-top: 1rem;
+}
+
+.texto {
+  word-break: break-all;
+  height: 60px;
+  overflow: auto;
+}
+
+.lapiz {
+  display: block;
+  background-size: contain;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 0;
+  background-image: url('../../../../public/silueta/editar.png');
+}
+
+.social-networks {
+  display: flex;
+  flex-direction: row;
+  padding-right: 2rem;
+  padding-bottom: 1rem;
+  gap: 1rem;
+}
+
+.activity-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+}
+#miniInstagram {
+  background-image: url('../../../../public/silueta/instagram.png');
+  width: 3rem;
+  height: 3rem;
+}
+
+#miniFacebook {
+  background-image: url('../../../../public/silueta/facebook.png');
+  width: 3rem;
+  height: 3rem;
+}
+
+.activity-flex {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(230, 243, 243);
+  border-radius: 20px;
+}
+
+.activity-flex + .activity-flex {
+  margin-top: 20px;
+}
+
+@media (max-width: 700px) {
+  .activity-flex {
+    display: block;
+    border-radius: 13px;
+  }
+  .description-activity h3 {
+    font-size: 25px;
+  }
+
+  .experience-date {
+    display: block;
+  }
+
+  .texto {
+    min-height: 30px;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .description-activity p {
+    font-size: 20px;
+  }
+  .social-networks {
+    text-align: center;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .actividad {
+    display: block;
+    text-align: center;
+  }
+  .route {
+    margin: 0 auto 20px;
+  }
+}

@@ -102,7 +102,8 @@ const getExperience = async (req, res, next) => {
             `
             SELECT 
                 users.id,
-                users.username
+                users.username,
+                users.biography
             FROM 
                 booking
             LEFT JOIN users ON (booking.id_user = users.id) 

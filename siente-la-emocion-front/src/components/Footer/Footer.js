@@ -1,5 +1,7 @@
+// ## Style ##
 import './footer.css';
 
+//Componente que pinta el pie de pagina
 const Footer = () => {
   return (
     <footer>

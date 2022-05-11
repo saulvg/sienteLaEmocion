@@ -7,7 +7,6 @@ const newExperience = require('./newExperience');
 const getExperienceList = require('./getExperiencesList');
 const getReviews = require('./getReviews');
 const getUserExperiences = require('./getUserExperiences');
-const deleteReview = require('./deleteReview');
 module.exports = {
     getExperience,
     editExperience,
@@ -18,5 +17,4 @@ module.exports = {
     getReviews,
     deleteExperience,
     getUserExperiences,
-    deleteReview,
 };

@@ -95,7 +95,7 @@ const newBooking = async (req, res, next) => {
 
         if (doubleBooking.length > 0) {
             const error = new Error(
-                'Ya has reservado esta experiencia, porfavor comprueba tu bandeja de entrada, sino es asi ponte en contacto con nosotros,'
+                'Ya has reservado esta experiencia, porfavor comprueba tu bandeja de entrada, sino es así, ponte en contacto con nosotros,'
             );
             error.httpStatus = 405;
             throw error;
@@ -149,7 +149,7 @@ const newBooking = async (req, res, next) => {
             ${experiences[0].direction},
             en fecha: ${dateFormat},
             con la empresa ${company[0].name},
-            no se acuerde que tendra que abonar ${experiences[0].price}€ antes de comenzar la experiencia.
+            no se olvide que tendra que abonar ${experiences[0].price}€ antes de comenzar la experiencia.
         `;
         //Enviamos el correo al usuario
         await sendMail({
