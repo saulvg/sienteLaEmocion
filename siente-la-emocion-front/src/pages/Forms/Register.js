@@ -1,9 +1,20 @@
+/**
+ * ###########
+ * ## React ##
+ * ###########
+ */
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+/**
+ * ################
+ * ## Components ##
+ * ################
+ */
 import { ModalCircle } from '../../components/Forms/ModalCircle';
 import RegisterForm from '../../components/Forms/RegisterForm';
 
-const Register = (props) => {
+//Pagina que pinta el formulario de Register
+const Register = () => {
   return (
     <div className='align-modal'>
       <div className='modal-box'>

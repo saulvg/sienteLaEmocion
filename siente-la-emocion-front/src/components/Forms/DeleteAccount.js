@@ -1,21 +1,41 @@
+// ## Style ##
+import './Forms.css';
+
+/**
+ * ################
+ * ## Components ##
+ * ################
+ */
+import Loading from '../Loading/Loading';
+import BlueButton from './BlueButton';
+
+/**
+ * ###########
+ * ## React ##
+ * ###########
+ */
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../App';
-import BlueButton from './BlueButton';
-import './Forms.css';
-import decode from 'jwt-decode';
-import Loading from '../Loading/Loading';
 
+import { AuthContext } from '../../App';
+import decode from 'jwt-decode';
+
+//Componente que utilizamos para que un usuario elimine su cuenta
 const DeleteAccount = () => {
+  //Conseguimos el token y la posibilidad de cambiar su valor
   const { token, setToken } = useContext(AuthContext);
-  const [done, setDone] = useState('');
+  //Para redirigir
   const navigate = useNavigate();
   const redirect = () => navigate('/');
+  //Estado para controlar el componente
+  const [done, setDone] = useState('');
+
+  //Declaramos una variable para asignarle el valor del token decodificado del usuario
   let idUser;
   if (token) {
     idUser = decode(token);
-    console.log(idUser.id);
   }
+  //Funicon manejadora pare llevar a cabo la peticion 'DELETE' que eliminara la cuenta del usuario
   const deleteUser = async (e) => {
     e.preventDefault();
 
@@ -31,8 +51,8 @@ const DeleteAccount = () => {
 
     const body = await res.json();
 
+    //si todo a ido bien cambiamos el estado del token a null
     if (res.ok) {
-      console.log('Usuario eliminado');
       setDone(true);
       setTimeout(redirect, 5000);
       setToken(null);
@@ -40,9 +60,9 @@ const DeleteAccount = () => {
       console.log(body.message);
       console.log('error');
     }
-    console.log('ee');
   };
 
+  //pintamos el componente
   return (
     <>
       (

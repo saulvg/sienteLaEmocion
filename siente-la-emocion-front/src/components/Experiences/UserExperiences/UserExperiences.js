@@ -23,7 +23,7 @@ import ModalVoteExperience from '../../Modals/ModalVoteExperience';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-//Componente que pinta y envia los datos
+//Componente que pinta datos sobre las experiencias que el usuario a realizado
 const UserExperiences = () => {
   const { bookings, error } = useBookings();
   const navigate = useNavigate();

@@ -1,5 +1,6 @@
-import { AuthContext } from '../../App';
 //## Style ##
+import '../../components/Forms/Forms.css';
+
 /**
  * ################
  * ## Components ##
@@ -10,7 +11,9 @@ import Error from '../../components/error/Error';
 import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
 import Header from '../../components/Header/Header';
 import Loading from '../../components/Loading/Loading';
-import '../../components/Forms/Forms.css';
+
+import { AuthContext } from '../../App';
+
 /**
  * ###########
  * ## React ##

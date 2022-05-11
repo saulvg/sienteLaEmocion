@@ -373,7 +373,7 @@ function CompanyForm() {
                       </div>
                     </div>
                     {error ? <Error>{error}</Error> : ''}
-                    <BlueButton name='Enviar'></BlueButton>
+                    <BlueButton name='Enviar' type='submit'></BlueButton>
                   </form>
                   <div className='circle-background'></div>
                 </div>

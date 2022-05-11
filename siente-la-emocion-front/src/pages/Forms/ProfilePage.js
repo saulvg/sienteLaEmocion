@@ -1,33 +1,45 @@
-//import './style.css';
+/**
+ * ###########
+ * ## Hooks ##
+ * ###########
+ */
 import useUser from '../../hooks/useUser';
-import { Navigate, useParams } from 'react-router';
+
+/**
+ * ################
+ * ## Components ##
+ * ################
+ */
 import EditProfile from '../../components/Forms/EditProfile';
-import useActivities from '../../hooks/useActivities';
-import { Modal } from '../../components/Modals/Modal';
 import Header from '../../components/Header/Header';
 import DeleteAccount from '../../components/Forms/DeleteAccount';
 import UserExperiences from '../../components/Experiences/UserExperiences/UserExperiences';
-import decode from 'jwt-decode';
-import Error from '../../components/error/Error';
 import PerfilAdmin from '../../components/PerfilAdmin/PerfilAdmin';
 import BodyHeaderHomePage from '../../components/Header/MainHeader/BodyHeaderHomePage';
 import { ModalCircle } from '../../components/Forms/ModalCircle';
+
+/**
+ * ###########
+ * ## React ##
+ * ###########
+ */
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import EditAvatar from '../../components/EditAvatar/EditAvatar';
 
+import decode from 'jwt-decode';
+
+//Página que pinta el perifil del usuario X o el del admin
 const ProfilePage = () => {
-  const { token, setToken, user } = useUser();
-  const navigate = useNavigate();
-  const [deleteModal, setDeleteModal] = useState(false);
-  //decoded.id === usuario && user ?
-  /* 
-  if (!token) {
-    return <Error>No te has registrado</Error>;
-  } */
+  //Conseguimos el token para decodificarlo y saber su rol es admin o normal
+  const { token, setToken } = useUser();
   const decoded = decode(token);
+  //Navigate para redirigir hacia alguna pagina
+  const navigate = useNavigate();
+  //Estado
+  const [deleteModal, setDeleteModal] = useState(false);
 
+  //Devolvemos todos los componenetes, si es admin una cosa si es usuario normal otra, si el estado 'deleteModal' es true o si es false
   return (
     <>
       <Header

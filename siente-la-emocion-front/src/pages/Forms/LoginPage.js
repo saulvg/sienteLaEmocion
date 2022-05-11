@@ -1,8 +1,22 @@
-import LoginForm from '../../components/Forms/LoginForm';
-import { Link, Outlet } from 'react-router-dom';
-import { ModalCircle } from '../../components/Forms/ModalCircle';
+// ## Style ##
 import '../../components/Forms/Forms.css';
 
+/**
+ * ###########
+ * ## React ##
+ * ###########
+ */
+import { Link, Outlet } from 'react-router-dom';
+
+/**
+ * ################
+ * ## Components ##
+ * ################
+ */
+import LoginForm from '../../components/Forms/LoginForm';
+import { ModalCircle } from '../../components/Forms/ModalCircle';
+
+//Pagina que pinta el formulario de Login
 const LoginPage = () => {
   return (
     <div className='align-modal'>

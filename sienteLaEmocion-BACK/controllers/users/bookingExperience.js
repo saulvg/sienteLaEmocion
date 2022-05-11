@@ -149,7 +149,7 @@ const newBooking = async (req, res, next) => {
             ${experiences[0].direction},
             en fecha: ${dateFormat},
             con la empresa ${company[0].name},
-            no se acuerde que tendra que abonar ${experiences[0].price}€ antes de comenzar la experiencia.
+            no se olvide que tendra que abonar ${experiences[0].price}€ antes de comenzar la experiencia.
         `;
         //Enviamos el correo al usuario
         await sendMail({

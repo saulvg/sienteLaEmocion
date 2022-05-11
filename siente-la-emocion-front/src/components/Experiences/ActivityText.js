@@ -1,5 +1,8 @@
+// ## Style ##
 import '../Forms/activityForm.css';
 
+//Componente que pinta los cuadros de texto de 'Expereince'
+//Recibe props, image(imagen asociada a el texto), answer(Pregunta relacionada al box), question(respuesta relacionada al box), questionBox, answerBox y activityClass (clases para darle estilos)
 export const ActivityText = ({
   image,
   answer,

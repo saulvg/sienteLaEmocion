@@ -1,23 +1,41 @@
-import { useState, useEffect, useContext } from 'react';
+// ## Style ##
 import './Forms.css';
+
+/**
+ * ###########
+ * ## React ##
+ * ###########
+ */
+import { useNavigate } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
+
+/**
+ * ################
+ * ## Components ##
+ * ################
+ */
 import { InputPassword } from './InputElement';
 import { ModalCircle } from './ModalCircle';
 import BlueButton from './BlueButton';
-import { AuthContext } from '../../App';
-import { useNavigate } from 'react-router-dom';
 import Loading from '../Loading/Loading';
 import Error from '../error/Error';
 
+import { AuthContext } from '../../App';
+
+// Componente que utilizamos para pintar y cambair la contraseña
 const EditPassword = () => {
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [repeatNewPassword, setRepeatNewPassword] = useState('');
   const [doPasswordsMatch, setDoPasswordMatch] = useState(false);
-  const { token, setToken } = useContext(AuthContext);
   const [done, setDone] = useState(false);
   const [error, setError] = useState('');
+  //Para redirigir
   const navigate = useNavigate();
+  //Valor del token porque el back nos requiere que la peticion este autorizada y estado del token para ponerlo a null si hemos conseguido cambiar la contraseña
+  const { token, setToken } = useContext(AuthContext);
 
+  //use effect que se encarga de comprobar si la nueva contraseña coincide y se refreca cada vez que el valor de los inputs de new password y repit newPassword cambian
   useEffect(() => {
     if (newPassword === repeatNewPassword) {
       setDoPasswordMatch(true);
@@ -26,14 +44,16 @@ const EditPassword = () => {
     }
   }, [newPassword, repeatNewPassword]);
 
+  //Funcion manejadora del formulario que realiza una peticion 'PUT'
   const editPassword = async (e) => {
     e.preventDefault();
-
+    //si la contraseñas no coincide lanzamos un error y detenemos la ejecucion de la funcion
     if (!doPasswordsMatch) {
       setError('La contraseña nueva no coincide');
       return;
     }
 
+    //intentamos realizar la peticion de tipo 'PUT'
     try {
       const res = await fetch(
         `${process.env.REACT_APP_BACKEND}/users/edit/password`,
@@ -48,10 +68,12 @@ const EditPassword = () => {
       );
       const body = await res.json();
 
+      //Funcion que redirige a la pagian de login
       const redirect = () => navigate('/login');
 
+      //Si todo a ido bien cambiamos el valor de token a string vacio, cambaimos el estado de 'done' a true y iniciamos un  'setTimeout' de 5 segundos
+      //Sino cambiamos el valor del estado 'error' a un valor truthy
       if (res.ok) {
-        console.log('Contraseña actualizada, inicia sesión de nuevo');
         setToken('');
         setDone(true);
         setTimeout(redirect, 5000);
@@ -63,6 +85,7 @@ const EditPassword = () => {
     }
   };
 
+  //Pintamos todo lo que deseamos mostrar
   return (
     <>
       <form onSubmit={editPassword}>
@@ -134,9 +157,7 @@ const EditPassword = () => {
                       setRepeatNewPassword(e.target.value);
                     }}
                   ></InputPassword>
-                  {error ? (
-                    <Error /* className='error-msg' */>{error}</Error>
-                  ) : null}
+                  {error ? <Error>{error}</Error> : null}
                   <BlueButton name='Cambiar' type='submit' />
                   <BlueButton
                     name='Cancelar'
@@ -146,9 +167,7 @@ const EditPassword = () => {
                   />
                 </>
               ) : (
-                <Loading /* className='confirmation' */>
-                  Tu contraseña se ha actualizado
-                </Loading>
+                <Loading>Tu contraseña se ha actualizado</Loading>
               )}
             </div>
           </div>

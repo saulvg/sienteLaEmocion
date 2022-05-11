@@ -27,7 +27,6 @@ import Loading from '../../components/Loading/Loading';
 function Buscador() {
   const [params] = useSearchParams();
   const { activity } = useActivity('random');
-  console.log('Buscador', activity);
 
   //Recoge todos los parametros de busqueda de search
   const term = params.get('search');

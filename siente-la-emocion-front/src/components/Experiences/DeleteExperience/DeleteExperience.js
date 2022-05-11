@@ -18,17 +18,24 @@ import BlueButton from '../../Forms/BlueButton';
 import Error from '../../error/Error';
 import Loading from '../../Loading/Loading';
 
+//Componente que utilizamos para pintar y borrar una experiencia
 const DeleteExperience = () => {
+  //Necesitamos el token porque el backend exige autorization
   const { token } = useContext(AuthContext);
+  //Recogemos el id de la experiencia del parametro 'idExperience' de la ruta
   const { idExperience } = useParams();
-  const [done, setDone] = useState('');
+  //Para redirigir
   const navigate = useNavigate();
+  //Estados que utilizaremos para pintar y dar funcionalidad al componente
+  const [done, setDone] = useState('');
   const [load, setLoad] = useState('');
   const [error, setError] = useState('');
 
+  //Funcion manejadora asincroma que lleva a cabo la peticion para borrar una experiencia
   const deleteExperience = async (event) => {
     event.preventDefault();
     try {
+      //Realizamos la peticion 'DELETE'
       const response = await fetch(
         `${process.env.REACT_APP_BACKEND}/experiences/${idExperience}`,
         {
@@ -39,8 +46,12 @@ const DeleteExperience = () => {
         }
       );
       const body = await response.json();
+
+      //Funcion para redirigir a 'HomePage'
       const redirect = () => navigate('/');
 
+      //Si todo a ido bien cambiamos el estado de 'load' a truthy, iniciamos un setTimeOut para que nos rediriga y cambiamso el estado de done
+      //Sino mostramos cambiamos elestado de 'error' para que nos muestre un mensaje por pantalla
       if (response.ok) {
         setLoad(body.message);
         setTimeout(redirect, 5000);
@@ -54,6 +65,7 @@ const DeleteExperience = () => {
     }
   };
 
+  //Devolvemos lo que deseamos pintar
   return (
     <>
       {!load ? (

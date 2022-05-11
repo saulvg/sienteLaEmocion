@@ -1,7 +1,14 @@
-import { useModal } from '../../../hooks/useModal';
+// ## Style ##
+import './contacto.css';
+
+/**
+ * ################
+ * ## Components ##
+ * ################
+ */
 import { Modal } from '../Modal';
 import SocialNetwork from '../../SocialNetwork/SocialNetwork';
-import './contacto.css';
+//Componente que utilizamos para mintar un modal para contctar con los admin de la app
 const ModalContactanos = () => {
   return (
     <>
