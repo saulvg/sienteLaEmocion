@@ -1,5 +1,5 @@
 //Hook para coger datos de las actividades
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useUser from './useUser';
 
 const useActivity = (id) => {
@@ -7,9 +7,12 @@ const useActivity = (id) => {
   const [error, setError] = useState(null);
   const { token } = useUser();
 
+  const mounted = useRef(false);
+
   //const [book, setBook] = useState([]);
 
   useEffect(() => {
+    mounted.current = true;
     const loadActivity = async () => {
       try {
         const response = await fetch(
@@ -28,14 +31,18 @@ const useActivity = (id) => {
           return;
         }
 
-        setActivity(json.data);
+        if (mounted.current) setActivity(json.data);
       } catch (error) {
-        setError(error.message);
+        if (mounted.current) setError(error.message);
       }
     };
 
     loadActivity();
-  }, [id]);
+
+    return () => {
+      mounted.current = false;
+    };
+  }, [id, token]);
 
   return { activity, error, setActivity };
 };

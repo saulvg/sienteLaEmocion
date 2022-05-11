@@ -1,5 +1,5 @@
 //Hook para coger datos de las experiencias
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const useActivities = (queryString) => {
@@ -7,7 +7,10 @@ const useActivities = (queryString) => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  const mounted = useRef(false);
+
   useEffect(() => {
+    mounted.current = true;
     const loadActivities = async () => {
       try {
         navigate('/allexperiences');
@@ -28,14 +31,18 @@ const useActivities = (queryString) => {
           console.log(json.message);
           return;
         }
-        setActivities(json.data.experiences);
+        if (mounted.current) setActivities(json.data.experiences);
       } catch (error) {
-        setError(error.message);
+        if (mounted.current) setError(error.message);
       }
     };
 
     loadActivities();
-  }, [queryString]);
+
+    return () => {
+      mounted.current = false;
+    };
+  }, [queryString, navigate]);
 
   return { activities, error };
 };

@@ -29,7 +29,7 @@ import BodyExperiencesList from '../../../components/Header/MainHeader/BodyExper
 import Loading from '../../../components/Loading/Loading';
 
 //Pagina que pinta la lista de todas las experiencias disponibles en la Web
-const ListaActividades = () => {
+const ExperiencesList = () => {
   //Para cargar una actividad random en la cabezera de la lista de actividades
   const { activity } = useActivity('random');
   //Parametros para crear el 'queryString' que tendra el valor de la ruta que le pasaremos a activities
@@ -323,4 +323,4 @@ const ListaActividades = () => {
     <Loading clas={'load-Page'}>{error ? error : setErrorCategory}</Loading>
   );
 };
-export default ListaActividades;
+export default ExperiencesList;
