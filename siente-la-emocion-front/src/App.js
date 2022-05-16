@@ -7,7 +7,7 @@ import 'aos/dist/aos.css';
  * ## React ##
  * ###########
  */
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { Route, Routes, BrowserRouter, useLocation } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 
 /**
@@ -65,6 +65,7 @@ function App() {
     AOS.init();
     AOS.refresh();
   }, []);
+
   return (
     <>
       <AuthProvider>
@@ -113,6 +114,7 @@ function App() {
             />
           </Routes>
           <Footer />
+
           <div id='modal-bg'>
             <div id='modal-fg'></div>
           </div>

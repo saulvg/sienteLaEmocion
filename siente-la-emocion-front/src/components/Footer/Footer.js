@@ -1,8 +1,14 @@
 // ## Style ##
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './footer.css';
 
 //Componente que pinta el pie de pagina
 const Footer = () => {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
   return (
     <footer>
       <h2>Experiencia diferente</h2>
