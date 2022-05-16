@@ -87,7 +87,7 @@ const ReviewPage = () => {
                             <div className='username'>{review.username}</div>
                           )}
                           <div className='texto-review'>
-                            <p className='review-text'>"{review.review}"</p>
+                            <p className='review-text'>{review.review}</p>
                             <div className='voto'>
                               Puntuación:{' '}
                               {review.vote === 5 ? (
