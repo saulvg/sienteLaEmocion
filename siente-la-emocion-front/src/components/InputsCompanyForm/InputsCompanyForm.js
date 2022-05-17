@@ -167,7 +167,6 @@ const Text1Company = ({ companyText_1, setCompanyText_1 }) => {
         type={'text'}
         value={companyText_1}
         onChange={valueCompanyText_1}
-        required
       />
     </label>
   );
@@ -222,6 +221,7 @@ const Text4Company = ({ companyText_4, setCompanyText_4 }) => {
         type={'text'}
         value={companyText_4}
         onChange={valueCompanyText_4}
+        required
       />
     </label>
   );

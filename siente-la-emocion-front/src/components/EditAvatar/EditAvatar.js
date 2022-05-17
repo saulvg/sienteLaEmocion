@@ -51,12 +51,9 @@ const EditAvatar = () => {
           );
           const body = await response.json();
           if (response.ok) {
-            console.log(body.message);
-
             //refrescamos la pagina si todo a ido bien para mostrar el avatar seleccionado por el usuario sin necesidad de un boton
             window.location.reload(true);
           } else {
-            console.error(body.message);
             setError(body.message);
           }
         }

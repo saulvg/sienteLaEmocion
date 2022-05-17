@@ -218,9 +218,7 @@ const EditExperience = () => {
                                 />
                                 <Text1Company
                                   companyText_1={activity.experience.text_1}
-                                  setCompanyText_1={updateActivity(
-                                    'companyText_1'
-                                  )}
+                                  setCompanyText_1={updateActivity('text_1')}
                                 />
                                 <Text2Company
                                   companyText_2={activity.experience.text_2}

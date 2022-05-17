@@ -16,15 +16,13 @@ const deleteExperience = async (req, res, next) => {
             `SELECT id, path, description FROM experiences_photos WHERE id_experiences = ?`,
             [idExperience]
         );
-        /*         console.log('soy photos', photos);
-         */
+
         // Borramos las fotos del servidor.
         for (const photo of photos) {
             await deletePhoto(photo.path, photo.description);
         }
         //Borramos las fotos
         for (const photo of photos) {
-            console.log('photo.id', photo.id);
             await connection.query(
                 `DELETE FROM experiences_photos WHERE id = ? `,
                 [photo.id]

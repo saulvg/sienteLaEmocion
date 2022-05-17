@@ -28,7 +28,6 @@ const useActivities = (queryString) => {
 
         if (!response.ok) {
           setError(json.message);
-          console.log(json.message);
           return;
         }
         if (mounted.current) setActivities(json.data.experiences);

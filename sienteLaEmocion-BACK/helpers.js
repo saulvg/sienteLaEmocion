@@ -30,7 +30,6 @@ function generateRandomString(length) {
 
 async function sendMail({ to, subject, body }) {
     try {
-        console.log('Start sendMail');
         //preparamso el mensaje que se enviara
         const msg = {
             to, //para
@@ -48,7 +47,6 @@ async function sendMail({ to, subject, body }) {
 
         //enviamos el mensaje
         await sgMail.send(msg);
-        console.log('End sendMail');
     } catch (error) {
         console.error(error);
         throw new Error('Hubo un problema al enviar el mensaje');
@@ -116,7 +114,7 @@ async function deletePhoto(photoName) {
     } catch (error) {
         console.error(error);
         if (error.code === 'ENOENT') {
-            console.log('no pasa na seguimos');
+            console.log('seguimos');
         } else {
             console.error('error del catch', error.code);
             throw new Error('Error al eliminar la imagen del servidor');

@@ -35,11 +35,11 @@ const getReviews = async (req, res, next) => {
             [idExperience]
         );
 
+        console.log('soyyyyyy', review);
         res.send({
             status: 'ok',
             data: {
                 review,
-                
             },
         });
     } catch (error) {

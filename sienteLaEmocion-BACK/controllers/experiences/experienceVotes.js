@@ -8,7 +8,6 @@ const voteEntry = async (req, res, next) => {
 
         // Obtenemos el id de la entrada que va a ser votada.
         const { idExperience } = req.params;
-        const { idExperiencesBooking } = req.params;
 
         // Obtenemos el id del usuario que realiza la request.
         const idReqUser = req.userAuth.id;
@@ -68,7 +67,6 @@ const voteEntry = async (req, res, next) => {
             `SELECT id_company FROM experiences WHERE id = ?`,
             [idExperience]
         );
-        console.log('comapny', company[0].id_company);
 
         // Añadimos el voto.
         await connection.query(

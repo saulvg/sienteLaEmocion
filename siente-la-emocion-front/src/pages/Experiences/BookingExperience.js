@@ -66,7 +66,6 @@ const BookingExperience = () => {
         setTimeout(redirect, 5000);
       } else {
         //Si algo a fallado cambamos un estado para mostrar el error por pantalla
-        console.error('Error', body.message);
         setError(body.message);
       }
     } catch (error) {

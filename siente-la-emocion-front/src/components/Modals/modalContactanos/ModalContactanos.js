@@ -30,15 +30,15 @@ const ModalContactanos = () => {
                   <div className='contact-flex-data'>
                     <div className='contact-data'>
                       <h3>Llámanos</h3>
-                      <p>123 456 789</p>
+                      <p>666 555 444</p>
                     </div>
                     <div className='contact-data'>
                       <h3>Escríbenos</h3>
-                      <p>emoción@gmail.com</p>
+                      <p>sientelaemocion@gmail.com</p>
                     </div>
                     <div className='contact-data'>
                       <h3>Visítanos</h3>
-                      <p>Calle XXX</p>
+                      <p>Murcia, C/Fuente N23</p>
                     </div>
                   </div>
                   <div className='contact-social-media'>

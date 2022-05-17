@@ -22,7 +22,6 @@ const getUserExperiences = async (req, res, next) => {
             `,
             [idReqUser]
         );
-        console.log('bookings user', bookings);
         const userExperiencesBooking = [];
         for (const booking of bookings) {
             const [experiences] = await connection.query(

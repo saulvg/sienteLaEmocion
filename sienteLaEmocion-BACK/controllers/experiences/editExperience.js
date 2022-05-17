@@ -23,11 +23,7 @@ const editExperience = async (req, res, next) => {
             date,
             city,
             direction,
-            /* name,
-            category, */
         } = req.body;
-
-        //const photoHeader = req.files?.photoHeader;
 
         //si no se edita ningun campo lanzamos un error
         if (
@@ -41,55 +37,12 @@ const editExperience = async (req, res, next) => {
             !price &&
             !date &&
             !city &&
-            !direction //&&
-            //!photoHeader
-            /* !name &&
-            !category */
+            !direction
         ) {
             const error = new Error('Faltan campos');
             error.httpStatus = 400;
             throw error;
         }
-
-        // Guardamos la foto en el servidor y obtenemos su nombre.
-        //const savedPhoto = await savePhoto(req.files.photoHeader, 1);
-
-        //Actualizamos la base de datos
-        //estos campos son los que si o si se deben rellenar al crear la experiencia, si no estan para actualizar, no se actualizan, por eso los separamos de la query rande preguntandoles uno a uno si esta este campo en la peticion
-
-        /* if (name) {
-            const [companyName] = await connection.query(
-                `
-            SELECT id FROM company WHERE name = ?
-            `,
-                [name]
-            );
-            console.log('soy idCOmpany', companyName[0]);
-            await connection.query(`UPDATE company SET name = ? WHERE id = ?`, [
-                name,
-                companyName,
-            ]);
-        }
-        if (category) {
-            const [companyCategory] = await connection.query(
-                `
-            SELECT id FROM experiences_category WHERE name = ?
-            `,
-                [name]
-            );
-            console.log('soy IDexperiences_category', companyCategory[0]);
-            await connection.query(
-                `UPDATE experiences_category SET name = ? WHERE id = ?`,
-                [category, companyCategory]
-            );
-        } */
-        /* if (photoHeader) {
-            await connection.query(
-                `
-            UPDATE experiences SET photoHeader = ?, modifiedAt = ? WHERE id = ?`,
-                [savedPhoto, new Date(), idExperience]
-            );
-        } */
 
         if (capacity) {
             await connection.query(

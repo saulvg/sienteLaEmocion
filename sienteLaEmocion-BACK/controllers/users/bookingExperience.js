@@ -13,7 +13,9 @@ const newBooking = async (req, res, next) => {
         connection = await getDB();
 
         //Obtenemso el correo del admin
-        const [adminEmail] = await connection.query(
+        const { ADMIN_EMAIL } = process.env;
+
+        /* const [adminEmail] = await connection.query(
             `
             SELECT 
                 email
@@ -23,7 +25,7 @@ const newBooking = async (req, res, next) => {
                 id = ?
             `,
             [1]
-        );
+        ); */
 
         // Obtenemos la propiedad message del body con el contenido si el usuario quisiersa rellenar algo
         const { message } = req.body;
@@ -168,13 +170,11 @@ const newBooking = async (req, res, next) => {
             `;
 
         //Enviamos el correo al usuario
-        /*  Funciona, lo dejo comentado para que el correo del admin, el mio no se sature con mensajes mientras hacemos pruebas
         await sendMail({
-            to: adminEmail[0].email,
+            to: `${ADMIN_EMAIL}`,
             subject: `Reserva en Siente la Emocion empresa: ${company[0].name}`,
             body: emailBodyCompany,
         });
-        */
     } catch (error) {
         next(error);
     } finally {

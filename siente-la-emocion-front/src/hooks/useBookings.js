@@ -8,7 +8,6 @@ const useBookings = () => {
   const [bookings, setBookings] = useState('');
 
   const [error, setError] = useState(null);
- 
 
   useEffect(() => {
     const loadReviews = async () => {
@@ -27,13 +26,11 @@ const useBookings = () => {
 
         if (response.ok) {
           setBookings(body.data.userExperiencesBooking);
-        }else{
-          setError(body.message)
+        } else {
+          setError(body.message);
         }
-
       } catch (error) {
         setError('ERROR ', error.message);
-        console.log('ENTROOOOOOOOO');
       }
     };
 

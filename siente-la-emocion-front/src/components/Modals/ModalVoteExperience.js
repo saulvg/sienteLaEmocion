@@ -59,7 +59,6 @@ const ModalVoteExperience = ({ book }) => {
       //Si la peticion a ido bien cambiamos el estado de 'resOk' a truthy e iniciamos un setTimeout para que nos rediriga
       //sino cambiamos el estado de error a truthy
       if (res.ok) {
-        console.log(body.message);
         setResOk(body.message);
         setTimeout(redir, 5000);
       } else {

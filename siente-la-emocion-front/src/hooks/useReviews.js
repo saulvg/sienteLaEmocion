@@ -6,7 +6,6 @@ const useReviews = () => {
   const { idExperience } = useParams();
   const [reviews, setReviews] = useState([]);
   const [error, setError] = useState(null);
-  
 
   useEffect(() => {
     const loadReviews = async () => {
@@ -22,7 +21,6 @@ const useReviews = () => {
           return;
         }
 
-        console.log(json.data);
         setReviews(json.data.review);
       } catch (error) {
         setError(error.message);

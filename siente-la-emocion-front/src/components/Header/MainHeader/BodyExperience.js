@@ -108,7 +108,7 @@ const BodyActivitis = () => {
     </div>
   ) : (
     <div id='loading'>
-      Error: {error ?? 'No se encuentra informacion de esta actividad'}
+      {error}
       <div className='loading'></div>
     </div>
   );

@@ -58,7 +58,6 @@ async function initDB() {
     )
 `);
 
-        //add campo fotCabezera y modificarlo en newExperience
         await connection.query(`
         CREATE TABLE experiences (
             id INT PRIMARY KEY AUTO_INCREMENT,
@@ -112,7 +111,7 @@ async function initDB() {
             
         )
     `);
-        //add campo review y eliminar tabla de votes (corregir back)
+
         await connection.query(`
         CREATE TABLE booking (
             id INT PRIMARY KEY AUTO_INCREMENT,
@@ -126,14 +125,16 @@ async function initDB() {
     `);
 
         // Creamos la contraseña del administrador y la encriptamos.
-        const ADMIN_PASS = await bcrypt.hash('123456', saltRounds);
+        const { ADMIN_PASS } = process.env;
+        const adminPassword = await bcrypt.hash(ADMIN_PASS, saltRounds);
+        const { ADMIN_EMAIL } = process.env;
 
         // Insertamos el usuario administrador.
         await connection.query(`
         INSERT INTO users (email, password, username, active, role, dni_nie, postalCode, phone, createdAt)
         VALUES (
-            "saulvgproyecto@gmail.com",
-            "${ADMIN_PASS}",
+            "${ADMIN_EMAIL}",
+            "${adminPassword}",
             "Admin",
             true,
             "admin",
@@ -388,12 +389,3 @@ async function initDB() {
 }
 
 initDB();
-
-//DUDAS
-
-/* 
-    
-    EL PRECIO ES DECIMAL mirar como se escribe en la documentacion mysql?
-
-
-*/

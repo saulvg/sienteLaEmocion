@@ -24,7 +24,6 @@ const useFilterActivities = (term) => {
 
         if (!response.ok) {
           setError(json.message);
-          console.log(json.message);
           return;
         }
 

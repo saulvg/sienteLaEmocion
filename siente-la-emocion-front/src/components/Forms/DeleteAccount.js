@@ -58,7 +58,6 @@ const DeleteAccount = () => {
       setToken(null);
     } else {
       console.log(body.message);
-      console.log('error');
     }
   };
 
