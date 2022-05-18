@@ -3,7 +3,7 @@
  * ## React ##
  * ###########
  */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 /**
  * ################
@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
  * ################
  */
 import useUser from '../../hooks/useUser';
+import useUserInfo from '../../hooks/useUserInfo';
 
 /**
  * ################
@@ -25,8 +26,7 @@ import Error from '../error/Error';
 
 //Pagina que pinta el formulario para editar el perfil de usuario
 const EditProfile = () => {
-  const { token, user } = useUser();
-
+  const { token, user } = useUser('');
   //Estados de variables que necesitamos
   const [username, setUsername] = useState('');
   const [newEmail, setEmail] = useState('');
@@ -37,6 +37,16 @@ const EditProfile = () => {
   const navigate = useNavigate();
   const [load, setLoad] = useState('');
   const [error, setError] = useState('');
+
+  useUserInfo(
+    token,
+    setUsername,
+    setEmail,
+    setPhone,
+    setBiography,
+    setPostalCode,
+    setDni_nie
+  );
 
   //Funcion manejadora del formulario actualizar los datos del perfil
   const edit = async (e) => {
@@ -86,7 +96,7 @@ const EditProfile = () => {
                     type='text'
                     id='name'
                     name='name'
-                    placeholder={user.username}
+                    //placeholder={info.username}
                     value={username}
                     onChange={(e) => {
                       setUsername(e.target.value);
@@ -98,7 +108,7 @@ const EditProfile = () => {
                     type='email'
                     id='email'
                     name='email'
-                    placeholder={user.email}
+                    //placeholder={info.email}
                     value={newEmail}
                     onChange={(e) => {
                       setEmail(e.target.value);
@@ -109,7 +119,7 @@ const EditProfile = () => {
                     type='number'
                     id='phone'
                     name='phone'
-                    placeholder={user.phone}
+                    //placeholder={info.phone}
                     value={phone}
                     onChange={(e) => {
                       setPhone(e.target.value);
@@ -120,7 +130,7 @@ const EditProfile = () => {
                     type='number'
                     id='postalCode'
                     name='postalCode'
-                    placeholder={user.postalCode}
+                    //placeholder={info.postalCode}
                     value={postalCode}
                     onChange={(e) => {
                       setPostalCode(e.target.value);
@@ -131,7 +141,7 @@ const EditProfile = () => {
                     type='text'
                     id='dni_nie'
                     name='dni_nie'
-                    placeholder={user.dni_nie}
+                    //placeholder={info.dni_nie}
                     value={dni_nie}
                     onChange={(e) => {
                       setDni_nie(e.target.value);
@@ -141,7 +151,7 @@ const EditProfile = () => {
                     labelName='Sobre mí'
                     id='biography'
                     name='biography'
-                    placeholder={user.biography}
+                    //placeholder={info.biography}
                     value={biography}
                     onChange={(e) => {
                       setBiography(e.target.value);

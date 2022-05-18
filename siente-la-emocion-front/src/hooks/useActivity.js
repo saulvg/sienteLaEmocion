@@ -43,7 +43,6 @@ const useActivity = (id) => {
       mounted.current = false;
     };
   }, [id, token]);
-  console.log(activity);
 
   return { activity, error, setActivity };
 };

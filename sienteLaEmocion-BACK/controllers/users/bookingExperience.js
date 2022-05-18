@@ -15,18 +15,6 @@ const newBooking = async (req, res, next) => {
         //Obtenemso el correo del admin
         const { ADMIN_EMAIL } = process.env;
 
-        /* const [adminEmail] = await connection.query(
-            `
-            SELECT 
-                email
-            FROM 
-                users
-            WHERE 
-                id = ?
-            `,
-            [1]
-        ); */
-
         // Obtenemos la propiedad message del body con el contenido si el usuario quisiersa rellenar algo
         const { message } = req.body;
 
@@ -85,9 +73,12 @@ const newBooking = async (req, res, next) => {
                 id_user
             FROM    
                 booking
-            `
+            WHERE id_experiences = ?
+            `,
+            [idExperience]
         );
 
+        console.log('bookings', bookings);
         //Comprobamos que el usuario no haya reservado 2 veces para la misma actividad
         const doubleBooking = bookings.filter(
             (id) =>
@@ -103,7 +94,7 @@ const newBooking = async (req, res, next) => {
             throw error;
         }
         //Comprobamos si se han hecho el numero maximo de reservas
-        if (bookings.length > experiences[0].capacity) {
+        if (bookings.length >= experiences[0].capacity) {
             const error = new Error(
                 'Ya han reservado el numero maximo de personas, lo sentimos'
             );
@@ -128,7 +119,9 @@ const newBooking = async (req, res, next) => {
                 userMessage
             FROM    
                 booking
-            `
+            WHERE id_user = ? AND id_experiences = ?
+            `,
+            [idReqUser, idExperience]
         );
 
         // Mensaje que enviaremos al correo del usuario.
@@ -166,7 +159,8 @@ const newBooking = async (req, res, next) => {
             Telefono: ${users[0].phone},
             Dni: ${users[0].dni_nie},
             Codigo postal: ${users[0].postalCode},
-            Acaba de reservar con la empresa ${company[0].name}, para la actividad de ${categories[0].name}, con la fecha ${dateFormat}
+            Acaba de reservar con la empresa ${company[0].name}, para la actividad de ${categories[0].name}, con la fecha ${dateFormat}.
+            Informacion aportada por el usuario: ${confirmBookings[0].userMessage}
             `;
 
         //Enviamos el correo al usuario

@@ -71,6 +71,15 @@ const getExperience = async (req, res, next) => {
             );
         }
 
+        // Review
+        const [company_votes] = await connection.query(
+            `
+            SELECT AVG(IFNULL(vote, 0)) AS company_votes FROM votes WHERE id_company = ?
+            `,
+            [experiences[0].id_company]
+        );
+        console.log('companyVOtes', company_votes[0].company_votes);
+
         // Fotos
         const [experiences_photos] = await connection.query(
             `
@@ -125,6 +134,7 @@ const getExperience = async (req, res, next) => {
                 company: company[0].name,
                 experiences_category: experiences_category[0].name,
                 users_booking: authorizedUser,
+                company_votes: company_votes[0].company_votes,
             },
         });
     } catch (error) {

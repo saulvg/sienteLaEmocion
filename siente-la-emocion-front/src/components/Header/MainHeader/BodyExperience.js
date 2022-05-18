@@ -85,15 +85,15 @@ const BodyActivitis = () => {
                     Si quieres saber que comentarios tiene esta empresa puedes
                     mirarlo aqui <br />
                     Media:
-                    {activity.experience.votes_entry === '5.0000' ? (
+                    {activity.company_votes >= '4.5000' ? (
                       <span>★★★★★ </span>
-                    ) : activity.experience.votes_entry === '4.0000' ? (
+                    ) : activity.company_votes >= '3.5000' ? (
                       <span>★★★★</span>
-                    ) : activity.experience.votes_entry === '3.0000' ? (
+                    ) : activity.company_votes >= '2.5000' ? (
                       <span>★★★</span>
-                    ) : activity.experience.votes_entry === '2.0000' ? (
+                    ) : activity.company_votes >= '1.5000' ? (
                       <span>★★</span>
-                    ) : activity.experience.votes_entry === '1.0000' ? (
+                    ) : activity.company_votes >= '1.0000' ? (
                       <span>★</span>
                     ) : (
                       <span>Sin votos</span>

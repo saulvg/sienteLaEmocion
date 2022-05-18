@@ -65,7 +65,7 @@ const UserExperiences = () => {
                       <span>{formatDate}</span>
                       {new Date(book.date) < new Date() ? (
                         <>
-                          {!book.votes_entry ? (
+                          {!book.personal_vote ? (
                             <button
                               className={'add-review-button'}
                               onClick={() => setOpenModal('open')}
@@ -74,15 +74,15 @@ const UserExperiences = () => {
                             </button>
                           ) : (
                             <span>
-                              {book.votes_entry === 1
+                              {book.personal_vote.vote === 1
                                 ? '★'
-                                : book.votes_entry === 2
+                                : book.personal_vote.vote === 2
                                 ? '★★'
-                                : book.votes_entry === 3
+                                : book.personal_vote.vote === 3
                                 ? '★★★'
-                                : book.votes_entry === 4
+                                : book.personal_vote.vote === 4
                                 ? '★★★★'
-                                : book.votes_entry === 5
+                                : book.personal_vote.vote === 5
                                 ? '★★★★★'
                                 : ''}
                             </span>
