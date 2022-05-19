@@ -186,6 +186,9 @@ header .headerButton button:hover {
   color: rgba(156, 214, 248, 0.79);
 }
 
+.nav-button a:hover {
+  color: rgba(156, 214, 248, 0.79);
+}
 .toggle-button {
   background-color: transparent;
   height: auto;

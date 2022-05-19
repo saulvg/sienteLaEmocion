@@ -77,7 +77,7 @@ const ModalVoteExperience = ({ book }) => {
         {!resOk ? (
           <>
             <div className='modal1'>
-              <h2>Valoración</h2>
+              <h2 class='review-title'>Valoración</h2>
             </div>
             <div className='modal3'>
               <div className='circle-background2'></div>
@@ -191,7 +191,7 @@ const ModalVoteExperience = ({ book }) => {
             </div>
             {error ? <Error>{error}</Error> : null}
             <BlueButton
-              name='Add valoracion'
+              name='Añadir valoracion'
               type='submit'
               onClick={(e) => {
                 e.stopPropagation();

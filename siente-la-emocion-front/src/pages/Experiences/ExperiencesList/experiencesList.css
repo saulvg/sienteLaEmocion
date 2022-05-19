@@ -217,6 +217,18 @@
   font-size: 0;
   cursor: pointer;
 }
+
+.icon-filter-style:hover {
+  border: 1px solid black;
+  transition: 0.2s;
+  outline: auto;
+}
+
+.icon-filter-style:active {
+  border: 1px solid black;
+  transition: 0.2s;
+}
+
 .escalada {
   background-image: url('../../../../public/silueta/escalada.png');
 }
