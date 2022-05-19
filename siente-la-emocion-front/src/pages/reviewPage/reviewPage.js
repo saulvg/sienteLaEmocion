@@ -48,7 +48,7 @@ const ReviewPage = () => {
       <main className='listaReviews'>
         <section className='reviews'>
           <h2 className='empresa'>
-            {activity.experiences_category} con <br /> {activity.company}
+            Valoraciones de la empresa: <br /> {activity.company}
           </h2>
           {error ? (
             <Error>{error}</Error>
@@ -70,6 +70,7 @@ const ReviewPage = () => {
                             }
                             alt='Avatar'
                           />
+                          <div>Categoria: {activity.experiences_category}</div>
                           {token ? (
                             <div className='username'>
                               <Modal

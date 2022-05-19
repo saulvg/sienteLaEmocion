@@ -48,11 +48,17 @@
   ADMIN_EMAIL= 'Direccion de correo del admin pricipal'
   ADMIN_PASS= 'Contraseña del admin pricipal'
 
-Guarda los cambios y antes de cerrar acuerdate de cambiar el nombre del archivo a .env (si te has olvodado no pasa nada puedes hacerlo ahora).
+Guarda los cambios y antes de cerrar acuerdate de cambiar el nombre del archivo a ".env" (si te has olvodado no pasa nada puedes hacerlo ahora).
 
 - A continuacion ejecuta "npm run initDB" para crear las tablas necesarias en la base de datos y algunos datos de prueba, si todo a ido bien te apareceran el nombre de lo que se a ido creando.
 - Hemos acabado con esta carpeta.
 - Abre una nueva terminal en sente-la-emocion-front y ejecuta "npm i", para intalar todas las dependencias necesarias.
+- A continuacion ejecutamos el comando, nano ".env.exaple" y rellanamos los datos: (tambien puedes realizar estos cambios desde VisualStudioCode o desde donde quieras)
+
+  REACT_APP_BACKEND= 'puerto del backend que debe escuchar ej:http://localhost:4000'
+
+Guarda los cambios y antes de cerrar acuerdate de cambiar el nombre del archivo a ".env" (si te has olvodado no pasa nada puedes hacerlo ahora).
+
 - Para finalizar ejecuta "npm start".
 
 ## Ya puedes investigar por la Web, si quieres saber un poco mejor que opciones existen no dejes de leer el analisis funcional
