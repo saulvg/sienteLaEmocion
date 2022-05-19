@@ -370,22 +370,25 @@ Históricamente, el esquí surgió como consecuencia de una necesidad de transpo
 
                 '2022-02-03 16:37:55'),
                 
-                (1, 9, 9, 12, 67,'2023-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
+                (1, 9, 9, 12, 67,'2023-02-03 16:37:55', 'Vigo', 'Av. de Lavadores', 
 
-                'Equipo: casco, arnés, material técnico, pie de gato y avituallamiento.
+                'Equipo: mono, casco, arnés y gafas
                 Seguro de Responsabilidad Civil.
                 Seguro de Accidentes.',
                 
-                'Calzado de montaña, agua y mochila.',
+                'Calzado cerrado',
                 
-                'Media jornada.
+                '3h.
                 Todo el año.',
 
-                'Podrás disfrutar de esta maravillosa actividad en un entorno único como es el Alto Turia en la Serranía de Valencia. Auténtico paraíso de la escalada con un entorno inmejorable, vías ferratas, gargantas, desfiladeros y murallas de hasta 200 m de altura.',
+                'El salto en paracaídas está pensado para que cualquier persona que cumpla una serie de requisitos mínimos pueda hacer paracaidismo de forma rápida y con total seguridad, ya que  durante todas las fases del salto la persona permanece unida a uno de nuestros expertos instructores mediante un paracaídas biplaza desde la salida del avión hasta el aterrizaje.',
 
-                'La Escalada es un deporte que consiste en realizar una progresión vertical ya sea en roca natural o en una instalación artificial (rocódromo). Para ellos iremos equipados con arnés y casco, estaremos unidos a la pared por una cuerda y sujetados por un guía en todo momento., Apto para todos los públicos, se trata de una toma de contacto con la escalada donde conocerás el material y realizaras una jornada de iniciación escalando vías de poca dificultad técnica para que puedas experimentar las sensaciones que proporciona este deporte sin preocuparte de nada. Nivel apto para personas aficionados a la naturaleza y con destreza para andar por la montaña. Pasos más técnicos pero de un nivel muy asequible, donde el disfrute es lo principal. Seguridad y diversión a partes iguales.', 
+                'El paracaidismo es un deporte extremo que incluye salto con paracaídas, el cual puede ser realizado desde un avión, un helicóptero o un globo aerostático.
+Durante la caída, es necesario activar dicho paracaídas para aterrizar de la manera más segura.
+Se trata de uno de los deportes más atractivos y apasionantes, por lo que a él van asociados también unos componentes de diversión, ocio y fines recreativos, de ahí que muchos se planteen si el paracaidismo es realmente un deporte.
+', 
 
-                'Nivel para personas con experiencia anterior en escalada. Vías técnicas y largos de mayor altura. Tramos con mayor exigencia física pero donde la diversión se encuentra en cada pared.', 
+                'Nivel para personas sin experiencia anterior, ya que en todo momento hay un profesional con la persona participante. ', 
 
                 '2022-02-03 16:37:55')`
         );
