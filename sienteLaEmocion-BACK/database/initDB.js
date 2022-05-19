@@ -346,22 +346,27 @@ Por lo demás es una actividad totalmente segura, que se puede hacer sin ningún
 
                 '2022-07-03 16:37:55'),
                 
-                (1, 8, 8, 12, 67,'2023-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
+                (1, 8, 8, 12, 67,'2023-02-03 16:37:55', 'Sierra Nevada', 'Granada', 
 
-                'Equipo: casco, arnés, material técnico, pie de gato y avituallamiento.
+                'Equipo: 	Esquís de montaña, botas, palos, sonda, pala, A.R.V.A. Además del material necesario para una actividad invernal. De no tenerlo se puede alquilar en la estación.
+
                 Seguro de Responsabilidad Civil.
                 Seguro de Accidentes.',
                 
-                'Calzado de montaña, agua y mochila.',
+                'Calzado de nieve, agua y mochila.',
                 
-                'Media jornada.
-                Todo el año.',
+                '3h.
+                Invierno.',
 
-                'Podrás disfrutar de esta maravillosa actividad en un entorno único como es el Alto Turia en la Serranía de Valencia. Auténtico paraíso de la escalada con un entorno inmejorable, vías ferratas, gargantas, desfiladeros y murallas de hasta 200 m de altura.',
+                'Con estas clases te ofrecemos la posibilidad de entrar en el apasionante mundo del esquí de montaña, dándote los elementos básicos necesarios para moverte con la suficiente seguridad en itinerarios fáciles, y si tienes experiencia podrás desarrollar más tus conocimientos gracias a los profesionales enfocados por niveles.
+',
 
-                'La Escalada es un deporte que consiste en realizar una progresión vertical ya sea en roca natural o en una instalación artificial (rocódromo). Para ellos iremos equipados con arnés y casco, estaremos unidos a la pared por una cuerda y sujetados por un guía en todo momento., Apto para todos los públicos, se trata de una toma de contacto con la escalada donde conocerás el material y realizaras una jornada de iniciación escalando vías de poca dificultad técnica para que puedas experimentar las sensaciones que proporciona este deporte sin preocuparte de nada. Nivel apto para personas aficionados a la naturaleza y con destreza para andar por la montaña. Pasos más técnicos pero de un nivel muy asequible, donde el disfrute es lo principal. Seguridad y diversión a partes iguales.', 
+                'Sierra Nevada proporciona uno de los dominios esquiables más amplios y atractivos del sur de Europa. La estación invernal cuenta con 110,4 km esquiables distribuidos en 131 pistas con el mayor desnivel esquiable de España (1.200m).
+El esquí es un deporte de invierno que se realiza sobre dos tablas para deslizar sobre la nieve. Ambas tablas -denominadas comúnmente como esquís- están sujetas a la suela del calzado del esquiador, mediante un sistema de fijación.
+Históricamente, el esquí surgió como consecuencia de una necesidad de transporte pero actualmente, está ligado a la práctica puramente deportiva y lúdica.'
+, 
 
-                'Nivel para personas con experiencia anterior en escalada. Vías técnicas y largos de mayor altura. Tramos con mayor exigencia física pero donde la diversión se encuentra en cada pared.', 
+                'No es necesaria experiencia previa para el grupo de iniciación. ', 
 
                 '2022-02-03 16:37:55'),
                 
