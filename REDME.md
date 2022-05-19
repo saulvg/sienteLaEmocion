@@ -55,7 +55,7 @@ Guarda los cambios y antes de cerrar acuerdate de cambiar el nombre del archivo 
 - Abre una nueva terminal en sente-la-emocion-front y ejecuta "npm i", para intalar todas las dependencias necesarias.
 - Para finalizar ejecuta "npm start".
 
-## Ya puedes investigar por la Web las diferentes opciones que tiene
+## Ya puedes investigar por la Web, si quieres saber un poco mejor que opciones existen no dejes de leer el analisis funcional
 
 ## Endpoints del usuario
 
