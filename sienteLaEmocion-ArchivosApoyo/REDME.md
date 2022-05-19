@@ -29,6 +29,34 @@
 
 # Iniciar App
 
+- Clonamos el repositorio para tenerlo de forma local, copiando el code HTTPS, abrimos una terminal donde queramos clonar el repositorio y realizando un "git clone 'el codigo copiado'"
+- En mySQL deberemos crear una conexion nueva si no la tenemos y/o un esquema o tablas nuevas.
+- En 'https://app.sendgrid.com/', deberemos crear una cuenta y a continuacion una API Key (se encuantras en menu/settings/API Key).
+- Una vez clonado, apuntamos la terminal hacia sienlaLaEmocion-Back y ejecutamos "npm i" para intalar las dependencias necesarias
+- A continuacion ejecutamos el comando, nano ".env.exaple" y rellanamos los datos: (tambien puedes realizar estos cambios desde VisualStudioCode o desde donde quieras)
+
+  PORT= 'puerto en el que va ha escuchar nuestro servidor, ej:4000'
+  MYSQL_HOST= 'Direccion host que le hayamos puesto en MySQL, ej:localhost'
+  MYSQL_USER= 'Nombre de usuario que le hayamos puesto en MySQL'
+  MYSQL_PASSWORD= 'Contraseña que le hayamso puesto en MySQL'
+  MYSQL_DATABASE= 'Nombre que le hayamos puesto al esquema o tabla en MySQL ej:sienteLaEmocion'
+  SENDGRID_API_KEY= 'Clave que nos proporcionara Sengrid'
+  SENDGRID_FROM= 'Correo que le hayamos proporcionado a Sengrid'
+  PUBLIC_HOST= 'Ruta en la que se va a mover nuestra App ej:http://localhost:4000'
+  SECRET= 'Clave alfanumerica aleatoria de unos cuentos digitos (click teclas sin sentido ;))'
+  UPLOADS_DIRECTORY= 'Carpeta que se creara cuando se suban archivos ej:uploads/directori'
+  ADMIN_EMAIL= 'Direccion de correo del admin pricipal'
+  ADMIN_PASS= 'Contraseña del admin pricipal'
+
+Guarda los cambios y antes de cerrar acuerdate de cambiar el nombre del archivo a .env (si te has olvodado no pasa nada puedes hacerlo ahora).
+
+- A continuacion ejecuta "npm run initDB" para crear las tablas necesarias en la base de datos y algunos datos de prueba, si todo a ido bien te apareceran el nombre de lo que se a ido creando.
+- Hemos acabado con esta carpeta.
+- Abre una nueva terminal en sente-la-emocion-front y ejecuta "npm i", para intalar todas las dependencias necesarias.
+- Para finalizar ejecuta "npm start".
+
+## Ya puedes investigar por la Web las diferentes opciones que tiene
+
 ## Endpoints del usuario
 
 - POST - [/users] - Crea un usuario pendiente de activar.
