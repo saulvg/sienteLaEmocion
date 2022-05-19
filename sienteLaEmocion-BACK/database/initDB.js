@@ -320,24 +320,31 @@ async function initDB() {
 
                 '2022-02-03 16:37:55'),
                 
-                (1, 7, 7, 12, 67,'2023-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
+                (1, 7, 7, 12, 70,'2023-02-03 16:37:55', 'Asturias', 'Finca Fundición de Coviella', 
 
-                'Equipo: casco, arnés, material técnico, pie de gato y avituallamiento.
+                'Equipo: ropa cómoda y calzado apropiado
                 Seguro de Responsabilidad Civil.
                 Seguro de Accidentes.',
                 
-                'Calzado de montaña, agua y mochila.',
+                'Calzado cerrado',
                 
-                'Media jornada.
+                '4h
                 Todo el año.',
 
-                'Podrás disfrutar de esta maravillosa actividad en un entorno único como es el Alto Turia en la Serranía de Valencia. Auténtico paraíso de la escalada con un entorno inmejorable, vías ferratas, gargantas, desfiladeros y murallas de hasta 200 m de altura.',
+                'La actividad estrella dentro de las actividades de aventura en Asturias, consiste en el descenso del río Sella en canoa o kayak (piraguas), entre las localidades de Arriondas a Llovió, en las inmediaciones de Ribadesella.
+El descenso del Sella se hace a lo largo de siete, once o dieciséis kilómetros, decidiendo tú la distancia en el mismo momento que realizas la actividad.
+',
 
-                'La Escalada es un deporte que consiste en realizar una progresión vertical ya sea en roca natural o en una instalación artificial (rocódromo). Para ellos iremos equipados con arnés y casco, estaremos unidos a la pared por una cuerda y sujetados por un guía en todo momento., Apto para todos los públicos, se trata de una toma de contacto con la escalada donde conocerás el material y realizaras una jornada de iniciación escalando vías de poca dificultad técnica para que puedas experimentar las sensaciones que proporciona este deporte sin preocuparte de nada. Nivel apto para personas aficionados a la naturaleza y con destreza para andar por la montaña. Pasos más técnicos pero de un nivel muy asequible, donde el disfrute es lo principal. Seguridad y diversión a partes iguales.', 
+                'El piragüismo es un deporte acuático que se practica sobre una embarcación, fabricada en diversos materiales que variarán en función de las características del medio donde naveguemos y la especialidad que practiquemos.
 
-                'Nivel para personas con experiencia anterior en escalada. Vías técnicas y largos de mayor altura. Tramos con mayor exigencia física pero donde la diversión se encuentra en cada pared.', 
+Hay diversas especialidades para practicarlo, como pueden ser: aguas bravas, aguas tranquilas, kayak-polo y kayak de mar. En cada una de ellas se utilizan diferentes tipos de material adecuados al medio donde se practican las especialidades, siendo compatibles en algunos casos. Así mismo dentro de cada especialidad hay diferentes modalidades.
+', 
 
-                '2022-02-03 16:37:55'),
+                'Lo único que se necesita es saber nadar, pues lógicamente al ser una actividad de aventura que se desarrolla en el agua, por seguridad es imprescindible saber defenderse en el medio.
+Por lo demás es una actividad totalmente segura, que se puede hacer sin ningún problema. Además, cuenta con embarcaciones adaptadas para personas con movilidad reducida
+ ', 
+
+                '2022-07-03 16:37:55'),
                 
                 (1, 8, 8, 12, 67,'2023-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
 
