@@ -70,23 +70,29 @@ const ReviewPage = () => {
                             }
                             alt='Avatar'
                           />
-                          <div>Categoria: {activity.experiences_category}</div>
-                          {token ? (
-                            <div className='username'>
-                              <Modal
-                                buttonClass='username-modal'
-                                buttonName={review.username}
-                                titleModal={review.username}
-                                content={
-                                  review.biography
-                                    ? 'Biografia:' + review.biography
-                                    : 'Biografia: Sin informacion'
-                                }
-                              ></Modal>
+                          <div className='review-header'>
+                            <div className='review-header-element'>
+                              Categoria: {activity.experiences_category}
                             </div>
-                          ) : (
-                            <div className='username'>{review.username}</div>
-                          )}
+                            {token ? (
+                              <div>
+                                <Modal
+                                  buttonClass='username-modal review-header-element'
+                                  buttonName={review.username}
+                                  titleModal={review.username}
+                                  content={
+                                    review.biography
+                                      ? 'Biografia:' + review.biography
+                                      : 'Biografia: Sin informacion'
+                                  }
+                                ></Modal>
+                              </div>
+                            ) : (
+                              <div className='review-header-element'>
+                                {review.username}
+                              </div>
+                            )}
+                          </div>
                           <div className='texto-review'>
                             <p className='review-text'>{review.review}</p>
                             <div className='voto'>
