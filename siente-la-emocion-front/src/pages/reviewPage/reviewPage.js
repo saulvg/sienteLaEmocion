@@ -77,7 +77,7 @@ const ReviewPage = () => {
                             {token ? (
                               <div>
                                 <Modal
-                                  buttonClass='username-modal review-header-element'
+                                  buttonClass='username-modal '
                                   buttonName={review.username}
                                   titleModal={review.username}
                                   content={

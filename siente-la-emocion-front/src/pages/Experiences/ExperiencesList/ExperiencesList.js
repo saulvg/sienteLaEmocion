@@ -146,7 +146,8 @@ const ExperiencesList = () => {
                   MotorBike
                 </div>
                 <div
-                  className='icon-filter-style espeleologia'
+                  className={`icon-filter-style espeleologia
+                  ${category ? 'pulsado' : null}`}
                   onClick={() => {
                     !category ? setCategory(`espeleologia`) : setCategory('');
                   }}
