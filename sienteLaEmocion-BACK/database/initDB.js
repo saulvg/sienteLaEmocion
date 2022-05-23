@@ -198,7 +198,7 @@ async function initDB() {
             `INSERT INTO experiences_category 
                 (name) 
             VALUES 
-                ('Escalada'), ('Monta a Caballo'), ('Buceo'),('espeleologia'),('motorBike'),('yoga'),('piraguismo'),('esqui'),('paracaidismo'),('ciclismo')`
+                ('Escalada'), ('Monta a Caballo'), ('Buceo'),('espeleologia'),('motorciclismo'),('yoga'),('piraguismo'),('esqui'),('paracaidismo')`
         );
         console.log('Categorias creadas');
 
@@ -263,60 +263,60 @@ async function initDB() {
 
                 '2022-02-03 16:37:55'), 
 
-                (1, 4, 4, 12, 67,'2023-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
+                (1, 4, 4, 12, 67,'2021-02-03 16:37:55', 'Las Palmas', 'Juan Bethencourt', 
 
-                'Equipo: casco, arnés, material técnico, pie de gato y avituallamiento.
+                'Equipo: linternas.
                 Seguro de Responsabilidad Civil.
                 Seguro de Accidentes.',
                 
-                'Calzado de montaña, agua y mochila.',
+                'Calzado de montaña, mochila y agua',
                 
                 'Media jornada.
                 Todo el año.',
 
-                'Podrás disfrutar de esta maravillosa actividad en un entorno único como es el Alto Turia en la Serranía de Valencia. Auténtico paraíso de la escalada con un entorno inmejorable, vías ferratas, gargantas, desfiladeros y murallas de hasta 200 m de altura.',
+                'La espeleología es la ciencia que estudia el origen y la formación de las cavernas y las cavidades subterráneas naturales. Analiza su morfología, su flora y fauna.',
 
-                'La Escalada es un deporte que consiste en realizar una progresión vertical ya sea en roca natural o en una instalación artificial (rocódromo). Para ellos iremos equipados con arnés y casco, estaremos unidos a la pared por una cuerda y sujetados por un guía en todo momento., Apto para todos los públicos, se trata de una toma de contacto con la escalada donde conocerás el material y realizaras una jornada de iniciación escalando vías de poca dificultad técnica para que puedas experimentar las sensaciones que proporciona este deporte sin preocuparte de nada. Nivel apto para personas aficionados a la naturaleza y con destreza para andar por la montaña. Pasos más técnicos pero de un nivel muy asequible, donde el disfrute es lo principal. Seguridad y diversión a partes iguales.', 
+                'Esta experiencia no tiene niveles de dificultad', 
 
-                'Nivel para personas con experiencia anterior en escalada. Vías técnicas y largos de mayor altura. Tramos con mayor exigencia física pero donde la diversión se encuentra en cada pared.', 
+                'Para los más experimentados, organizamos excursiones a cuevas donde la dificultad de acceso es alta', 
 
                 '2022-02-03 16:37:55'),
                 
-                (1, 5, 5, 12, 67,'2023-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
+                (1, 5, 5, 12, 67,'2021-02-03 16:37:55', 'Tenerife', 'Santa Cruz de Tenerife', 
 
-                'Equipo: casco, arnés, material técnico, pie de gato y avituallamiento.
+                'Equipo: Motocicleta y cascos.
                 Seguro de Responsabilidad Civil.
                 Seguro de Accidentes.',
                 
-                'Calzado de montaña, agua y mochila.',
+                'Guantes, chaqueta de cuero homologada y botas',
                 
                 'Media jornada.
                 Todo el año.',
 
-                'Podrás disfrutar de esta maravillosa actividad en un entorno único como es el Alto Turia en la Serranía de Valencia. Auténtico paraíso de la escalada con un entorno inmejorable, vías ferratas, gargantas, desfiladeros y murallas de hasta 200 m de altura.',
+                'Nos referimos a motociclismo cuando hablamos del uso deportivo de la motocicleta en todas sus variantes. Este ejercicio comenzó a llevarse a cabo cuando se creó la Federación Internacional del Motociclismo, que es el órgano gobernante de las competiciones.',
 
-                'La Escalada es un deporte que consiste en realizar una progresión vertical ya sea en roca natural o en una instalación artificial (rocódromo). Para ellos iremos equipados con arnés y casco, estaremos unidos a la pared por una cuerda y sujetados por un guía en todo momento., Apto para todos los públicos, se trata de una toma de contacto con la escalada donde conocerás el material y realizaras una jornada de iniciación escalando vías de poca dificultad técnica para que puedas experimentar las sensaciones que proporciona este deporte sin preocuparte de nada. Nivel apto para personas aficionados a la naturaleza y con destreza para andar por la montaña. Pasos más técnicos pero de un nivel muy asequible, donde el disfrute es lo principal. Seguridad y diversión a partes iguales.', 
+                'Hay tres niveles de dificultad: principiante, medio y experto', 
 
-                'Nivel para personas con experiencia anterior en escalada. Vías técnicas y largos de mayor altura. Tramos con mayor exigencia física pero donde la diversión se encuentra en cada pared.', 
+                'Si te desenvuelves con soltura, puedes atreverte montar en nuestras motos de mayor cilindrada, así como participar en carreras que organizamos', 
 
                 '2022-02-03 16:37:55'),
                 
-                (1, 6, 6, 12, 67,'2023-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
+                (1, 6, 6, 12, 67,'2021-02-03 16:37:55', 'La Gomera', 'Garajonay', 
 
-                'Equipo: casco, arnés, material técnico, pie de gato y avituallamiento.
+                'Equipo: Esterilla.
                 Seguro de Responsabilidad Civil.
                 Seguro de Accidentes.',
                 
-                'Calzado de montaña, agua y mochila.',
+                'Ropa cómoda y calcetines antideslizantes',
                 
                 'Media jornada.
                 Todo el año.',
 
-                'Podrás disfrutar de esta maravillosa actividad en un entorno único como es el Alto Turia en la Serranía de Valencia. Auténtico paraíso de la escalada con un entorno inmejorable, vías ferratas, gargantas, desfiladeros y murallas de hasta 200 m de altura.',
+                'El yoga es una práctica que conecta el cuerpo, la respiración y la mente. Esta práctica utiliza posturas físicas, ejercicios de respiración y meditación para mejorar la salud general.',
 
-                'La Escalada es un deporte que consiste en realizar una progresión vertical ya sea en roca natural o en una instalación artificial (rocódromo). Para ellos iremos equipados con arnés y casco, estaremos unidos a la pared por una cuerda y sujetados por un guía en todo momento., Apto para todos los públicos, se trata de una toma de contacto con la escalada donde conocerás el material y realizaras una jornada de iniciación escalando vías de poca dificultad técnica para que puedas experimentar las sensaciones que proporciona este deporte sin preocuparte de nada. Nivel apto para personas aficionados a la naturaleza y con destreza para andar por la montaña. Pasos más técnicos pero de un nivel muy asequible, donde el disfrute es lo principal. Seguridad y diversión a partes iguales.', 
+                'Hay tres niveles de dificultad: principiante, medio y experto', 
 
-                'Nivel para personas con experiencia anterior en escalada. Vías técnicas y largos de mayor altura. Tramos con mayor exigencia física pero donde la diversión se encuentra en cada pared.', 
+                'Formarás parte del grupo de expertos, donde podrás realizar las posturas más complicadas de realizar en el yoga', 
 
                 '2022-02-03 16:37:55'),
                 

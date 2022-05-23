@@ -94,9 +94,12 @@ const Experience = () => {
                 </div>
                 <div className='activities-content'>
                   <div className='element'>
+                    {console.log(
+                      `${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[0]?.path}`
+                    )}
                     <ActivityText
                       image={
-                        activity.photos === 1
+                        activity.photos.length >= 1
                           ? `${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[0]?.path}`
                           : 'https://images.pexels.com/photos/9035242/pexels-photo-9035242.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
                       }
@@ -110,7 +113,7 @@ const Experience = () => {
                   <div className='activity-odd element'>
                     <ActivityText
                       image={
-                        activity.photos === 2
+                        activity.photos.length >= 1
                           ? `${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[1]?.path}`
                           : 'https://images.pexels.com/photos/9035242/pexels-photo-9035242.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
                       }
@@ -126,7 +129,7 @@ const Experience = () => {
                   <div className='element'>
                     <ActivityText
                       image={
-                        activity.photos === 3
+                        activity.photos.length >= 1
                           ? `${process.env.REACT_APP_BACKEND}/uploads/${activity.photos[2]?.path}`
                           : 'https://images.pexels.com/photos/9035242/pexels-photo-9035242.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
                       }

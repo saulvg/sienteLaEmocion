@@ -257,11 +257,6 @@
   background-image: url('../../../../public/silueta/espeleologia.png');
 }
 
-.pulsado {
-  background-color: red;
-  border: 1px solid black;
-}
-
 .adventure-grid select {
   margin-top: 10px;
 }

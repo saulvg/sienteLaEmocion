@@ -84,13 +84,21 @@ const ExperiencesList = () => {
               <h3 className='filter-title'>aventura</h3>
               <div className='adventure-grid '>
                 <div
-                  className='icon-filter-style escalada'
+                  style={{
+                    border: category === 'escalada' ? '1px solid black' : null,
+                  }}
+                  className={`icon-filter-style escalada
+                  `}
                   onClick={() => {
                     !category ? setCategory(`escalada`) : setCategory('');
                   }}
                 ></div>
                 <div
-                  className='icon-filter-style ciclismo'
+                  style={{
+                    border: category === 'ciclismo' ? '1px solid black' : null,
+                  }}
+                  className={`icon-filter-style ciclismo
+                 `}
                   onClick={() => {
                     !category ? setCategory(`ciclismo`) : setCategory('');
                   }}
@@ -98,7 +106,12 @@ const ExperiencesList = () => {
                   Ciclismo
                 </div>
                 <div
-                  className='icon-filter-style paracaidismo'
+                  style={{
+                    border:
+                      category === 'paracaidismo' ? '1px solid black' : null,
+                  }}
+                  className={`icon-filter-style paracaidismo
+                 `}
                   onClick={() => {
                     !category ? setCategory(`paracaidismo`) : setCategory('');
                   }}
@@ -106,7 +119,11 @@ const ExperiencesList = () => {
                   Paracaidismo
                 </div>
                 <div
-                  className='icon-filter-style esqui'
+                  style={{
+                    border: category === 'esqui' ? '1px solid black' : null,
+                  }}
+                  className={`icon-filter-style esqui
+                 `}
                   onClick={() => {
                     !category ? setCategory(`esqui`) : setCategory('');
                   }}
@@ -114,7 +131,11 @@ const ExperiencesList = () => {
                   Esqui
                 </div>
                 <div
-                  className='icon-filter-style buceo'
+                  style={{
+                    border: category === 'buceo' ? '1px solid black' : null,
+                  }}
+                  className={`icon-filter-style buceo
+                 `}
                   onClick={() => {
                     !category ? setCategory(`buceo`) : setCategory('');
                   }}
@@ -122,7 +143,12 @@ const ExperiencesList = () => {
                   Buceo
                 </div>
                 <div
-                  className='icon-filter-style piraguismo'
+                  style={{
+                    border:
+                      category === 'piraguismo' ? '1px solid black' : null,
+                  }}
+                  className={`icon-filter-style piraguismo
+                 `}
                   onClick={() => {
                     !category ? setCategory(`piraguismo`) : setCategory('');
                   }}
@@ -130,7 +156,11 @@ const ExperiencesList = () => {
                   Piraguismo
                 </div>
                 <div
-                  className='icon-filter-style yoga'
+                  style={{
+                    border: category === 'yoga' ? '1px solid black' : null,
+                  }}
+                  className={`icon-filter-style yoga
+                 `}
                   onClick={() => {
                     !category ? setCategory(`yoga`) : setCategory('');
                   }}
@@ -138,7 +168,11 @@ const ExperiencesList = () => {
                   Yoga
                 </div>
                 <div
-                  className='icon-filter-style motorBike'
+                  style={{
+                    border: category === 'motorBike' ? '1px solid black' : null,
+                  }}
+                  className={`icon-filter-style motorBike
+                 `}
                   onClick={() => {
                     !category ? setCategory(`motorBike`) : setCategory('');
                   }}
@@ -146,8 +180,12 @@ const ExperiencesList = () => {
                   MotorBike
                 </div>
                 <div
+                  style={{
+                    border:
+                      category === 'espeleologia' ? '1px solid black' : null,
+                  }}
                   className={`icon-filter-style espeleologia
-                  ${category ? 'pulsado' : null}`}
+                 `}
                   onClick={() => {
                     !category ? setCategory(`espeleologia`) : setCategory('');
                   }}
