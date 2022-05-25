@@ -2,6 +2,7 @@
 import './App.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
 /**
  * ###########
  * ## React ##
@@ -59,6 +60,9 @@ const AuthProvider = (props) => {
     </AuthContext.Provider>
   );
 };
+const Eg = () => {
+  return <img src='/img/eg.jpg' alt='img' />;
+};
 
 function App() {
   useEffect(() => {
@@ -89,7 +93,6 @@ function App() {
               path='/experiences/:idExperience/reviews'
               element={<ReviewPage />}
             />
-
             <Route
               path='/experiences/:idExperience/booking'
               element={<BookingExperience />}
@@ -112,6 +115,7 @@ function App() {
               path='/editExperiences/:idExperience'
               element={<EditExperience />}
             />
+            <Route path='/easteregg' element={<Eg />} />
           </Routes>
           <Footer />
 

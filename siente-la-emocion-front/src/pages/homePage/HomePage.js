@@ -33,16 +33,16 @@ const HomePage = () => {
             children={'De qué trata esto'}
           />
           <CircleHomePage
-            id={'routeComents'}
-            clas={'homePage'}
-            href={'#coments'}
-            children={'Comentarios'}
-          />
-          <CircleHomePage
             id={'routeNuestrosPrincipios'}
             clas={'homePage'}
             href={'#nuestrosPrincipios'}
             children={'Nuestros principios'}
+          />
+          <CircleHomePage
+            id={'routeComents'}
+            clas={'homePage'}
+            href={'#coments'}
+            children={'Valores'}
           />
           <CircleHomePage
             id={'routeQueTeEstaEsperando'}

@@ -15,11 +15,11 @@ const Footer = () => {
       <div className='footerMain'>
         <section id='visitanos'>
           <h3>Visitanos</h3>
-          <p>calle XXXXXX pascual manual</p>
+          <p>c/ Juan Bethencourt 23</p>
         </section>
         <section id='llamanos'>
           <h3>Llamanos</h3>
-          <p>123456789</p>
+          <p>679784556</p>
         </section>
         <section id='llamanos'>
           <h3>Cookies</h3>
@@ -28,7 +28,7 @@ const Footer = () => {
           </p>
         </section>
       </div>
-      <p>todos los derechos estan reservados a bla bla</p>
+      <p>Todos los derechos estan reservados a "Siente La Emoción"</p>
     </footer>
   );
 };

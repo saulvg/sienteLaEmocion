@@ -293,7 +293,7 @@ const ExperiencesList = () => {
                   viewBox='0 0 24 24'
                   xmlns='http://www.w3.org/2000/svg'
                   onClick={() => {
-                    !votes ? setVotes(5) : setVotes(0);
+                    !votes ? setVotes(5.0) : setVotes(0);
                   }}
                 >
                   <path

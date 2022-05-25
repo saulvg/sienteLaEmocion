@@ -23,6 +23,12 @@ const getListEntry = async (req, res, next) => {
         // Si alguno de los filtos esta activado.
 
         if (category || price || date || votes) {
+            const [meansVotes] = await connection.query(
+                `SELECT vote, id_experiences FROM votes`
+            );
+            const filte = meansVotes.filter((id) => id.id_experiences === 2);
+            console.log(meansVotes);
+            console.log('filte', filte);
             [experiences] = await connection.query(
                 `
                 SELECT 
@@ -61,8 +67,6 @@ const getListEntry = async (req, res, next) => {
                     `,
                 [category, price, votes, `%${date}%`]
             );
-
-            
         } else {
             [experiences] = await connection.query(
                 `
@@ -97,18 +101,6 @@ const getListEntry = async (req, res, next) => {
                     `
             );
         }
-        /* //Bookings
-        //si el usuario esta logeado, podra ver el nombre de los participantes que han reservado esa actividad
-        let users_booking = '';
-        
-            [users_booking] = await connection.query(
-                `
-            SELECT 
-                users.username, booking.id_experiences
-            FROM 
-                booking
-            LEFT JOIN users ON (booking.id_user = users.id) `
-            ); */
 
         const experienceFuture = experiences.filter(
             (date) => date.date > new Date()
@@ -119,7 +111,6 @@ const getListEntry = async (req, res, next) => {
             data: {
                 experiences: experienceFuture,
                 categories,
-                /* users_booking: users_booking.length */
             },
         });
     } catch (error) {

@@ -78,7 +78,6 @@ const getExperience = async (req, res, next) => {
             `,
             [experiences[0].id_company]
         );
-        console.log('companyVOtes', company_votes[0].company_votes);
 
         // Fotos
         const [experiences_photos] = await connection.query(

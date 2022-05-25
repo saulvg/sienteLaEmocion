@@ -206,7 +206,7 @@ async function initDB() {
             `INSERT INTO experiences 
                 (id_user, id_experiences_category, id_company, capacity, price, date, city, direction, text_1, text_2, text_3, text_4, text_5, text_6, createdAt) 
             VALUES 
-                (1, 1, 1, 12, 67,'2023-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
+                (1, 1, 1, 12, 67,'2021-02-03 16:37:55', 'Huesca', 'Vadiello calle Mayor', 
 
                 'Equipo: casco, arnés, material técnico, pie de gato y avituallamiento.
                 Seguro de Responsabilidad Civil.
@@ -244,7 +244,7 @@ async function initDB() {
 
                 '2022-02-03 16:37:55'),
                 
-                (1, 3, 3, 8, 32,'2023-02-03 16:37:55', 'Teruel', 'Albarracin N 23', 
+                (1, 3, 3, 8, 32,'2021-02-03 16:37:55', 'Teruel', 'Albarracin N 23', 
 
                 'Equipo: chaleco salvavidas, pala y kayak.
                 Seguro de Responsabilidad Civil.
@@ -320,7 +320,7 @@ async function initDB() {
 
                 '2022-02-03 16:37:55'),
                 
-                (1, 7, 7, 12, 70,'2023-02-03 16:37:55', 'Asturias', 'Finca Fundición de Coviella', 
+                (1, 7, 7, 12, 70,'2021-02-03 16:37:55', 'Asturias', 'Finca Fundición de Coviella', 
 
                 'Equipo: ropa cómoda y calzado apropiado
                 Seguro de Responsabilidad Civil.
@@ -332,21 +332,18 @@ async function initDB() {
                 Todo el año.',
 
                 'La actividad estrella dentro de las actividades de aventura en Asturias, consiste en el descenso del río Sella en canoa o kayak (piraguas), entre las localidades de Arriondas a Llovió, en las inmediaciones de Ribadesella.
-El descenso del Sella se hace a lo largo de siete, once o dieciséis kilómetros, decidiendo tú la distancia en el mismo momento que realizas la actividad.
-',
+                El descenso del Sella se hace a lo largo de siete, once o dieciséis kilómetros, decidiendo tú la distancia en el mismo momento que realizas la actividad.',
 
                 'El piragüismo es un deporte acuático que se practica sobre una embarcación, fabricada en diversos materiales que variarán en función de las características del medio donde naveguemos y la especialidad que practiquemos.
 
-Hay diversas especialidades para practicarlo, como pueden ser: aguas bravas, aguas tranquilas, kayak-polo y kayak de mar. En cada una de ellas se utilizan diferentes tipos de material adecuados al medio donde se practican las especialidades, siendo compatibles en algunos casos. Así mismo dentro de cada especialidad hay diferentes modalidades.
-', 
+                Hay diversas especialidades para practicarlo, como pueden ser: aguas bravas, aguas tranquilas, kayak-polo y kayak de mar. En cada una de ellas se utilizan diferentes tipos de material adecuados al medio donde se practican las especialidades, siendo compatibles en algunos casos. Así mismo dentro de cada especialidad hay diferentes modalidades.', 
 
                 'Lo único que se necesita es saber nadar, pues lógicamente al ser una actividad de aventura que se desarrolla en el agua, por seguridad es imprescindible saber defenderse en el medio.
-Por lo demás es una actividad totalmente segura, que se puede hacer sin ningún problema. Además, cuenta con embarcaciones adaptadas para personas con movilidad reducida
- ', 
+                Por lo demás es una actividad totalmente segura, que se puede hacer sin ningún problema. Además, cuenta con embarcaciones adaptadas para personas con movilidad reducida', 
 
                 '2022-07-03 16:37:55'),
                 
-                (1, 8, 8, 12, 67,'2023-02-03 16:37:55', 'Sierra Nevada', 'Granada', 
+                (1, 8, 8, 12, 67,'2021-02-03 16:37:55', 'Sierra Nevada', 'Granada', 
 
                 'Equipo: 	Esquís de montaña, botas, palos, sonda, pala, A.R.V.A. Además del material necesario para una actividad invernal. De no tenerlo se puede alquilar en la estación.
 
@@ -370,7 +367,7 @@ Históricamente, el esquí surgió como consecuencia de una necesidad de transpo
 
                 '2022-02-03 16:37:55'),
                 
-                (1, 9, 9, 12, 67,'2023-02-03 16:37:55', 'Vigo', 'Av. de Lavadores', 
+                (1, 9, 9, 12, 67,'2021-02-03 16:37:55', 'Vigo', 'Av. de Lavadores', 
 
                 'Equipo: mono, casco, arnés y gafas
                 Seguro de Responsabilidad Civil.

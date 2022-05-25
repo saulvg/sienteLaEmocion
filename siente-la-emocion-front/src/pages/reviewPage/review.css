@@ -55,6 +55,7 @@
     height: 5rem;
     display: flex;
     margin: auto;
+    object-fit: cover;
   }
   .username {
     display: flex;
