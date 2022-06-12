@@ -65,6 +65,7 @@ const UserExperiences = () => {
                       <span>{formatDate}</span>
                       {new Date(book.date) < new Date() ? (
                         <>
+                          {console.log(book)}
                           {!book.personal_vote ? (
                             <button
                               className={'add-review-button'}

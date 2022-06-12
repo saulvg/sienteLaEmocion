@@ -165,7 +165,7 @@ const newBooking = async (req, res, next) => {
 
         //Enviamos el correo al usuario
         await sendMail({
-            to: `${ADMIN_EMAIL}`,
+            to: `${ADMIN_EMAIL}`, //`admsientelaemocion@gmail.com`
             subject: `Reserva en Siente la Emocion empresa: ${company[0].name}`,
             body: emailBodyCompany,
         });

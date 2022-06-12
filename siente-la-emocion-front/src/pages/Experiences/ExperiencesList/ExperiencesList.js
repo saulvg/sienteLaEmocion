@@ -349,8 +349,16 @@ const ExperiencesList = () => {
             <div id='calendar' className='filter-section'>
               <h3 className='filter-title'>Fechas</h3>
               <DatePicker value={selectDate} onChange={fecha} />
-              <button className='filter-buttons' onClick={() => setDate('')}>
-                Limpiar fecha
+              <button
+                className='filter-buttons'
+                onClick={() => {
+                  setDate('');
+                  setCategory('');
+                  setPrice('');
+                  setVotes('');
+                }}
+              >
+                Limpiar filtro
               </button>
             </div>
             <button className='filter-buttons' onClick={handleFilter}>

@@ -73,7 +73,7 @@ const getUserExperiences = async (req, res, next) => {
             userExperiencesBooking.push(experiences[0]);
             //Repetimos este bucle hasta que no queden reservas realizadas por el usuario
         }
-
+        console.log(userExperiencesBooking);
         res.send({
             status: 'ok',
             data: {
